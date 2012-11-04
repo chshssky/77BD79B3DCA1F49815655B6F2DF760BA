@@ -18,6 +18,8 @@
 		3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B15163D6558003A7505 /* Default-568h@2x.png */; };
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
 		3F7B7B1C163D6558003A7505 /* TomatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B7B1B163D6558003A7505 /* TomatoViewController.m */; };
+		3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */; };
+		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		3F7B7B18163D6558003A7505 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F7B7B1A163D6558003A7505 /* TomatoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomatoViewController.h; sourceTree = "<group>"; };
 		3F7B7B1B163D6558003A7505 /* TomatoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoViewController.m; sourceTree = "<group>"; };
+		3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
+		3FF0B078164536E70021ABE3 /* initialData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +87,9 @@
 		3F7B7B05163D6558003A7505 /* Tomato */ = {
 			isa = PBXGroup;
 			children = (
-				3F7B7B0E163D6558003A7505 /* TomatoAppDelegate.h */,
-				3F7B7B0F163D6558003A7505 /* TomatoAppDelegate.m */,
+				3FF0B07016450DDB0021ABE3 /* CoreData */,
+				3FF0B06E16450DD00021ABE3 /* Classes */,
 				3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */,
-				3F7B7B1A163D6558003A7505 /* TomatoViewController.h */,
-				3F7B7B1B163D6558003A7505 /* TomatoViewController.m */,
 				3F7B7B06163D6558003A7505 /* Supporting Files */,
 			);
 			path = Tomato;
@@ -105,6 +107,26 @@
 				3F7B7B15163D6558003A7505 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3FF0B06E16450DD00021ABE3 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3F7B7B1A163D6558003A7505 /* TomatoViewController.h */,
+				3F7B7B1B163D6558003A7505 /* TomatoViewController.m */,
+				3F7B7B0E163D6558003A7505 /* TomatoAppDelegate.h */,
+				3F7B7B0F163D6558003A7505 /* TomatoAppDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		3FF0B07016450DDB0021ABE3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */,
+				3FF0B078164536E70021ABE3 /* initialData.plist */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +186,7 @@
 				3F7B7B14163D6558003A7505 /* Default@2x.png in Resources */,
 				3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */,
 				3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */,
+				3FF0B079164536E70021ABE3 /* initialData.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +200,7 @@
 				3F7B7B0C163D6558003A7505 /* main.m in Sources */,
 				3F7B7B10163D6558003A7505 /* TomatoAppDelegate.m in Sources */,
 				3F7B7B1C163D6558003A7505 /* TomatoViewController.m in Sources */,
+				3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,8 +317,22 @@
 				3F7B7B21163D6558003A7505 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */,
+			);
+			currentVersion = 3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */;
+			path = Models.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F7B7AF2163D6558003A7505 /* Project object */;
 }
