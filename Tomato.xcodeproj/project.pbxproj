@@ -18,6 +18,16 @@
 		3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B15163D6558003A7505 /* Default-568h@2x.png */; };
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
 		3F7B7B1C163D6558003A7505 /* TomatoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B7B1B163D6558003A7505 /* TomatoViewController.m */; };
+		3FA605461648E9B200BF98AF /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA605451648E9B200BF98AF /* Achievement.m */; };
+		3FA605491648E9B300BF98AF /* Telephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA605481648E9B300BF98AF /* Telephone.m */; };
+		3FA6054C1648E9B300BF98AF /* Grade.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6054B1648E9B300BF98AF /* Grade.m */; };
+		3FA6054F1648E9B500BF98AF /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6054E1648E9B400BF98AF /* Food.m */; };
+		3FA605521648E9B500BF98AF /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA605511648E9B500BF98AF /* Restaurant.m */; };
+		3FA605551648E9B500BF98AF /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA605541648E9B500BF98AF /* Tag.m */; };
+		3FA605581648E9B500BF98AF /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA605571648E9B500BF98AF /* Order.m */; };
+		3FA6055B1648E9B600BF98AF /* TimeLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6055A1648E9B500BF98AF /* TimeLine.m */; };
+		3FA6055E1648E9B600BF98AF /* Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6055D1648E9B600BF98AF /* Collection.m */; };
+		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */; };
 		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
 /* End PBXBuildFile section */
@@ -39,6 +49,25 @@
 		3F7B7B18163D6558003A7505 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F7B7B1A163D6558003A7505 /* TomatoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomatoViewController.h; sourceTree = "<group>"; };
 		3F7B7B1B163D6558003A7505 /* TomatoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoViewController.m; sourceTree = "<group>"; };
+		3FA605441648E9B200BF98AF /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
+		3FA605451648E9B200BF98AF /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
+		3FA605471648E9B200BF98AF /* Telephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Telephone.h; sourceTree = "<group>"; };
+		3FA605481648E9B300BF98AF /* Telephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Telephone.m; sourceTree = "<group>"; };
+		3FA6054A1648E9B300BF98AF /* Grade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grade.h; sourceTree = "<group>"; };
+		3FA6054B1648E9B300BF98AF /* Grade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grade.m; sourceTree = "<group>"; };
+		3FA6054D1648E9B300BF98AF /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		3FA6054E1648E9B400BF98AF /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
+		3FA605501648E9B500BF98AF /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		3FA605511648E9B500BF98AF /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		3FA605531648E9B500BF98AF /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		3FA605541648E9B500BF98AF /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		3FA605561648E9B500BF98AF /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		3FA605571648E9B500BF98AF /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		3FA605591648E9B500BF98AF /* TimeLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeLine.h; sourceTree = "<group>"; };
+		3FA6055A1648E9B500BF98AF /* TimeLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeLine.m; sourceTree = "<group>"; };
+		3FA6055C1648E9B600BF98AF /* Collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collection.h; sourceTree = "<group>"; };
+		3FA6055D1648E9B600BF98AF /* Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collection.m; sourceTree = "<group>"; };
+		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		3FF0B078164536E70021ABE3 /* initialData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialData.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -48,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */,
 				3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */,
 				3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */,
 				3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */,
@@ -77,6 +107,7 @@
 		3F7B7AFE163D6558003A7505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FA6055F1648E9D600BF98AF /* CoreData.framework */,
 				3F7B7AFF163D6558003A7505 /* UIKit.framework */,
 				3F7B7B01163D6558003A7505 /* Foundation.framework */,
 				3F7B7B03163D6558003A7505 /* CoreGraphics.framework */,
@@ -124,6 +155,24 @@
 			isa = PBXGroup;
 			children = (
 				3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */,
+				3FA6055C1648E9B600BF98AF /* Collection.h */,
+				3FA6055D1648E9B600BF98AF /* Collection.m */,
+				3FA605591648E9B500BF98AF /* TimeLine.h */,
+				3FA6055A1648E9B500BF98AF /* TimeLine.m */,
+				3FA605561648E9B500BF98AF /* Order.h */,
+				3FA605571648E9B500BF98AF /* Order.m */,
+				3FA605531648E9B500BF98AF /* Tag.h */,
+				3FA605541648E9B500BF98AF /* Tag.m */,
+				3FA605501648E9B500BF98AF /* Restaurant.h */,
+				3FA605511648E9B500BF98AF /* Restaurant.m */,
+				3FA6054D1648E9B300BF98AF /* Food.h */,
+				3FA6054E1648E9B400BF98AF /* Food.m */,
+				3FA6054A1648E9B300BF98AF /* Grade.h */,
+				3FA6054B1648E9B300BF98AF /* Grade.m */,
+				3FA605471648E9B200BF98AF /* Telephone.h */,
+				3FA605481648E9B300BF98AF /* Telephone.m */,
+				3FA605441648E9B200BF98AF /* Achievement.h */,
+				3FA605451648E9B200BF98AF /* Achievement.m */,
 				3FF0B078164536E70021ABE3 /* initialData.plist */,
 			);
 			name = CoreData;
@@ -201,6 +250,15 @@
 				3F7B7B10163D6558003A7505 /* TomatoAppDelegate.m in Sources */,
 				3F7B7B1C163D6558003A7505 /* TomatoViewController.m in Sources */,
 				3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */,
+				3FA605461648E9B200BF98AF /* Achievement.m in Sources */,
+				3FA605491648E9B300BF98AF /* Telephone.m in Sources */,
+				3FA6054C1648E9B300BF98AF /* Grade.m in Sources */,
+				3FA6054F1648E9B500BF98AF /* Food.m in Sources */,
+				3FA605521648E9B500BF98AF /* Restaurant.m in Sources */,
+				3FA605551648E9B500BF98AF /* Tag.m in Sources */,
+				3FA605581648E9B500BF98AF /* Order.m in Sources */,
+				3FA6055B1648E9B600BF98AF /* TimeLine.m in Sources */,
+				3FA6055E1648E9B600BF98AF /* Collection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
