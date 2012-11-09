@@ -2,7 +2,7 @@
 //  Collection.m
 //  Tomato
 //
-//  Created by Cui Hao on 12-11-6.
+//  Created by Cui Hao on 12-11-9.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -12,7 +12,7 @@
 
 @implementation Collection
 
-@dynamic id;
+@dynamic identity;
 @dynamic foods;
 
 @end
