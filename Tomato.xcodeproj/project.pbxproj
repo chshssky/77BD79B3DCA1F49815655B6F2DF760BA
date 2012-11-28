@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0560B316665134005D3170 /* TomatoTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0560B216665134005D3170 /* TomatoTest.plist */; };
 		3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7AFF163D6558003A7505 /* UIKit.framework */; };
 		3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B01163D6558003A7505 /* Foundation.framework */; };
 		3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B03163D6558003A7505 /* CoreGraphics.framework */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0560B216665134005D3170 /* TomatoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TomatoTest.plist; sourceTree = "<group>"; };
 		3F7B7AFB163D6558003A7505 /* Tomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B7AFF163D6558003A7505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F7B7B01163D6558003A7505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -200,6 +202,7 @@
 				3FC4AE50164CC96D00E73F8C /* Grade.m */,
 				3FC4AE4B164CC96B00E73F8C /* TimeLine.h */,
 				3FC4AE4C164CC96C00E73F8C /* TimeLine.m */,
+				3F0560B216665134005D3170 /* TomatoTest.plist */,
 				3FF0B078164536E70021ABE3 /* initialData.plist */,
 			);
 			name = CoreData;
@@ -267,6 +270,7 @@
 				57A05425165660C1007C4CB3 /* FavoritesTableViewController.xib in Resources */,
 				57A0542A16566117007C4CB3 /* AchievementTableViewController.xib in Resources */,
 				57A0543416567A31007C4CB3 /* CartTableViewController.xib in Resources */,
+				3F0560B316665134005D3170 /* TomatoTest.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
