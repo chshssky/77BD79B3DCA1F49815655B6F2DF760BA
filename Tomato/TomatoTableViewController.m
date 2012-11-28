@@ -36,6 +36,19 @@
     for (NSDictionary *dict in test) {
         NSLog(@"名称:%@", [dict objectForKey:@"名称"]);
     }
+    
+    NSArray *tags = delegate.tags;
+
+    for (NSArray *dict in tags) {
+        NSLog(@"标签:%@", dict);
+    }
+    
+    NSArray *achievements = delegate.achievements;
+    
+    for (NSArray *dict in achievements) {
+        NSLog(@"成就:%@", dict);
+    }
+    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

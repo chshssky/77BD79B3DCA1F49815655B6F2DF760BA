@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Tags</key>
+	<key>标签</key>
 	<array>
 		<string>辣／重口味</string>
 		<string>酸甜／爽口</string>
@@ -11,7 +11,7 @@
 		<string>快餐</string>
 		<string>外卖</string>
 	</array>
-	<key>Achievements</key>
+	<key>成就</key>
 	<array>
 		<string>重口味</string>
 		<string>胖子</string>

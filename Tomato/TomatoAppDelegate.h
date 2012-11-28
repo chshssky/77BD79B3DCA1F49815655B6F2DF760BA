@@ -10,10 +10,14 @@
 
 @interface TomatoAppDelegate : UIResponder <UIApplicationDelegate> {
     NSMutableArray *preFoodList;
+    NSArray *achievements;
+    NSArray *tags;
 }
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableArray *preFoodList;
+@property (strong, nonatomic) NSArray *achievements;
+@property (strong, nonatomic) NSArray *tags;
 
 - (NSArray *)getPreFoodList;
 

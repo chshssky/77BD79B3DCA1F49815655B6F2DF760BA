@@ -11,12 +11,20 @@
 @implementation TomatoAppDelegate
 
 @synthesize preFoodList = _preFoodList;
+@synthesize achievements = _achievements;
+@synthesize tags = _tags;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
     self.preFoodList = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+    
+    filePath = [[NSBundle mainBundle] pathForResource:@"initialData" ofType:@"plist"];
+    NSDictionary *initialData = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+    
+    self.achievements = [initialData objectForKey:@"成就"];
+    self.tags = [initialData objectForKey:@"标签"];
         
     return YES;
 }
