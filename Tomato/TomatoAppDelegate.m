@@ -10,9 +10,14 @@
 
 @implementation TomatoAppDelegate
 
+@synthesize preFoodList = _preFoodList;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
+    self.preFoodList = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+        
     return YES;
 }
 							
@@ -41,6 +46,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (NSArray *)getPreData
+{
+    return self.preFoodList;
 }
 
 @end

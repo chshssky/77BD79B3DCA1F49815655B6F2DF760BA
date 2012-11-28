@@ -7,6 +7,7 @@
 //
 
 #import "TomatoTableViewController.h"
+#import "TomatoAppDelegate.h"
 
 @interface TomatoTableViewController ()
 
@@ -26,6 +27,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Hi Xsource Or Siqi! to use the food list data, just use the getPreFoodList Method~
+    //just like below:
+    TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    NSArray *test = delegate.preFoodList;
+    
+    for (NSDictionary *dict in test) {
+        NSLog(@"名称:%@", [dict objectForKey:@"名称"]);
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

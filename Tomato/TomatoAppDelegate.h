@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TomatoAppDelegate : UIResponder <UIApplicationDelegate>
+@interface TomatoAppDelegate : UIResponder <UIApplicationDelegate> {
+    NSMutableArray *preFoodList;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) NSMutableArray *preFoodList;
+
+- (NSArray *)getPreFoodList;
 
 @end
