@@ -2,7 +2,7 @@
 //  Collection.h
 //  Tomato
 //
-//  Created by Cui Hao on 12-11-9.
+//  Created by Cui Hao on 12-12-12.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 
 @interface Collection : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * identity;
+@property (nonatomic, retain) NSNumber * collectionID;
 @property (nonatomic, retain) NSSet *foods;
 @end
 

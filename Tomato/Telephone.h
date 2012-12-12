@@ -2,7 +2,7 @@
 //  Telephone.h
 //  Tomato
 //
-//  Created by Cui Hao on 12-11-9.
+//  Created by Cui Hao on 12-12-12.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Telephone : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * identity;
-@property (nonatomic, retain) NSString * number;
+@property (nonatomic, retain) NSNumber * telephoneID;
+@property (nonatomic, retain) NSString * telephoneNumber;
 @property (nonatomic, retain) Restaurant *restaurant;
 
 @end

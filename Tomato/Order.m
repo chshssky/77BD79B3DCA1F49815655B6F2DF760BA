@@ -2,7 +2,7 @@
 //  Order.m
 //  Tomato
 //
-//  Created by Cui Hao on 12-11-9.
+//  Created by Cui Hao on 12-12-12.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -12,8 +12,8 @@
 
 @implementation Order
 
-@dynamic identity;
-@dynamic time;
+@dynamic orderID;
+@dynamic orderTime;
 @dynamic foods;
 
 @end

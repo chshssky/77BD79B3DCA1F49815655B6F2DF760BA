@@ -2,27 +2,28 @@
 //  Food.h
 //  Tomato
 //
-//  Created by Cui Hao on 12-11-9.
+//  Created by Cui Hao on 12-12-12.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Collection, Grade, Order, Restaurant, Tag, TimeLine;
+@class Collection, Order, Restaurant, Tag;
 
 @interface Food : NSManagedObject
 
-@property (nonatomic, retain) NSString * image;
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * price;
-@property (nonatomic, retain) NSNumber * score;
+@property (nonatomic, retain) NSString * foodImagePath;
+@property (nonatomic, retain) NSString * foodName;
+@property (nonatomic, retain) NSNumber * foodPrice;
+@property (nonatomic, retain) NSNumber * foodScore;
+@property (nonatomic, retain) NSDate * foodPublishTime;
+@property (nonatomic, retain) NSNumber * foodID;
+@property (nonatomic, retain) NSNumber * foodGrade;
 @property (nonatomic, retain) Collection *collection;
-@property (nonatomic, retain) Grade *like;
 @property (nonatomic, retain) NSSet *order;
 @property (nonatomic, retain) Restaurant *restaurant;
 @property (nonatomic, retain) NSSet *tags;
-@property (nonatomic, retain) TimeLine *timeLine;
 @end
 
 @interface Food (CoreDataGeneratedAccessors)

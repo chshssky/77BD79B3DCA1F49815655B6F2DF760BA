@@ -2,7 +2,7 @@
 //  Restaurant.h
 //  Tomato
 //
-//  Created by Cui Hao on 12-11-9.
+//  Created by Cui Hao on 12-12-12.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Restaurant : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * identity;
-@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSNumber * restaurantID;
+@property (nonatomic, retain) NSString * restaurantName;
 @property (nonatomic, retain) NSSet *foods;
 @property (nonatomic, retain) NSSet *telephones;
 @end

@@ -1,64 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Achievement" representedClassName="Achievement" syncable="YES">
-        <attribute name="identity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="achievementImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="achievementName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="achievementThreshold" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="achievementRecord" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Record" inverseName="achievements" inverseEntity="Record" syncable="YES"/>
     </entity>
     <entity name="Collection" representedClassName="Collection" syncable="YES">
-        <attribute name="identity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="collectionID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="collection" inverseEntity="Food" syncable="YES"/>
     </entity>
     <entity name="Food" representedClassName="Food" syncable="YES">
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="score" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="foodGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="foodID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="foodImagePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="foodName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="foodPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="foodPublishTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="foodScore" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="collection" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="foods" inverseEntity="Collection" syncable="YES"/>
-        <relationship name="like" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="foods" inverseEntity="Grade" syncable="YES"/>
         <relationship name="order" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Order" inverseName="foods" inverseEntity="Order" syncable="YES"/>
         <relationship name="restaurant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="foods" inverseEntity="Restaurant" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="foods" inverseEntity="Tag" syncable="YES"/>
-        <relationship name="timeLine" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TimeLine" inverseName="food" inverseEntity="TimeLine" syncable="YES"/>
-    </entity>
-    <entity name="Grade" representedClassName="Grade" syncable="YES">
-        <attribute name="grade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="identity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="like" inverseEntity="Food" syncable="YES"/>
     </entity>
     <entity name="Order" representedClassName="Order" syncable="YES">
-        <attribute name="identity" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="orderID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="orderTime" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="order" inverseEntity="Food" syncable="YES"/>
     </entity>
+    <entity name="Record" representedClassName="Record" syncable="YES">
+        <attribute name="recordCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="achievements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Achievement" inverseName="achievementRecord" inverseEntity="Achievement" syncable="YES"/>
+    </entity>
     <entity name="Restaurant" representedClassName="Restaurant" syncable="YES">
-        <attribute name="identity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="restaurantID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="restaurantName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="restaurant" inverseEntity="Food" syncable="YES"/>
         <relationship name="telephones" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Telephone" inverseName="restaurant" inverseEntity="Telephone" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
-        <attribute name="identity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="tagName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="tags" inverseEntity="Food" syncable="YES"/>
     </entity>
     <entity name="Telephone" representedClassName="Telephone" syncable="YES">
-        <attribute name="identity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="telephoneID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="telephoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="restaurant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="telephones" inverseEntity="Restaurant" syncable="YES"/>
     </entity>
-    <entity name="TimeLine" representedClassName="TimeLine" syncable="YES">
-        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="food" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Food" inverseName="timeLine" inverseEntity="Food" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="Achievement" positionX="-171" positionY="-73" width="128" height="73"/>
-        <element name="Collection" positionX="117" positionY="153" width="128" height="73"/>
-        <element name="Food" positionX="-137" positionY="134" width="128" height="193"/>
-        <element name="Grade" positionX="81" positionY="47" width="128" height="88"/>
-        <element name="Order" positionX="-342" positionY="110" width="128" height="88"/>
-        <element name="Restaurant" positionX="36" positionY="-76" width="128" height="103"/>
-        <element name="Tag" positionX="115" positionY="270" width="128" height="88"/>
-        <element name="Telephone" positionX="-342" positionY="-25" width="128" height="88"/>
-        <element name="TimeLine" positionX="-344" positionY="269" width="128" height="73"/>
+        <element name="Achievement" positionX="-200" positionY="-144" width="128" height="103"/>
+        <element name="Collection" positionX="106" positionY="90" width="128" height="73"/>
+        <element name="Food" positionX="-198" positionY="108" width="128" height="208"/>
+        <element name="Order" positionX="108" positionY="198" width="128" height="88"/>
+        <element name="Restaurant" positionX="106" positionY="-40" width="128" height="103"/>
+        <element name="Tag" positionX="108" positionY="306" width="128" height="88"/>
+        <element name="Telephone" positionX="-198" positionY="-25" width="128" height="88"/>
+        <element name="Record" positionX="106" positionY="-144" width="128" height="73"/>
     </elements>
 </model>
