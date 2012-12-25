@@ -61,4 +61,9 @@
     return self.preFoodList;
 }
 
+- (NSArray *)getFoodTags
+{
+    return self.tags;
+}
+
 @end

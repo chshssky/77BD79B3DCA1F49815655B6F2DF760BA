@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSArray *tags;
 
 - (NSArray *)getPreFoodList;
+- (NSArray *)getFoodTags;
 
 @end

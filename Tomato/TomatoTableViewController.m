@@ -8,12 +8,16 @@
 
 #import "TomatoTableViewController.h"
 #import "TomatoAppDelegate.h"
+#import "FoodTomatoTableViewCell.h"
 
 @interface TomatoTableViewController ()
+@property (strong, nonatomic) NSMutableArray *foodList;
+@property (strong, nonatomic) NSArray *foodTags;
 
 @end
 
 @implementation TomatoTableViewController
+@synthesize foodList = _foodList;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,23 +35,9 @@
     //Hi Xsource Or Siqi! to use the food list data, just use the getPreFoodList Method~
     //just like below:
     TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    NSArray *test = delegate.preFoodList;
     
-    for (NSDictionary *dict in test) {
-        NSLog(@"名称:%@", [dict objectForKey:@"名称"]);
-    }
-    
-    NSArray *tags = delegate.tags;
-
-    for (NSArray *dict in tags) {
-        NSLog(@"标签:%@", dict);
-    }
-    
-    NSArray *achievements = delegate.achievements;
-    
-    for (NSArray *dict in achievements) {
-        NSLog(@"成就:%@", dict);
-    }
+    self.foodList = [[NSMutableArray alloc] initWithArray:delegate.preFoodList];
+    self.foodTags = [[NSArray alloc] initWithArray:delegate.tags];
     
 
     // Uncomment the following line to preserve selection between presentations.
@@ -65,32 +55,43 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+#warning Potentially incomplete method implementation.
+    // Return the number of sections.
+    return 1;
+}
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+#warning Incomplete method implementation.
+    // Return the number of rows in the section.
+    return [self.foodList count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"FoodTableViewCellIdentifier";
+    FoodTomatoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[FoodTomatoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSInteger index = indexPath.row;
+    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.foodList[index]];
+    
+    cell.foodNameLabel.text = [dic objectForKey:@"名称"];
+    cell.foodGradeLabel.text = [dic objectForKey:@"评分"];
+    NSArray *arr = [[NSArray alloc] initWithArray:[dic objectForKey:@"美食标签"]];
+    NSString *tag = @"";
+    
+    for (NSString *index in arr) {
+        tag = [tag stringByAppendingFormat:@"  %@", self.foodTags[[index integerValue] - 1]];
+    }
+    cell.foodTagLabel.text = tag;
+    
+    return cell;
+}
 
 /*
 // Override to support conditional editing of the table view.
