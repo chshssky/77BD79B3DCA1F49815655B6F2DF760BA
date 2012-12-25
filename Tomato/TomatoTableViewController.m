@@ -9,6 +9,7 @@
 #import "TomatoTableViewController.h"
 #import "TomatoAppDelegate.h"
 #import "FoodTomatoTableViewCell.h"
+#import "TomatoDetailViewController.h"
 
 @interface TomatoTableViewController ()
 @property (strong, nonatomic) NSMutableArray *foodList;
@@ -132,17 +133,26 @@
 }
 */
 
-//#pragma mark - Table view delegate
-//
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Navigation logic may go here. Create and push another view controller.
-//    /*
-//     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    
+//     TomatoDetailViewController *detailViewController = [[TomatoDetailViewController alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
 //     // ...
 //     // Pass the selected object to the new view controller.
 //     [self.navigationController pushViewController:detailViewController animated:YES];
-//     */
-//}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"TomatoDetailSegueIdentifier"]) {
+        TomatoDetailViewController *dvc = [segue destinationViewController];
+        dvc.foodDetail = [[NSDictionary alloc] initWithDictionary:self.foodList[[[self.tableView indexPathForSelectedRow] row]]];
+        NSLog(@"%d", [[self.tableView indexPathForSelectedRow] row]);
+    }
+}
 
 @end

@@ -16,6 +16,7 @@
 		3F249DF7167886D800DB189E /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF6167886D800DB189E /* Food.m */; };
 		3F249DFA167886D800DB189E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF9167886D800DB189E /* Restaurant.m */; };
 		3F249DFD167886D900DB189E /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DFC167886D800DB189E /* Record.m */; };
+		3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */; };
 		3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7AFF163D6558003A7505 /* UIKit.framework */; };
 		3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B01163D6558003A7505 /* Foundation.framework */; };
 		3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B03163D6558003A7505 /* CoreGraphics.framework */; };
@@ -31,13 +32,9 @@
 		3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */; };
 		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
 		57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0541D16566004007C4CB3 /* TomatoTableViewController.m */; };
-		57A0542016566004007C4CB3 /* TomatoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A0541E16566004007C4CB3 /* TomatoTableViewController.xib */; };
 		57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */; };
-		57A05425165660C1007C4CB3 /* FavoritesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A05423165660C1007C4CB3 /* FavoritesTableViewController.xib */; };
 		57A0542916566117007C4CB3 /* AchievementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0542716566117007C4CB3 /* AchievementTableViewController.m */; };
-		57A0542A16566117007C4CB3 /* AchievementTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A0542816566117007C4CB3 /* AchievementTableViewController.xib */; };
 		57A0543316567A31007C4CB3 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0543116567A31007C4CB3 /* CartTableViewController.m */; };
-		57A0543416567A31007C4CB3 /* CartTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57A0543216567A31007C4CB3 /* CartTableViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +55,8 @@
 		3F249DF9167886D800DB189E /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
 		3F249DFB167886D800DB189E /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
 		3F249DFC167886D800DB189E /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoDetailViewController.h; sourceTree = "<group>"; };
+		3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoDetailViewController.m; sourceTree = "<group>"; };
 		3F7B7AFB163D6558003A7505 /* Tomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B7AFF163D6558003A7505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F7B7B01163D6558003A7505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -79,16 +78,12 @@
 		3FF0B078164536E70021ABE3 /* initialData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialData.plist; sourceTree = "<group>"; };
 		57A0541C16566004007C4CB3 /* TomatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoTableViewController.h; sourceTree = "<group>"; };
 		57A0541D16566004007C4CB3 /* TomatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoTableViewController.m; sourceTree = "<group>"; };
-		57A0541E16566004007C4CB3 /* TomatoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TomatoTableViewController.xib; sourceTree = "<group>"; };
 		57A05421165660C0007C4CB3 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
 		57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
-		57A05423165660C1007C4CB3 /* FavoritesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritesTableViewController.xib; sourceTree = "<group>"; };
 		57A0542616566117007C4CB3 /* AchievementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewController.h; sourceTree = "<group>"; };
 		57A0542716566117007C4CB3 /* AchievementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementTableViewController.m; sourceTree = "<group>"; };
-		57A0542816566117007C4CB3 /* AchievementTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AchievementTableViewController.xib; sourceTree = "<group>"; };
 		57A0543016567A31007C4CB3 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
 		57A0543116567A31007C4CB3 /* CartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewController.m; sourceTree = "<group>"; };
-		57A0543216567A31007C4CB3 /* CartTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CartTableViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +101,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F2F8C791689C93300D2A668 /* TomatoMainModule */ = {
+			isa = PBXGroup;
+			children = (
+				57A0541C16566004007C4CB3 /* TomatoTableViewController.h */,
+				57A0541D16566004007C4CB3 /* TomatoTableViewController.m */,
+				3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */,
+				3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */,
+				3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */,
+				3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */,
+			);
+			name = TomatoMainModule;
+			sourceTree = "<group>";
+		};
+		3F2F8C7A1689C95F00D2A668 /* FavoritesModule */ = {
+			isa = PBXGroup;
+			children = (
+				57A05421165660C0007C4CB3 /* FavoritesTableViewController.h */,
+				57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */,
+			);
+			name = FavoritesModule;
+			sourceTree = "<group>";
+		};
+		3F2F8C7B1689C97000D2A668 /* CartModule */ = {
+			isa = PBXGroup;
+			children = (
+				57A0543016567A31007C4CB3 /* CartTableViewController.h */,
+				57A0543116567A31007C4CB3 /* CartTableViewController.m */,
+			);
+			name = CartModule;
+			sourceTree = "<group>";
+		};
+		3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */ = {
+			isa = PBXGroup;
+			children = (
+				57A0542616566117007C4CB3 /* AchievementTableViewController.h */,
+				57A0542716566117007C4CB3 /* AchievementTableViewController.m */,
+			);
+			name = AchievementsModule;
+			sourceTree = "<group>";
+		};
+		3F2F8C7D1689C9E400D2A668 /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				3F249DE6167886D700DB189E /* Collection.h */,
+				3F249DE7167886D700DB189E /* Collection.m */,
+				3F249DE9167886D700DB189E /* Tag.h */,
+				3F249DEA167886D700DB189E /* Tag.m */,
+				3F249DEC167886D800DB189E /* Order.h */,
+				3F249DED167886D800DB189E /* Order.m */,
+				3F249DEF167886D800DB189E /* Telephone.h */,
+				3F249DF0167886D800DB189E /* Telephone.m */,
+				3F249DF2167886D800DB189E /* Achievement.h */,
+				3F249DF3167886D800DB189E /* Achievement.m */,
+				3F249DF5167886D800DB189E /* Food.h */,
+				3F249DF6167886D800DB189E /* Food.m */,
+				3F249DF8167886D800DB189E /* Restaurant.h */,
+				3F249DF9167886D800DB189E /* Restaurant.m */,
+				3F249DFB167886D800DB189E /* Record.h */,
+				3F249DFC167886D800DB189E /* Record.m */,
+			);
+			name = ManagedObjects;
+			sourceTree = "<group>";
+		};
 		3F7B7AF0163D6558003A7505 = {
 			isa = PBXGroup;
 			children = (
@@ -164,20 +222,11 @@
 		3FF0B06E16450DD00021ABE3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				57A0541C16566004007C4CB3 /* TomatoTableViewController.h */,
-				57A0541D16566004007C4CB3 /* TomatoTableViewController.m */,
-				57A0541E16566004007C4CB3 /* TomatoTableViewController.xib */,
-				57A05421165660C0007C4CB3 /* FavoritesTableViewController.h */,
-				57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */,
-				57A05423165660C1007C4CB3 /* FavoritesTableViewController.xib */,
-				57A0542616566117007C4CB3 /* AchievementTableViewController.h */,
-				57A0542716566117007C4CB3 /* AchievementTableViewController.m */,
-				57A0542816566117007C4CB3 /* AchievementTableViewController.xib */,
-				57A0543016567A31007C4CB3 /* CartTableViewController.h */,
-				57A0543116567A31007C4CB3 /* CartTableViewController.m */,
-				57A0543216567A31007C4CB3 /* CartTableViewController.xib */,
-				3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */,
-				3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */,
+				3F2F8C7D1689C9E400D2A668 /* ManagedObjects */,
+				3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */,
+				3F2F8C7B1689C97000D2A668 /* CartModule */,
+				3F2F8C7A1689C95F00D2A668 /* FavoritesModule */,
+				3F2F8C791689C93300D2A668 /* TomatoMainModule */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -186,22 +235,6 @@
 			isa = PBXGroup;
 			children = (
 				3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */,
-				3F249DE6167886D700DB189E /* Collection.h */,
-				3F249DE7167886D700DB189E /* Collection.m */,
-				3F249DE9167886D700DB189E /* Tag.h */,
-				3F249DEA167886D700DB189E /* Tag.m */,
-				3F249DEC167886D800DB189E /* Order.h */,
-				3F249DED167886D800DB189E /* Order.m */,
-				3F249DEF167886D800DB189E /* Telephone.h */,
-				3F249DF0167886D800DB189E /* Telephone.m */,
-				3F249DF2167886D800DB189E /* Achievement.h */,
-				3F249DF3167886D800DB189E /* Achievement.m */,
-				3F249DF5167886D800DB189E /* Food.h */,
-				3F249DF6167886D800DB189E /* Food.m */,
-				3F249DF8167886D800DB189E /* Restaurant.h */,
-				3F249DF9167886D800DB189E /* Restaurant.m */,
-				3F249DFB167886D800DB189E /* Record.h */,
-				3F249DFC167886D800DB189E /* Record.m */,
 				3F0560B216665134005D3170 /* TomatoTest.plist */,
 				3FF0B078164536E70021ABE3 /* initialData.plist */,
 			);
@@ -266,10 +299,6 @@
 				3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */,
 				3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */,
 				3FF0B079164536E70021ABE3 /* initialData.plist in Resources */,
-				57A0542016566004007C4CB3 /* TomatoTableViewController.xib in Resources */,
-				57A05425165660C1007C4CB3 /* FavoritesTableViewController.xib in Resources */,
-				57A0542A16566117007C4CB3 /* AchievementTableViewController.xib in Resources */,
-				57A0543416567A31007C4CB3 /* CartTableViewController.xib in Resources */,
 				3F0560B316665134005D3170 /* TomatoTest.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +326,7 @@
 				3F249DFA167886D800DB189E /* Restaurant.m in Sources */,
 				3F249DFD167886D900DB189E /* Record.m in Sources */,
 				3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */,
+				3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
