@@ -17,6 +17,7 @@
 		3F249DFA167886D800DB189E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF9167886D800DB189E /* Restaurant.m */; };
 		3F249DFD167886D900DB189E /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DFC167886D800DB189E /* Record.m */; };
 		3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */; };
+		3F2F8C851689DF6800D2A668 /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C841689DF6800D2A668 /* NetworkInterface.m */; };
 		3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7AFF163D6558003A7505 /* UIKit.framework */; };
 		3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B01163D6558003A7505 /* Foundation.framework */; };
 		3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B03163D6558003A7505 /* CoreGraphics.framework */; };
@@ -57,6 +58,8 @@
 		3F249DFC167886D800DB189E /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
 		3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoDetailViewController.h; sourceTree = "<group>"; };
 		3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoDetailViewController.m; sourceTree = "<group>"; };
+		3F2F8C831689DF6800D2A668 /* NetworkInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInterface.h; sourceTree = "<group>"; };
+		3F2F8C841689DF6800D2A668 /* NetworkInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkInterface.m; sourceTree = "<group>"; };
 		3F7B7AFB163D6558003A7505 /* Tomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B7AFF163D6558003A7505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F7B7B01163D6558003A7505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -164,6 +167,15 @@
 			name = ManagedObjects;
 			sourceTree = "<group>";
 		};
+		3F2F8C821689DEDE00D2A668 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				3F2F8C831689DF6800D2A668 /* NetworkInterface.h */,
+				3F2F8C841689DF6800D2A668 /* NetworkInterface.m */,
+			);
+			name = NetworkLayer;
+			sourceTree = "<group>";
+		};
 		3F7B7AF0163D6558003A7505 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +234,7 @@
 		3FF0B06E16450DD00021ABE3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3F2F8C821689DEDE00D2A668 /* NetworkLayer */,
 				3F2F8C7D1689C9E400D2A668 /* ManagedObjects */,
 				3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */,
 				3F2F8C7B1689C97000D2A668 /* CartModule */,
@@ -327,6 +340,7 @@
 				3F249DFD167886D900DB189E /* Record.m in Sources */,
 				3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */,
 				3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */,
+				3F2F8C851689DF6800D2A668 /* NetworkInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

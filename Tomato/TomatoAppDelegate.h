@@ -15,9 +15,15 @@
 }
 
 @property (strong, nonatomic) UIWindow *window;
+
 @property (strong, nonatomic) NSMutableArray *preFoodList;
 @property (strong, nonatomic) NSArray *achievements;
 @property (strong, nonatomic) NSArray *tags;
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+
 
 - (NSArray *)getPreFoodList;
 - (NSArray *)getFoodTags;

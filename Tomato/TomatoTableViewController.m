@@ -14,6 +14,7 @@
 @interface TomatoTableViewController ()
 @property (strong, nonatomic) NSMutableArray *foodList;
 @property (strong, nonatomic) NSArray *foodTags;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
 

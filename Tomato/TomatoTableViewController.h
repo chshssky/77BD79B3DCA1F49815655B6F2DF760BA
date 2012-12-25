@@ -10,5 +10,4 @@
 
 @interface TomatoTableViewController : UITableViewController
 
-
 @end
