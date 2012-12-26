@@ -52,7 +52,7 @@
 //            Restaurant *res = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurant" inManagedObjectContext:self.managedObjectContext];
 //            res.restaurantName = [rest objectForKey:@"名称"];
 //            res.restaurantID = [rest objectForKey:];
-//            
+//
 //            food.restaurant = res;
             
         }

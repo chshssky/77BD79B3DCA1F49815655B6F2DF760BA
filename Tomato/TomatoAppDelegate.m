@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "Tag.h"
 #import "Achievement.h"
+#import "Tag+Init.h"
 
 @implementation TomatoAppDelegate
 
@@ -99,18 +100,22 @@
     self.achievements = tagsArr;
     self.tags = achievementsArr;
     
-    NSInteger i = 0;
-    for (NSString *tag in tagsArr) {
-        Tag *tagEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
-        tagEntity.tagID = [NSNumber numberWithUnsignedInt:i++];
-        tagEntity.tagName = tag;
-        
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
+    
+    
+//    NSInteger i = 0;
+//    for (NSString *tag in tagsArr) {
+//        
+//        
+//        [Tag tagWithInitialData:tag andID:i++ inManagedObjectContext:self.managedObjectContext];
+//
+//        
+//        NSError *error = nil;
+//        if (![self.managedObjectContext save:&error]) {
+//            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//            abort();
+//        }
+//        
+//    }
 
     for (NSString *achievement in achievementsArr) {
         Achievement *achieveEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Achievement" inManagedObjectContext:self.managedObjectContext];
