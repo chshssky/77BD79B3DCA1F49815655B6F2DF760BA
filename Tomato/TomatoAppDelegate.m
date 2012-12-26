@@ -8,6 +8,8 @@
 
 #import "TomatoAppDelegate.h"
 #import <CoreData/CoreData.h>
+#import "Tag.h"
+#import "Achievement.h"
 
 @implementation TomatoAppDelegate
 
@@ -20,13 +22,11 @@
 
 - (NSManagedObjectContext *)managedObjectContext
 {
-    if (_managedObjectContext != nil)
-    {
+    if (_managedObjectContext != nil) {
         return _managedObjectContext;
     }
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil)
-    {
+    if (coordinator != nil) {
         _managedObjectContext = [[NSManagedObjectContext alloc] init];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
@@ -35,8 +35,7 @@
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
-    if (_persistentStoreCoordinator != nil)
-    {
+    if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
     
@@ -44,8 +43,7 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
-    {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
          
@@ -78,8 +76,7 @@
 
 - (NSManagedObjectModel *)managedObjectModel
 {
-    if (_managedObjectModel != nil)
-    {
+    if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"TomatoDataStore" withExtension:@"momd"];
@@ -96,9 +93,37 @@
     filePath = [[NSBundle mainBundle] pathForResource:@"initialData" ofType:@"plist"];
     NSDictionary *initialData = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     
-    self.achievements = [initialData objectForKey:@"成就"];
-    self.tags = [initialData objectForKey:@"标签"];
-            
+    NSArray *tagsArr = [[NSArray alloc] initWithArray:[initialData objectForKey:@"标签"]];
+    NSArray *achievementsArr = [[NSArray alloc] initWithArray:[initialData objectForKey:@"成就"]];
+    
+    self.achievements = tagsArr;
+    self.tags = achievementsArr;
+    
+    NSInteger i = 0;
+    for (NSString *tag in tagsArr) {
+        Tag *tagEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
+        tagEntity.tagID = [NSNumber numberWithUnsignedInt:i++];
+        tagEntity.tagName = tag;
+        
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+
+    for (NSString *achievement in achievementsArr) {
+        Achievement *achieveEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Achievement" inManagedObjectContext:self.managedObjectContext];
+        achieveEntity.achievementName = achievement;
+        achieveEntity.achievementThreshold = [NSNumber numberWithUnsignedInt:0];
+        
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+    
     return YES;
 }
 							
@@ -126,6 +151,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    [self saveContext];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
@@ -136,6 +162,22 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. If it is not possible to recover from the error, display an alert panel that instructs the user to quit the application by pressing the Home button.
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
 
 - (NSArray *)getPreData
 {

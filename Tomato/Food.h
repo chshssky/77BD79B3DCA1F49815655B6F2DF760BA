@@ -2,7 +2,7 @@
 //  Food.h
 //  Tomato
 //
-//  Created by Cui Hao on 12-12-12.
+//  Created by 崔 昊 on 12-12-26.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -13,13 +13,13 @@
 
 @interface Food : NSManagedObject
 
+@property (nonatomic, retain) NSNumber * foodGrade;
+@property (nonatomic, retain) NSNumber * foodID;
 @property (nonatomic, retain) NSString * foodImagePath;
 @property (nonatomic, retain) NSString * foodName;
 @property (nonatomic, retain) NSNumber * foodPrice;
-@property (nonatomic, retain) NSNumber * foodScore;
 @property (nonatomic, retain) NSDate * foodPublishTime;
-@property (nonatomic, retain) NSNumber * foodID;
-@property (nonatomic, retain) NSNumber * foodGrade;
+@property (nonatomic, retain) NSNumber * foodScore;
 @property (nonatomic, retain) Collection *collection;
 @property (nonatomic, retain) NSSet *order;
 @property (nonatomic, retain) Restaurant *restaurant;

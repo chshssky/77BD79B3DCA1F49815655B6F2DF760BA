@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3F0560B316665134005D3170 /* TomatoTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0560B216665134005D3170 /* TomatoTest.plist */; };
-		3F249DE8167886D700DB189E /* Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DE7167886D700DB189E /* Collection.m */; };
-		3F249DEB167886D700DB189E /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DEA167886D700DB189E /* Tag.m */; };
-		3F249DEE167886D800DB189E /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DED167886D800DB189E /* Order.m */; };
-		3F249DF1167886D800DB189E /* Telephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF0167886D800DB189E /* Telephone.m */; };
-		3F249DF4167886D800DB189E /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF3167886D800DB189E /* Achievement.m */; };
-		3F249DF7167886D800DB189E /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF6167886D800DB189E /* Food.m */; };
-		3F249DFA167886D800DB189E /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DF9167886D800DB189E /* Restaurant.m */; };
-		3F249DFD167886D900DB189E /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F249DFC167886D800DB189E /* Record.m */; };
 		3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */; };
 		3F2F8C851689DF6800D2A668 /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C841689DF6800D2A668 /* NetworkInterface.m */; };
+		3F3EE6AD168B411800D011C3 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6AC168B411800D011C3 /* Record.m */; };
+		3F3EE6B1168B411800D011C3 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6B0168B411800D011C3 /* Order.m */; };
+		3F3EE6B4168B411800D011C3 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6B3168B411800D011C3 /* Tag.m */; };
+		3F3EE6B7168B411800D011C3 /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6B6168B411800D011C3 /* Achievement.m */; };
+		3F3EE6BA168B411800D011C3 /* Collection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6B9168B411800D011C3 /* Collection.m */; };
+		3F3EE6BD168B411800D011C3 /* Telephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6BC168B411800D011C3 /* Telephone.m */; };
+		3F3EE6C0168B411800D011C3 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6BF168B411800D011C3 /* Restaurant.m */; };
+		3F3EE6C3168B411800D011C3 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6C2168B411800D011C3 /* Food.m */; };
 		3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7AFF163D6558003A7505 /* UIKit.framework */; };
 		3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B01163D6558003A7505 /* Foundation.framework */; };
 		3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B03163D6558003A7505 /* CoreGraphics.framework */; };
@@ -30,7 +30,7 @@
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
-		3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */; };
+		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
 		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
 		57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0541D16566004007C4CB3 /* TomatoTableViewController.m */; };
 		57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */; };
@@ -40,26 +40,26 @@
 
 /* Begin PBXFileReference section */
 		3F0560B216665134005D3170 /* TomatoTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TomatoTest.plist; sourceTree = "<group>"; };
-		3F249DE6167886D700DB189E /* Collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collection.h; sourceTree = "<group>"; };
-		3F249DE7167886D700DB189E /* Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collection.m; sourceTree = "<group>"; };
-		3F249DE9167886D700DB189E /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
-		3F249DEA167886D700DB189E /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
-		3F249DEC167886D800DB189E /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
-		3F249DED167886D800DB189E /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
-		3F249DEF167886D800DB189E /* Telephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Telephone.h; sourceTree = "<group>"; };
-		3F249DF0167886D800DB189E /* Telephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Telephone.m; sourceTree = "<group>"; };
-		3F249DF2167886D800DB189E /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
-		3F249DF3167886D800DB189E /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
-		3F249DF5167886D800DB189E /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
-		3F249DF6167886D800DB189E /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
-		3F249DF8167886D800DB189E /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
-		3F249DF9167886D800DB189E /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
-		3F249DFB167886D800DB189E /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
-		3F249DFC167886D800DB189E /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
 		3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoDetailViewController.h; sourceTree = "<group>"; };
 		3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoDetailViewController.m; sourceTree = "<group>"; };
 		3F2F8C831689DF6800D2A668 /* NetworkInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInterface.h; sourceTree = "<group>"; };
 		3F2F8C841689DF6800D2A668 /* NetworkInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkInterface.m; sourceTree = "<group>"; };
+		3F3EE6AB168B411700D011C3 /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		3F3EE6AC168B411800D011C3 /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		3F3EE6AF168B411800D011C3 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		3F3EE6B0168B411800D011C3 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		3F3EE6B2168B411800D011C3 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		3F3EE6B3168B411800D011C3 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
+		3F3EE6B5168B411800D011C3 /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
+		3F3EE6B6168B411800D011C3 /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
+		3F3EE6B8168B411800D011C3 /* Collection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collection.h; sourceTree = "<group>"; };
+		3F3EE6B9168B411800D011C3 /* Collection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collection.m; sourceTree = "<group>"; };
+		3F3EE6BB168B411800D011C3 /* Telephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Telephone.h; sourceTree = "<group>"; };
+		3F3EE6BC168B411800D011C3 /* Telephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Telephone.m; sourceTree = "<group>"; };
+		3F3EE6BE168B411800D011C3 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
+		3F3EE6BF168B411800D011C3 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
+		3F3EE6C1168B411800D011C3 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
+		3F3EE6C2168B411800D011C3 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		3F7B7AFB163D6558003A7505 /* Tomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B7AFF163D6558003A7505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F7B7B01163D6558003A7505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -77,7 +77,7 @@
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
-		3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
+		3FF0B07216450E3B0021ABE3 /* TomatoDataStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoDataStore.xcdatamodel; sourceTree = "<group>"; };
 		3FF0B078164536E70021ABE3 /* initialData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialData.plist; sourceTree = "<group>"; };
 		57A0541C16566004007C4CB3 /* TomatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoTableViewController.h; sourceTree = "<group>"; };
 		57A0541D16566004007C4CB3 /* TomatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoTableViewController.m; sourceTree = "<group>"; };
@@ -147,22 +147,22 @@
 		3F2F8C7D1689C9E400D2A668 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				3F249DE6167886D700DB189E /* Collection.h */,
-				3F249DE7167886D700DB189E /* Collection.m */,
-				3F249DE9167886D700DB189E /* Tag.h */,
-				3F249DEA167886D700DB189E /* Tag.m */,
-				3F249DEC167886D800DB189E /* Order.h */,
-				3F249DED167886D800DB189E /* Order.m */,
-				3F249DEF167886D800DB189E /* Telephone.h */,
-				3F249DF0167886D800DB189E /* Telephone.m */,
-				3F249DF2167886D800DB189E /* Achievement.h */,
-				3F249DF3167886D800DB189E /* Achievement.m */,
-				3F249DF5167886D800DB189E /* Food.h */,
-				3F249DF6167886D800DB189E /* Food.m */,
-				3F249DF8167886D800DB189E /* Restaurant.h */,
-				3F249DF9167886D800DB189E /* Restaurant.m */,
-				3F249DFB167886D800DB189E /* Record.h */,
-				3F249DFC167886D800DB189E /* Record.m */,
+				3F3EE6C1168B411800D011C3 /* Food.h */,
+				3F3EE6C2168B411800D011C3 /* Food.m */,
+				3F3EE6BE168B411800D011C3 /* Restaurant.h */,
+				3F3EE6BF168B411800D011C3 /* Restaurant.m */,
+				3F3EE6BB168B411800D011C3 /* Telephone.h */,
+				3F3EE6BC168B411800D011C3 /* Telephone.m */,
+				3F3EE6B8168B411800D011C3 /* Collection.h */,
+				3F3EE6B9168B411800D011C3 /* Collection.m */,
+				3F3EE6B5168B411800D011C3 /* Achievement.h */,
+				3F3EE6B6168B411800D011C3 /* Achievement.m */,
+				3F3EE6B2168B411800D011C3 /* Tag.h */,
+				3F3EE6B3168B411800D011C3 /* Tag.m */,
+				3F3EE6AF168B411800D011C3 /* Order.h */,
+				3F3EE6B0168B411800D011C3 /* Order.m */,
+				3F3EE6AB168B411700D011C3 /* Record.h */,
+				3F3EE6AC168B411800D011C3 /* Record.m */,
 			);
 			name = ManagedObjects;
 			sourceTree = "<group>";
@@ -247,7 +247,7 @@
 		3FF0B07016450DDB0021ABE3 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */,
+				3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */,
 				3F0560B216665134005D3170 /* TomatoTest.plist */,
 				3FF0B078164536E70021ABE3 /* initialData.plist */,
 			);
@@ -325,22 +325,22 @@
 			files = (
 				3F7B7B0C163D6558003A7505 /* main.m in Sources */,
 				3F7B7B10163D6558003A7505 /* TomatoAppDelegate.m in Sources */,
-				3FF0B07316450E3B0021ABE3 /* Models.xcdatamodeld in Sources */,
+				3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */,
 				57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */,
 				57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */,
 				57A0542916566117007C4CB3 /* AchievementTableViewController.m in Sources */,
 				57A0543316567A31007C4CB3 /* CartTableViewController.m in Sources */,
-				3F249DE8167886D700DB189E /* Collection.m in Sources */,
-				3F249DEB167886D700DB189E /* Tag.m in Sources */,
-				3F249DEE167886D800DB189E /* Order.m in Sources */,
-				3F249DF1167886D800DB189E /* Telephone.m in Sources */,
-				3F249DF4167886D800DB189E /* Achievement.m in Sources */,
-				3F249DF7167886D800DB189E /* Food.m in Sources */,
-				3F249DFA167886D800DB189E /* Restaurant.m in Sources */,
-				3F249DFD167886D900DB189E /* Record.m in Sources */,
 				3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */,
 				3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */,
 				3F2F8C851689DF6800D2A668 /* NetworkInterface.m in Sources */,
+				3F3EE6AD168B411800D011C3 /* Record.m in Sources */,
+				3F3EE6B1168B411800D011C3 /* Order.m in Sources */,
+				3F3EE6B4168B411800D011C3 /* Tag.m in Sources */,
+				3F3EE6B7168B411800D011C3 /* Achievement.m in Sources */,
+				3F3EE6BA168B411800D011C3 /* Collection.m in Sources */,
+				3F3EE6BD168B411800D011C3 /* Telephone.m in Sources */,
+				3F3EE6C0168B411800D011C3 /* Restaurant.m in Sources */,
+				3F3EE6C3168B411800D011C3 /* Food.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,13 +462,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3FF0B07116450E3B0021ABE3 /* Models.xcdatamodeld */ = {
+		3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */,
+				3FF0B07216450E3B0021ABE3 /* TomatoDataStore.xcdatamodel */,
 			);
-			currentVersion = 3FF0B07216450E3B0021ABE3 /* Models.xcdatamodel */;
-			path = Models.xcdatamodeld;
+			currentVersion = 3FF0B07216450E3B0021ABE3 /* TomatoDataStore.xcdatamodel */;
+			path = TomatoDataStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -11,6 +11,6 @@
 @interface NetworkInterface : NSObject
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-+requestForFoodLisfrom:(NSInteger) minIndex to:(NSInteger) maxIndex;
+- (void)requestForFoodListfrom:(NSInteger) minIndex to:(NSInteger) maxIndex;
 
 @end

@@ -2,7 +2,7 @@
 //  Food.m
 //  Tomato
 //
-//  Created by Cui Hao on 12-12-12.
+//  Created by 崔 昊 on 12-12-26.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -15,13 +15,13 @@
 
 @implementation Food
 
+@dynamic foodGrade;
+@dynamic foodID;
 @dynamic foodImagePath;
 @dynamic foodName;
 @dynamic foodPrice;
-@dynamic foodScore;
 @dynamic foodPublishTime;
-@dynamic foodID;
-@dynamic foodGrade;
+@dynamic foodScore;
 @dynamic collection;
 @dynamic order;
 @dynamic restaurant;

@@ -41,7 +41,7 @@
     self.foodList = [[NSMutableArray alloc] initWithArray:delegate.preFoodList];
     self.foodTags = [[NSArray alloc] initWithArray:delegate.tags];
     
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
