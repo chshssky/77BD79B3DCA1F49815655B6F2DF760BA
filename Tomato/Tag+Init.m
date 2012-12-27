@@ -10,7 +10,7 @@
 
 @implementation Tag (Init)
 
-+ (Tag *)tagWithInitialData:(NSString *)tagName
++ (void)tagWithInitialData:(NSString *)tagName
                       andID:(NSInteger)index
      inManagedObjectContext:(NSManagedObjectContext *)context
 {
@@ -25,13 +25,17 @@
     if (!matches || ([matches count] > 1)) {
         NSLog(@"Init Tags Wrong!");
     } else if ([matches count] == 0) {
-        Tag *tagEntity = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:context];
-        tagEntity.tagID = [NSNumber numberWithUnsignedInt:index];
-        tagEntity.tagName = tagName;
+        tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:context];
+        tag.tagID = [NSNumber numberWithUnsignedInt:index];
+        tag.tagName = tagName;
     } else {
         tag = [matches lastObject];
     }
     
+    if (![context save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    //return tag;
 }
-
 @end

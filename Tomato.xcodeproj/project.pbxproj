@@ -19,6 +19,7 @@
 		3F3EE6C0168B411800D011C3 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6BF168B411800D011C3 /* Restaurant.m */; };
 		3F3EE6C3168B411800D011C3 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6C2168B411800D011C3 /* Food.m */; };
 		3F3EE6CA168B49B700D011C3 /* Tag+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6C9168B49B700D011C3 /* Tag+Init.m */; };
+		3F3EE6CD168C0DC900D011C3 /* Achievement+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6CC168C0DC900D011C3 /* Achievement+Init.m */; };
 		3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7AFF163D6558003A7505 /* UIKit.framework */; };
 		3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B01163D6558003A7505 /* Foundation.framework */; };
 		3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B03163D6558003A7505 /* CoreGraphics.framework */; };
@@ -63,6 +64,8 @@
 		3F3EE6C2168B411800D011C3 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		3F3EE6C8168B49B700D011C3 /* Tag+Init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Tag+Init.h"; sourceTree = "<group>"; };
 		3F3EE6C9168B49B700D011C3 /* Tag+Init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+Init.m"; sourceTree = "<group>"; };
+		3F3EE6CB168C0DC900D011C3 /* Achievement+Init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Achievement+Init.h"; sourceTree = "<group>"; };
+		3F3EE6CC168C0DC900D011C3 /* Achievement+Init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Achievement+Init.m"; sourceTree = "<group>"; };
 		3F7B7AFB163D6558003A7505 /* Tomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B7AFF163D6558003A7505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F7B7B01163D6558003A7505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,6 +163,8 @@
 				3F3EE6B9168B411800D011C3 /* Collection.m */,
 				3F3EE6B5168B411800D011C3 /* Achievement.h */,
 				3F3EE6B6168B411800D011C3 /* Achievement.m */,
+				3F3EE6CB168C0DC900D011C3 /* Achievement+Init.h */,
+				3F3EE6CC168C0DC900D011C3 /* Achievement+Init.m */,
 				3F3EE6B2168B411800D011C3 /* Tag.h */,
 				3F3EE6B3168B411800D011C3 /* Tag.m */,
 				3F3EE6C8168B49B700D011C3 /* Tag+Init.h */,
@@ -347,6 +352,7 @@
 				3F3EE6C0168B411800D011C3 /* Restaurant.m in Sources */,
 				3F3EE6C3168B411800D011C3 /* Food.m in Sources */,
 				3F3EE6CA168B49B700D011C3 /* Tag+Init.m in Sources */,
+				3F3EE6CD168C0DC900D011C3 /* Achievement+Init.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
