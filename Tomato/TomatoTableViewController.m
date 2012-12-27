@@ -86,9 +86,9 @@
     NSInteger index = indexPath.row;
     NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.foodList[index]];
     
-    cell.foodNameLabel.text = [dic objectForKey:@"名称"];
-    cell.foodGradeLabel.text = [dic objectForKey:@"评分"];
-    NSArray *arr = [[NSArray alloc] initWithArray:[dic objectForKey:@"美食标签"]];
+    cell.foodNameLabel.text = [dic objectForKey:FOOD_NAME];
+    cell.foodGradeLabel.text = [dic objectForKey:FOOD_SCORE];
+    NSArray *arr = [[NSArray alloc] initWithArray:[dic objectForKey:FOOD_TAGS]];
     NSString *tag = @"";
     
     for (NSString *index in arr) {

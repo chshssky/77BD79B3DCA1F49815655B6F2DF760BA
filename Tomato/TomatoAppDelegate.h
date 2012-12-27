@@ -8,6 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
+#define FOOD_NAME @"名称"
+#define FOOD_SCORE @"评分"
+#define FOOD_TAGS @"美食标签"
+#define FOOD_PRICE @"价格"
+#define FOOD_IMAGE_PATH @"图片"
+#define FOOD_UPLOAD_TIME @"上传时间"
+#define RESTAURANT @"餐馆"
+#define RESTAURANT_NAME @"名称"
+#define RESTAURANT_TELEPHONE @"电话"
+
+#define TAGS @"标签"
+#define ACHIEVEMENTS @"成就"
+
+
 @interface TomatoAppDelegate : UIResponder <UIApplicationDelegate> {
     NSMutableArray *preFoodList;
     NSArray *achievements;

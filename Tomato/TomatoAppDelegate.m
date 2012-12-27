@@ -94,8 +94,8 @@
     filePath = [[NSBundle mainBundle] pathForResource:@"initialData" ofType:@"plist"];
     NSDictionary *initialData = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     
-    NSArray *tagsArr = [[NSArray alloc] initWithArray:[initialData objectForKey:@"标签"]];
-    NSArray *achievementsArr = [[NSArray alloc] initWithArray:[initialData objectForKey:@"成就"]];
+    NSArray *tagsArr = [[NSArray alloc] initWithArray:[initialData objectForKey:TAGS]];
+    NSArray *achievementsArr = [[NSArray alloc] initWithArray:[initialData objectForKey:ACHIEVEMENTS]];
     
     self.achievements = tagsArr;
     self.tags = achievementsArr;
