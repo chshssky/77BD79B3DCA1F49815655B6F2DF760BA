@@ -10,7 +10,7 @@
 
 @implementation Achievement (Init)
 
-+ (void)achievementWithInitialData:(NSString *)achievementName
++ (Achievement *)achievementWithInitialData:(NSString *)achievementName
             inManagedObjectContext:(NSManagedObjectContext *)context;
 {
     Achievement *achievement = nil;
@@ -26,17 +26,13 @@
     } else if ([matches count] == 0) {
         achievement = [NSEntityDescription insertNewObjectForEntityForName:@"Achievement" inManagedObjectContext:context];
         achievement.achievementName = achievementName;
-        //achieveEntity.achievementThreshold = [NSNumber numberWithUnsignedInt:0];
+        achievement.achievementThreshold = [NSNumber numberWithUnsignedInt:6];
         
     } else {
         achievement = [matches lastObject];
     }
-    
-    if (![context save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    //return achievement;
+
+    return achievement;
 }
 
 @end

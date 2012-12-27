@@ -10,7 +10,7 @@
 
 @implementation Tag (Init)
 
-+ (void)tagWithInitialData:(NSString *)tagName
++ (Tag *)tagWithInitialData:(NSString *)tagName
                       andID:(NSInteger)index
      inManagedObjectContext:(NSManagedObjectContext *)context
 {
@@ -32,10 +32,6 @@
         tag = [matches lastObject];
     }
     
-    if (![context save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    //return tag;
+    return tag;
 }
 @end

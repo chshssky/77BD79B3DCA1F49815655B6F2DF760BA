@@ -10,6 +10,7 @@
 #import "TomatoAppDelegate.h"
 #import "FoodTomatoTableViewCell.h"
 #import "TomatoDetailViewController.h"
+#import "NetworkInterface.h"
 
 @interface TomatoTableViewController ()
 @property (strong, nonatomic) NSMutableArray *foodList;
@@ -41,6 +42,9 @@
     self.foodList = [[NSMutableArray alloc] initWithArray:delegate.preFoodList];
     self.foodTags = [[NSArray alloc] initWithArray:delegate.tags];
     
+    NetworkInterface *inter = [[NetworkInterface alloc] init];
+
+    [inter requestForFoodList];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

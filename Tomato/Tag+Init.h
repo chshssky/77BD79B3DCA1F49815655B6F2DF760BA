@@ -10,7 +10,7 @@
 
 @interface Tag (Init)
 
-+ (void)tagWithInitialData:(NSString *)tagName
++ (Tag *)tagWithInitialData:(NSString *)tagName
                       andID:(NSInteger)index
      inManagedObjectContext:(NSManagedObjectContext *)context;
 

@@ -10,7 +10,7 @@
 
 @interface Achievement (Init)
 
-+ (void)achievementWithInitialData:(NSString *)achievementName
++ (Achievement *)achievementWithInitialData:(NSString *)achievementName
     inManagedObjectContext:(NSManagedObjectContext *)context;
 
 

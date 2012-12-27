@@ -100,15 +100,19 @@
     self.achievements = tagsArr;
     self.tags = achievementsArr;
     
-    
-    
     NSInteger i = 0;
     for (NSString *tag in tagsArr) {
-        [Tag tagWithInitialData:tag andID:i++ inManagedObjectContext:self.managedObjectContext];
+        [Tag tagWithInitialData:tag andID:i++ + 1 inManagedObjectContext:self.managedObjectContext];
     }
 
     for (NSString *achievement in achievementsArr) {
         [Achievement achievementWithInitialData:achievement inManagedObjectContext:self.managedObjectContext];
+    }
+    
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
     
     return YES;
