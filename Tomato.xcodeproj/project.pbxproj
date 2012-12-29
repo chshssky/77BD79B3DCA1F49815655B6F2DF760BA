@@ -41,7 +41,11 @@
 		57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0541D16566004007C4CB3 /* TomatoTableViewController.m */; };
 		57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */; };
 		57A0542916566117007C4CB3 /* AchievementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0542716566117007C4CB3 /* AchievementTableViewController.m */; };
-		57A0543316567A31007C4CB3 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0543116567A31007C4CB3 /* CartTableViewController.m */; };
+		73DEDDBD168F2E0C00C1AA37 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDBC168F2E0C00C1AA37 /* Cart.m */; };
+		73DEDDC1168F360200C1AA37 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC0168F360200C1AA37 /* CartTableViewController.m */; };
+		73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC3168F362100C1AA37 /* CartFooterView.m */; };
+		73DEDDC6168F364200C1AA37 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DEDDC5168F364200C1AA37 /* MessageUI.framework */; };
+		73DEDDC8168F365000C1AA37 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,8 +107,14 @@
 		57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
 		57A0542616566117007C4CB3 /* AchievementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewController.h; sourceTree = "<group>"; };
 		57A0542716566117007C4CB3 /* AchievementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementTableViewController.m; sourceTree = "<group>"; };
-		57A0543016567A31007C4CB3 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
-		57A0543116567A31007C4CB3 /* CartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewController.m; sourceTree = "<group>"; };
+		73DEDDBB168F2E0C00C1AA37 /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
+		73DEDDBC168F2E0C00C1AA37 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
+		73DEDDBF168F360200C1AA37 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
+		73DEDDC0168F360200C1AA37 /* CartTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartTableViewController.m; sourceTree = "<group>"; };
+		73DEDDC2168F362100C1AA37 /* CartFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartFooterView.h; sourceTree = "<group>"; };
+		73DEDDC3168F362100C1AA37 /* CartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartFooterView.m; sourceTree = "<group>"; };
+		73DEDDC5168F364200C1AA37 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73DEDDC8168F365000C1AA37 /* CoreTelephony.framework in Frameworks */,
+				73DEDDC6168F364200C1AA37 /* MessageUI.framework in Frameworks */,
 				3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */,
 				3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */,
 				3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */,
@@ -149,8 +161,12 @@
 		3F2F8C7B1689C97000D2A668 /* CartModule */ = {
 			isa = PBXGroup;
 			children = (
-				57A0543016567A31007C4CB3 /* CartTableViewController.h */,
-				57A0543116567A31007C4CB3 /* CartTableViewController.m */,
+				73DEDDBB168F2E0C00C1AA37 /* Cart.h */,
+				73DEDDBC168F2E0C00C1AA37 /* Cart.m */,
+				73DEDDC2168F362100C1AA37 /* CartFooterView.h */,
+				73DEDDC3168F362100C1AA37 /* CartFooterView.m */,
+				73DEDDBF168F360200C1AA37 /* CartTableViewController.h */,
+				73DEDDC0168F360200C1AA37 /* CartTableViewController.m */,
 			);
 			name = CartModule;
 			sourceTree = "<group>";
@@ -223,6 +239,8 @@
 		3F7B7AF0163D6558003A7505 = {
 			isa = PBXGroup;
 			children = (
+				73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */,
+				73DEDDC5168F364200C1AA37 /* MessageUI.framework */,
 				3F7B7B05163D6558003A7505 /* Tomato */,
 				3F7B7AFE163D6558003A7505 /* Frameworks */,
 				3F7B7AFC163D6558003A7505 /* Products */,
@@ -375,7 +393,6 @@
 				57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */,
 				57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */,
 				57A0542916566117007C4CB3 /* AchievementTableViewController.m in Sources */,
-				57A0543316567A31007C4CB3 /* CartTableViewController.m in Sources */,
 				3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */,
 				3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */,
 				3F2F8C851689DF6800D2A668 /* NetworkInterface.m in Sources */,
@@ -393,6 +410,9 @@
 				3F556609168F1727000E3D9A /* Food.m in Sources */,
 				3F55660C168F17BF000E3D9A /* Collection+Food.m in Sources */,
 				3F55660F168F1FFA000E3D9A /* FavoriteTableViewCell.m in Sources */,
+				73DEDDBD168F2E0C00C1AA37 /* Cart.m in Sources */,
+				73DEDDC1168F360200C1AA37 /* CartTableViewController.m in Sources */,
+				73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

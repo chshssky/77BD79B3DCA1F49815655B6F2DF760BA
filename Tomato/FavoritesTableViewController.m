@@ -50,16 +50,7 @@
 {
     NSFetchRequest *collectionRequest = [NSFetchRequest fetchRequestWithEntityName:@"Collection"];
     collectionRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"collectionID" ascending:YES]];
-//    NSError *err = nil;
-//    NSArray *collection = [self.managedObjectContext executeFetchRequest:collectionRequest error:&err];
-//    
-//    
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-//    for (Collection *col in collection) {
-//        <#statements#>
-//    }
-//    
-//    request.predicate = [NSPredicate predicateWithFormat:<#(NSString *)#> argumentArray:<#(NSArray *)#>]
+
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:collectionRequest
                                                                         managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
