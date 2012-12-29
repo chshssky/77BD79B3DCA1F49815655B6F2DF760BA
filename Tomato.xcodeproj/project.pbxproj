@@ -239,8 +239,6 @@
 		3F7B7AF0163D6558003A7505 = {
 			isa = PBXGroup;
 			children = (
-				73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */,
-				73DEDDC5168F364200C1AA37 /* MessageUI.framework */,
 				3F7B7B05163D6558003A7505 /* Tomato */,
 				3F7B7AFE163D6558003A7505 /* Frameworks */,
 				3F7B7AFC163D6558003A7505 /* Products */,
@@ -258,6 +256,8 @@
 		3F7B7AFE163D6558003A7505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */,
+				73DEDDC5168F364200C1AA37 /* MessageUI.framework */,
 				3FA6055F1648E9D600BF98AF /* CoreData.framework */,
 				3F7B7AFF163D6558003A7505 /* UIKit.framework */,
 				3F7B7B01163D6558003A7505 /* Foundation.framework */,
