@@ -7,6 +7,8 @@
 //
 
 #import "TomatoDetailViewController.h"
+#import "TomatoAppDelegate.h"
+#import "Collection+Food.h"
 
 @interface TomatoDetailViewController ()
 
@@ -47,7 +49,7 @@
 }
 
 - (IBAction)AddToFavorite:(id)sender {
-    
+    [Collection colletionWithFood:self.foodDetail inManagedObjectContext:self.managedObjectContext];
 }
 
 - (IBAction)grade:(id)sender {

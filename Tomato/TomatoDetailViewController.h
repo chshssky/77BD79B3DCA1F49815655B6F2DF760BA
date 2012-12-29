@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Food.h"
+#import "CoreDataViewController.h"
 
-@interface TomatoDetailViewController : UIViewController
+@interface TomatoDetailViewController : CoreDataViewController
 @property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *foodTagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *foodPriceLabel;

@@ -7,6 +7,7 @@
 //
 
 #import "CoreDataTableViewController.h"
+#import "TomatoAppDelegate.h"
 
 @interface CoreDataTableViewController ()
 @property (nonatomic) BOOL beganUpdates;
@@ -21,6 +22,7 @@
 @synthesize suspendAutomaticTrackingOfChangesInManagedObjectContext = _suspendAutomaticTrackingOfChangesInManagedObjectContext;
 @synthesize debug = _debug;
 @synthesize beganUpdates = _beganUpdates;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
@@ -28,6 +30,16 @@
 }
 
 #pragma mark - Fetching
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext) {
+        return _managedObjectContext;
+    }
+    TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    _managedObjectContext = delegate.managedObjectContext;
+    return _managedObjectContext;
+}
 
 - (void)performFetch
 {
@@ -86,6 +98,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //NSLog(@"%d", [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects]);
     return [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
 }
 

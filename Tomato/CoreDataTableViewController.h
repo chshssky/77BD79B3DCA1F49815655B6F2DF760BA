@@ -13,11 +13,11 @@
 @interface CoreDataTableViewController : UITableViewController<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-
-- (void)performFetch;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic) BOOL suspendAutomaticTrackingOfChangesInManagedObjectContext;
-
 @property BOOL debug;
+
+- (void)performFetch;
 
 @end

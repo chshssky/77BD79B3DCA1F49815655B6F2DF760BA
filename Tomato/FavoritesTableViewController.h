@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface FavoritesTableViewController : UITableViewController
+@interface FavoritesTableViewController : CoreDataTableViewController
 
 @end

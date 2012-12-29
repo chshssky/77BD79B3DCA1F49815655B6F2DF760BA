@@ -7,12 +7,15 @@
 //
 
 #import "CoreDataViewController.h"
+#import "TomatoAppDelegate.h"
 
 @interface CoreDataViewController ()
 
 @end
 
 @implementation CoreDataViewController
+
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +36,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSManagedObjectContext *)managedObjectContext
+{
+    if (_managedObjectContext) {
+        return _managedObjectContext;
+    }
+    TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    _managedObjectContext = delegate.managedObjectContext;
+    return _managedObjectContext;
 }
 
 @end

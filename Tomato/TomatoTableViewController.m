@@ -14,8 +14,8 @@
 #import "Food.h"
 
 @interface TomatoTableViewController ()
+
 @property (strong, nonatomic) NSArray *foodTags;
-@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -34,14 +34,8 @@
 {
     [super viewDidLoad];
     
-    //Hi Xsource Or Siqi! to use the food list data, just use the getPreFoodList Method~
-    //just like below:
-    TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    
-    self.managedObjectContext = delegate.managedObjectContext;
-    
-    NetworkInterface *inter = [[NetworkInterface alloc] init];
-    [inter requestForFoodListFromID:9 toID:8];
+    NetworkInterface *net = [[NetworkInterface alloc] init];
+    [net requestForFoodListFromID:4 toID:4];
     
     [self setupFetchResultController];
 

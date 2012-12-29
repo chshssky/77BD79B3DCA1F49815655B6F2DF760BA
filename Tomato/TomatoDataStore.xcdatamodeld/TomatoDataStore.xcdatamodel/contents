@@ -8,7 +8,7 @@
     </entity>
     <entity name="Collection" representedClassName="Collection" syncable="YES">
         <attribute name="collectionID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
-        <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="collection" inverseEntity="Food" syncable="YES"/>
+        <relationship name="food" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Food" inverseName="collection" inverseEntity="Food" syncable="YES"/>
     </entity>
     <entity name="Food" representedClassName="Food" syncable="YES">
         <attribute name="foodGrade" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -18,7 +18,7 @@
         <attribute name="foodPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="foodPublishTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="foodScore" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
-        <relationship name="collection" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="foods" inverseEntity="Collection" syncable="YES"/>
+        <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="food" inverseEntity="Collection" syncable="YES"/>
         <relationship name="order" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Order" inverseName="foods" inverseEntity="Order" syncable="YES"/>
         <relationship name="restaurant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="foods" inverseEntity="Restaurant" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="foods" inverseEntity="Tag" syncable="YES"/>
