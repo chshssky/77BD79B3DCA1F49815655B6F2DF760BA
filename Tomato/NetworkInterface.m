@@ -28,11 +28,12 @@
     
 }
 
-- (void)requestForFoodList;
+- (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max
 {
     dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
     dispatch_async(fetchQ, ^{
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
+        NSString *URL = [NSString stringWithFormat:@"10.60.XX.XX:8080/XXXX/XX?fromID=%d&toID=%d", min, max];
         NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
         int i = 0;
         for (NSDictionary *dic in foods) {
@@ -137,6 +138,11 @@
     //dispatch_release(fetchQ);
 }
 
+
+- (void)giveFood:(NSInteger)foodID aGrade:(NSInteger)foodGrade
+{
+    
+}
 
 
 @end

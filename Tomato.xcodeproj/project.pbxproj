@@ -20,6 +20,8 @@
 		3F3EE6C3168B411800D011C3 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6C2168B411800D011C3 /* Food.m */; };
 		3F3EE6CA168B49B700D011C3 /* Tag+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6C9168B49B700D011C3 /* Tag+Init.m */; };
 		3F3EE6CD168C0DC900D011C3 /* Achievement+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6CC168C0DC900D011C3 /* Achievement+Init.m */; };
+		3F556546168EE3E6000E3D9A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F556545168EE3E6000E3D9A /* CoreDataTableViewController.m */; };
+		3F556549168EF111000E3D9A /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F556548168EF111000E3D9A /* CoreDataViewController.m */; };
 		3F7B7B00163D6558003A7505 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7AFF163D6558003A7505 /* UIKit.framework */; };
 		3F7B7B02163D6558003A7505 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B01163D6558003A7505 /* Foundation.framework */; };
 		3F7B7B04163D6558003A7505 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7B7B03163D6558003A7505 /* CoreGraphics.framework */; };
@@ -66,6 +68,10 @@
 		3F3EE6C9168B49B700D011C3 /* Tag+Init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Tag+Init.m"; sourceTree = "<group>"; };
 		3F3EE6CB168C0DC900D011C3 /* Achievement+Init.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Achievement+Init.h"; sourceTree = "<group>"; };
 		3F3EE6CC168C0DC900D011C3 /* Achievement+Init.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Achievement+Init.m"; sourceTree = "<group>"; };
+		3F556544168EE3E6000E3D9A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		3F556545168EE3E6000E3D9A /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		3F556547168EF111000E3D9A /* CoreDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataViewController.h; sourceTree = "<group>"; };
+		3F556548168EF111000E3D9A /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataViewController.m; sourceTree = "<group>"; };
 		3F7B7AFB163D6558003A7505 /* Tomato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7B7AFF163D6558003A7505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F7B7B01163D6558003A7505 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,6 +192,24 @@
 			name = NetworkLayer;
 			sourceTree = "<group>";
 		};
+		3F556541168EE351000E3D9A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3F556544168EE3E6000E3D9A /* CoreDataTableViewController.h */,
+				3F556545168EE3E6000E3D9A /* CoreDataTableViewController.m */,
+				3F556547168EF111000E3D9A /* CoreDataViewController.h */,
+				3F556548168EF111000E3D9A /* CoreDataViewController.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		3F556543168EE378000E3D9A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		3F7B7AF0163D6558003A7505 = {
 			isa = PBXGroup;
 			children = (
@@ -217,7 +241,8 @@
 		3F7B7B05163D6558003A7505 /* Tomato */ = {
 			isa = PBXGroup;
 			children = (
-				3FF0B07016450DDB0021ABE3 /* CoreData */,
+				3F556543168EE378000E3D9A /* Resource */,
+				3FF0B07016450DDB0021ABE3 /* InitialData */,
 				3FF0B06E16450DD00021ABE3 /* Classes */,
 				3F7B7B06163D6558003A7505 /* Supporting Files */,
 			);
@@ -228,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */,
+				3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */,
 				3F7B7B0E163D6558003A7505 /* TomatoAppDelegate.h */,
 				3F7B7B0F163D6558003A7505 /* TomatoAppDelegate.m */,
 				3F7B7B07163D6558003A7505 /* Tomato-Info.plist */,
@@ -244,6 +270,7 @@
 		3FF0B06E16450DD00021ABE3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3F556541168EE351000E3D9A /* CoreData */,
 				3F2F8C821689DEDE00D2A668 /* NetworkLayer */,
 				3F2F8C7D1689C9E400D2A668 /* ManagedObjects */,
 				3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */,
@@ -254,14 +281,13 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		3FF0B07016450DDB0021ABE3 /* CoreData */ = {
+		3FF0B07016450DDB0021ABE3 /* InitialData */ = {
 			isa = PBXGroup;
 			children = (
-				3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */,
 				3F0560B216665134005D3170 /* TomatoTest.plist */,
 				3FF0B078164536E70021ABE3 /* initialData.plist */,
 			);
-			name = CoreData;
+			name = InitialData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,6 +379,8 @@
 				3F3EE6C3168B411800D011C3 /* Food.m in Sources */,
 				3F3EE6CA168B49B700D011C3 /* Tag+Init.m in Sources */,
 				3F3EE6CD168C0DC900D011C3 /* Achievement+Init.m in Sources */,
+				3F556546168EE3E6000E3D9A /* CoreDataTableViewController.m in Sources */,
+				3F556549168EF111000E3D9A /* CoreDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

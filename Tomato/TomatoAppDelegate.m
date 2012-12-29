@@ -170,6 +170,11 @@
     }
 }
 
+- (TomatoAppDelegate *)getTomatoAppDelegate
+{
+    return (TomatoAppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
 - (NSArray *)getPreData
 {
     return self.preFoodList;

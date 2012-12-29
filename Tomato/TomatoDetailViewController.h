@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Food.h"
 
 @interface TomatoDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *foodTagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *foodPriceLabel;
-@property (strong, nonatomic) NSDictionary *foodDetail;
+@property (strong, nonatomic) Food *foodDetail;
 
 @end

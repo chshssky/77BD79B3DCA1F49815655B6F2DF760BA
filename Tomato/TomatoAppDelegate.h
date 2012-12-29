@@ -41,5 +41,6 @@
 
 - (NSArray *)getPreFoodList;
 - (NSArray *)getFoodTags;
+- (TomatoAppDelegate *)getTomatoAppDelegate;
 
 @end

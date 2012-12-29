@@ -30,10 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = [self.foodDetail objectForKey:@"名称"];
-    self.foodPriceLabel.text = [self.foodDetail objectForKey:@"价格"];
+    self.title = self.foodDetail.foodName;
+    self.foodPriceLabel.text = [NSString stringWithFormat:@"%@",self.foodDetail.foodPrice];
     // configure the other detail here...
-    //l;kjl;
     
 }
 

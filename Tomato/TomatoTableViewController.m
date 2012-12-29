@@ -11,16 +11,15 @@
 #import "FoodTomatoTableViewCell.h"
 #import "TomatoDetailViewController.h"
 #import "NetworkInterface.h"
+#import "Food.h"
 
 @interface TomatoTableViewController ()
-@property (strong, nonatomic) NSMutableArray *foodList;
 @property (strong, nonatomic) NSArray *foodTags;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end
 
 @implementation TomatoTableViewController
-@synthesize foodList = _foodList;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,18 +38,31 @@
     //just like below:
     TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
-    self.foodList = [[NSMutableArray alloc] initWithArray:delegate.preFoodList];
-    self.foodTags = [[NSArray alloc] initWithArray:delegate.tags];
+    self.managedObjectContext = delegate.managedObjectContext;
     
     NetworkInterface *inter = [[NetworkInterface alloc] init];
+    [inter requestForFoodListFromID:9 toID:8];
+    
+    [self setupFetchResultController];
 
-    [inter requestForFoodList];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)setupFetchResultController
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
+    //request.predicate =
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodName" ascending:YES]];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:self.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,20 +73,6 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [self.foodList count];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FoodTableViewCellIdentifier";
@@ -83,18 +81,26 @@
         cell = [[FoodTomatoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NSInteger index = indexPath.row;
-    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.foodList[index]];
+    //configure the cell
+    Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.foodNameLabel.text = [dic objectForKey:FOOD_NAME];
-    cell.foodGradeLabel.text = [dic objectForKey:FOOD_SCORE];
-    NSArray *arr = [[NSArray alloc] initWithArray:[dic objectForKey:FOOD_TAGS]];
-    NSString *tag = @"";
+    cell.foodNameLabel.text = food.foodName;
+    cell.foodGradeLabel.text = [NSString stringWithFormat:@"%@",food.foodScore];
     
-    for (NSString *index in arr) {
-        tag = [tag stringByAppendingFormat:@"  %@", self.foodTags[[index integerValue] - 1]];
-    }
-    cell.foodTagLabel.text = tag;
+    
+    
+//    NSInteger index = indexPath.row;
+//    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.foodList[index]];
+//    
+//    cell.foodNameLabel.text = [dic objectForKey:FOOD_NAME];
+//    cell.foodGradeLabel.text = [dic objectForKey:FOOD_SCORE];
+//    NSArray *arr = [[NSArray alloc] initWithArray:[dic objectForKey:FOOD_TAGS]];
+//    NSString *tag = @"";
+//    
+//    for (NSString *index in arr) {
+//        tag = [tag stringByAppendingFormat:@"  %@", self.foodTags[[index integerValue] - 1]];
+//    }
+//    cell.foodTagLabel.text = tag;
     
     return cell;
 }
@@ -140,23 +146,12 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    
-//     TomatoDetailViewController *detailViewController = [[TomatoDetailViewController alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-//     // ...
-//     // Pass the selected object to the new view controller.
-//     [self.navigationController pushViewController:detailViewController animated:YES];
-}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     
     if ([[segue identifier] isEqualToString:@"TomatoDetailSegueIdentifier"]) {
         TomatoDetailViewController *dvc = [segue destinationViewController];
-        dvc.foodDetail = [[NSDictionary alloc] initWithDictionary:self.foodList[[[self.tableView indexPathForSelectedRow] row]]];
-        NSLog(@"%d", [[self.tableView indexPathForSelectedRow] row]);
+        dvc.foodDetail = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
     }
 }
 

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface TomatoTableViewController : UITableViewController
+@interface TomatoTableViewController : CoreDataTableViewController
 
 @end

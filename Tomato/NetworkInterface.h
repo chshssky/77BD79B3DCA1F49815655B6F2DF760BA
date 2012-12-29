@@ -11,6 +11,7 @@
 @interface NetworkInterface : NSObject
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (void)requestForFoodList;
+- (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max;
+- (void)giveFood:(NSInteger)foodID aGrade:(NSInteger)foodGrade;
 
 @end
