@@ -14,6 +14,7 @@
 
 @interface CartTableViewController ()  <MFMessageComposeViewControllerDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, retain) NSNumber *tempSection;
 @end
 
 @implementation CartTableViewController
@@ -70,16 +71,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     Cart *cart = [Cart getCart];
-    if ([cart getRestaurantFoodNameAndPriceAtSection:indexPath.section AtRow:indexPath.row NameOrPrice:@"Name"] != nil &&
-        [cart getRestaurantFoodNameAndPriceAtSection:indexPath.section AtRow:indexPath.row NameOrPrice:@"Price"] != nil) {
+    if ([cart getRestaurantFoodNameAndPriceAtSection:indexPath.section AtRow:indexPath.row NameOrPrice:@"Name"] != nil){
         cell.textLabel.text = [cart getRestaurantFoodNameAndPriceAtSection:indexPath.section AtRow:indexPath.row NameOrPrice:@"Name"];
         cell.detailTextLabel.text = [@"¥" stringByAppendingString:[cart getRestaurantFoodNameAndPriceAtSection:indexPath.section AtRow:indexPath.row NameOrPrice:@"Price"]];
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.textLabel.textColor = [UIColor blackColor];
+        cell.detailTextLabel.textColor = [UIColor blackColor];
     }else{
         cell.textLabel.text = @"总价";
         cell.detailTextLabel.text = [@"¥" stringByAppendingString:[cart getTheRestaurantSumPriceAtSection:indexPath.section]];
-        cell.textLabel.textColor = UIColorFromRGB(0xBD1421);
-        cell.detailTextLabel.textColor = UIColorFromRGB(0xBD1421);
+            cell.textLabel.textColor = UIColorFromRGB(0xBD1421);
+            cell.detailTextLabel.textColor = UIColorFromRGB(0xBD1421);
     }
     
     return cell;
@@ -121,6 +123,7 @@
                                   destructiveButtonTitle:call
                                   otherButtonTitles:message, nil]; 
     actionSheet.tag = sender.tag;
+    self.tempSection = [NSNumber numberWithInt:sender.tag];
     [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
 }
 
@@ -131,7 +134,6 @@
         Cart *cart = [Cart getCart];
         NSString *telePhoneNumber = [@"tel://" stringByAppendingString:[cart getRestaurantTelephoneNumber:actionSheet.tag]];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telePhoneNumber]];
-        
         for (int i=0; i<[cart getRestaurantFoodCount:actionSheet.tag]; i++) {
             [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:actionSheet.tag]].accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -170,9 +172,9 @@
             [alert show];
         }
         
-        for (int i=0; i<[cart getRestaurantFoodCount:actionSheet.tag]; i++) {
-            [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:actionSheet.tag]].accessoryType = UITableViewCellAccessoryCheckmark;
-        }
+//        for (int i=0; i<[cart getRestaurantFoodCount:actionSheet.tag]; i++) {
+//            [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:actionSheet.tag]].accessoryType = UITableViewCellAccessoryCheckmark;
+//        }
         //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"sms://800888"]];
     }else if(buttonIndex ==[actionSheet cancelButtonIndex]){
         return;
@@ -187,10 +189,20 @@
     Cart *cart = [Cart getCart];
     if (result == MessageComposeResultCancelled){
         NSLog(@"Message cancelled");
+        NSLog(@"%@",self.tempSection);
+        for (int i=0; i<[cart getRestaurantFoodCount:[self.tempSection intValue]]; i++) {
+            [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:[self.tempSection intValue]]].accessoryType = UITableViewCellAccessoryNone;
+        }
     }else if (result == MessageComposeResultSent){
         NSLog(@"Message sent");
+        for (int i=0; i<[cart getRestaurantFoodCount:[self.tempSection intValue]]; i++) {
+            [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:[self.tempSection intValue]]].accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }else{
-       NSLog(@"Message failed")  ; 
+       NSLog(@"Message failed");
+        for (int i=0; i<[cart getRestaurantFoodCount:[self.tempSection intValue]]; i++) {
+            [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:[self.tempSection intValue]]].accessoryType = UITableViewCellAccessoryNone;
+        }
     }
 }
 
@@ -249,19 +261,22 @@
 {
     Cart *cart = [Cart getCart];
     int restaurantFoodCount = [cart getRestaurantFoodCount:indexPath.section];
+//    [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]].textLabel.textColor = [UIColor blackColor];
+//    [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]].detailTextLabel.textColor = [UIColor blackColor];
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section]].accessoryType = UITableViewCellAccessoryNone;
-        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]].textLabel.textColor = [UIColor blackColor];
-        [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section]].detailTextLabel.textColor = [UIColor blackColor];
+        
         [cart deleteRestaurantFoodAtSection:indexPath.section AtRow:indexPath.row];
+        
         if (restaurantFoodCount == 1) {
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:YES];
         }else{
             [self.dataArray removeObjectAtIndex:indexPath.row];
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]  withRowAnimation: UITableViewRowAnimationNone];
+            
             [self.tableView reloadData];
-        }   
+        }
     }
 }
 

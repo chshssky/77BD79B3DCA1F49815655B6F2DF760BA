@@ -61,7 +61,6 @@
     NSDictionary *food = [[NSDictionary alloc] initWithObjectsAndKeys:  self.foodDetail.foodName, FOOD_NAME,
                                                                         [NSString stringWithFormat:@"%@", self.foodDetail.foodPrice ], FOOD_PRICE,
                                                                         restaurantDictionary, RESTAURANT, nil];
-    NSLog(@"%@",[[food objectForKey:RESTAURANT] objectForKey:RESTAURANT_TELEPHONE]);
     if ([cart.getCartFoodArray containsObject:food]) {
         return;
     }

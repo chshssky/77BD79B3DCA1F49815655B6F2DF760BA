@@ -138,7 +138,7 @@ static Cart *cart = nil;
 
 - (NSString *)getTheRestaurantSumPriceAtSection:(int)index_section
 {
-    int sumPrice = 0;
+    float sumPrice = 0;
     NSMutableArray *restaurantNameArray = [[NSMutableArray alloc] init];
     for (NSDictionary *index in self.cartFoodArray) {
         NSString *restaurantName = [[index objectForKey:RESTAURANT] objectForKey:RESTAURANT_NAME];
@@ -155,7 +155,7 @@ static Cart *cart = nil;
             sumPrice += [price intValue];
         }
     }
-    NSString *sumPriceText =[NSString stringWithFormat:@"%d",sumPrice];
+    NSString *sumPriceText =[NSString stringWithFormat:@"%.1f",sumPrice];
     return sumPriceText;
 }
 
