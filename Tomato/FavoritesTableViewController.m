@@ -68,6 +68,7 @@
     Collection *collet = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.foodNameLabel.text = collet.food.foodName;
     cell.foodScoreLabel.text = [NSString stringWithFormat:@"%@", collet.food.foodScore];
+    cell.foodImage.backgroundColor = [UIColor grayColor];
     
     return cell;
 }

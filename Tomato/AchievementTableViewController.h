@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface AchievementTableViewController : UITableViewController
+@interface AchievementTableViewController : CoreDataTableViewController
 
 @end
