@@ -35,6 +35,7 @@
 		3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B15163D6558003A7505 /* Default-568h@2x.png */; };
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
 		3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */; };
+		3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B361690195500D7B184 /* Food+Cart.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -99,6 +100,8 @@
 		3F7B7B18163D6558003A7505 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F8B5B3116900F8F00D7B184 /* AchievementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsTableViewCell.h; sourceTree = "<group>"; };
 		3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsTableViewCell.m; sourceTree = "<group>"; };
+		3F8B5B351690195500D7B184 /* Food+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Cart.h"; sourceTree = "<group>"; };
+		3F8B5B361690195500D7B184 /* Food+Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Cart.m"; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 			children = (
 				3F556607168F1727000E3D9A /* Food.h */,
 				3F556608168F1727000E3D9A /* Food.m */,
+				3F8B5B351690195500D7B184 /* Food+Cart.h */,
+				3F8B5B361690195500D7B184 /* Food+Cart.m */,
 				3F556604168F1726000E3D9A /* Record.h */,
 				3F556605168F1726000E3D9A /* Record.m */,
 				3F556601168F1726000E3D9A /* Collection.h */,
@@ -419,6 +424,7 @@
 				73DEDDC1168F360200C1AA37 /* CartTableViewController.m in Sources */,
 				73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */,
 				3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */,
+				3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

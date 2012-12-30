@@ -9,9 +9,8 @@
 #import "TomatoDetailViewController.h"
 #import "TomatoAppDelegate.h"
 #import "Collection+Food.h"
+#import "Food+Cart.h"
 #import "Cart.h"
-#import "Restaurant.h"
-#import "Telephone.h"
 
 @interface TomatoDetailViewController ()
 
@@ -49,18 +48,7 @@
 
 - (IBAction)AddToChart:(id)sender {
     Cart *cart = [Cart getCart];
-    
-    NSMutableArray *tel = [[NSMutableArray alloc] init];
-    
-    for (Telephone *telephone in self.foodDetail.restaurant.telephones) {
-        [tel addObject:telephone.telephoneNumber];
-    }
-    
-    NSDictionary *restaurantDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:self.foodDetail.restaurant.restaurantName, RESTAURANT_NAME, tel, RESTAURANT_TELEPHONE, nil];
-    
-    NSDictionary *food = [[NSDictionary alloc] initWithObjectsAndKeys:  self.foodDetail.foodName, FOOD_NAME,
-                                                                        [NSString stringWithFormat:@"%@", self.foodDetail.foodPrice ], FOOD_PRICE,
-                                                                        restaurantDictionary, RESTAURANT, nil];
+    NSDictionary *food = [Food ConvertFood:self.foodDetail];
     if ([cart.getCartFoodArray containsObject:food]) {
         return;
     }
