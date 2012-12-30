@@ -39,6 +39,7 @@
 		3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3A16901E1A00D7B184 /* foodImage.png */; };
 		3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B441690305E00D7B184 /* TagsTableViewController.m */; };
 		3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B471690320500D7B184 /* PublishViewController.m */; };
+		3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -110,6 +111,8 @@
 		3F8B5B441690305E00D7B184 /* TagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsTableViewController.m; sourceTree = "<group>"; };
 		3F8B5B461690320500D7B184 /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
 		3F8B5B471690320500D7B184 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
+		3F8B5B4A16903D4A00D7B184 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
+		3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -325,6 +328,15 @@
 			name = PublishModule;
 			sourceTree = "<group>";
 		};
+		3F8B5B4916903D1A00D7B184 /* FilterModule */ = {
+			isa = PBXGroup;
+			children = (
+				3F8B5B4A16903D4A00D7B184 /* FilterTableViewController.h */,
+				3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */,
+			);
+			name = FilterModule;
+			sourceTree = "<group>";
+		};
 		3FF0B06E16450DD00021ABE3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,9 +345,10 @@
 				3F2F8C7D1689C9E400D2A668 /* ManagedObjects */,
 				3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */,
 				3F2F8C7B1689C97000D2A668 /* CartModule */,
-				3F2F8C7A1689C95F00D2A668 /* FavoritesModule */,
-				3F8B5B3C1690236700D7B184 /* PublishModule */,
 				3F2F8C791689C93300D2A668 /* TomatoMainModule */,
+				3F2F8C7A1689C95F00D2A668 /* FavoritesModule */,
+				3F8B5B4916903D1A00D7B184 /* FilterModule */,
+				3F8B5B3C1690236700D7B184 /* PublishModule */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -449,6 +462,7 @@
 				3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */,
 				3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */,
 				3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */,
+				3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

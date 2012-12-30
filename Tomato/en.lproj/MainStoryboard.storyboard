@@ -61,7 +61,7 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Tomato" id="X0p-xm-cbs">
-                        <barButtonItem key="leftBarButtonItem" title="标签" id="sTM-gM-6aI">
+                        <barButtonItem key="leftBarButtonItem" title="筛选" id="sTM-gM-6aI">
                             <connections>
                                 <segue destination="Kbd-aM-cuB" kind="push" id="Zja-pO-ALh"/>
                             </connections>
@@ -77,10 +77,10 @@
             </objects>
             <point key="canvasLocation" x="1007" y="-785"/>
         </scene>
-        <!--Table View Controller - 标签-->
+        <!--Filter Table View Controller - 筛选-->
         <scene sceneID="00C-ut-DKh">
             <objects>
-                <tableViewController id="Kbd-aM-cuB" sceneMemberID="viewController">
+                <tableViewController id="Kbd-aM-cuB" customClass="FilterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Oes-YJ-rlf">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -251,7 +251,7 @@
                             <outlet property="delegate" destination="Kbd-aM-cuB" id="AD4-QJ-1tw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="标签" id="Gg9-Gw-dQf"/>
+                    <navigationItem key="navigationItem" title="筛选" id="Gg9-Gw-dQf"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51A-rc-yfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1400,76 +1400,6 @@
             </objects>
         </scene>
     </scenes>
-    <classes>
-        <class className="AchievementTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AchievementTableViewController.h"/>
-        </class>
-        <class className="AchievementsTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AchievementsTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="achievementDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="achievementImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="achievementNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CartTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="confirmButtonClicked:" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="CoreDataViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataViewController.h"/>
-        </class>
-        <class className="FavoriteTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
-        </class>
-        <class className="FoodTomatoTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodTomatoTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodGradeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="PublishViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="foodPriceTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="TagsTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TagsTableViewController.h"/>
-        </class>
-        <class className="TomatoDetailViewController" superclassName="CoreDataViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="AddToChart:"/>
-                <relationship kind="action" name="AddToFavorite:"/>
-                <relationship kind="action" name="grade:"/>
-                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodPriceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TomatoTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
