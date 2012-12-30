@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PublishViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
+@property (weak, nonatomic) IBOutlet UITextField *foodNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *foodPriceTextField;
 
 @end

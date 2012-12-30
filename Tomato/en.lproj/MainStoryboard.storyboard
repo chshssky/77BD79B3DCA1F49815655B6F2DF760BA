@@ -876,8 +876,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="发布" id="dYh-NR-1HK">
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="3M7-07-leH"/>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="3M7-07-leH">
+                            <connections>
+                                <action selector="completeButtonPushed:" destination="rMW-zp-8IJ" id="rVO-uh-fTT"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="foodImageView" destination="L0B-oh-YVv" id="8GM-Gn-tHs"/>
+                        <outlet property="foodNameTextField" destination="THg-YP-lde" id="ak8-So-Eyv"/>
+                        <outlet property="foodPriceTextField" destination="LXk-C3-Z1J" id="a2H-g7-PiF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFB-Za-GR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1302,7 +1311,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Mn-s1-VVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2491" y="-1823"/>
+            <point key="canvasLocation" x="2747" y="-1482"/>
         </scene>
         <!--Tomato Detail View Controller - 菜名-->
         <scene sceneID="l2I-9o-jbB">
@@ -1437,6 +1446,11 @@
         </class>
         <class className="PublishViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="foodNameTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="foodPriceTextField" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="TagsTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TagsTableViewController.h"/>

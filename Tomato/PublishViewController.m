@@ -13,6 +13,9 @@
 @end
 
 @implementation PublishViewController
+@synthesize foodImageView = _foodImageView;
+@synthesize foodNameTextField = _foodNameTextField;
+@synthesize foodPriceTextField = _foodPriceTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +36,16 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)completeButtonPushed:(id)sender {
+    NSLog(@"%@ %@", self.foodNameTextField.text, self.foodPriceTextField.text);
+    
+    //    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
+    //    UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
+    //
+    //    NSString *path = [NetworkInterface generateRandomString:15];
+    //    [NetworkInterface PublishFood:@"foodName" foodprice:@"8.0" publishtime:@"2012-10-20 23:20:19" foodimgname:path restaurantname:@"KFC" tagsname:@"1&4&6"];
+    //    [NetworkInterface UploadImage:image picturename:path];
 }
 
 @end
