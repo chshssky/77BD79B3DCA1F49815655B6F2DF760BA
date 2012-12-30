@@ -37,6 +37,8 @@
 		3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */; };
 		3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B361690195500D7B184 /* Food+Cart.m */; };
 		3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3A16901E1A00D7B184 /* foodImage.png */; };
+		3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B441690305E00D7B184 /* TagsTableViewController.m */; };
+		3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B471690320500D7B184 /* PublishViewController.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -104,6 +106,10 @@
 		3F8B5B351690195500D7B184 /* Food+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Cart.h"; sourceTree = "<group>"; };
 		3F8B5B361690195500D7B184 /* Food+Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Cart.m"; sourceTree = "<group>"; };
 		3F8B5B3A16901E1A00D7B184 /* foodImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodImage.png; sourceTree = "<group>"; };
+		3F8B5B431690305E00D7B184 /* TagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsTableViewController.h; sourceTree = "<group>"; };
+		3F8B5B441690305E00D7B184 /* TagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsTableViewController.m; sourceTree = "<group>"; };
+		3F8B5B461690320500D7B184 /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
+		3F8B5B471690320500D7B184 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -308,6 +314,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3F8B5B3C1690236700D7B184 /* PublishModule */ = {
+			isa = PBXGroup;
+			children = (
+				3F8B5B431690305E00D7B184 /* TagsTableViewController.h */,
+				3F8B5B441690305E00D7B184 /* TagsTableViewController.m */,
+				3F8B5B461690320500D7B184 /* PublishViewController.h */,
+				3F8B5B471690320500D7B184 /* PublishViewController.m */,
+			);
+			name = PublishModule;
+			sourceTree = "<group>";
+		};
 		3FF0B06E16450DD00021ABE3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +334,7 @@
 				3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */,
 				3F2F8C7B1689C97000D2A668 /* CartModule */,
 				3F2F8C7A1689C95F00D2A668 /* FavoritesModule */,
+				3F8B5B3C1690236700D7B184 /* PublishModule */,
 				3F2F8C791689C93300D2A668 /* TomatoMainModule */,
 			);
 			name = Classes;
@@ -429,6 +447,8 @@
 				73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */,
 				3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */,
 				3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */,
+				3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */,
+				3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

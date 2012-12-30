@@ -98,7 +98,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //NSLog(@"%d", [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects]);
+    NSLog(@"%d", [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects]);
     return [[[self.fetchedResultsController sections] objectAtIndex:section] numberOfObjects];
 }
 
