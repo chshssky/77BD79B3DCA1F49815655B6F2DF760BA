@@ -15,10 +15,10 @@
      inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Collection *collection = nil;
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Collection"];
-//    request.predicate = [NSPredicate predicateWithFormat:@"CollectionID = %@", collectionID];
-//    //NSSortDescriptor *sortDescriptor = [NSSortDescriptor ]
-    
+    if (food.collection == nil) {
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
+//    request.predicate = [NSPredicate predicateWithFormat:@"foodName = %@", food.foodName];
+//    
     NSError *error = nil;
 //    NSArray *matches = [context executeFetchRequest:request error:&error];
 //    
@@ -33,7 +33,11 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+    } else {
+        NSLog(@"%@ already in the Colletion", food.foodName);
+    }
+//    }
+//    
 //    } else {
 //        collection = [matches lastObject];
 //    }

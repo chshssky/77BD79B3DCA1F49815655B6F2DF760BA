@@ -570,13 +570,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="76" height="70"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="achievement discription" id="qEa-dZ-giN">
-                                            <rect key="frame" x="77" y="20" width="223" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Achievement Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Q4t-2t-sYg">
                                             <rect key="frame" x="84" y="0.0" width="149" height="23"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -584,11 +577,18 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="achievement description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iQS-11-gBi">
+                                            <rect key="frame" x="84" y="24" width="179" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="achievementDescriptionLabel" destination="qEa-dZ-giN" id="JMx-4q-RMv"/>
+                                    <outlet property="achievementDescriptionLabel" destination="iQS-11-gBi" id="vuF-h5-AiZ"/>
                                     <outlet property="achievementImageView" destination="GC0-qo-s1z" id="fNP-JG-zt0"/>
                                     <outlet property="achievementNameLabel" destination="Q4t-2t-sYg" id="43E-99-Y9y"/>
                                 </connections>
@@ -1367,13 +1367,13 @@
         </scene>
     </scenes>
     <classes>
-        <class className="AchievementTableViewController" superclassName="UITableViewController">
+        <class className="AchievementTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AchievementTableViewController.h"/>
         </class>
         <class className="AchievementsTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AchievementsTableViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="achievementDescriptionLabel" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="achievementDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="achievementImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="achievementNameLabel" candidateClass="UILabel"/>
             </relationships>

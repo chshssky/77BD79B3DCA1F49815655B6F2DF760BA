@@ -11,6 +11,6 @@
 @interface AchievementsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *achievementImageView;
 @property (weak, nonatomic) IBOutlet UILabel *achievementNameLabel;
-@property (weak, nonatomic) IBOutlet UITextView *achievementDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *achievementDescriptionLabel;
 
 @end

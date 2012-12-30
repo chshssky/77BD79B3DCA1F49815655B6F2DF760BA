@@ -14,4 +14,9 @@
 - (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max;
 - (void)giveFood:(NSInteger)foodID aGrade:(NSInteger)foodGrade;
 
++(void) PublishFood:(NSString *)name foodprice:(NSString *)price publishtime:(NSString *)time foodimgname:(NSString *)imgname restaurantname:(NSString *)restaurantname tagsname:(NSString *)tagsname;
++(void) UploadImage:(UIImage *)img picturename:(NSString *)picture_name;
+
++(NSString *)generateRandomString :(int)length;
+
 @end
