@@ -33,7 +33,9 @@
     dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
     dispatch_async(fetchQ, ^{
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
-        NSString *URL = [NSString stringWithFormat:@"10.60.XX.XX:8080/XXXX/XX?fromID=%d&toID=%d", min, max];
+        NSString * urlstr = [NSString stringWithFormat:@"http://192.168.2.162:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", min, max];
+        NSURL *URL = [NSURL URLWithString:urlstr];
+        //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
         NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
         int i = 0;
         for (NSDictionary *dic in foods) {
@@ -148,7 +150,7 @@
 {
     //URL = [URL stringByAppendingFormat:@"?foodname=%@&foodprice=%@&publishtime=%@&foodimgname=%@&restaurantname=%@",name,price,time,imgname,restaurantname];
     //NSLog(@"%@",URL);
-    NSString * URL = @"http://192.168.39.101:8080/FoodShareSystem/servlet/PublishFood";
+    NSString * URL = @"http://192.168.2.162:8080/FoodShareSystem/servlet/PublishFood";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
@@ -177,7 +179,7 @@
 
 +(void) UploadImage:(UIImage *)img picturename:(NSString *)picture_name
 {
-    NSString * URL = @"http://192.168.39.101:8080/FoodShareSystem/servlet/UploadPicture";
+    NSString * URL = @"http://192.168.2.162:8080/FoodShareSystem/servlet/UploadPicture";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request setHTTPMethod:@"POST"];

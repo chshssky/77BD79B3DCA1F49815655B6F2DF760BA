@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PublishViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
+@interface PublishViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *foodNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *foodPriceTextField;
+@property (weak, nonatomic) IBOutlet UIButton *foodImageButton;
 
 @end

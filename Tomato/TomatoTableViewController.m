@@ -35,7 +35,7 @@
     [super viewDidLoad];
     
     NetworkInterface *net = [[NetworkInterface alloc] init];
-    [net requestForFoodListFromID:4 toID:4];
+    [net requestForFoodListFromID:0 toID:10];
     
     [self setupFetchResultController];
 
