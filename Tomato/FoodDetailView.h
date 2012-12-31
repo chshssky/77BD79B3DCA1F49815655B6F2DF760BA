@@ -1,16 +1,16 @@
 //
-//  PublishViewController.h
+//  FoodDetailView.h
 //  Tomato
 //
-//  Created by 崔 昊 on 12-12-30.
+//  Created by 崔 昊 on 12-12-31.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface PublishViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface FoodDetailView : UIView
+@property (weak, nonatomic) IBOutlet UIButton *foodImageDetail;
 @property (weak, nonatomic) IBOutlet UITextField *foodNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *foodPriceTextField;
-@property (weak, nonatomic) IBOutlet UIButton *foodImageButton;
 
 @end

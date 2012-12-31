@@ -1,22 +1,19 @@
 //
-//  PublishViewController.m
+//  PublishHeaderViewController.m
 //  Tomato
 //
-//  Created by 崔 昊 on 12-12-30.
+//  Created by 崔 昊 on 12-12-31.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
-#import "PublishViewController.h"
-#import "NetworkInterface.h"
+#import "PublishHeaderViewController.h"
 
-@interface PublishViewController ()
+@interface PublishHeaderViewController ()
 
 @end
 
-@implementation PublishViewController
-@synthesize foodImageButton = _foodImageButton;
-@synthesize foodNameTextField = _foodNameTextField;
-@synthesize foodPriceTextField = _foodPriceTextField;
+@implementation PublishHeaderViewController
+@synthesize foodDetailView = _foodDetailView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,10 +31,7 @@
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
     
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
-    [self.foodImageButton setBackgroundImage:image forState:UIControlStateNormal];
-    self.view.backgroundColor = [UIColor clearColor];
-
-    
+    [self.foodDetailView.foodImageDetail setBackgroundImage:image forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,8 +39,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)imageButtonPushed:(UIButton *)sender {
+- (IBAction)foodImagePushed:(UIButton *)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:@"上传图片"
                                   delegate:self
@@ -89,7 +82,7 @@
     //info: A dictionary containing the original image and the edited image, if an image was picked; or a filesystem URL for the movie, if a movie was picked
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     if ([mediaType isEqualToString:@"public.image"]){
-        [self.foodImageButton setBackgroundImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"] forState:UIControlStateNormal];
+        [self.foodDetailView.foodImageDetail setBackgroundImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"] forState:UIControlStateNormal];
     }
     else if ([mediaType isEqualToString:@"public.movie"]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请拍照而非录像" delegate:self cancelButtonTitle:@"了解" otherButtonTitles:nil];
@@ -100,18 +93,5 @@
     [picker dismissModalViewControllerAnimated:YES];  //让其消失
 }
 
-
-- (IBAction)completeButtonPushed:(id)sender {
-    NSLog(@"%@ %@", self.foodNameTextField.text, self.foodPriceTextField.text);
-    
-//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
-//        UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
-    
-    NSString *path = [NetworkInterface generateRandomString:15];
-    [NetworkInterface PublishFood:self.foodNameTextField.text foodprice:self.foodPriceTextField.text publishtime:@"2012-10-20 23:20:19" foodimgname:path restaurantname:@"KFC" tagsname:@"1&4&6"];
-    NSLog(@"%@", self.foodImageButton.currentBackgroundImage);
-    [NetworkInterface UploadImage:self.foodImageButton.currentBackgroundImage picturename:path];
-    
-}
 
 @end

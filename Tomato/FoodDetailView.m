@@ -1,16 +1,16 @@
 //
-//  PublishFooterView.m
+//  FoodDetailView.m
 //  Tomato
 //
 //  Created by 崔 昊 on 12-12-31.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
-#import "PublishFooterView.h"
+#import "FoodDetailView.h"
 
-@implementation PublishFooterView
-@synthesize foodImageButton = _foodImageButton;
-@synthesize foodNameTextFielde = _foodNameTextFielde;
+@implementation FoodDetailView
+@synthesize foodImageDetail = _foodImageDetail;
+@synthesize foodNameTextField = _foodNameTextField;
 @synthesize foodPriceTextField = _foodPriceTextField;
 
 - (id)initWithFrame:(CGRect)frame

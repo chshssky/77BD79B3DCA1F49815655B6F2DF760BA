@@ -36,14 +36,12 @@
 		3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */; };
 		3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B361690195500D7B184 /* Food+Cart.m */; };
 		3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3A16901E1A00D7B184 /* foodImage.png */; };
-		3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B441690305E00D7B184 /* TagsTableViewController.m */; };
-		3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B471690320500D7B184 /* PublishViewController.m */; };
 		3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */; };
 		3F8B5B5416917DFE00D7B184 /* Collection+Edit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B5316917DFD00D7B184 /* Collection+Edit.m */; };
 		3F8B5B5F1691AADB00D7B184 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B5E1691AADB00D7B184 /* Tag.m */; };
 		3F8B5B631691B41100D7B184 /* PublishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B621691B41100D7B184 /* PublishTableViewController.m */; };
-		3F8B5B691691B53000D7B184 /* PublishFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B681691B52F00D7B184 /* PublishFooterView.m */; };
-		3F8B5B6B1691B55B00D7B184 /* PublishFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F8B5B6A1691B55A00D7B184 /* PublishFooterView.xib */; };
+		3F8B5B761691DE6400D7B184 /* PublishHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B751691DE6200D7B184 /* PublishHeaderViewController.m */; };
+		3F8B5B7A1691E49B00D7B184 /* FoodDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B791691E49B00D7B184 /* FoodDetailView.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -118,10 +116,6 @@
 		3F8B5B351690195500D7B184 /* Food+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Cart.h"; sourceTree = "<group>"; };
 		3F8B5B361690195500D7B184 /* Food+Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Cart.m"; sourceTree = "<group>"; };
 		3F8B5B3A16901E1A00D7B184 /* foodImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodImage.png; sourceTree = "<group>"; };
-		3F8B5B431690305E00D7B184 /* TagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagsTableViewController.h; sourceTree = "<group>"; };
-		3F8B5B441690305E00D7B184 /* TagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagsTableViewController.m; sourceTree = "<group>"; };
-		3F8B5B461690320500D7B184 /* PublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishViewController.h; sourceTree = "<group>"; };
-		3F8B5B471690320500D7B184 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		3F8B5B4A16903D4A00D7B184 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
 		3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
 		3F8B5B5216917DFD00D7B184 /* Collection+Edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Collection+Edit.h"; sourceTree = "<group>"; };
@@ -130,9 +124,10 @@
 		3F8B5B5E1691AADB00D7B184 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		3F8B5B611691B41100D7B184 /* PublishTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishTableViewController.h; sourceTree = "<group>"; };
 		3F8B5B621691B41100D7B184 /* PublishTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishTableViewController.m; sourceTree = "<group>"; };
-		3F8B5B671691B52F00D7B184 /* PublishFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishFooterView.h; sourceTree = "<group>"; };
-		3F8B5B681691B52F00D7B184 /* PublishFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishFooterView.m; sourceTree = "<group>"; };
-		3F8B5B6A1691B55A00D7B184 /* PublishFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PublishFooterView.xib; sourceTree = "<group>"; };
+		3F8B5B741691DE6200D7B184 /* PublishHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishHeaderViewController.h; sourceTree = "<group>"; };
+		3F8B5B751691DE6200D7B184 /* PublishHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishHeaderViewController.m; sourceTree = "<group>"; };
+		3F8B5B781691E49B00D7B184 /* FoodDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailView.h; sourceTree = "<group>"; };
+		3F8B5B791691E49B00D7B184 /* FoodDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailView.m; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -362,15 +357,12 @@
 		3F8B5B3C1690236700D7B184 /* PublishModule */ = {
 			isa = PBXGroup;
 			children = (
-				3F8B5B671691B52F00D7B184 /* PublishFooterView.h */,
-				3F8B5B681691B52F00D7B184 /* PublishFooterView.m */,
-				3F8B5B6A1691B55A00D7B184 /* PublishFooterView.xib */,
-				3F8B5B431690305E00D7B184 /* TagsTableViewController.h */,
-				3F8B5B441690305E00D7B184 /* TagsTableViewController.m */,
-				3F8B5B461690320500D7B184 /* PublishViewController.h */,
-				3F8B5B471690320500D7B184 /* PublishViewController.m */,
 				3F8B5B611691B41100D7B184 /* PublishTableViewController.h */,
 				3F8B5B621691B41100D7B184 /* PublishTableViewController.m */,
+				3F8B5B741691DE6200D7B184 /* PublishHeaderViewController.h */,
+				3F8B5B751691DE6200D7B184 /* PublishHeaderViewController.m */,
+				3F8B5B781691E49B00D7B184 /* FoodDetailView.h */,
+				3F8B5B791691E49B00D7B184 /* FoodDetailView.m */,
 			);
 			name = PublishModule;
 			sourceTree = "<group>";
@@ -469,7 +461,6 @@
 				3FF0B079164536E70021ABE3 /* initialData.plist in Resources */,
 				3F0560B316665134005D3170 /* TomatoTest.plist in Resources */,
 				3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */,
-				3F8B5B6B1691B55B00D7B184 /* PublishFooterView.xib in Resources */,
 				7382DC6D1691C99500B5097B /* StarEmpty.png in Resources */,
 				7382DC6E1691C99500B5097B /* StarEmpty@2x.png in Resources */,
 				7382DC6F1691C99500B5097B /* StarEmptyLarge.png in Resources */,
@@ -515,14 +506,13 @@
 				73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */,
 				3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */,
 				3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */,
-				3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */,
-				3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */,
 				3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */,
 				3F8B5B5416917DFE00D7B184 /* Collection+Edit.m in Sources */,
 				3F8B5B5F1691AADB00D7B184 /* Tag.m in Sources */,
 				3F8B5B631691B41100D7B184 /* PublishTableViewController.m in Sources */,
-				3F8B5B691691B53000D7B184 /* PublishFooterView.m in Sources */,
 				7382DC771691C9A800B5097B /* RateView.m in Sources */,
+				3F8B5B761691DE6400D7B184 /* PublishHeaderViewController.m in Sources */,
+				3F8B5B7A1691E49B00D7B184 /* FoodDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
