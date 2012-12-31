@@ -46,14 +46,13 @@
 - (void)setupFetchResultController
 {
     NSFetchRequest *requst = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    requst.predicate = [NSPredicate predicateWithFormat:@"tagName != '外卖'"];
-    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"tagName" ascending:YES]];
+    //requst.predicate = [NSPredicate predicateWithFormat:@"tagName != '外卖'"];
+    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"tagType" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:requst
                                                                         managedObjectContext:self.managedObjectContext
-                                                                          sectionNameKeyPath:nil
+                                                                          sectionNameKeyPath:@"tagType"
                                                                                    cacheName:nil];
-    
 }
 
 

@@ -12,6 +12,7 @@
 
 + (Tag *)tagWithInitialData:(NSString *)tagName
                       andID:(NSInteger)index
+                    andType:(NSString *)tagType
      inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Tag *tag = nil;
@@ -28,6 +29,7 @@
         tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:context];
         tag.tagID = [NSNumber numberWithUnsignedInt:index];
         tag.tagName = tagName;
+        tag.tagType = tagType;
     } else {
         tag = [matches lastObject];
     }

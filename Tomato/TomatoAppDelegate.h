@@ -14,9 +14,14 @@
 #define FOOD_PRICE @"价格"
 #define FOOD_IMAGE_PATH @"图片"
 #define FOOD_UPLOAD_TIME @"上传时间"
+
 #define RESTAURANT @"餐馆"
 #define RESTAURANT_NAME @"名称"
 #define RESTAURANT_TELEPHONE @"电话"
+
+#define TAG_NAME @"标签名称"
+#define TAG_TYPE @"标签种类"
+#define TAG_IMAGE_PATH @"标签图片路径"
 
 #define TAGS @"标签"
 #define ACHIEVEMENTS @"成就"

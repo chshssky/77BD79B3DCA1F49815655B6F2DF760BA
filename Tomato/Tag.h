@@ -2,7 +2,7 @@
 //  Tag.h
 //  Tomato
 //
-//  Created by 崔 昊 on 12-12-29.
+//  Created by 崔 昊 on 12-12-31.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * tagID;
 @property (nonatomic, retain) NSString * tagName;
+@property (nonatomic, retain) NSString * tagType;
 @property (nonatomic, retain) NSSet *foods;
 @end
 

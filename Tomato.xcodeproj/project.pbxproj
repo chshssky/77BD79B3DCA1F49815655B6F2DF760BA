@@ -15,7 +15,6 @@
 		3F556546168EE3E6000E3D9A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F556545168EE3E6000E3D9A /* CoreDataTableViewController.m */; };
 		3F556549168EF111000E3D9A /* CoreDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F556548168EF111000E3D9A /* CoreDataViewController.m */; };
 		3F5565F4168F1721000E3D9A /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5565F3168F1720000E3D9A /* Restaurant.m */; };
-		3F5565F7168F1722000E3D9A /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5565F6168F1722000E3D9A /* Tag.m */; };
 		3F5565FA168F1723000E3D9A /* Telephone.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5565F9168F1723000E3D9A /* Telephone.m */; };
 		3F5565FD168F1725000E3D9A /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5565FC168F1724000E3D9A /* Achievement.m */; };
 		3F556600168F1725000E3D9A /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5565FF168F1725000E3D9A /* Order.m */; };
@@ -41,6 +40,7 @@
 		3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B471690320500D7B184 /* PublishViewController.m */; };
 		3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */; };
 		3F8B5B5416917DFE00D7B184 /* Collection+Edit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B5316917DFD00D7B184 /* Collection+Edit.m */; };
+		3F8B5B5F1691AADB00D7B184 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B5E1691AADB00D7B184 /* Tag.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -71,8 +71,6 @@
 		3F556548168EF111000E3D9A /* CoreDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataViewController.m; sourceTree = "<group>"; };
 		3F5565F2168F1720000E3D9A /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restaurant.h; sourceTree = "<group>"; };
 		3F5565F3168F1720000E3D9A /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Restaurant.m; sourceTree = "<group>"; };
-		3F5565F5168F1721000E3D9A /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
-		3F5565F6168F1722000E3D9A /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		3F5565F8168F1723000E3D9A /* Telephone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Telephone.h; sourceTree = "<group>"; };
 		3F5565F9168F1723000E3D9A /* Telephone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Telephone.m; sourceTree = "<group>"; };
 		3F5565FB168F1724000E3D9A /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
 		3F8B5B5216917DFD00D7B184 /* Collection+Edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Collection+Edit.h"; sourceTree = "<group>"; };
 		3F8B5B5316917DFD00D7B184 /* Collection+Edit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Collection+Edit.m"; sourceTree = "<group>"; };
+		3F8B5B5D1691AADB00D7B184 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
+		3F8B5B5E1691AADB00D7B184 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -205,6 +205,8 @@
 		3F2F8C7D1689C9E400D2A668 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
+				3F8B5B5D1691AADB00D7B184 /* Tag.h */,
+				3F8B5B5E1691AADB00D7B184 /* Tag.m */,
 				3F556607168F1727000E3D9A /* Food.h */,
 				3F556608168F1727000E3D9A /* Food.m */,
 				3F8B5B351690195500D7B184 /* Food+Cart.h */,
@@ -223,8 +225,6 @@
 				3F5565FC168F1724000E3D9A /* Achievement.m */,
 				3F5565F8168F1723000E3D9A /* Telephone.h */,
 				3F5565F9168F1723000E3D9A /* Telephone.m */,
-				3F5565F5168F1721000E3D9A /* Tag.h */,
-				3F5565F6168F1722000E3D9A /* Tag.m */,
 				3F5565F2168F1720000E3D9A /* Restaurant.h */,
 				3F5565F3168F1720000E3D9A /* Restaurant.m */,
 				3F3EE6C8168B49B700D011C3 /* Tag+Init.h */,
@@ -451,7 +451,6 @@
 				3F556546168EE3E6000E3D9A /* CoreDataTableViewController.m in Sources */,
 				3F556549168EF111000E3D9A /* CoreDataViewController.m in Sources */,
 				3F5565F4168F1721000E3D9A /* Restaurant.m in Sources */,
-				3F5565F7168F1722000E3D9A /* Tag.m in Sources */,
 				3F5565FA168F1723000E3D9A /* Telephone.m in Sources */,
 				3F5565FD168F1725000E3D9A /* Achievement.m in Sources */,
 				3F556600168F1725000E3D9A /* Order.m in Sources */,
@@ -469,6 +468,7 @@
 				3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */,
 				3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */,
 				3F8B5B5416917DFE00D7B184 /* Collection+Edit.m in Sources */,
+				3F8B5B5F1691AADB00D7B184 /* Tag.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,6 +41,7 @@
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="tagID" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="tagName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagType" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="foods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Food" inverseName="tags" inverseEntity="Food" syncable="YES"/>
     </entity>
     <entity name="Telephone" representedClassName="Telephone" syncable="YES">
@@ -55,7 +56,7 @@
         <element name="Order" positionX="108" positionY="198" width="128" height="88"/>
         <element name="Record" positionX="106" positionY="-144" width="128" height="73"/>
         <element name="Restaurant" positionX="106" positionY="-40" width="128" height="103"/>
-        <element name="Tag" positionX="108" positionY="306" width="128" height="88"/>
+        <element name="Tag" positionX="108" positionY="306" width="128" height="103"/>
         <element name="Telephone" positionX="-198" positionY="-25" width="128" height="88"/>
     </elements>
 </model>

@@ -12,6 +12,7 @@
 
 + (Tag *)tagWithInitialData:(NSString *)tagName
                       andID:(NSInteger)index
+                    andType:(NSString *)tagType
      inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

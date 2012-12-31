@@ -2,7 +2,7 @@
 //  Tag.m
 //  Tomato
 //
-//  Created by 崔 昊 on 12-12-29.
+//  Created by 崔 昊 on 12-12-31.
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 
 @dynamic tagID;
 @dynamic tagName;
+@dynamic tagType;
 @dynamic foods;
 
 @end

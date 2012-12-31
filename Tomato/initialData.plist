@@ -4,12 +4,54 @@
 <dict>
 	<key>标签</key>
 	<array>
-		<string>辣／重口味</string>
-		<string>酸甜／爽口</string>
-		<string>甜／甜腻</string>
-		<string>另类／奇怪</string>
-		<string>快餐</string>
-		<string>外卖</string>
+		<dict>
+			<key>标签种类</key>
+			<string>口味</string>
+			<key>标签图片路径</key>
+			<string></string>
+			<key>标签名称</key>
+			<string>辣／重口味</string>
+		</dict>
+		<dict>
+			<key>标签种类</key>
+			<string>口味</string>
+			<key>标签图片路径</key>
+			<string></string>
+			<key>标签名称</key>
+			<string>酸甜／爽口</string>
+		</dict>
+		<dict>
+			<key>标签种类</key>
+			<string>口味</string>
+			<key>标签图片路径</key>
+			<string></string>
+			<key>标签名称</key>
+			<string>甜／甜腻</string>
+		</dict>
+		<dict>
+			<key>标签种类</key>
+			<string>口味</string>
+			<key>标签图片路径</key>
+			<string></string>
+			<key>标签名称</key>
+			<string>另类／奇怪</string>
+		</dict>
+		<dict>
+			<key>标签种类</key>
+			<string>快餐</string>
+			<key>标签图片路径</key>
+			<string></string>
+			<key>标签名称</key>
+			<string>快餐</string>
+		</dict>
+		<dict>
+			<key>标签种类</key>
+			<string>外卖</string>
+			<key>标签图片路径</key>
+			<string></string>
+			<key>标签名称</key>
+			<string>外卖</string>
+		</dict>
 	</array>
 	<key>成就</key>
 	<array>

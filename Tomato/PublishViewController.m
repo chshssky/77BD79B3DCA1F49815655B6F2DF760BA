@@ -35,6 +35,7 @@
     
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
     [self.foodImageButton setBackgroundImage:image forState:UIControlStateNormal];
+    self.view.backgroundColor = [UIColor clearColor];
 
     
 }
@@ -69,7 +70,6 @@
     }else if(buttonIndex ==[actionSheet cancelButtonIndex]){
         return;
     }
-    
 }
 
 - (void)getFoodPicture:(NSInteger)sourceType
@@ -107,10 +107,11 @@
 //        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
 //        UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
     
-        NSString *path = [NetworkInterface generateRandomString:15];
-        [NetworkInterface PublishFood:self.foodNameTextField.text foodprice:self.foodPriceTextField.text publishtime:@"2012-10-20 23:20:19" foodimgname:path restaurantname:@"KFC" tagsname:@"1&4&6"];
-    NSLog(@"%@", self.foodImageButton.imageView.image);
-        [NetworkInterface UploadImage:self.foodImageButton.imageView.image picturename:path];
+    NSString *path = [NetworkInterface generateRandomString:15];
+    [NetworkInterface PublishFood:self.foodNameTextField.text foodprice:self.foodPriceTextField.text publishtime:@"2012-10-20 23:20:19" foodimgname:path restaurantname:@"KFC" tagsname:@"1&4&6"];
+    NSLog(@"%@", self.foodImageButton.currentBackgroundImage);
+    [NetworkInterface UploadImage:self.foodImageButton.currentBackgroundImage picturename:path];
+    
 }
 
 @end
