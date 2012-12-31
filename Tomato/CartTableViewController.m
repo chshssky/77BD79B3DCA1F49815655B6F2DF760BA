@@ -10,14 +10,18 @@
 #import "Cart.h"
 #import "CartFooterView.h"
 #import <MessageUI/MFMessageComposeViewController.h>
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface CartTableViewController ()  <MFMessageComposeViewControllerDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, retain) NSNumber *tempSection;
+
+
 @end
 
 @implementation CartTableViewController
+@synthesize delegate = _delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -270,11 +274,11 @@
         [cart deleteRestaurantFoodAtSection:indexPath.section AtRow:indexPath.row];
         
         if (restaurantFoodCount == 1) {
+            [self.delegate changeAddToCartButtonState];
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:YES];
         }else{
             [self.dataArray removeObjectAtIndex:indexPath.row];
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]  withRowAnimation: UITableViewRowAnimationNone];
-            
             [self.tableView reloadData];
         }
     }

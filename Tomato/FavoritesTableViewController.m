@@ -66,37 +66,39 @@
 
 - (IBAction)editButtonClickedWithSure:(id)sender
 {
-    //do something with selected cells like delete
-    //    NSLog(@"selectedDic------->:%@", self.selectedDic);
     int count = [self.selectedRow count];
     if (count > 0 ) {
         [Collection DeleteCollections:self.selectedRow withFetchedResultController:self.fetchedResultsController inManagedObjectContext:self.managedObjectContext];
-        //[self.tableView deleteTheRowFromCoreData:self.selectedRow];
-        //    NSLog(@"self.dataArray:------>:%@", self.dataArray);
-        //[self.tableView deleteRowsAtIndexPaths:self.selectedRow withRowAnimation:UITableViewRowAnimationFade];
         [self.selectedRow removeAllObjects];
-        //    NSLog(@"self.selectedDic--------->:%@", self.selectedDic);
-        //        [cloMableView reloadData];
         [self.editButton setAction:@selector(editButtonClicked:)];
-        [self.editButton setTitle:@"确定"];
+        [self.editButton setTitle:@"编辑"];
         [self.tableView setEditing:NO animated:YES];
     }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未选中任何数据!" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"重新选择", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未选中任何数据!" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:@"取消", nil];
         [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        return;
+    }else if(buttonIndex == 1){
+        [self.tableView setEditing:NO animated:YES];
+        [self.editButton setTitle:@"编辑"];
+        [self.editButton setAction:@selector(editButtonClicked:)];
     }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.editButton.title isEqualToString:@"删除"]) {
         [self.selectedRow removeObject:indexPath];
-        NSLog(@"Deselect---->:%d",[self.selectedRow count]);
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.editButton.title isEqualToString:@"删除"]) {
         [self.selectedRow addObject:indexPath];
-        NSLog(@"Select---->:%d",[self.selectedRow count]);
     }
 }
 

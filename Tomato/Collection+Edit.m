@@ -18,7 +18,7 @@ withFetchedResultController:(NSFetchedResultsController *)frc
         [context deleteObject:[frc objectAtIndexPath:indexPath]];
     }
     NSError *err = nil;
-    if ([context save:&err]) {
+    if (![context save:&err]) {
         NSLog(@"delete collections wrong");
     }
 }

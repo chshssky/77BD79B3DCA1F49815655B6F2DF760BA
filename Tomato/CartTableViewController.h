@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CartTableViewControllerDelegate
+- (void) changeAddToCartButtonState;
+@end
+
 @interface CartTableViewController : UITableViewController
+@property (nonatomic, retain) id<CartTableViewControllerDelegate> delegate;
 
 @end
