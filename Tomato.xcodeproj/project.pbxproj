@@ -51,6 +51,15 @@
 		57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0541D16566004007C4CB3 /* TomatoTableViewController.m */; };
 		57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */; };
 		57A0542916566117007C4CB3 /* AchievementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0542716566117007C4CB3 /* AchievementTableViewController.m */; };
+		7382DC6D1691C99500B5097B /* StarEmpty.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC651691C99500B5097B /* StarEmpty.png */; };
+		7382DC6E1691C99500B5097B /* StarEmpty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC661691C99500B5097B /* StarEmpty@2x.png */; };
+		7382DC6F1691C99500B5097B /* StarEmptyLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC671691C99500B5097B /* StarEmptyLarge.png */; };
+		7382DC701691C99500B5097B /* StarEmptyLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC681691C99500B5097B /* StarEmptyLarge@2x.png */; };
+		7382DC711691C99500B5097B /* StarFull.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC691691C99500B5097B /* StarFull.png */; };
+		7382DC721691C99500B5097B /* StarFull@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC6A1691C99500B5097B /* StarFull@2x.png */; };
+		7382DC731691C99500B5097B /* StarFullLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC6B1691C99500B5097B /* StarFullLarge.png */; };
+		7382DC741691C99500B5097B /* StarFullLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC6C1691C99500B5097B /* StarFullLarge@2x.png */; };
+		7382DC771691C9A800B5097B /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7382DC761691C9A800B5097B /* RateView.m */; };
 		73DEDDBD168F2E0C00C1AA37 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDBC168F2E0C00C1AA37 /* Cart.m */; };
 		73DEDDC1168F360200C1AA37 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC0168F360200C1AA37 /* CartTableViewController.m */; };
 		73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC3168F362100C1AA37 /* CartFooterView.m */; };
@@ -135,6 +144,16 @@
 		57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
 		57A0542616566117007C4CB3 /* AchievementTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementTableViewController.h; sourceTree = "<group>"; };
 		57A0542716566117007C4CB3 /* AchievementTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementTableViewController.m; sourceTree = "<group>"; };
+		7382DC651691C99500B5097B /* StarEmpty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarEmpty.png; sourceTree = "<group>"; };
+		7382DC661691C99500B5097B /* StarEmpty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarEmpty@2x.png"; sourceTree = "<group>"; };
+		7382DC671691C99500B5097B /* StarEmptyLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarEmptyLarge.png; sourceTree = "<group>"; };
+		7382DC681691C99500B5097B /* StarEmptyLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarEmptyLarge@2x.png"; sourceTree = "<group>"; };
+		7382DC691691C99500B5097B /* StarFull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarFull.png; sourceTree = "<group>"; };
+		7382DC6A1691C99500B5097B /* StarFull@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFull@2x.png"; sourceTree = "<group>"; };
+		7382DC6B1691C99500B5097B /* StarFullLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StarFullLarge.png; sourceTree = "<group>"; };
+		7382DC6C1691C99500B5097B /* StarFullLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFullLarge@2x.png"; sourceTree = "<group>"; };
+		7382DC751691C9A800B5097B /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
+		7382DC761691C9A800B5097B /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
 		73DEDDBB168F2E0C00C1AA37 /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
 		73DEDDBC168F2E0C00C1AA37 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
 		73DEDDBF168F360200C1AA37 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
@@ -171,6 +190,8 @@
 				3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */,
 				3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */,
 				3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */,
+				7382DC751691C9A800B5097B /* RateView.h */,
+				7382DC761691C9A800B5097B /* RateView.m */,
 			);
 			name = TomatoMainModule;
 			sourceTree = "<group>";
@@ -267,6 +288,14 @@
 			isa = PBXGroup;
 			children = (
 				3F8B5B3A16901E1A00D7B184 /* foodImage.png */,
+				7382DC651691C99500B5097B /* StarEmpty.png */,
+				7382DC661691C99500B5097B /* StarEmpty@2x.png */,
+				7382DC671691C99500B5097B /* StarEmptyLarge.png */,
+				7382DC681691C99500B5097B /* StarEmptyLarge@2x.png */,
+				7382DC691691C99500B5097B /* StarFull.png */,
+				7382DC6A1691C99500B5097B /* StarFull@2x.png */,
+				7382DC6B1691C99500B5097B /* StarFullLarge.png */,
+				7382DC6C1691C99500B5097B /* StarFullLarge@2x.png */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -441,6 +470,14 @@
 				3F0560B316665134005D3170 /* TomatoTest.plist in Resources */,
 				3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */,
 				3F8B5B6B1691B55B00D7B184 /* PublishFooterView.xib in Resources */,
+				7382DC6D1691C99500B5097B /* StarEmpty.png in Resources */,
+				7382DC6E1691C99500B5097B /* StarEmpty@2x.png in Resources */,
+				7382DC6F1691C99500B5097B /* StarEmptyLarge.png in Resources */,
+				7382DC701691C99500B5097B /* StarEmptyLarge@2x.png in Resources */,
+				7382DC711691C99500B5097B /* StarFull.png in Resources */,
+				7382DC721691C99500B5097B /* StarFull@2x.png in Resources */,
+				7382DC731691C99500B5097B /* StarFullLarge.png in Resources */,
+				7382DC741691C99500B5097B /* StarFullLarge@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +522,7 @@
 				3F8B5B5F1691AADB00D7B184 /* Tag.m in Sources */,
 				3F8B5B631691B41100D7B184 /* PublishTableViewController.m in Sources */,
 				3F8B5B691691B53000D7B184 /* PublishFooterView.m in Sources */,
+				7382DC771691C9A800B5097B /* RateView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

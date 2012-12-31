@@ -16,9 +16,14 @@
 @interface TomatoDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *addToCartButton;
+@property (nonatomic) BOOL whetherAllowToRate;
+@property (nonatomic) int rateScore;
+- (void)setUpEditableRateView:(BOOL)whetherAllowToRate;
 @end
 
 @implementation TomatoDetailViewController
+@synthesize whetherAllowToRate = _whetherAllowToRate;
+@synthesize rateScore = _rateScore;
 @synthesize foodDetail = _foodDetail;
 @synthesize foodPriceLabel = _foodPriceLabel;
 @synthesize foodImageView = _foodImageView;
@@ -26,6 +31,25 @@
 @synthesize favoriteButton = _favoriteButton;
 @synthesize addToCartButton = _addToCartButton;
 
+- (void)setUpEditableRateView:(BOOL)whetherAllowToRate{
+    RateView *rateView = [[RateView alloc] initWithFrame:CGRectMake(70, 330, self.view.bounds.size.width, 20) fullStar:[UIImage imageNamed:@"StarFullLarge.png"] emptyStar:[UIImage imageNamed:@"StarEmptyLarge.png"]];
+    rateView.padding = 10;
+    rateView.alignment = RateViewAlignmentCenter;
+    rateView.editable = whetherAllowToRate;
+    rateView.delegate = self;
+    [self.view addSubview:rateView];
+}
+
+- (void)rateView:(RateView *)rateView changedToNewRate:(NSNumber *)rate
+{
+    _rateScore = [rate intValue];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    //推出时提交评分，并且把评分存入数据库
+    NSLog(@"Rate: %d", _rateScore);
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +77,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.whetherAllowToRate = YES;
+    [self setUpEditableRateView:self.whetherAllowToRate];
+    
     self.title = self.foodDetail.foodName;
     self.foodPriceLabel.text = [NSString stringWithFormat:@"%@",self.foodDetail.foodPrice];
     if (self.foodDetail.collection != nil) {
@@ -91,9 +119,6 @@
     [self.favoriteButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
 }
 
-- (IBAction)grade:(id)sender {
-    
-}
 
 
 @end
