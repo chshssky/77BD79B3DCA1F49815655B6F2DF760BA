@@ -40,6 +40,7 @@
 		3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B441690305E00D7B184 /* TagsTableViewController.m */; };
 		3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B471690320500D7B184 /* PublishViewController.m */; };
 		3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */; };
+		3F8B5B5416917DFE00D7B184 /* Collection+Edit.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B5316917DFD00D7B184 /* Collection+Edit.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -113,6 +114,8 @@
 		3F8B5B471690320500D7B184 /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		3F8B5B4A16903D4A00D7B184 /* FilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterTableViewController.h; sourceTree = "<group>"; };
 		3F8B5B4B16903D4A00D7B184 /* FilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewController.m; sourceTree = "<group>"; };
+		3F8B5B5216917DFD00D7B184 /* Collection+Edit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Collection+Edit.h"; sourceTree = "<group>"; };
+		3F8B5B5316917DFD00D7B184 /* Collection+Edit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Collection+Edit.m"; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				3F556605168F1726000E3D9A /* Record.m */,
 				3F556601168F1726000E3D9A /* Collection.h */,
 				3F556602168F1726000E3D9A /* Collection.m */,
+				3F8B5B5216917DFD00D7B184 /* Collection+Edit.h */,
+				3F8B5B5316917DFD00D7B184 /* Collection+Edit.m */,
 				3F55660A168F17BE000E3D9A /* Collection+Food.h */,
 				3F55660B168F17BE000E3D9A /* Collection+Food.m */,
 				3F5565FE168F1725000E3D9A /* Order.h */,
@@ -463,6 +468,7 @@
 				3F8B5B451690305E00D7B184 /* TagsTableViewController.m in Sources */,
 				3F8B5B481690320600D7B184 /* PublishViewController.m in Sources */,
 				3F8B5B4C16903D4A00D7B184 /* FilterTableViewController.m in Sources */,
+				3F8B5B5416917DFE00D7B184 /* Collection+Edit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
