@@ -8,12 +8,15 @@
 
 #import "FilterTableViewController.h"
 #import "Tag.h"
+#import "RestaurantFilterTableViewController.h"
 
-@interface FilterTableViewController ()
+@interface FilterTableViewController () <RestaurantFilterTableViewControllerDelegate>
 
 @end
 
 @implementation FilterTableViewController
+@synthesize tagArray = _tagArray;
+@synthesize restaurantArray = _restaurantArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +32,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self setupFetchedResultController];
+    self.title = @"标签";
+    
+    if (self.tagArray == nil) {
+        self.tagArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count]; i++) {
+            [self.tagArray addObject:[NSNumber numberWithBool:YES]];
+        }
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"%@", [self getSelectedTagsFromTableView]);
+    [self.filterDelegate sendTheFinalTags:self.tagArray andTheFinalRestaurants:self.restaurantArray];
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,16 +150,9 @@
         if ([tableView cellForRowAtIndexPath:indexPath].accessoryType != UITableViewCellAccessoryCheckmark) {
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
             self.tagArray[indexPath.row] = [NSNumber numberWithBool:YES];
-            NSLog(@"%d", indexPath.row);
         } else {
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
             self.tagArray[indexPath.row] = [NSNumber numberWithBool:NO];
-        }
-        for (NSInteger i = 0; i < [self.tableView numberOfRowsInSection:1]; i ++) {
-            if (i != indexPath.row) {
-                [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]].accessoryType = UITableViewCellAccessoryNone;
-                self.tagArray[i] = [NSNumber numberWithBool:NO];
-            }
         }
     } else if (indexPath.section != 0) {
         
@@ -155,28 +165,6 @@
         }
     } else if (indexPath.section == 0) {
         
-        //        RestaurantTableViewController *rtvc = [[RestaurantTableViewController alloc] init];
-        //        NSString *urlStr;
-        //        urlStr = @"http://192.168.2.162:8080/FoodShareSystem/servlet/GetRestaurantList";
-        //        NSURL *url = [[NSURL alloc] initWithString:urlStr];
-        //        self.restaurantArray = [[NSArray alloc] initWithContentsOfURL:url];
-        //
-        //        if (indexPath.row == 0) {
-        //            rtvc.deliveredTitle = @"餐馆";
-        //            rtvc.listArray = self.restaurantArray;
-        //            rtvc.selectedIndex = self.selectedRestaurantIndex;
-        //
-        //        } else {
-        //            if (self.selectedRestaurantIndex == -1) {
-        //                [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        //                return;
-        //            }
-        //            rtvc.deliveredTitle = @"电话";
-        //            rtvc.listArray = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"电话"];
-        //
-        //        }
-        //        rtvc.restaurantDelegate = self;
-        //        [self.navigationController pushViewController:rtvc animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -192,8 +180,23 @@
         }
         i++;
     }
-    return [tagDes substringFromIndex:1];
+    return tagDes;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ResturantPushSegueIdentifier"]) {
+        RestaurantFilterTableViewController *rftvc = segue.destinationViewController;
+        rftvc.restaurantArray = self.restaurantArray;
+        rftvc.restDelegate = self;
+    }
+}
+
+#pragma mark - RestaurantFilterTableViewControllerDelegate
+
+- (void)sendTheFinalRestaurantArray:(NSMutableArray *)restaurantsArr
+{
+    self.restaurantArray = restaurantsArr;
+}
 
 @end

@@ -14,6 +14,8 @@
 @end
 
 @implementation RestaurantFilterTableViewController
+@synthesize restaurantArray = _restaurantArray;
+@synthesize restDelegate = _restDelegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -28,13 +30,27 @@
 {
     [super viewDidLoad];
     [self setupFetchResultController];
-
+    self.title = @"餐馆";
+    
+    if (self.restaurantArray == nil) {
+        self.restaurantArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count]; i++) {
+            [self.restaurantArray addObject:[NSNumber numberWithBool:YES]];
+        }
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"%@", [self getSelectedRestaurantsFromTableView]);
+    [self.restDelegate sendTheFinalRestaurantArray:self.restaurantArray];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -64,6 +80,11 @@
     Restaurant *restaurant = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = restaurant.restaurantName;
+    if ([self.restaurantArray[indexPath.row] boolValue] == YES) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     
     return cell;
 }
@@ -107,14 +128,30 @@
 }
 */
 
+- (NSString *)getSelectedRestaurantsFromTableView
+{
+    NSString *tagDes = @"";
+    int i = 1;
+    for (NSNumber *tagBool in self.restaurantArray) {
+        if ([tagBool boolValue]) {
+            tagDes = [tagDes stringByAppendingFormat:@"&%d", i];
+        }
+        i++;
+    }
+    return tagDes;
+}
+
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([tableView cellForRowAtIndexPath:indexPath].accessoryType != UITableViewCellAccessoryCheckmark) {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        self.restaurantArray[indexPath.row] = [NSNumber numberWithBool:YES];
     } else {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        self.restaurantArray[indexPath.row] = [NSNumber numberWithBool:NO];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -9,6 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 
+@protocol RestaurantFilterTableViewControllerDelegate <NSObject>
+
+- (void)sendTheFinalRestaurantArray:(NSMutableArray *)restaurantsArr;
+
+@end
+
 @interface RestaurantFilterTableViewController : CoreDataTableViewController
+
+@property (nonatomic, strong) NSMutableArray *restaurantArray;
+@property (nonatomic, weak) id <RestaurantFilterTableViewControllerDelegate> restDelegate;
 
 @end

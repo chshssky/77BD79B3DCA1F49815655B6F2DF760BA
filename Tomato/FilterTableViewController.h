@@ -8,9 +8,16 @@
 
 #import "CoreDataTableViewController.h"
 
+@protocol FilterTableViewControllerDelegate <NSObject>
+
+- (void)sendTheFinalTags:(NSArray *)tagArr andTheFinalRestaurants:(NSArray *)restaurantArr;
+
+@end
+
 @interface FilterTableViewController : CoreDataTableViewController
 
 @property (strong, nonatomic) NSMutableArray *tagArray;
 @property (strong, nonatomic) NSMutableArray *restaurantArray;
+@property (weak, nonatomic) id <FilterTableViewControllerDelegate> filterDelegate;
 
 @end

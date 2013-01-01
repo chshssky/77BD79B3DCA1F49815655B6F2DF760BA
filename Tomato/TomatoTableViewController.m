@@ -12,14 +12,18 @@
 #import "TomatoDetailViewController.h"
 #import "NetworkInterface.h"
 #import "Food.h"
+#import "FilterTableViewController.h"
 
-@interface TomatoTableViewController ()
+@interface TomatoTableViewController () <FilterTableViewControllerDelegate>
 
-@property (strong, nonatomic) NSArray *foodTags;
+@property (strong, nonatomic) NSMutableArray *foodTags;
+@property (strong, nonatomic) NSMutableArray *foodRestaurants;
 
 @end
 
 @implementation TomatoTableViewController
+@synthesize foodTags = _foodTags;
+@synthesize foodRestaurants = _foodRestaurants;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -38,7 +42,8 @@
     [net requestForFoodListFromID:0 toID:10];
     
     [self setupFetchResultController];
-
+    self.foodTags = nil;
+    self.foodRestaurants = nil;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -147,7 +152,20 @@
     if ([[segue identifier] isEqualToString:@"TomatoDetailSegueIdentifier"]) {
         TomatoDetailViewController *dvc = [segue destinationViewController];
         dvc.foodDetail = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+    } else if ([segue.identifier isEqualToString:@"FilterSegueIdentifier"]) {
+        FilterTableViewController *ftvc = [segue destinationViewController];
+        ftvc.tagArray = self.foodTags;
+        ftvc.restaurantArray = self.foodRestaurants;
+        ftvc.filterDelegate = self;
     }
+}
+
+#pragma mark - FilterTableViewControllerDelegate
+
+- (void)sendTheFinalTags:(NSMutableArray *)tagArr andTheFinalRestaurants:(NSMutableArray *)restaurantArr
+{
+    self.foodRestaurants = restaurantArr;
+    self.foodTags = tagArr;
 }
 
 @end
