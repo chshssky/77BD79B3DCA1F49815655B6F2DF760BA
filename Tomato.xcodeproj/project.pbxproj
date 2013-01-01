@@ -42,6 +42,7 @@
 		3F8B5B631691B41100D7B184 /* PublishTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B621691B41100D7B184 /* PublishTableViewController.m */; };
 		3F8B5B761691DE6400D7B184 /* PublishHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B751691DE6200D7B184 /* PublishHeaderViewController.m */; };
 		3F8B5B7A1691E49B00D7B184 /* FoodDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B791691E49B00D7B184 /* FoodDetailView.m */; };
+		3F8B5B7D1692952900D7B184 /* RestaurantTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B7C1692952800D7B184 /* RestaurantTableViewController.m */; };
 		3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA6055F1648E9D600BF98AF /* CoreData.framework */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
@@ -128,6 +129,8 @@
 		3F8B5B751691DE6200D7B184 /* PublishHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishHeaderViewController.m; sourceTree = "<group>"; };
 		3F8B5B781691E49B00D7B184 /* FoodDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodDetailView.h; sourceTree = "<group>"; };
 		3F8B5B791691E49B00D7B184 /* FoodDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodDetailView.m; sourceTree = "<group>"; };
+		3F8B5B7B1692952800D7B184 /* RestaurantTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestaurantTableViewController.h; sourceTree = "<group>"; };
+		3F8B5B7C1692952800D7B184 /* RestaurantTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestaurantTableViewController.m; sourceTree = "<group>"; };
 		3FA6055F1648E9D600BF98AF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 				3F8B5B751691DE6200D7B184 /* PublishHeaderViewController.m */,
 				3F8B5B781691E49B00D7B184 /* FoodDetailView.h */,
 				3F8B5B791691E49B00D7B184 /* FoodDetailView.m */,
+				3F8B5B7B1692952800D7B184 /* RestaurantTableViewController.h */,
+				3F8B5B7C1692952800D7B184 /* RestaurantTableViewController.m */,
 			);
 			name = PublishModule;
 			sourceTree = "<group>";
@@ -513,6 +518,7 @@
 				7382DC771691C9A800B5097B /* RateView.m in Sources */,
 				3F8B5B761691DE6400D7B184 /* PublishHeaderViewController.m in Sources */,
 				3F8B5B7A1691E49B00D7B184 /* FoodDetailView.m in Sources */,
+				3F8B5B7D1692952900D7B184 /* RestaurantTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
