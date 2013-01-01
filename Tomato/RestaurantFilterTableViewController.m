@@ -1,26 +1,19 @@
 //
-//  RestaurantTableViewController.m
+//  RestaurantFilterTableViewController.m
 //  Tomato
 //
 //  Created by 崔 昊 on 13-1-1.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
-#import "RestaurantTableViewController.h"
-#import "NetworkInterface.h"
+#import "RestaurantFilterTableViewController.h"
+#import "Restaurant.h"
 
-@interface RestaurantTableViewController ()
-
-
+@interface RestaurantFilterTableViewController ()
 
 @end
 
-@implementation RestaurantTableViewController
-@synthesize deliveredTitle = _deliveredTitle;
-@synthesize listArray = _listArray;
-@synthesize restaurantDelegate = _restaurantDelegate;
-@synthesize selectedIndex = _selectedIndex;
-@synthesize restName = _restName;
+@implementation RestaurantFilterTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,8 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = self.deliveredTitle;
-    
+    [self setupFetchResultController];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -49,29 +42,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+- (void)setupFetchResultController
 {
-    NSLog(@"%d", self.selectedIndex);
-    if (self.title == @"餐馆") {
-        [self.restaurantDelegate sendTheSelectedRestaurantIndex:self.selectedIndex];
-    }
+    NSFetchRequest *requst = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
+    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"restaurantName" ascending:YES]];
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:requst
+                                                                        managedObjectContext:self.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return [self.listArray count];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -80,16 +61,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    Restaurant *restaurant = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    if (self.deliveredTitle == @"餐馆") {
-        NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.listArray[indexPath.row]];
-        cell.textLabel.text = [dic objectForKey:@"餐馆名称"];
-        if (self.selectedIndex == indexPath.row) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-    } else if (self.deliveredTitle == @"电话"){
-        cell.textLabel.text = self.listArray[indexPath.row];
-    }    
+    cell.textLabel.text = restaurant.restaurantName;
+    
     return cell;
 }
 
@@ -138,34 +113,10 @@
 {
     if ([tableView cellForRowAtIndexPath:indexPath].accessoryType != UITableViewCellAccessoryCheckmark) {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
-        self.selectedIndex = indexPath.row;
     } else {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        self.selectedIndex = -1;
     }
-    for (NSInteger i = 0; i < [self.tableView numberOfRowsInSection:0]; i ++) {
-        if (i != indexPath.row) {
-            [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:indexPath.section]].accessoryType = UITableViewCellAccessoryNone;
-        }
-    }
-
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-}
-
-- (IBAction)createButtonPushed:(id)sender {
-    // 弹出 NSAlert 窗口
-    
-    if (self.title == @"餐馆") {
-        
-        [self.restaurantDelegate sendTheAddedRestaurantName:@"NewRestaurant"];
-        self.selectedIndex = [self.listArray count] - 1;
-    } else {
-        NSString *newTel = @"19982828888";
-        [self.restaurantDelegate sendTheAddedTelephoneNumber:newTel];
-        [NetworkInterface PublishRestaurant:self.restName telephone:newTel];
-    }
-    
-    [self.tableView reloadData];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

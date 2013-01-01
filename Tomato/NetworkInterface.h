@@ -17,6 +17,7 @@
 +(void) PublishFood:(NSString *)name foodprice:(NSString *)price publishtime:(NSString *)time foodimgname:(NSString *)imgname restaurantname:(NSString *)restaurantname tagsname:(NSString *)tagsname;
 +(void) UploadImage:(UIImage *)img picturename:(NSString *)picture_name;
 
-+(NSString *)generateRandomString :(int)length;
++ (NSString *)generateRandomString :(int)length;
++ (void)PublishRestaurant:(NSString *)name telephone:(NSString *)tel;
 
 @end

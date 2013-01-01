@@ -51,9 +51,6 @@
     urlStr = @"http://192.168.2.162:8080/FoodShareSystem/servlet/GetRestaurantList";
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     self.restaurantArray = [[NSArray alloc] initWithContentsOfURL:url];
-//    for (NSString *title in [self.fetchedResultsController sectionIndexTitles]) {
-//        NSLog(@"title:%@", title);
-//    }
 
 }
 
@@ -72,7 +69,6 @@
                                                                 managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:@"tagType"
                                                                                    cacheName:nil];
-    //self.fetchedResultsController
 }
 
 #pragma mark - UITableViewDataSource

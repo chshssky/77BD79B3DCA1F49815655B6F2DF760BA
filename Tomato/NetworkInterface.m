@@ -213,5 +213,26 @@
     return str;
 }
 
++ (void)PublishRestaurant:(NSString *)name telephone:(NSString *)tel
+{
+    NSString * URL = @"http://192.168.2.162:8080/FoodShareSystem/servlet/PublishRestaurant";
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URL]];
+    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"POST"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"restaurant=%@\n",name] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"telephone=%@\n",tel] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    //[NSURLConnection connectionWithRequest:request delegate:self];
+    NSLog(@"%d",[returnData length]);
+    
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",returnString);
+}
+
 
 @end

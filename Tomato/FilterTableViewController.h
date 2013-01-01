@@ -10,4 +10,7 @@
 
 @interface FilterTableViewController : CoreDataTableViewController
 
+@property (strong, nonatomic) NSMutableArray *tagArray;
+@property (strong, nonatomic) NSMutableArray *restaurantArray;
+
 @end
