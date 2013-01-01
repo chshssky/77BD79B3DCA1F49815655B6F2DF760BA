@@ -9,9 +9,7 @@
 #import "RestaurantTableViewController.h"
 #import "NetworkInterface.h"
 
-@interface RestaurantTableViewController ()
-
-
+@interface RestaurantTableViewController () <UIAlertViewDelegate>
 
 @end
 
@@ -35,7 +33,6 @@
 {
     [super viewDidLoad];
     self.title = self.deliveredTitle;
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -153,19 +150,37 @@
 }
 
 - (IBAction)createButtonPushed:(id)sender {
-    // 弹出 NSAlert 窗口
-    
     if (self.title == @"餐馆") {
-        
-        [self.restaurantDelegate sendTheAddedRestaurantName:@"NewRestaurant"];
-        self.selectedIndex = [self.listArray count] - 1;
+        // 弹出 Alert 窗口
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入" message:@"餐馆名称" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定" , nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert show];
     } else {
-        NSString *newTel = @"19982828888";
-        [self.restaurantDelegate sendTheAddedTelephoneNumber:newTel];
-        [NetworkInterface PublishRestaurant:self.restName telephone:newTel];
+        // 弹出 Alert 窗口
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入" message:@"电话号码" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定" , nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        [alert show];
+    }
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        NSString *inputString = [[alertView textFieldAtIndex:0] text];
+        if (self.title == @"餐馆") {
+            [self.restaurantDelegate sendTheAddedRestaurantName:inputString];
+            self.selectedIndex = [self.listArray count] - 1;
+        } else {
+            [self.restaurantDelegate sendTheAddedTelephoneNumber:inputString];
+            [NetworkInterface PublishRestaurant:self.restName telephone:inputString];
+        }
+        NSLog(@"%@", inputString);
+        [self.tableView reloadData];
+
     }
     
-    [self.tableView reloadData];
 }
 
 @end

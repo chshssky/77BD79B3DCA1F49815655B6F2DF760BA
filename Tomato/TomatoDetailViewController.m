@@ -56,7 +56,6 @@
         NSLog(@"FoodGrade:%@", self.foodDetail.foodGrade);
         [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
         NSLog(@"FoodNewGrade: %d", _rateScore);
-
     }
 }
 
