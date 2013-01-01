@@ -35,9 +35,9 @@
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
         NSString * urlstr = [NSString stringWithFormat:@"http://192.168.2.162:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", min, max];
         NSURL *URL = [NSURL URLWithString:urlstr];
-        //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
-        NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-        int i = 0;
+        NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
+        //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+        int i = 1;
         for (NSDictionary *dic in foods) {
             Food *food = nil;
             NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
@@ -50,7 +50,7 @@
                 NSLog(@"Food Wrong!");
             } else if ([foodMatches count] == 0) {
                 food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
-                food.foodID = [NSNumber numberWithUnsignedInt:i++];
+                food.foodID = [NSNumber numberWithInteger:i++];
                 
                 food.foodName = [dic objectForKey:FOOD_NAME];
                 
@@ -141,8 +141,20 @@
 }
 
 
-- (void)giveFood:(NSInteger)foodID aGrade:(NSInteger)foodGrade
++ (void)giveGrade:(int)foodid OldGrade:(NSInteger)oldgrade NewGrade:(NSInteger)newgrade
 {
+    NSString * URL = [NSString stringWithFormat:@"http://192.168.2.162:8080/FoodShareSystem/servlet/GiveScore?foodid=%d&oldscore=%d&newscore=%d&ifgive=%@",foodid,oldgrade,newgrade,@"true"];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URL]];
+    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"GET"];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    //[NSURLConnection connectionWithRequest:request delegate:self];
+    //NSLog(@"%d",[returnData length]);
+    
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",returnString);
     
 }
 

@@ -11,13 +11,15 @@
 #import "Collection+Food.h"
 #import "CartTableViewController.h"
 #import "Food+Cart.h"
+#import "Food+Grade.h"
 #import "Cart.h"
+#import "NetworkInterface.h"
 
 @interface TomatoDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (weak, nonatomic) IBOutlet UIButton *addToCartButton;
 @property (nonatomic) BOOL whetherAllowToRate;
-@property (nonatomic) int rateScore;
+@property (nonatomic) NSInteger rateScore;
 - (void)setUpEditableRateView:(BOOL)whetherAllowToRate;
 @end
 
@@ -48,7 +50,14 @@
 - (void) viewWillDisappear:(BOOL)animated
 {
     //推出时提交评分，并且把评分存入数据库
-    NSLog(@"Rate: %d", _rateScore);
+    if (self.rateScore != 0) {
+        [NetworkInterface giveGrade:[self.foodDetail.foodID integerValue] OldGrade:[self.foodDetail.foodGrade integerValue] NewGrade:self.rateScore];
+        NSLog(@"FoodID:%@", self.foodDetail.foodID);
+        NSLog(@"FoodGrade:%@", self.foodDetail.foodGrade);
+        [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
+        NSLog(@"FoodNewGrade: %d", _rateScore);
+
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
