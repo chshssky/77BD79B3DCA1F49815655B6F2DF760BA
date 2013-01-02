@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodTableViewCellIdentifier" rowHeight="92" id="uGf-Yy-Ov6" customClass="FoodTomatoTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FoodTableViewCellIdentifier" rowHeight="92" id="uGf-Yy-Ov6" customClass="FoodTomatoTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="92"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -21,7 +21,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RZc-A5-PkX">
-                                            <rect key="frame" x="0.0" y="0.0" width="91" height="91"/>
+                                            <rect key="frame" x="9" y="5" width="77" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </imageView>
@@ -832,8 +832,6 @@
         <class className="TomatoDetailViewController" superclassName="CoreDataViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoDetailViewController.h"/>
             <relationships>
-                <relationship kind="action" name="AddToChart:"/>
-                <relationship kind="action" name="AddToFavorite:"/>
                 <relationship kind="outlet" name="addToCartButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>

@@ -9,14 +9,30 @@
 #import <Foundation/Foundation.h>
 
 @interface NetworkInterface : NSObject
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-- (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max;
-+ (void)giveGrade:(NSInteger)foodid OldGrade:(NSInteger)oldgrade NewGrade:(NSInteger)newgrade;
-+(void) PublishFood:(NSString *)name foodprice:(NSString *)price publishtime:(NSString *)time foodimgname:(NSString *)imgname restaurantname:(NSString *)restaurantname tagsname:(NSString *)tagsname;
-+(void) UploadImage:(UIImage *)img picturename:(NSString *)picture_name;
++ (void)requestForFoodListFromID:(NSInteger)min
+                            toID:(NSInteger)max
+          inManagedObjectContext:(NSManagedObjectContext *)context;
 
-+ (NSString *)generateRandomString :(int)length;
-+ (void)PublishRestaurant:(NSString *)name telephone:(NSString *)tel;
++ (void)giveGrade:(NSInteger)foodid
+         OldGrade:(NSInteger)oldgrade
+         NewGrade:(NSInteger)newgrade;
+
++(void) PublishFood:(NSString *)name
+          foodprice:(NSString *)price
+        publishtime:(NSString *)time
+        foodimgname:(NSString *)imgname
+     restaurantname:(NSString *)restaurantname
+           tagsname:(NSString *)tagsname;
+
++(void) UploadImage:(UIImage *)img
+        picturename:(NSString *)picture_name;
+
++ (NSString *)generateRandomString:(int)length;
+
++ (void)PublishRestaurant:(NSString *)name
+                telephone:(NSString *)tel;
+
++ (NSArray *)requestForRestaurantList;
 
 @end

@@ -18,6 +18,7 @@
 #define RESTAURANT @"餐馆"
 #define RESTAURANT_NAME @"名称"
 #define RESTAURANT_TELEPHONE @"电话"
+#define RESTAURANT_ID @"餐馆ID"
 
 #define TAG_NAME @"标签名称"
 #define TAG_TYPE @"标签种类"

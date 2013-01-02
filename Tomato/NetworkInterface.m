@@ -6,148 +6,46 @@
 //  Copyright (c) 2012年 Cui Hao. All rights reserved.
 //
 
+//#define IP @"192.168.1.100"
+
 #import "NetworkInterface.h"
 #import "TomatoAppDelegate.h"
-#import "Food+Update.h"
+#import "Food+Init.h"
 #import "Tag.h"
 #import "Restaurant.h"
 #import "Telephone.h"
 
+#define IP @"192.168.1.103"
+
+
 @implementation NetworkInterface
-@synthesize managedObjectContext = _managedObjectContext;
 
-- (NSManagedObjectContext *)managedObjectContext
++ (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-
-    TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    _managedObjectContext = delegate.managedObjectContext;
-    return _managedObjectContext;
-    
-}
-
-- (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max
-{
-    dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
-    dispatch_async(fetchQ, ^{
+    NSString *ip = IP;
+//    dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
+//    dispatch_async(fetchQ, ^{
 //        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
-        NSString * urlstr = [NSString stringWithFormat:@"http://192.168.2.162:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", min, max];
+        NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", ip, min, max];
         NSURL *URL = [NSURL URLWithString:urlstr];
         NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
         //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-        int i = 0;
-        for (NSDictionary *dic in foods) {
-            Food *food = nil;
-            NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-            i ++;
-            foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = %d"/* AND foodPublishTime = %@"*/, i/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
-            
-            NSError *foodError = nil;
-            NSArray *foodMatches = [self.managedObjectContext executeFetchRequest:foodRequest error:&foodError];
-            
-            if (!foodMatches || ([foodMatches count] > 1)) {
-                NSLog(@"Food Wrong!");
-            } else if ([foodMatches count] == 0) {
-                food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
-                food.foodID = [NSNumber numberWithInteger:i];
-                
-                food.foodName = [dic objectForKey:FOOD_NAME];
-                
-                food.foodPrice = [NSNumber numberWithFloat:[[dic objectForKey:FOOD_PRICE] floatValue]];
-                
-                food.foodGrade = [NSNumber numberWithUnsignedInt:0];
-                
-                food.foodImagePath = [dic objectForKey:FOOD_IMAGE_PATH];
-                
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH时mm分ss秒"];
-                food.foodPublishTime = [dateFormatter dateFromString:[dic objectForKey:FOOD_UPLOAD_TIME]];
-                
-                food.foodScore = [NSNumber numberWithFloat:[[dic objectForKey:FOOD_SCORE] floatValue]];
-                
-                for (NSString *tagIndex in [dic objectForKey:FOOD_TAGS]) {
-                    Tag *tag = nil;
-                    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-                    request.predicate = [NSPredicate predicateWithFormat:@"tagID = %@", tagIndex];
-                    
-                    NSError *error = nil;
-                    NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
-                    
-                    if (!matches || ([matches count] > 1)) {
-                        NSLog(@"Food Add Tags Wrong!");
-                    } else if ([matches count] == 0) {
-                        NSLog(@"Tags not init!");
-                    } else {
-                        tag = [matches lastObject];
-                    }
-                    [food addTagsObject:tag];
-                }
-                
-                NSDictionary *rest = [dic objectForKey:RESTAURANT];
-                
-                //Restaurant ID
-                Restaurant *res = nil;
-                NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
-                request.predicate = [NSPredicate predicateWithFormat:@"restaurantName = %@", [rest objectForKey:RESTAURANT_NAME]];
-                
-                NSError *error = nil;
-                NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
-                
-                if (!matches || ([matches count] > 1)) {
-                    NSLog(@"Food Add Restaurant Wrong!");
-                } else if ([matches count] == 0) {
-                    res = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurant" inManagedObjectContext:self.managedObjectContext];
-                    res.restaurantName = [rest objectForKey:RESTAURANT_NAME];
-                    
-                    for (NSString *teleNumber in [rest objectForKey:RESTAURANT_TELEPHONE]) {
-                        Telephone *tel = nil;
-                        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Telephone"];
-                        request.predicate = [NSPredicate predicateWithFormat:@"telephoneNumber = %@", teleNumber];
-                        NSError *error = nil;
-                        NSArray *matches = [self.managedObjectContext executeFetchRequest:request error:&error];
-                        
-                        if (!matches || ([matches count] > 1)) {
-                            NSLog(@"Restaurant Add Telephones Wrong!");
-                        } else if ([matches count] == 0) {
-                            tel = [NSEntityDescription insertNewObjectForEntityForName:@"Telephone" inManagedObjectContext:self.managedObjectContext];
-                            tel.telephoneNumber = teleNumber;
-                        } else {
-                            tel = [matches lastObject];
-                        }
-                        [res addTelephonesObject:tel];
-                    }
-                } else {
-                    res = [matches lastObject];
-                }
-                food.restaurant = res;
-                error = nil;
-                if (![self.managedObjectContext save:&error]) {
-                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                    abort();
-                }
-
-            } else {
-                food = [foodMatches lastObject];
-                [Food updateFood:food Score:[dic objectForKey:FOOD_SCORE] inManagedObjectContext:self.managedObjectContext];
-            }
-
-        }
+        [Food initFood:foods inManagedObjectedContext:context];
 
 //        [document.managedObjectContext performBlock:^{
 //            for (NSDictionary *flickrInfo in photos) {
 //                [Photo photoWithFlickrInfo:flickrInfo inManagedObjectContext:document.managedObjectContext];
 //            }
 //        }];
-    });
+//    });
     //dispatch_release(fetchQ);
 }
 
 
 + (void)giveGrade:(int)foodid OldGrade:(NSInteger)oldgrade NewGrade:(NSInteger)newgrade
 {
-    NSString * URL = [NSString stringWithFormat:@"http://192.168.2.162:8080/FoodShareSystem/servlet/GiveScore?foodid=%d&oldscore=%d&newscore=%d&ifgive=%@",foodid,oldgrade,newgrade,@"true"];
+    NSString *ip = IP;
+    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GiveScore?foodid=%d&oldscore=%d&newscore=%d&ifgive=%@", ip, foodid,oldgrade,newgrade,@"true"];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
@@ -164,9 +62,10 @@
 
 +(void) PublishFood:(NSString *)name foodprice:(NSString *)price publishtime:(NSString *)time foodimgname:(NSString *)imgname restaurantname:(NSString *)restaurantname tagsname:(NSString *)tagsname
 {
+    NSString *ip = IP;
     //URL = [URL stringByAppendingFormat:@"?foodname=%@&foodprice=%@&publishtime=%@&foodimgname=%@&restaurantname=%@",name,price,time,imgname,restaurantname];
     //NSLog(@"%@",URL);
-    NSString * URL = @"http://192.168.2.162:8080/FoodShareSystem/servlet/PublishFood";
+    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/PublishFood", ip];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
@@ -195,7 +94,8 @@
 
 +(void) UploadImage:(UIImage *)img picturename:(NSString *)picture_name
 {
-    NSString * URL = @"http://192.168.2.162:8080/FoodShareSystem/servlet/UploadPicture";
+    NSString *ip = IP;
+    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/UploadPicture", ip];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request setHTTPMethod:@"POST"];
@@ -231,7 +131,8 @@
 
 + (void)PublishRestaurant:(NSString *)name telephone:(NSString *)tel
 {
-    NSString * URL = @"http://192.168.2.162:8080/FoodShareSystem/servlet/PublishRestaurant";
+    NSString *ip = IP;
+    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/PublishRestaurant", ip];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
@@ -244,10 +145,20 @@
     
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     //[NSURLConnection connectionWithRequest:request delegate:self];
-    NSLog(@"%d",[returnData length]);
+    NSLog(@"%d", [returnData length]);
     
     NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnString);
+    NSLog(@"%@", returnString);
+}
+
++ (NSArray *)requestForRestaurantList
+{
+    NSString *ip = IP;
+    NSString *urlStr;
+    urlStr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetRestaurantList", ip];
+    NSURL *url = [[NSURL alloc] initWithString:urlStr];
+    
+    return [[NSArray alloc] initWithContentsOfURL:url];
 }
 
 

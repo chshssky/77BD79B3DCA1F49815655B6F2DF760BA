@@ -47,8 +47,7 @@
         _refreshTableView = refreshView;
     }
     
-    NetworkInterface *net = [[NetworkInterface alloc] init];
-    [net requestForFoodListFromID:0 toID:10];
+    [NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
     [self setupFetchResultController];
     
     self.foodTags = nil;
@@ -119,8 +118,25 @@
     
     cell.foodNameLabel.text = food.foodName;
     cell.foodGradeLabel.text = [NSString stringWithFormat:@"%@",food.foodScore];
+    cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
     
+//    UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackgroud.png"];
+//    UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
+//    
+//    [cell setBackgroundColor:[UIColor clearColor]];
+//    [cell setSelectedBackgroundView:selectedView];
+//    
+//    UIImage *unselectedImage = [UIImage imageNamed:@"grayArrow.png"];
+//    UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
+//    
+//    [cell setBackgroundView:unselectedView];
+
     
+//    UIView *cellView = [[UIView alloc] init];
+//    cellView.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"cellClickedBackgroud.png"] ];
+//    [cell setSelectedBackgroundView:cellView];
+
+    //cell.imageView.image = [UIImage imageNamed:@"cellClickedBackgroud.png"];
     
 //    NSInteger index = indexPath.row;
 //    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.foodList[index]];
@@ -165,10 +181,9 @@
     NSLog(@"doInBackground");
     
     //更新数据库
+    [NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
     
-    NetworkInterface *net = [[NetworkInterface alloc] init];
-    [net requestForFoodListFromID:0 toID:10];
-    [NSThread sleepForTimeInterval:5];
+    //[NSThread sleepForTimeInterval:5];
     //后台操作线程执行完后，到主线程更新UI
     [self performSelectorOnMainThread:@selector(doneLoadingTableViewData) withObject:nil waitUntilDone:YES];
 }
@@ -241,6 +256,27 @@
     return YES;
 }
 */
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.imageView.image = [UIImage imageNamed:@"cellClickedBackgroud.png"];
+//    cell.imageView.alpha = 0.5;
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
+
+//- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.imageView.image = [UIImage imageNamed:@"cellClickedBackgroud.png"];
+//    cell.imageView.alpha = 0.5;
+//    return indexPath;
+//}
+//
+//- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    cell.imageView.alpha = 0.1;
+//}
 
 #pragma mark - Table view delegate
 

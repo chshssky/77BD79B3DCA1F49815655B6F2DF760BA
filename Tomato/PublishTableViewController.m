@@ -47,10 +47,15 @@
     for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count]; i++) {
         [self.tagArray addObject:[NSNumber numberWithBool:NO]];
     }
-    NSString *urlStr;
-    urlStr = @"http://192.168.2.162:8080/FoodShareSystem/servlet/GetRestaurantList";
-    NSURL *url = [[NSURL alloc] initWithString:urlStr];
-    self.restaurantArray = [[NSArray alloc] initWithContentsOfURL:url];
+    [self requestForRestaurantArray];
+}
+
+- (void)requestForRestaurantArray
+{
+    dispatch_queue_t fetchQ = dispatch_queue_create("RestaurantList fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        self.restaurantArray = [[NSMutableArray alloc] initWithArray:[NetworkInterface requestForRestaurantList]];
+    });
 
 }
 

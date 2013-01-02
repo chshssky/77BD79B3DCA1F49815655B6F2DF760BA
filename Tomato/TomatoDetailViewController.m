@@ -52,14 +52,27 @@
 {
     //推出时提交评分，并且把评分存入数据库
     if (self.rateScore != 0) {
-        [NetworkInterface giveGrade:[self.foodDetail.foodID integerValue] OldGrade:[self.foodDetail.foodGrade integerValue] NewGrade:self.rateScore];
-        NSLog(@"FoodID:%@", self.foodDetail.foodID);
-        NSLog(@"FoodGrade:%@", self.foodDetail.foodGrade);
-        [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
-        NSLog(@"FoodNewGrade: %d", _rateScore);
+        NSLog(@"main thread begin...");
+        [self performSelectorInBackground:@selector(doSomething:) withObject:nil];
+        NSLog(@"main thread end.....");
+//        dispatch_queue_t fetchQ = dispatch_queue_create("Upload Grade Thread", NULL);
+//        dispatch_async(fetchQ, ^{
+//            [NetworkInterface giveGrade:[self.foodDetail.foodID integerValue] OldGrade:[self.foodDetail.foodGrade integerValue] NewGrade:self.rateScore];
+//            [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
+//            
+//        });
     }
 }
 
+- (void) doSomething:(id)sender
+{
+    NSLog( @"one thread begin..." );
+    [NetworkInterface giveGrade:[self.foodDetail.foodID integerValue] OldGrade:[self.foodDetail.foodGrade integerValue] NewGrade:self.rateScore];
+    NSLog(@"old:grade:%@", self.foodDetail.foodGrade);
+    NSLog(@"new:grade:%d", self.rateScore);
+    [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
+    NSLog( @"one thread end..." );
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
