@@ -15,7 +15,7 @@
         <attribute name="foodID" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="foodImagePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="foodName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="foodPrice" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="foodPrice" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="foodPublishTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="foodScore" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Collection" inverseName="food" inverseEntity="Collection" syncable="YES"/>
@@ -52,7 +52,7 @@
     <elements>
         <element name="Achievement" positionX="-200" positionY="-144" width="128" height="103"/>
         <element name="Collection" positionX="106" positionY="90" width="128" height="73"/>
-        <element name="Food" positionX="-198" positionY="108" width="128" height="208"/>
+        <element name="Food" positionX="-198" positionY="108" width="128" height="210"/>
         <element name="Order" positionX="108" positionY="198" width="128" height="88"/>
         <element name="Record" positionX="106" positionY="-144" width="128" height="73"/>
         <element name="Restaurant" positionX="106" positionY="-40" width="128" height="103"/>

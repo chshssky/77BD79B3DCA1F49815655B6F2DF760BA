@@ -154,7 +154,7 @@
     [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     
     //刷新表格内容
-    [self setupFetchResultController];
+    
     
     [self.tableView reloadData];
 }
@@ -165,12 +165,10 @@
     NSLog(@"doInBackground");
     
     //更新数据库
+    
     NetworkInterface *net = [[NetworkInterface alloc] init];
     [net requestForFoodListFromID:0 toID:10];
-    
-    
-    [NSThread sleepForTimeInterval:3];
-    
+    [NSThread sleepForTimeInterval:5];
     //后台操作线程执行完后，到主线程更新UI
     [self performSelectorOnMainThread:@selector(doneLoadingTableViewData) withObject:nil waitUntilDone:YES];
 }

@@ -8,7 +8,7 @@
 
 #import "NetworkInterface.h"
 #import "TomatoAppDelegate.h"
-#import "Food.h"
+#import "Food+Update.h"
 #import "Tag.h"
 #import "Restaurant.h"
 #import "Telephone.h"
@@ -32,15 +32,16 @@
 {
     dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
     dispatch_async(fetchQ, ^{
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
+//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
         NSString * urlstr = [NSString stringWithFormat:@"http://192.168.2.162:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", min, max];
         NSURL *URL = [NSURL URLWithString:urlstr];
         NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
         //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-        int i = 1;
+        int i = 0;
         for (NSDictionary *dic in foods) {
             Food *food = nil;
             NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
+            i ++;
             foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = %d"/* AND foodPublishTime = %@"*/, i/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
             
             NSError *foodError = nil;
@@ -50,11 +51,11 @@
                 NSLog(@"Food Wrong!");
             } else if ([foodMatches count] == 0) {
                 food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:self.managedObjectContext];
-                food.foodID = [NSNumber numberWithInteger:i++];
+                food.foodID = [NSNumber numberWithInteger:i];
                 
                 food.foodName = [dic objectForKey:FOOD_NAME];
                 
-                food.foodPrice = [NSNumber numberWithInteger:[[dic objectForKey:FOOD_PRICE] integerValue]];
+                food.foodPrice = [NSNumber numberWithFloat:[[dic objectForKey:FOOD_PRICE] floatValue]];
                 
                 food.foodGrade = [NSNumber numberWithUnsignedInt:0];
                 
@@ -126,14 +127,10 @@
                     NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                     abort();
                 }
+
             } else {
-                NSError *error;
-                food.foodScore = [NSNumber numberWithFloat:[[dic objectForKey:FOOD_SCORE] floatValue]];
-                NSLog(@"foodScore: %@", [NSNumber numberWithFloat:[[dic objectForKey:FOOD_SCORE] floatValue]]);
-                if (![self.managedObjectContext save:&error]) {
-                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                    abort();
-                }
+                food = [foodMatches lastObject];
+                [Food updateFood:food Score:[dic objectForKey:FOOD_SCORE] inManagedObjectContext:self.managedObjectContext];
             }
 
         }
