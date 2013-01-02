@@ -127,7 +127,13 @@
                     abort();
                 }
             } else {
-                food.foodPrice = [NSNumber numberWithInteger:[[dic objectForKey:FOOD_PRICE] integerValue]];
+                NSError *error;
+                food.foodScore = [NSNumber numberWithFloat:[[dic objectForKey:FOOD_SCORE] floatValue]];
+                NSLog(@"foodScore: %@", [NSNumber numberWithFloat:[[dic objectForKey:FOOD_SCORE] floatValue]]);
+                if (![self.managedObjectContext save:&error]) {
+                    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                    abort();
+                }
             }
 
         }

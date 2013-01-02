@@ -36,6 +36,7 @@
 - (void)setUpEditableRateView:(BOOL)whetherAllowToRate{
     RateView *rateView = [[RateView alloc] initWithFrame:CGRectMake(70, 330, self.view.bounds.size.width, 20) fullStar:[UIImage imageNamed:@"StarFullLarge.png"] emptyStar:[UIImage imageNamed:@"StarEmptyLarge.png"]];
     rateView.padding = 10;
+    rateView.rate = [self.foodDetail.foodGrade floatValue]/2;
     rateView.alignment = RateViewAlignmentCenter;
     rateView.editable = whetherAllowToRate;
     rateView.delegate = self;

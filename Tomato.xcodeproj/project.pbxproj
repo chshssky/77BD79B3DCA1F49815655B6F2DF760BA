@@ -61,6 +61,16 @@
 		7382DC731691C99500B5097B /* StarFullLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC6B1691C99500B5097B /* StarFullLarge.png */; };
 		7382DC741691C99500B5097B /* StarFullLarge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7382DC6C1691C99500B5097B /* StarFullLarge@2x.png */; };
 		7382DC771691C9A800B5097B /* RateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7382DC761691C9A800B5097B /* RateView.m */; };
+		739FC4A41693F753007FBA97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739FC4A31693F753007FBA97 /* QuartzCore.framework */; };
+		739FC4A81693F765007FBA97 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 739FC4A71693F765007FBA97 /* EGORefreshTableHeaderView.m */; };
+		739FC4B11693F80A007FBA97 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4A91693F80A007FBA97 /* grayArrow.png */; };
+		739FC4B21693F80A007FBA97 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AA1693F80A007FBA97 /* grayArrow@2x.png */; };
+		739FC4B31693F80A007FBA97 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AB1693F80A007FBA97 /* blackArrow.png */; };
+		739FC4B41693F80A007FBA97 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AC1693F80A007FBA97 /* blackArrow@2x.png */; };
+		739FC4B51693F80A007FBA97 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AD1693F80A007FBA97 /* blueArrow.png */; };
+		739FC4B61693F80A007FBA97 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AE1693F80A007FBA97 /* blueArrow@2x.png */; };
+		739FC4B71693F80A007FBA97 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AF1693F80A007FBA97 /* whiteArrow.png */; };
+		739FC4B81693F80A007FBA97 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4B01693F80A007FBA97 /* whiteArrow@2x.png */; };
 		73DEDDBD168F2E0C00C1AA37 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDBC168F2E0C00C1AA37 /* Cart.m */; };
 		73DEDDC1168F360200C1AA37 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC0168F360200C1AA37 /* CartTableViewController.m */; };
 		73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC3168F362100C1AA37 /* CartFooterView.m */; };
@@ -158,6 +168,17 @@
 		7382DC6C1691C99500B5097B /* StarFullLarge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StarFullLarge@2x.png"; sourceTree = "<group>"; };
 		7382DC751691C9A800B5097B /* RateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateView.h; sourceTree = "<group>"; };
 		7382DC761691C9A800B5097B /* RateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RateView.m; sourceTree = "<group>"; };
+		739FC4A31693F753007FBA97 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		739FC4A61693F765007FBA97 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		739FC4A71693F765007FBA97 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		739FC4A91693F80A007FBA97 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		739FC4AA1693F80A007FBA97 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		739FC4AB1693F80A007FBA97 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		739FC4AC1693F80A007FBA97 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		739FC4AD1693F80A007FBA97 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		739FC4AE1693F80A007FBA97 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		739FC4AF1693F80A007FBA97 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		739FC4B01693F80A007FBA97 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		73DEDDBB168F2E0C00C1AA37 /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
 		73DEDDBC168F2E0C00C1AA37 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
 		73DEDDBF168F360200C1AA37 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
@@ -173,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				739FC4A41693F753007FBA97 /* QuartzCore.framework in Frameworks */,
 				73DEDDC8168F365000C1AA37 /* CoreTelephony.framework in Frameworks */,
 				73DEDDC6168F364200C1AA37 /* MessageUI.framework in Frameworks */,
 				3FA605601648E9D600BF98AF /* CoreData.framework in Frameworks */,
@@ -188,6 +210,8 @@
 		3F2F8C791689C93300D2A668 /* TomatoMainModule */ = {
 			isa = PBXGroup;
 			children = (
+				739FC4A61693F765007FBA97 /* EGORefreshTableHeaderView.h */,
+				739FC4A71693F765007FBA97 /* EGORefreshTableHeaderView.m */,
 				57A0541C16566004007C4CB3 /* TomatoTableViewController.h */,
 				57A0541D16566004007C4CB3 /* TomatoTableViewController.m */,
 				3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */,
@@ -293,6 +317,14 @@
 		3F556543168EE378000E3D9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				739FC4A91693F80A007FBA97 /* grayArrow.png */,
+				739FC4AA1693F80A007FBA97 /* grayArrow@2x.png */,
+				739FC4AB1693F80A007FBA97 /* blackArrow.png */,
+				739FC4AC1693F80A007FBA97 /* blackArrow@2x.png */,
+				739FC4AD1693F80A007FBA97 /* blueArrow.png */,
+				739FC4AE1693F80A007FBA97 /* blueArrow@2x.png */,
+				739FC4AF1693F80A007FBA97 /* whiteArrow.png */,
+				739FC4B01693F80A007FBA97 /* whiteArrow@2x.png */,
 				3F8B5B3A16901E1A00D7B184 /* foodImage.png */,
 				7382DC651691C99500B5097B /* StarEmpty.png */,
 				7382DC661691C99500B5097B /* StarEmpty@2x.png */,
@@ -326,6 +358,7 @@
 		3F7B7AFE163D6558003A7505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				739FC4A31693F753007FBA97 /* QuartzCore.framework */,
 				73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */,
 				73DEDDC5168F364200C1AA37 /* MessageUI.framework */,
 				3FA6055F1648E9D600BF98AF /* CoreData.framework */,
@@ -484,6 +517,14 @@
 				7382DC721691C99500B5097B /* StarFull@2x.png in Resources */,
 				7382DC731691C99500B5097B /* StarFullLarge.png in Resources */,
 				7382DC741691C99500B5097B /* StarFullLarge@2x.png in Resources */,
+				739FC4B11693F80A007FBA97 /* grayArrow.png in Resources */,
+				739FC4B21693F80A007FBA97 /* grayArrow@2x.png in Resources */,
+				739FC4B31693F80A007FBA97 /* blackArrow.png in Resources */,
+				739FC4B41693F80A007FBA97 /* blackArrow@2x.png in Resources */,
+				739FC4B51693F80A007FBA97 /* blueArrow.png in Resources */,
+				739FC4B61693F80A007FBA97 /* blueArrow@2x.png in Resources */,
+				739FC4B71693F80A007FBA97 /* whiteArrow.png in Resources */,
+				739FC4B81693F80A007FBA97 /* whiteArrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +572,7 @@
 				3F8B5B7D1692952900D7B184 /* RestaurantTableViewController.m in Sources */,
 				3FAB16BF1692ED3600B95574 /* RestaurantFilterTableViewController.m in Sources */,
 				3FAB16C316932F6300B95574 /* Food+Grade.m in Sources */,
+				739FC4A81693F765007FBA97 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

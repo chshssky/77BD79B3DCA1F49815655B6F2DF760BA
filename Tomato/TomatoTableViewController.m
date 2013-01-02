@@ -38,6 +38,15 @@
 {
     [super viewDidLoad];
     
+    if (_refreshTableView == nil) {
+        //初始化下拉刷新控件
+        EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+        refreshView.delegate = self;
+        //将下拉刷新控件作为子控件添加到UITableView中
+        [self.tableView addSubview:refreshView];
+        _refreshTableView = refreshView;
+    }
+    
     NetworkInterface *net = [[NetworkInterface alloc] init];
     [net requestForFoodListFromID:0 toID:10];
     [self setupFetchResultController];
@@ -50,6 +59,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(void)viewDidUnload
+{
+    [super viewDidUnload];
+    _refreshTableView = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -123,6 +138,73 @@
     return cell;
 }
 
+
+//开始重新加载时调用的方法
+- (void)reloadTableViewDataSource{
+    _reloading = YES;
+    //开始刷新后执行后台线程，在此之前可以开启HUD或其他对UI进行阻塞
+    [NSThread detachNewThreadSelector:@selector(doInBackground) toTarget:self withObject:nil];
+}
+
+//完成加载时调用的方法
+- (void)doneLoadingTableViewData{
+    NSLog(@"doneLoadingTableViewData");
+    
+    _reloading = NO;
+    [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    
+    //刷新表格内容
+    [self setupFetchResultController];
+    
+    [self.tableView reloadData];
+}
+
+//这个方法运行于子线程中，完成获取刷新数据的操作
+-(void)doInBackground
+{
+    NSLog(@"doInBackground");
+    
+    //更新数据库
+    NetworkInterface *net = [[NetworkInterface alloc] init];
+    [net requestForFoodListFromID:0 toID:10];
+    
+    
+    [NSThread sleepForTimeInterval:3];
+    
+    //后台操作线程执行完后，到主线程更新UI
+    [self performSelectorOnMainThread:@selector(doneLoadingTableViewData) withObject:nil waitUntilDone:YES];
+}
+
+//下拉被触发调用的委托方法
+-(void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView *)view
+{
+    [self reloadTableViewDataSource];
+}
+
+//返回当前是刷新还是无刷新状态
+-(BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView *)view
+{
+    return _reloading;
+}
+
+//返回刷新时间的回调方法
+-(NSDate *)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView *)view
+{
+    return [NSDate date];
+}
+
+//滚动控件的委托方法
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [_refreshTableView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [_refreshTableView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -169,6 +251,7 @@
     
     if ([[segue identifier] isEqualToString:@"TomatoDetailSegueIdentifier"]) {
         TomatoDetailViewController *dvc = [segue destinationViewController];
+        
         dvc.foodDetail = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
     } else if ([segue.identifier isEqualToString:@"FilterSegueIdentifier"]) {
         FilterTableViewController *ftvc = [segue destinationViewController];
