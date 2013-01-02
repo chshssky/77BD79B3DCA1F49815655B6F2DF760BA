@@ -40,8 +40,8 @@
     
     NetworkInterface *net = [[NetworkInterface alloc] init];
     [net requestForFoodListFromID:0 toID:10];
-    
     [self setupFetchResultController];
+    
     self.foodTags = nil;
     self.foodRestaurants = nil;
     
@@ -52,10 +52,28 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setupFetchResultController];
+}
+
 - (void)setupFetchResultController
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-    //request.predicate =
+    if (self.foodTags != nil) {
+//        NSString *predicateStr = @"";
+//        for (int i = 1; i <= [self.foodTags count]; i ++) {
+//            if ([self.foodTags[i - 1] boolValue]) {
+//                predicateStr = [predicateStr stringByAppendingFormat:@"OR tags contains %d ", i];
+//                NSLog(@"i: %d", i);
+//            }
+//        }
+//        predicateStr = [predicateStr substringFromIndex:2];
+        request.predicate = [NSPredicate predicateWithFormat:@"ANY tags == 4"];
+        
+        [self.tableView reloadData];
+    }
+    
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:YES]];
     
     

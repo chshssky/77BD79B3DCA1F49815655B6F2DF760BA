@@ -41,7 +41,7 @@
         for (NSDictionary *dic in foods) {
             Food *food = nil;
             NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-            foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodName = %@"/* AND foodPublishTime = %@"*/, [dic objectForKey:FOOD_NAME]/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
+            foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = %d"/* AND foodPublishTime = %@"*/, i/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
             
             NSError *foodError = nil;
             NSArray *foodMatches = [self.managedObjectContext executeFetchRequest:foodRequest error:&foodError];
@@ -86,6 +86,7 @@
                 
                 NSDictionary *rest = [dic objectForKey:RESTAURANT];
                 
+                //Restaurant ID
                 Restaurant *res = nil;
                 NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
                 request.predicate = [NSPredicate predicateWithFormat:@"restaurantName = %@", [rest objectForKey:RESTAURANT_NAME]];
@@ -126,7 +127,7 @@
                     abort();
                 }
             } else {
-                food = [foodMatches lastObject];
+                food.foodPrice = [NSNumber numberWithInteger:[[dic objectForKey:FOOD_PRICE] integerValue]];
             }
 
         }
