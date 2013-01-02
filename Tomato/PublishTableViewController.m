@@ -63,7 +63,7 @@
 - (void)setupFetchedResultController
 {
     NSFetchRequest *requst = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"tagType" ascending:YES]];
+    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"tagID" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:requst
                                                                 managedObjectContext:self.managedObjectContext

@@ -38,19 +38,19 @@
 		</dict>
 		<dict>
 			<key>标签种类</key>
-			<string>快餐</string>
+			<string>外卖</string>
 			<key>标签图片路径</key>
 			<string></string>
 			<key>标签名称</key>
-			<string>快餐</string>
+			<string>外卖</string>
 		</dict>
 		<dict>
 			<key>标签种类</key>
-			<string>外卖</string>
+			<string>快餐</string>
 			<key>标签图片路径</key>
 			<string></string>
 			<key>标签名称</key>
-			<string>外卖</string>
+			<string>快餐</string>
 		</dict>
 	</array>
 	<key>成就</key>
