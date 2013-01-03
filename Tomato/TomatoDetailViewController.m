@@ -36,8 +36,8 @@
 @synthesize addToCartButton = _addToCartButton;
 
 - (void)setUpEditableRateView:(BOOL)whetherAllowToRate{
-    RateView *rateView = [[RateView alloc] initWithFrame:CGRectMake(70, 330, self.view.bounds.size.width, 20) fullStar:[UIImage imageNamed:@"StarFullLarge.png"] emptyStar:[UIImage imageNamed:@"StarEmptyLarge.png"]];
-    rateView.padding = 10;
+    RateView *rateView = [[RateView alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height-126, self.view.bounds.size.width, 20) fullStar:[UIImage imageNamed:@"StarFullLarge.png"] emptyStar:[UIImage imageNamed:@"StarEmptyLarge.png"]];
+    rateView.padding = 5;
     rateView.rate = [self.foodDetail.foodGrade floatValue]/2;
     rateView.alignment = RateViewAlignmentCenter;
     rateView.editable = whetherAllowToRate;
@@ -103,13 +103,15 @@
     [super viewDidLoad];
     if (self.whetherTakeout == NO) {
         [self.addToCartButton setHidden:YES];
+    }else{
+        [self.addToCartButton setHidden:NO];
     }
     
     self.whetherAllowToRate = YES;
     [self setUpEditableRateView:self.whetherAllowToRate];
     
     self.title = self.foodDetail.foodName;
-    self.foodPriceLabel.text = [NSString stringWithFormat:@"%@",self.foodDetail.foodPrice];
+    self.foodPriceLabel.text = [NSString stringWithFormat:@"%.1f",[self.foodDetail.foodPrice floatValue]];
     if (self.foodDetail.collection != nil) {
         self.favoriteButton.enabled = NO;
         [self.favoriteButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
@@ -118,15 +120,53 @@
     NSDictionary *food = [Food ConvertFood:self.foodDetail];
     if ([cart.getCartFoodArray containsObject:food]) {
         self.addToCartButton.enabled = NO;
-        NSLog(@"%@",self.addToCartButton.titleLabel.textColor);
         [self.addToCartButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     }
-    // configure the other detail here...
-//    dispatch_queue_t loadImage_queue;
-//    loadImage_queue = dispatch_queue_create("network_queue", nil);
-//    dispatch_async(loadImage_queue, ^{
-        self.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:self.foodDetail.foodImagePath]];
-//    });
+    self.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:self.foodDetail.foodImagePath]];
+    self.foodScoreLabelA.text = [NSString stringWithFormat:@"%d",[self.foodDetail.foodScore intValue]];
+    int pointNumber = ([self.foodDetail.foodScore floatValue] - [self.foodDetail.foodScore intValue])*10;
+    self.foodScoreLabelB.text = [@"." stringByAppendingString:[NSString stringWithFormat:@"%d",pointNumber]];
+    
+    NSMutableArray *signMutableArray = [[NSMutableArray alloc]initWithArray:[self.foodDetail.tags allObjects]];
+    for (int i=0; i<[signMutableArray count]; i++) {
+        Tag *foodSign = signMutableArray[i];
+        if ([foodSign.tagID intValue] == 5) {
+            [signMutableArray removeObjectAtIndex:i];
+        }
+    }
+    if ([signMutableArray count] == 2) {
+        Tag *foodSign1 = signMutableArray[0];
+        Tag *foodSign2 = signMutableArray[1];
+        self.tasteSign.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
+        self.junkfoodSign.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign2.tagID intValue]]];
+    }else if ([signMutableArray count] == 1) {
+        Tag *foodSign1 = signMutableArray[0];
+        self.tasteSign.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
+    }
+}
+
+- (NSString *)getFoodSignImage:(int)foodID{
+    NSString *signImageName;
+    switch (foodID) {
+        case 1:
+            signImageName = @"hotSign.png";
+            break;
+        case 2:
+            signImageName = @"brightSign.png";
+            break;
+        case 3:
+            signImageName = @"sweetSign.png";
+            break;
+        case 4:
+            signImageName = @"strangeSign.png";
+            break;
+        case 6:
+            signImageName = @"junkfoodSign.png";
+            break;       
+        default:
+            break;
+    }
+    return signImageName;
 }
 
 - (NSString *)imageFilePath:(NSString *)imageName

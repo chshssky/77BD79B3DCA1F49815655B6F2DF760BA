@@ -88,6 +88,8 @@
 		73E38DAA169597750000D4A6 /* takeoutSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38DA9169597750000D4A6 /* takeoutSign.png */; };
 		73E38DAC1695A12E0000D4A6 /* sweetSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38DAB1695A12D0000D4A6 /* sweetSign.png */; };
 		73E38DAE1695A53B0000D4A6 /* junkfoodSign.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38DAD1695A53A0000D4A6 /* junkfoodSign.png */; };
+		73E38DB71696129E0000D4A6 /* foodDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38DB61696129E0000D4A6 /* foodDetail.png */; };
+		73E38DB9169613DB0000D4A6 /* foodDetailImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38DB8169613DB0000D4A6 /* foodDetailImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -213,6 +215,8 @@
 		73E38DA9169597750000D4A6 /* takeoutSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takeoutSign.png; sourceTree = "<group>"; };
 		73E38DAB1695A12D0000D4A6 /* sweetSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sweetSign.png; sourceTree = "<group>"; };
 		73E38DAD1695A53A0000D4A6 /* junkfoodSign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = junkfoodSign.png; sourceTree = "<group>"; };
+		73E38DB61696129E0000D4A6 /* foodDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodDetail.png; sourceTree = "<group>"; };
+		73E38DB8169613DB0000D4A6 /* foodDetailImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodDetailImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +351,8 @@
 		3F556543168EE378000E3D9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				73E38DB8169613DB0000D4A6 /* foodDetailImage.png */,
+				73E38DB61696129E0000D4A6 /* foodDetail.png */,
 				73E38DA9169597750000D4A6 /* takeoutSign.png */,
 				73E38D9D169596410000D4A6 /* brightSign.png */,
 				73E38DAD1695A53A0000D4A6 /* junkfoodSign.png */,
@@ -575,6 +581,8 @@
 				73E38DAA169597750000D4A6 /* takeoutSign.png in Resources */,
 				73E38DAC1695A12E0000D4A6 /* sweetSign.png in Resources */,
 				73E38DAE1695A53B0000D4A6 /* junkfoodSign.png in Resources */,
+				73E38DB71696129E0000D4A6 /* foodDetail.png in Resources */,
+				73E38DB9169613DB0000D4A6 /* foodDetailImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

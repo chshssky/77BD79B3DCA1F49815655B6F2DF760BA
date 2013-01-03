@@ -162,9 +162,6 @@
         if ([foodSign.tagID intValue] == 5) {
             cell.takeoutImage.image = [UIImage imageNamed:@"takeoutSign.png"];
             [signMutableArray removeObjectAtIndex:i];
-            self.whetherTakeout = YES;
-        }else{
-            self.whetherTakeout = NO;
         }
     }
     if ([signMutableArray count] == 2) {
@@ -205,9 +202,9 @@
     [cell.foodNameLabel setHighlightedTextColor:[UIColor blackColor]];
     cell.foodNameLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     [cell.foodScoreLabelA setHighlightedTextColor:[UIColor orangeColor]];
-    cell.foodScoreLabelA.font = [UIFont boldSystemFontOfSize:24.0f];
+    cell.foodScoreLabelA.font = [UIFont italicSystemFontOfSize:26.0f];
     [cell.foodScoreLabelB setHighlightedTextColor:[UIColor orangeColor]];
-    cell.foodScoreLabelB.font = [UIFont systemFontOfSize:16.0f];
+    cell.foodScoreLabelB.font = [UIFont italicSystemFontOfSize:16.0f];
     return cell;
 }
 
@@ -371,6 +368,16 @@
         TomatoDetailViewController *dvc = [segue destinationViewController];
         
         dvc.foodDetail = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        
+        Food *food = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        self.whetherTakeout = NO;
+        NSMutableArray *signMutableArray = [[NSMutableArray alloc]initWithArray:[food.tags allObjects]];
+        for (int i=0; i<[signMutableArray count]; i++) {
+            Tag *foodSign = signMutableArray[i];
+            if ([foodSign.tagID intValue] == 5) {
+                self.whetherTakeout = YES;
+            }
+        }
         dvc.whetherTakeout = self.whetherTakeout;
     } else if ([segue.identifier isEqualToString:@"FilterSegueIdentifier"]) {
         FilterTableViewController *ftvc = [segue destinationViewController];

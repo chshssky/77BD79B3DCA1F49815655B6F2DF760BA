@@ -17,5 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *foodPriceLabel;
 @property (strong, nonatomic) Food *foodDetail;
 @property (nonatomic) BOOL whetherTakeout;
+@property (weak, nonatomic) IBOutlet UILabel *foodScoreLabelA;
+@property (weak, nonatomic) IBOutlet UILabel *foodScoreLabelB;
+@property (weak, nonatomic) IBOutlet UIImageView *tasteSign;
+@property (weak, nonatomic) IBOutlet UIImageView *junkfoodSign;
 
 @end
