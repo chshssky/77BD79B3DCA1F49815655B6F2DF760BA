@@ -49,7 +49,6 @@
 		3FAB16CE1694157D00B95574 /* Food+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB16CD1694157D00B95574 /* Food+Init.m */; };
 		3FAB16D116941A7100B95574 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB16D016941A7100B95574 /* Food.m */; };
 		3FAB16D31694418D00B95574 /* foodImageNoneBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAB16D21694418D00B95574 /* foodImageNoneBackground.png */; };
-		3FAB16D5169441AA00B95574 /* cellClickedBackgroud.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAB16D4169441AA00B95574 /* cellClickedBackgroud.png */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
 		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
@@ -80,6 +79,9 @@
 		73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC3168F362100C1AA37 /* CartFooterView.m */; };
 		73DEDDC6168F364200C1AA37 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DEDDC5168F364200C1AA37 /* MessageUI.framework */; };
 		73DEDDC8168F365000C1AA37 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */; };
+		73E38D92169581B00000D4A6 /* headerView.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38D91169581B00000D4A6 /* headerView.png */; };
+		73E38D96169583AD0000D4A6 /* cellUnclickedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38D94169583AD0000D4A6 /* cellUnclickedBackground.png */; };
+		73E38D981695847F0000D4A6 /* cellClickedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E38D971695847F0000D4A6 /* cellClickedBackground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,7 +159,6 @@
 		3FAB16CF16941A7000B95574 /* Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 		3FAB16D016941A7100B95574 /* Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Food.m; sourceTree = "<group>"; };
 		3FAB16D21694418D00B95574 /* foodImageNoneBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodImageNoneBackground.png; sourceTree = "<group>"; };
-		3FAB16D4169441AA00B95574 /* cellClickedBackgroud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellClickedBackgroud.png; sourceTree = "<group>"; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
 		3FF0B07216450E3B0021ABE3 /* TomatoDataStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoDataStore.xcdatamodel; sourceTree = "<group>"; };
@@ -197,6 +198,9 @@
 		73DEDDC3168F362100C1AA37 /* CartFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CartFooterView.m; sourceTree = "<group>"; };
 		73DEDDC5168F364200C1AA37 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		73E38D91169581B00000D4A6 /* headerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerView.png; sourceTree = "<group>"; };
+		73E38D94169583AD0000D4A6 /* cellUnclickedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellUnclickedBackground.png; sourceTree = "<group>"; };
+		73E38D971695847F0000D4A6 /* cellClickedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellClickedBackground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -331,7 +335,9 @@
 		3F556543168EE378000E3D9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				3FAB16D4169441AA00B95574 /* cellClickedBackgroud.png */,
+				73E38D971695847F0000D4A6 /* cellClickedBackground.png */,
+				73E38D94169583AD0000D4A6 /* cellUnclickedBackground.png */,
+				73E38D91169581B00000D4A6 /* headerView.png */,
 				3FAB16D21694418D00B95574 /* foodImageNoneBackground.png */,
 				739FC4A91693F80A007FBA97 /* grayArrow.png */,
 				739FC4AA1693F80A007FBA97 /* grayArrow@2x.png */,
@@ -542,7 +548,9 @@
 				739FC4B71693F80A007FBA97 /* whiteArrow.png in Resources */,
 				739FC4B81693F80A007FBA97 /* whiteArrow@2x.png in Resources */,
 				3FAB16D31694418D00B95574 /* foodImageNoneBackground.png in Resources */,
-				3FAB16D5169441AA00B95574 /* cellClickedBackgroud.png in Resources */,
+				73E38D92169581B00000D4A6 /* headerView.png in Resources */,
+				73E38D96169583AD0000D4A6 /* cellUnclickedBackground.png in Resources */,
+				73E38D981695847F0000D4A6 /* cellClickedBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

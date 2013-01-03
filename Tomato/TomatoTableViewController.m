@@ -146,9 +146,13 @@
     Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.foodNameLabel.text = food.foodName;
-    cell.foodGradeLabel.text = [NSString stringWithFormat:@"%@",food.foodScore];
+    NSLog(@"%.1f",[food.foodScore floatValue]);
     
-    //cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
+    cell.foodGradeLabelA.text = [NSString stringWithFormat:@"%d",[food.foodScore intValue]];
+    int pointNumber = ([food.foodScore floatValue] - [food.foodScore intValue])*10;
+    cell.foodGradeLabelB.text = [@"." stringByAppendingString:[NSString stringWithFormat:@"%d",pointNumber]];
+    
+    cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
     
     dispatch_queue_t image_queue;
     image_queue = dispatch_queue_create("image_queue", nil);
@@ -156,8 +160,21 @@
         cell.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
         [cell reloadInputViews];
     });
-    //
     
+    UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackground.png"];
+    UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
+    [cell setSelectedBackgroundView:selectedView];
+    
+    UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackgroud.png"];
+    UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
+    [cell setBackgroundView:unselectedView];
+    
+    [cell.foodNameLabel setHighlightedTextColor:[UIColor blackColor]];
+    cell.foodNameLabel.font = [UIFont systemFontOfSize:16.0f];
+    [cell.foodGradeLabelA setHighlightedTextColor:[UIColor orangeColor]];
+    cell.foodGradeLabelA.font = [UIFont boldSystemFontOfSize:24.0f];
+    [cell.foodGradeLabelB setHighlightedTextColor:[UIColor orangeColor]];
+    cell.foodGradeLabelB.font = [UIFont systemFontOfSize:16.0f];
     return cell;
 }
 

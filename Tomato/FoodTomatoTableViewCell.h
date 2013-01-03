@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *foodNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *foodTagLabel;
-@property (weak, nonatomic) IBOutlet UILabel *foodGradeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *foodGradeLabelA;
+@property (weak, nonatomic) IBOutlet UILabel *foodGradeLabelB;
 
 @end
