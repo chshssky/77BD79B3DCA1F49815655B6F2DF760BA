@@ -11,6 +11,7 @@
 #import "Restaurant.h"
 #import "Telephone.h"
 #import "Food+Update.h"
+#import "NetworkInterface.h"
 
 @implementation Food (Init)
 
@@ -40,6 +41,12 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
             food.foodGrade = [NSNumber numberWithUnsignedInt:0];
             
             food.foodImagePath = [dic objectForKey:FOOD_IMAGE_PATH];
+            
+            dispatch_queue_t network_queue;
+            network_queue = dispatch_queue_create("network_queue", nil);
+            dispatch_async(network_queue, ^{
+                [NetworkInterface DownloadImage:food.foodImagePath];
+            });
             
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH时mm分ss秒"];

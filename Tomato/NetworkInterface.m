@@ -16,6 +16,7 @@
 #import "Telephone.h"
 
 #define IP @"192.168.1.103"
+#define USE_SERVER
 
 
 @implementation NetworkInterface
@@ -23,22 +24,21 @@
 + (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSString *ip = IP;
-//    dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
-//    dispatch_async(fetchQ, ^{
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
-        NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", ip, min, max];
-        NSURL *URL = [NSURL URLWithString:urlstr];
-        //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
-        NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-        [Food initFood:foods inManagedObjectedContext:context];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
+    NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", ip, min, max];
+    NSURL *URL = [NSURL URLWithString:urlstr];
+#ifdef USE_SERVER
+    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
+#else
+    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+#endif
+    [Food initFood:foods inManagedObjectedContext:context];
 
 //        [document.managedObjectContext performBlock:^{
 //            for (NSDictionary *flickrInfo in photos) {
 //                [Photo photoWithFlickrInfo:flickrInfo inManagedObjectContext:document.managedObjectContext];
 //            }
 //        }];
-//    });
-    //dispatch_release(fetchQ);
 }
 
 
@@ -159,6 +159,30 @@
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
     return [[NSArray alloc] initWithContentsOfURL:url];
+}
+
++ (void)DownloadImage:(NSString *)imagename
+{
+    NSString *ip = IP;
+    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/DownloadPicture?filename=%@", ip, imagename];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URL]];
+    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"GET"];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSLog(@"%d",[returnData length]);
+    
+    //NSString *imagePath = [[NSBundle mainBundle] pathForResource:imagename ofType:@"jpg"];
+    //NSLog(@"%@",imagePath);
+    NSString * dirname = @"/Documents/";
+    NSString * imagefullname = [imagename stringByAppendingString:@".jpg"];
+    imagefullname = [dirname stringByAppendingString:imagefullname];
+    NSString * imagePath = [NSHomeDirectory() stringByAppendingPathComponent:imagefullname];
+    NSLog(@"%@",imagePath);
+    [returnData writeToFile: imagePath atomically:YES];
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",returnString);
 }
 
 

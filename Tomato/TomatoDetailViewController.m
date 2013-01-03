@@ -117,8 +117,18 @@
         [self.addToCartButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     }
     // configure the other detail here...
-    
+//    dispatch_queue_t loadImage_queue;
+//    loadImage_queue = dispatch_queue_create("network_queue", nil);
+//    dispatch_async(loadImage_queue, ^{
+        self.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:self.foodDetail.foodImagePath]];
+//    });
 }
+
+- (NSString *)imageFilePath:(NSString *)imageName
+{
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[imageName stringByAppendingPathExtension:@"jpg"]];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

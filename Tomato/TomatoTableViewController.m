@@ -126,6 +126,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSString *)imageFilePath:(NSString *)imageName
+{
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[imageName stringByAppendingPathExtension:@"jpg"]];
+}
+
+
 #pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -141,38 +147,16 @@
     
     cell.foodNameLabel.text = food.foodName;
     cell.foodGradeLabel.text = [NSString stringWithFormat:@"%@",food.foodScore];
-    cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
     
-//    UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackgroud.png"];
-//    UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
-//    
-//    [cell setBackgroundColor:[UIColor clearColor]];
-//    [cell setSelectedBackgroundView:selectedView];
-//    
-//    UIImage *unselectedImage = [UIImage imageNamed:@"grayArrow.png"];
-//    UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
-//    
-//    [cell setBackgroundView:unselectedView];
-
+    //cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
     
-//    UIView *cellView = [[UIView alloc] init];
-//    cellView.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"cellClickedBackgroud.png"] ];
-//    [cell setSelectedBackgroundView:cellView];
-
-    //cell.imageView.image = [UIImage imageNamed:@"cellClickedBackgroud.png"];
-    
-//    NSInteger index = indexPath.row;
-//    NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.foodList[index]];
-//    
-//    cell.foodNameLabel.text = [dic objectForKey:FOOD_NAME];
-//    cell.foodGradeLabel.text = [dic objectForKey:FOOD_SCORE];
-//    NSArray *arr = [[NSArray alloc] initWithArray:[dic objectForKey:FOOD_TAGS]];
-//    NSString *tag = @"";
-//    
-//    for (NSString *index in arr) {
-//        tag = [tag stringByAppendingFormat:@"  %@", self.foodTags[[index integerValue] - 1]];
-//    }
-//    cell.foodTagLabel.text = tag;
+    dispatch_queue_t image_queue;
+    image_queue = dispatch_queue_create("image_queue", nil);
+    dispatch_async(image_queue, ^{
+        cell.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
+        [cell reloadInputViews];
+    });
+    //
     
     return cell;
 }
@@ -193,9 +177,9 @@
     [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     
     //刷新表格内容
+    [self setupFetchResultController];
     
-    
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
 }
 
 //这个方法运行于子线程中，完成获取刷新数据的操作

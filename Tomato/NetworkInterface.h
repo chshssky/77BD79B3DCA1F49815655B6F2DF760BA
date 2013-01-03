@@ -35,4 +35,6 @@
 
 + (NSArray *)requestForRestaurantList;
 
++ (void)DownloadImage:(NSString *)imagename;
+
 @end
