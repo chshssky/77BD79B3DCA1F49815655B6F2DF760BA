@@ -100,9 +100,9 @@
     self.achievements = tagsArr;
     self.tags = achievementsArr;
     
-    NSInteger i = 0;
+    NSInteger i = 1;
     for (NSDictionary *tag in tagsArr) {
-        [Tag tagWithInitialData:[tag objectForKey:TAG_NAME] andID:i++ + 1 andType:[tag objectForKey:TAG_TYPE] inManagedObjectContext:self.managedObjectContext];
+        [Tag tagWithInitialData:[tag objectForKey:TAG_NAME] andID:i++ andType:[tag objectForKey:TAG_TYPE] inManagedObjectContext:self.managedObjectContext];
     }
 
     for (NSString *achievement in achievementsArr) {

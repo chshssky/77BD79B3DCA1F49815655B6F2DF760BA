@@ -36,8 +36,11 @@
     
     if (self.tagArray == nil) {
         self.tagArray = [[NSMutableArray alloc] init];
-        for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count]; i++) {
+        for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count] - 2; i++) {
             [self.tagArray addObject:[NSNumber numberWithBool:YES]];
+        }
+        for (int i = 4; i < [self.fetchedResultsController.fetchedObjects count]; i ++) {
+            [self.tagArray addObject:[NSNumber numberWithBool:NO]];
         }
     }
 }

@@ -17,7 +17,7 @@
 {
     Tag *tag = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    request.predicate = [NSPredicate predicateWithFormat:@"tagName = %@", tagName];
+    request.predicate = [NSPredicate predicateWithFormat:@"tagID = %d", index];
     //NSSortDescriptor *sortDescriptor = [NSSortDescriptor ]
     
     NSError *error = nil;
@@ -33,7 +33,10 @@
     } else {
         tag = [matches lastObject];
     }
-    
+    if (![context save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
     return tag;
 }
 @end

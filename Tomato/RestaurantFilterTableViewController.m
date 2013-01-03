@@ -61,7 +61,7 @@
 - (void)setupFetchResultController
 {
     NSFetchRequest *requst = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
-    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"restaurantName" ascending:YES]];
+    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"restaurantID" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:requst
                                                                         managedObjectContext:self.managedObjectContext

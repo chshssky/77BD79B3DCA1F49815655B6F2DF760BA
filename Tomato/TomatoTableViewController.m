@@ -75,16 +75,39 @@
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
     if (self.foodTags != nil) {
-//        NSString *predicateStr = @"";
-//        for (int i = 1; i <= [self.foodTags count]; i ++) {
-//            if ([self.foodTags[i - 1] boolValue]) {
-//                predicateStr = [predicateStr stringByAppendingFormat:@"OR tags contains %d ", i];
-//                NSLog(@"i: %d", i);
-//            }
-//        }
-//        predicateStr = [predicateStr substringFromIndex:2];
-        request.predicate = [NSPredicate predicateWithFormat:@"ANY tags == 4"];
-        
+        NSString *predicateStr = @"";
+        for (int i = 1; i <= [self.foodTags count] - 2; i ++) {
+            if ([self.foodTags[i - 1] boolValue]) {
+                predicateStr = [predicateStr stringByAppendingFormat:@" OR (ANY tags == %d)", i];
+            }
+        }
+        for (int i = 5; i <= [self.foodTags count]; i ++) {
+            if ([self.foodTags[i - 1] boolValue]) {
+                predicateStr = [predicateStr stringByAppendingFormat:@") AND (ANY tags == %d)", i];
+            } else {
+                predicateStr = [predicateStr stringByAppendingString:@")"];// OR (ANY tags == %d)", i];
+            }
+        }
+        predicateStr = [predicateStr substringFromIndex:4];
+        predicateStr = [@"((" stringByAppendingString:predicateStr];
+        NSLog(@"predicateStr:%@", predicateStr);
+        NSString *restaurantStr = @"";
+        if (self.foodRestaurants != nil) {
+            for (int i = 1; i <= [self.foodRestaurants count]; i ++) {
+                if ([self.foodRestaurants[i - 1] boolValue]) {
+                    restaurantStr = [restaurantStr stringByAppendingFormat:@"OR (restaurant == %d)", i];
+                }
+            }
+            
+            restaurantStr = [restaurantStr substringFromIndex:3];
+            restaurantStr = [restaurantStr stringByAppendingString:@")"];
+            restaurantStr = [@") AND (" stringByAppendingString:restaurantStr];
+            predicateStr = [predicateStr stringByAppendingString:restaurantStr];
+            predicateStr = [@"(" stringByAppendingString:predicateStr];
+            
+            NSLog(@"NEW  predicateStr:%@", predicateStr);
+        }
+        request.predicate = [NSPredicate predicateWithFormat:predicateStr];
         [self.tableView reloadData];
     }
     

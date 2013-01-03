@@ -61,8 +61,8 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
                     NSLog(@"Tags not init!");
                 } else {
                     tag = [matches lastObject];
+                    [food addTagsObject:tag];
                 }
-                [food addTagsObject:tag];
             }
             
             NSDictionary *rest = [dic objectForKey:RESTAURANT];
@@ -79,6 +79,7 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
             } else if ([matches count] == 0) {
                 res = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurant" inManagedObjectContext:context];
                 res.restaurantID = [NSNumber numberWithInteger:[[rest objectForKey:RESTAURANT_ID] integerValue]];
+                NSLog(@"restaurantID:%@", [NSNumber numberWithInteger:[[rest objectForKey:RESTAURANT_ID] integerValue]]);
                 res.restaurantName = [rest objectForKey:RESTAURANT_NAME];
                 
                 for (NSString *teleNumber in [rest objectForKey:RESTAURANT_TELEPHONE]) {

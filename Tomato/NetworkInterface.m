@@ -25,11 +25,11 @@
     NSString *ip = IP;
 //    dispatch_queue_t fetchQ = dispatch_queue_create("FoodList fetcher", NULL);
 //    dispatch_async(fetchQ, ^{
-//        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
         NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", ip, min, max];
         NSURL *URL = [NSURL URLWithString:urlstr];
-        NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
-        //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+        //NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
+        NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
         [Food initFood:foods inManagedObjectedContext:context];
 
 //        [document.managedObjectContext performBlock:^{
