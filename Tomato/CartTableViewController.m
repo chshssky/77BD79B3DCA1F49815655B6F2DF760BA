@@ -16,12 +16,34 @@
 @interface CartTableViewController ()  <MFMessageComposeViewControllerDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, retain) NSNumber *tempSection;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 
 
 @end
 
 @implementation CartTableViewController
 @synthesize delegate = _delegate;
+@synthesize editButton = _editButton;
+
+- (IBAction)editButtonClicked:(id)sender {
+    //    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClicked:)];
+    //    self.navigationItem.leftBarButtonItem = cancelButton;
+    
+    
+    [self.tableView setEditing:YES animated:YES];
+    //[self.editButton setTitle:@"删除"];
+    [self.editButton setTitle:@"取消"];
+    //[self.editButton setAction:@selector(editButtonClickedWithSure:)];
+    [self.editButton setAction:@selector(editButtonClickedWithCancel:)];
+}
+
+- (IBAction)editButtonClickedWithCancel:(id)sender
+{
+    [self.tableView setEditing:NO animated:YES];
+    [self.editButton setTitle:@"编辑"];
+    [self.editButton setAction:@selector(editButtonClicked:)];
+    
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -45,6 +67,12 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [self.tableView setEditing:NO animated:YES];
+    [self.editButton setTitle:@"编辑"];
+    [self.editButton setAction:@selector(editButtonClicked:)];
 }
 
 #pragma mark - Table view data source

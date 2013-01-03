@@ -253,21 +253,21 @@
                                     <outlet property="junkfoodImage" destination="hf9-EC-g0K" id="NjT-Pl-9lp"/>
                                     <outlet property="takeoutImage" destination="nsu-mC-jDT" id="YE8-jl-zhi"/>
                                     <outlet property="tasteImage" destination="wrh-6b-dcr" id="E4V-xn-POL"/>
-                                    <segue destination="IBi-f0-QjR" kind="push" id="pp2-YC-Y5V"/>
+                                    <segue destination="IBi-f0-QjR" kind="push" id="w8t-aN-Kev"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="Favorites" id="n1T-cI-gB3">
-                        <barButtonItem key="rightBarButtonItem" title="编辑" id="5yT-OH-S5s">
+                        <barButtonItem key="rightBarButtonItem" title="编辑" id="q6i-jv-t0U">
                             <connections>
-                                <action selector="editButtonClicked:" destination="eVY-ue-4yc" id="X23-so-Pld"/>
+                                <action selector="editButtonClicked:" destination="eVY-ue-4yc" id="G0w-th-Pug"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="5yT-OH-S5s" id="eGD-49-oSl"/>
+                        <outlet property="editButton" destination="q6i-jv-t0U" id="F2h-Fc-zss"/>
                         <outlet property="favoriteNavigationBar" destination="n1T-cI-gB3" id="2PW-n9-3bv"/>
                     </connections>
                 </tableViewController>
@@ -399,7 +399,16 @@
                             <outlet property="delegate" destination="Q7m-2t-vf0" id="mhY-3L-g9x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cart" id="98m-4q-uus"/>
+                    <navigationItem key="navigationItem" title="Cart" id="98m-4q-uus">
+                        <barButtonItem key="rightBarButtonItem" title="编辑" id="Fuv-kN-sMI">
+                            <connections>
+                                <action selector="editButtonClicked:" destination="Q7m-2t-vf0" id="fg1-mH-PRW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="Fuv-kN-sMI" id="xou-N3-rTw"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95Y-tF-pkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -811,6 +820,9 @@
         </class>
         <class className="CartTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="CoreDataTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
@@ -903,6 +915,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pp2-YC-Y5V"/>
+        <segue reference="w8t-aN-Kev"/>
     </inferredMetricsTieBreakers>
 </document>

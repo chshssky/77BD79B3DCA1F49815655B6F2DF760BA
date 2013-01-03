@@ -12,7 +12,6 @@
 #import "Food.h"
 #import "TomatoDetailViewController.h"
 
-
 @interface FavoritesTableViewController ()
 @property (nonatomic, strong) NSMutableArray *selectedRow;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -31,6 +30,12 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [self.tableView setEditing:NO animated:YES];
+    [self.editButton setTitle:@"编辑"];
+    [self.editButton setAction:@selector(editButtonClicked:)];
 }
 
 - (void)viewDidLoad
@@ -59,47 +64,63 @@
     }
     return _selectedRow;
 }
-
 - (IBAction)editButtonClicked:(id)sender {
-//    self.cancelButton = [[UIBarButtonItem alloc] init];
-//    [self.cancelButton setTitle:@"取消"];
-//    [self.cancelButton setAction:@selector(cancelButtonClicked:)];
-////    [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [self.favoriteNavigationBar setLeftBarButtonItem:self.cancelButton];
-//    [self.cancelButton setAction:@selector(cancelButtonClicked:)];
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClicked:)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
+//    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClicked:)];
+//    self.navigationItem.leftBarButtonItem = cancelButton;
     
     
     [self.tableView setEditing:YES animated:YES];
-    [self.editButton setTitle:@"删除"];
-    [self.editButton setAction:@selector(editButtonClickedWithSure:)];
+    //[self.editButton setTitle:@"删除"];
+    [self.editButton setTitle:@"取消"];
+    //[self.editButton setAction:@selector(editButtonClickedWithSure:)];
+    [self.editButton setAction:@selector(editButtonClickedWithCancel:)];
 }
 
-- (IBAction)cancelButtonClicked:(id)sender
+
+
+//- (IBAction)cancelButtonClicked:(id)sender
+//{
+//    [self.tableView setEditing:NO animated:YES];
+//    [self.editButton setTitle:@"编辑"];
+//    [self.editButton setAction:@selector(editButtonClicked:)];
+//    [self.favoriteNavigationBar setLeftBarButtonItem:nil];
+//}
+
+- (IBAction)editButtonClickedWithCancel:(id)sender
 {
     [self.tableView setEditing:NO animated:YES];
     [self.editButton setTitle:@"编辑"];
     [self.editButton setAction:@selector(editButtonClicked:)];
     [self.favoriteNavigationBar setLeftBarButtonItem:nil];
+
 }
 
-- (IBAction)editButtonClickedWithSure:(id)sender
+//- (IBAction)editButtonClickedWithSure:(id)sender
+//{
+//    int count = [self.selectedRow count];
+//    if (count > 0 ) {
+//        [Collection DeleteCollections:self.selectedRow withFetchedResultController:self.fetchedResultsController inManagedObjectContext:self.managedObjectContext];
+//        [self.selectedRow removeAllObjects];
+//        [self.editButton setAction:@selector(editButtonClicked:)];
+//        [self.editButton setTitle:@"编辑"];
+//        [self.tableView setEditing:NO animated:YES];
+//    }else {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未选中任何数据!" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:nil, nil];
+//        [alert show];
+//    }
+//}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int count = [self.selectedRow count];
-    if (count > 0 ) {
-        [Collection DeleteCollections:self.selectedRow withFetchedResultController:self.fetchedResultsController inManagedObjectContext:self.managedObjectContext];
-        [self.selectedRow removeAllObjects];
-        [self.editButton setAction:@selector(editButtonClicked:)];
-        [self.editButton setTitle:@"编辑"];
-        [self.tableView setEditing:NO animated:YES];
-    }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未选中任何数据!" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:nil, nil];
-        [alert show];
+    NSMutableArray *selectedRow = [[NSMutableArray alloc] init];
+    [selectedRow addObject:indexPath];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [Collection DeleteCollections:selectedRow withFetchedResultController:self.fetchedResultsController inManagedObjectContext:self.managedObjectContext];
     }
 }
 
+
+//
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
@@ -112,17 +133,18 @@
         [self.selectedRow removeObject:indexPath];
     }
 }
-
+//
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.editButton.title isEqualToString:@"删除"]) {
         [self.selectedRow addObject:indexPath];
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
-}
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+//}
 
 
 
@@ -210,21 +232,13 @@
 }
 */
 
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 92.0;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    
-    if ([[segue identifier] isEqualToString:@"TomatoDetailSegueIdentifier"]) {
-        TomatoDetailViewController *dvc = [segue destinationViewController];
-        
-        Collection *collection = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
-        dvc.foodDetail = collection.food;
-    }
-}
+
 
 
 @end
