@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableArray *foodTags;
 @property (strong, nonatomic) NSMutableArray *foodRestaurants;
 @property (nonatomic) BOOL whetherTakeout;
+@property (weak, nonatomic) IBOutlet UINavigationItem *foodNavigationBar;
 
 @end
 
@@ -40,7 +41,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     if (_refreshTableView == nil) {
         //初始化下拉刷新控件
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
@@ -56,6 +56,7 @@
     self.foodTags = nil;
     self.foodRestaurants = nil;
     [self.navigationController setTitle:@"番茄美食"];
+    [self.foodNavigationBar setTitle:@"番茄美食"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

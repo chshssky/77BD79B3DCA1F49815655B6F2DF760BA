@@ -45,7 +45,8 @@
     
     [self setupFetchResultController];
     [self.navigationController setTitle:@"口味相投"];
-
+    [self.favoriteNavigationBar setTitle:@"口味相投"];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -166,6 +167,7 @@
 }
 
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FavoriteTableViewCellIdentifier";
@@ -174,6 +176,7 @@
         cell = [[FavoriteTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     Collection *collet = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
     Food *food = collet.food;
     cell.foodNameLabel.text = collet.food.foodName;
     //cell.foodImageView =

@@ -62,7 +62,13 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];}
+    [super viewDidLoad];
+    Cart *cart = [Cart getCart];
+    if ([[cart getCartFoodArray] count] == 0) {
+        
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
