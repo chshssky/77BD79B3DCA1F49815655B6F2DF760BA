@@ -20,6 +20,7 @@
 
 @property (strong, nonatomic) NSMutableArray *foodTags;
 @property (strong, nonatomic) NSMutableArray *foodRestaurants;
+@property (nonatomic) BOOL whetherTakeout;
 
 @end
 
@@ -112,7 +113,6 @@
     
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:YES]];
     
-    
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
@@ -162,6 +162,9 @@
         if ([foodSign.tagID intValue] == 5) {
             cell.takeoutImage.image = [UIImage imageNamed:@"takeoutSign.png"];
             [signMutableArray removeObjectAtIndex:i];
+            self.whetherTakeout = YES;
+        }else{
+            self.whetherTakeout = NO;
         }
     }
     if ([signMutableArray count] == 2) {
@@ -368,6 +371,7 @@
         TomatoDetailViewController *dvc = [segue destinationViewController];
         
         dvc.foodDetail = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        dvc.whetherTakeout = self.whetherTakeout;
     } else if ([segue.identifier isEqualToString:@"FilterSegueIdentifier"]) {
         FilterTableViewController *ftvc = [segue destinationViewController];
         ftvc.tagArray = self.foodTags;

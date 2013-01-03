@@ -14,6 +14,8 @@
 #import "Food+Grade.h"
 #import "Cart.h"
 #import "NetworkInterface.h"
+#import "Tag+Init.h"
+#import "Tag.h"
 
 @interface TomatoDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -99,6 +101,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self.whetherTakeout == NO) {
+        [self.addToCartButton setHidden:YES];
+    }
     
     self.whetherAllowToRate = YES;
     [self setUpEditableRateView:self.whetherAllowToRate];

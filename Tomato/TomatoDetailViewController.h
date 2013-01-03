@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *foodTagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *foodPriceLabel;
 @property (strong, nonatomic) Food *foodDetail;
+@property (nonatomic) BOOL whetherTakeout;
 
 @end

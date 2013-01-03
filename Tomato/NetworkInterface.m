@@ -16,7 +16,7 @@
 #import "Telephone.h"
 
 #define IP @"192.168.1.103"
-//#define USE_SERVER
+#define USE_SERVER
 
 
 @implementation NetworkInterface
