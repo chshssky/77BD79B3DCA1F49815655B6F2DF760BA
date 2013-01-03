@@ -4,12 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
-        <!--Tomato Table View Controller - Tomato-->
+        <!--Tomato Table View Controller - 番茄美食-->
         <scene sceneID="uzx-ZD-GmQ">
             <objects>
                 <tableViewController id="XJz-q1-zvV" customClass="TomatoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="ra3-CP-tyK">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -75,7 +75,7 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Tomato" id="X0p-xm-cbs">
+                    <navigationItem key="navigationItem" title="番茄美食" id="X0p-xm-cbs">
                         <barButtonItem key="leftBarButtonItem" title="筛选" id="sTM-gM-6aI">
                             <connections>
                                 <segue destination="Kbd-aM-cuB" kind="push" identifier="FilterSegueIdentifier" id="Zja-pO-ALh"/>
@@ -97,7 +97,7 @@
             <objects>
                 <tableViewController id="Kbd-aM-cuB" customClass="FilterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Oes-YJ-rlf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -158,7 +158,7 @@
             <objects>
                 <tableViewController id="iFp-7j-eFE" customClass="RestaurantFilterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="pvp-On-uJb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -189,12 +189,12 @@
             </objects>
             <point key="canvasLocation" x="2052" y="-2016"/>
         </scene>
-        <!--Favorites Table View Controller - Favorites-->
+        <!--Favorites Table View Controller - 口味相投-->
         <scene sceneID="TI3-li-26R">
             <objects>
                 <tableViewController id="eVY-ue-4yc" customClass="FavoritesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="86" sectionHeaderHeight="22" sectionFooterHeight="22" id="qA1-ic-Ji1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -217,16 +217,16 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="61y-sl-Vty">
-                                            <rect key="frame" x="231" y="13" width="34" height="21"/>
+                                            <rect key="frame" x="230" y="9" width="35" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="27"/>
                                             <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=".0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mj6-cP-Vhj">
-                                            <rect key="frame" x="266" y="6" width="22" height="21"/>
+                                            <rect key="frame" x="267" y="8" width="22" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                             <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -259,7 +259,7 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorites" id="n1T-cI-gB3">
+                    <navigationItem key="navigationItem" title="口味相投" id="n1T-cI-gB3">
                         <barButtonItem key="rightBarButtonItem" title="编辑" id="q6i-jv-t0U">
                             <connections>
                                 <action selector="editButtonClicked:" destination="eVY-ue-4yc" id="G0w-th-Pug"/>
@@ -275,12 +275,12 @@
             </objects>
             <point key="canvasLocation" x="1006" y="-206"/>
         </scene>
-        <!--Achievement Table View Controller - Achievements-->
+        <!--Achievement Table View Controller - 我的荣誉-->
         <scene sceneID="Jpz-Be-qrM">
             <objects>
                 <tableViewController id="tNE-RK-eH9" customClass="AchievementTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="71" sectionHeaderHeight="22" sectionFooterHeight="22" id="iGf-9U-bB8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -321,17 +321,17 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Achievements" id="HZV-LV-ucQ"/>
+                    <navigationItem key="navigationItem" title="我的荣誉" id="HZV-LV-ucQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zYA-D2-FTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1010" y="376"/>
         </scene>
-        <!--Navigation Controller - Achievements-->
+        <!--Navigation Controller - 我的荣誉-->
         <scene sceneID="91x-r9-X6j">
             <objects>
                 <navigationController definesPresentationContext="YES" id="u2o-rv-cm9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Achievements" id="rzM-ZT-5Kl"/>
+                    <tabBarItem key="tabBarItem" title="我的荣誉" image="achievement.png" id="rzM-ZT-5Kl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nto-bM-aBP">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -343,11 +343,11 @@
             </objects>
             <point key="canvasLocation" x="476" y="376"/>
         </scene>
-        <!--Navigation Controller - Cart-->
+        <!--Navigation Controller - 稍后再吃-->
         <scene sceneID="CPI-qv-lbC">
             <objects>
                 <navigationController definesPresentationContext="YES" id="bDw-vO-9aV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cart" id="NgY-NQ-DhS"/>
+                    <tabBarItem key="tabBarItem" title="稍后再吃" image="cart.png" id="NgY-NQ-DhS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3p4-C1-dbe">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -359,12 +359,12 @@
             </objects>
             <point key="canvasLocation" x="475" y="957"/>
         </scene>
-        <!--Cart Table View Controller - Cart-->
+        <!--Cart Table View Controller - 稍后再吃-->
         <scene sceneID="47F-0Q-pkE">
             <objects>
                 <tableViewController id="Q7m-2t-vf0" customClass="CartTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="IAc-hX-iM1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -399,7 +399,7 @@
                             <outlet property="delegate" destination="Q7m-2t-vf0" id="mhY-3L-g9x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Cart" id="98m-4q-uus">
+                    <navigationItem key="navigationItem" title="稍后再吃" id="98m-4q-uus">
                         <barButtonItem key="rightBarButtonItem" title="编辑" id="Fuv-kN-sMI">
                             <connections>
                                 <action selector="editButtonClicked:" destination="Q7m-2t-vf0" id="fg1-mH-PRW"/>
@@ -414,11 +414,11 @@
             </objects>
             <point key="canvasLocation" x="1010" y="957"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - 口味相投-->
         <scene sceneID="5EH-Cn-6wG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Isj-Xu-c4X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="Z6K-R7-wEm"/>
+                    <tabBarItem key="tabBarItem" title="口味相投" image="favorite.png" id="Z6K-R7-wEm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TKA-Dv-fW3">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -430,11 +430,11 @@
             </objects>
             <point key="canvasLocation" x="472" y="-206"/>
         </scene>
-        <!--Navigation Controller - Toamto-->
+        <!--Navigation Controller - 番茄美食-->
         <scene sceneID="yrw-38-8sM">
             <objects>
                 <navigationController definesPresentationContext="YES" id="eAd-ec-6S9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Toamto" id="Cui-0f-4Vs"/>
+                    <tabBarItem key="tabBarItem" title="番茄美食" image="food.png" id="Cui-0f-4Vs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Na8-Hi-XgG">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -472,7 +472,7 @@
             <objects>
                 <tableViewController id="qH3-ul-UGJ" customClass="PublishTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="nWh-xP-nFa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <containerView key="tableHeaderView" contentMode="scaleToFill" id="wWZ-gb-yCt">
@@ -556,22 +556,22 @@
             <objects>
                 <viewController id="IBi-f0-QjR" customClass="TomatoDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xme-q1-cDt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="foodDetail.png" id="VSg-l3-ZZC">
-                                <rect key="frame" x="10" y="8" width="300" height="264"/>
+                                <rect key="frame" x="10" y="8" width="300" height="352"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10.0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fao-LE-Xks">
-                                <rect key="frame" x="45" y="277" width="60" height="27"/>
+                                <rect key="frame" x="45" y="365" width="60" height="27"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4i6-b3-iFg">
-                                <rect key="frame" x="245" y="282" width="55" height="41"/>
+                                <rect key="frame" x="245" y="370" width="55" height="41"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="收藏">
@@ -586,7 +586,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j7t-NK-VAz">
-                                <rect key="frame" x="167" y="282" width="70" height="41"/>
+                                <rect key="frame" x="167" y="370" width="70" height="41"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="我要吃">
@@ -601,29 +601,29 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="￥" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qy3-tt-AsU">
-                                <rect key="frame" x="20" y="278" width="23" height="27"/>
+                                <rect key="frame" x="20" y="366" width="23" height="27"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="I5h-EF-CTb">
-                                <rect key="frame" x="20" y="308" width="49" height="49"/>
+                                <rect key="frame" x="20" y="396" width="49" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="sah-3G-pAR">
-                                <rect key="frame" x="74" y="308" width="49" height="49"/>
+                                <rect key="frame" x="74" y="396" width="49" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Me:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e6m-VB-mg0">
-                                <rect key="frame" x="139" y="332" width="43" height="29"/>
+                                <rect key="frame" x="139" y="420" width="43" height="29"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" name="SnellRoundhand-Black" family="Snell Roundhand" pointSize="22"/>
                                 <color key="textColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="QQ9-H9-jfQ">
-                                <rect key="frame" x="20" y="15" width="280" height="246"/>
+                                <rect key="frame" x="20" y="15" width="280" height="334"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sfO-oL-ia1">
@@ -664,11 +664,11 @@
             <objects>
                 <viewController id="ZHB-Sc-nwk" customClass="TomatoDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P8r-e5-EHj">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="p1a-QR-mWe">
-                                <rect key="frame" x="20" y="20" width="280" height="357"/>
+                                <rect key="frame" x="20" y="20" width="280" height="445"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -736,7 +736,7 @@
             <objects>
                 <tableViewController id="Oxp-O5-2Nf" customClass="RestaurantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sRD-nn-hZx">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -835,121 +835,18 @@
         </scene>
     </scenes>
     <resources>
+        <image name="achievement.png" width="30" height="30"/>
+        <image name="cart.png" width="30" height="30"/>
+        <image name="favorite.png" width="30" height="30"/>
+        <image name="food.png" width="30" height="30"/>
         <image name="foodDetail.png" width="528" height="501"/>
     </resources>
-    <classes>
-        <class className="AchievementTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AchievementTableViewController.h"/>
-        </class>
-        <class className="AchievementsTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AchievementsTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="achievementDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="achievementImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="achievementNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CartTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="CoreDataViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataViewController.h"/>
-        </class>
-        <class className="FavoriteTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabelA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabelB" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="junkfoodImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="takeoutImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tasteImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
-            </relationships>
-        </class>
-        <class className="FilterTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterTableViewController.h"/>
-        </class>
-        <class className="FoodDetailView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodDetailView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodImageDetail" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="foodNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="foodPriceTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="FoodTomatoTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodTomatoTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabelA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabelB" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="junkfoodImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="takeoutImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tasteImage" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="PublishHeaderViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishHeaderViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodDetailView" candidateClass="FoodDetailView"/>
-            </relationships>
-        </class>
-        <class className="PublishTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="foodDetailView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="RestaurantFilterTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RestaurantFilterTableViewController.h"/>
-        </class>
-        <class className="RestaurantTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RestaurantTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="restaurantDelegate"/>
-            </relationships>
-        </class>
-        <class className="TomatoDetailViewController" superclassName="CoreDataViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="addToCartButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="foodPriceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabelA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabelB" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="junkfoodSign" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tasteSign" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="TomatoTableViewController" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoTableViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="K7K-CZ-1nn"/>
+        <segue reference="w8t-aN-Kev"/>
     </inferredMetricsTieBreakers>
 </document>

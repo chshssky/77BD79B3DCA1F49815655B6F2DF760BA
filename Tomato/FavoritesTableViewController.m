@@ -44,6 +44,7 @@
     [super viewDidLoad];
     
     [self setupFetchResultController];
+    [self.navigationController setTitle:@"口味相投"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -236,9 +237,9 @@
     [cell.foodNameLabel setHighlightedTextColor:[UIColor blackColor]];
     cell.foodNameLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     [cell.foodScoreLabelA setHighlightedTextColor:[UIColor orangeColor]];
-    cell.foodScoreLabelA.font = [UIFont boldSystemFontOfSize:24.0f];
+    cell.foodScoreLabelA.font = [UIFont italicSystemFontOfSize:26.0f];
     [cell.foodScoreLabelB setHighlightedTextColor:[UIColor orangeColor]];
-    cell.foodScoreLabelB.font = [UIFont systemFontOfSize:16.0f];
+    cell.foodScoreLabelB.font = [UIFont italicSystemFontOfSize:16.0f];
     return cell;
 }
 

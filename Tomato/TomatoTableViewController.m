@@ -55,6 +55,7 @@
     
     self.foodTags = nil;
     self.foodRestaurants = nil;
+    [self.navigationController setTitle:@"番茄美食"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

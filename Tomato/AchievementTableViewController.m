@@ -30,6 +30,7 @@
     [super viewDidLoad];
     
     [self setupFetchResultController];
+    [self.navigationController setTitle:@"我的荣誉"];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
