@@ -188,7 +188,7 @@
     NSLog(@"doInBackground");
     
     //更新数据库
-    [NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
+    [NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
     
     //[NSThread sleepForTimeInterval:5];
     //后台操作线程执行完后，到主线程更新UI

@@ -28,6 +28,7 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
         NSError *foodError = nil;
         NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
         
+        NSLog(@"FoodID: %d", i);
         if (!foodMatches || ([foodMatches count] > 1)) {
             NSLog(@"Food Wrong!");
         } else if ([foodMatches count] == 0) {
