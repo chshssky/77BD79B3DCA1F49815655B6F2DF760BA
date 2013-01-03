@@ -158,6 +158,14 @@
     image_queue = dispatch_queue_create("image_queue", nil);
     dispatch_async(image_queue, ^{
         cell.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
+        
+        UIImage *fullImage = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
+        NSData *dataImg = UIImageJPEGRepresentation(fullImage, 0.3);
+        UIImage *smallImage = [[UIImage alloc] initWithData:dataImg];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.foodImageView.image = smallImage;
+        });
         [cell reloadInputViews];
     });
     
