@@ -11,5 +11,4 @@
 
 @interface PublishHeaderViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet FoodDetailView *foodDetailView;
-
 @end
