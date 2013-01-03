@@ -126,12 +126,12 @@
 
         if (indexPath.row == 0) {
             cell.textLabel.text = @"餐馆";
-            if (self.selectedRestaurantIndex) {
+            if (self.selectedRestaurantIndex == -1) {
                 cell.detailTextLabel.text = @"无";
             }
         } else {
             cell.textLabel.text = @"电话";
-            if (self.selectedRestaurantIndex) {
+            if (self.selectedRestaurantIndex == -1) {
                 cell.detailTextLabel.text = @"无";
             }
 //            } else {

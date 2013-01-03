@@ -162,7 +162,13 @@
                             <outlet property="delegate" destination="iFp-7j-eFE" id="9My-Yu-hv1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="餐馆" id="rJk-lb-kX3"/>
+                    <navigationItem key="navigationItem" title="餐馆" id="rJk-lb-kX3">
+                        <barButtonItem key="rightBarButtonItem" title="全选" id="D0C-Bt-Ux9">
+                            <connections>
+                                <action selector="selectedAllButtonPushed:" destination="iFp-7j-eFE" id="BLt-Tr-soQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDo-zO-g7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -822,6 +828,9 @@
         </class>
         <class className="RestaurantFilterTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RestaurantFilterTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="selectedAllButtonPushed:"/>
+            </relationships>
         </class>
         <class className="RestaurantTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RestaurantTableViewController.h"/>

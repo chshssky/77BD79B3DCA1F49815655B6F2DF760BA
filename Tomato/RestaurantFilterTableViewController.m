@@ -141,6 +141,12 @@
     return tagDes;
 }
 
+- (IBAction)selectedAllButtonPushed:(id)sender {
+    for (int i = 0; i < [self.restaurantArray count]; i ++) {
+        self.restaurantArray[i] = [NSNumber numberWithBool:YES];
+    }
+    [self.tableView reloadData];
+}
 
 #pragma mark - Table view delegate
 
