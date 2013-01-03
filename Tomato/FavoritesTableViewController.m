@@ -11,6 +11,7 @@
 #import "Collection+Edit.h"
 #import "Food.h"
 #import "TomatoDetailViewController.h"
+#import "Tag.h"
 
 @interface FavoritesTableViewController ()
 @property (nonatomic, strong) NSMutableArray *selectedRow;
@@ -146,6 +147,10 @@
 //    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
 //}
 
+- (NSString *)imageFilePath:(NSString *)imageName
+{
+    return [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:[imageName stringByAppendingPathExtension:@"jpg"]];
+}
 
 
 - (void)setupFetchResultController
@@ -168,11 +173,55 @@
         cell = [[FavoriteTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     Collection *collet = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    Food *food = collet.food;
     cell.foodNameLabel.text = collet.food.foodName;
     //cell.foodImageView =
 //    cell.foodScoreLabel.text = [NSString stringWithFormat:@"%@", collet.food.foodScore];
 //    cell.foodImage.backgroundColor = [UIColor grayColor];
+    cell.foodScoreLabelA.text = [NSString stringWithFormat:@"%d",[food.foodScore intValue]];
+    int pointNumber = ([food.foodScore floatValue] - [food.foodScore intValue])*10;
+    cell.foodScoreLabelB.text = [@"." stringByAppendingString:[NSString stringWithFormat:@"%d",pointNumber]];
     
+    cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
+    
+    cell.takeoutImage.image = nil;
+    cell.tasteImage.image = nil;
+    cell.junkfoodImage.image = nil;
+    
+    NSMutableArray *signMutableArray = [[NSMutableArray alloc]initWithArray:[food.tags allObjects]];
+    for (int i=0; i<[signMutableArray count]; i++) {
+        Tag *foodSign = signMutableArray[i];
+        if ([foodSign.tagID intValue] == 5) {
+            cell.takeoutImage.image = [UIImage imageNamed:@"takeoutSign.png"];
+            [signMutableArray removeObjectAtIndex:i];
+        }
+    }
+    if ([signMutableArray count] == 2) {
+        Tag *foodSign1 = signMutableArray[0];
+        Tag *foodSign2 = signMutableArray[1];
+        cell.tasteImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
+        cell.junkfoodImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign2.tagID intValue]]];
+    }else if ([signMutableArray count] == 1) {
+        Tag *foodSign1 = signMutableArray[0];
+        cell.tasteImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
+    }
+    
+    dispatch_queue_t image_queue;
+    image_queue = dispatch_queue_create("image_queue", nil);
+    dispatch_async(image_queue, ^{
+        
+        //cell.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
+        
+        UIImage *fullImage = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
+        NSData *dataImg = UIImageJPEGRepresentation(fullImage, 0.3);
+        UIImage *smallImage = [[UIImage alloc] initWithData:dataImg];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.foodImageView.image = smallImage;
+            
+            [cell reloadInputViews];
+        });
+    });
     
     UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackground.png"];
     UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
@@ -193,6 +242,34 @@
     return cell;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
+}
+
+- (NSString *)getFoodSignImage:(int)foodID{
+    NSString *signImageName;
+    switch (foodID) {
+        case 1:
+            signImageName = @"hotSign.png";
+            break;
+        case 2:
+            signImageName = @"brightSign.png";
+            break;
+        case 3:
+            signImageName = @"sweetSign.png";
+            break;
+        case 4:
+            signImageName = @"strangeSign.png";
+            break;
+        case 6:
+            signImageName = @"junkfoodSign.png";
+            break;
+            
+        default:
+            break;
+    }
+    return signImageName;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -238,6 +315,16 @@
     return 92.0;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"FavoriteDetailSegueIdentifier"]) {
+        TomatoDetailViewController *dvc = [segue destinationViewController];
+        
+        Collection *collection = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        dvc.foodDetail = collection.food;
+    }
+}
 
 
 

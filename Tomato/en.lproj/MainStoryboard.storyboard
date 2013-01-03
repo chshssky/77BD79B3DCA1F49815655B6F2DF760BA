@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kWw-4Y-E2O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kWw-4Y-E2O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -247,13 +247,13 @@
                                 </view>
                                 <connections>
                                     <outlet property="foodImageView" destination="Bx6-vh-nyQ" id="ioN-D2-aJG"/>
-                                    <outlet property="foodNameLabel" destination="Ql3-lv-l0P" id="E4c-U1-f9h"/>
+                                    <outlet property="foodNameLabel" destination="Ql3-lv-l0P" id="JBs-HG-1de"/>
                                     <outlet property="foodScoreLabelA" destination="61y-sl-Vty" id="VNE-6v-mZm"/>
                                     <outlet property="foodScoreLabelB" destination="Mj6-cP-Vhj" id="XWV-F3-wAk"/>
                                     <outlet property="junkfoodImage" destination="hf9-EC-g0K" id="NjT-Pl-9lp"/>
                                     <outlet property="takeoutImage" destination="nsu-mC-jDT" id="YE8-jl-zhi"/>
                                     <outlet property="tasteImage" destination="wrh-6b-dcr" id="E4V-xn-POL"/>
-                                    <segue destination="IBi-f0-QjR" kind="push" id="w8t-aN-Kev"/>
+                                    <segue destination="IBi-f0-QjR" kind="push" identifier="FavoriteDetailSegueIdentifier" id="w8t-aN-Kev"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -846,8 +846,11 @@
         <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editButtonClicked:"/>
+                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="FilterTableViewController" superclassName="CoreDataTableViewController">
