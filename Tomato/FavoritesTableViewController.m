@@ -10,11 +10,13 @@
 #import "FavoriteTableViewCell.h"
 #import "Collection+Edit.h"
 #import "Food.h"
+#import "TomatoDetailViewController.h"
 
 
 @interface FavoritesTableViewController ()
 @property (nonatomic, strong) NSMutableArray *selectedRow;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (weak, nonatomic) IBOutlet UINavigationItem *favoriteNavigationBar;
 
 @end
 
@@ -59,9 +61,28 @@
 }
 
 - (IBAction)editButtonClicked:(id)sender {
+//    self.cancelButton = [[UIBarButtonItem alloc] init];
+//    [self.cancelButton setTitle:@"取消"];
+//    [self.cancelButton setAction:@selector(cancelButtonClicked:)];
+////    [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.favoriteNavigationBar setLeftBarButtonItem:self.cancelButton];
+//    [self.cancelButton setAction:@selector(cancelButtonClicked:)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClicked:)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    
+    
     [self.tableView setEditing:YES animated:YES];
     [self.editButton setTitle:@"删除"];
     [self.editButton setAction:@selector(editButtonClickedWithSure:)];
+}
+
+- (IBAction)cancelButtonClicked:(id)sender
+{
+    [self.tableView setEditing:NO animated:YES];
+    [self.editButton setTitle:@"编辑"];
+    [self.editButton setAction:@selector(editButtonClicked:)];
+    [self.favoriteNavigationBar setLeftBarButtonItem:nil];
 }
 
 - (IBAction)editButtonClickedWithSure:(id)sender
@@ -74,7 +95,7 @@
         [self.editButton setTitle:@"编辑"];
         [self.tableView setEditing:NO animated:YES];
     }else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未选中任何数据!" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:@"取消", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未选中任何数据!" delegate:self cancelButtonTitle:@"重新选择" otherButtonTitles:nil, nil];
         [alert show];
     }
 }
@@ -83,10 +104,6 @@
 {
     if (buttonIndex == 0) {
         return;
-    }else if(buttonIndex == 1){
-        [self.tableView setEditing:NO animated:YES];
-        [self.editButton setTitle:@"编辑"];
-        [self.editButton setAction:@selector(editButtonClicked:)];
     }
 }
 
@@ -130,9 +147,27 @@
     }
     Collection *collet = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.foodNameLabel.text = collet.food.foodName;
-    cell.foodScoreLabel.text = [NSString stringWithFormat:@"%@", collet.food.foodScore];
-    cell.foodImage.backgroundColor = [UIColor grayColor];
+    //cell.foodImageView =
+//    cell.foodScoreLabel.text = [NSString stringWithFormat:@"%@", collet.food.foodScore];
+//    cell.foodImage.backgroundColor = [UIColor grayColor];
     
+    
+    UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackground.png"];
+    UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
+    [cell setSelectedBackgroundView:selectedView];
+    
+    UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackgroud.png"];
+    UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
+    [cell setBackgroundView:unselectedView];
+    
+    cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
+    
+    [cell.foodNameLabel setHighlightedTextColor:[UIColor blackColor]];
+    cell.foodNameLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    [cell.foodScoreLabelA setHighlightedTextColor:[UIColor orangeColor]];
+    cell.foodScoreLabelA.font = [UIFont boldSystemFontOfSize:24.0f];
+    [cell.foodScoreLabelB setHighlightedTextColor:[UIColor orangeColor]];
+    cell.foodScoreLabelB.font = [UIFont systemFontOfSize:16.0f];
     return cell;
 }
 
@@ -174,6 +209,22 @@
     return YES;
 }
 */
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 92.0;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"TomatoDetailSegueIdentifier"]) {
+        TomatoDetailViewController *dvc = [segue destinationViewController];
+        
+        Collection *collection = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
+        dvc.foodDetail = collection.food;
+    }
+}
 
 
 @end

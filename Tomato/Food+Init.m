@@ -28,7 +28,12 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
         NSError *foodError = nil;
         NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
         
-        NSLog(@"FoodID: %d", i);
+        dispatch_queue_t network_queue;
+        network_queue = dispatch_queue_create("network_queue", nil);
+        dispatch_async(network_queue, ^{
+            [NetworkInterface DownloadImage:[dic objectForKey:FOOD_IMAGE_PATH]];
+        });
+        
         if (!foodMatches || ([foodMatches count] > 1)) {
             NSLog(@"Food Wrong!");
         } else if ([foodMatches count] == 0) {
@@ -43,11 +48,7 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
             
             food.foodImagePath = [dic objectForKey:FOOD_IMAGE_PATH];
             
-            dispatch_queue_t network_queue;
-            network_queue = dispatch_queue_create("network_queue", nil);
-            dispatch_async(network_queue, ^{
-                [NetworkInterface DownloadImage:food.foodImagePath];
-            });
+
             
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH时mm分ss秒"];

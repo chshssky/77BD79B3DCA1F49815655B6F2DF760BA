@@ -46,14 +46,29 @@
                                             <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="eHF-Da-DiG">
+                                            <rect key="frame" x="-3" y="-2" width="49" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="jRa-fM-1Oh">
+                                            <rect key="frame" x="148" y="39" width="46" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="pSw-Vm-kf7">
+                                            <rect key="frame" x="94" y="39" width="46" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="foodGradeLabelA" destination="mzM-J8-U2g" id="iRE-YZ-QmP"/>
-                                    <outlet property="foodGradeLabelB" destination="WMD-M6-EVs" id="tvY-vp-vwc"/>
                                     <outlet property="foodImageView" destination="RZc-A5-PkX" id="t5W-9S-i1J"/>
                                     <outlet property="foodNameLabel" destination="2x0-X5-dEL" id="Zll-lo-3fR"/>
+                                    <outlet property="foodScoreLabelA" destination="mzM-J8-U2g" id="5sO-yw-cAN"/>
+                                    <outlet property="foodScoreLabelB" destination="WMD-M6-EVs" id="YfY-n3-Tyy"/>
+                                    <outlet property="junkfoodImage" destination="jRa-fM-1Oh" id="ldu-N7-t9k"/>
+                                    <outlet property="takeoutImage" destination="eHF-Da-DiG" id="FEx-tk-WQP"/>
+                                    <outlet property="tasteImage" destination="pSw-Vm-kf7" id="ImR-r9-2ru"/>
                                     <segue destination="IBi-f0-QjR" kind="push" identifier="TomatoDetailSegueIdentifier" id="K7K-CZ-1nn"/>
                                 </connections>
                             </tableViewCell>
@@ -183,38 +198,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="FavoriteTableViewCellIdentifier" rowHeight="86" id="YcT-7s-dZI" customClass="FavoriteTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FavoriteTableViewCellIdentifier" rowHeight="92" id="YcT-7s-dZI" customClass="FavoriteTableViewCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="92"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="edJ-xX-wDF">
-                                            <rect key="frame" x="117" y="10" width="183" height="31"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Bx6-vh-nyQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="97" height="85"/>
+                                            <rect key="frame" x="9" y="5" width="77" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gBw-sF-4EL">
-                                            <rect key="frame" x="117" y="49" width="71" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="菜名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ql3-lv-l0P">
+                                            <rect key="frame" x="94" y="6" width="108" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="61y-sl-Vty">
+                                            <rect key="frame" x="231" y="13" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=".0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mj6-cP-Vhj">
+                                            <rect key="frame" x="266" y="6" width="22" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="nsu-mC-jDT">
+                                            <rect key="frame" x="-3" y="-2" width="49" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="wrh-6b-dcr">
+                                            <rect key="frame" x="94" y="39" width="46" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="hf9-EC-g0K">
+                                            <rect key="frame" x="148" y="39" width="46" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="foodImage" destination="Bx6-vh-nyQ" id="vwT-rA-tZq"/>
-                                    <outlet property="foodNameLabel" destination="edJ-xX-wDF" id="maH-QW-UD3"/>
-                                    <outlet property="foodScoreLabel" destination="gBw-sF-4EL" id="STi-Yl-Gcn"/>
+                                    <outlet property="foodImageView" destination="Bx6-vh-nyQ" id="ioN-D2-aJG"/>
+                                    <outlet property="foodNameLabel" destination="Ql3-lv-l0P" id="E4c-U1-f9h"/>
+                                    <outlet property="foodScoreLabelA" destination="61y-sl-Vty" id="VNE-6v-mZm"/>
+                                    <outlet property="foodScoreLabelB" destination="Mj6-cP-Vhj" id="XWV-F3-wAk"/>
+                                    <outlet property="junkfoodImage" destination="hf9-EC-g0K" id="NjT-Pl-9lp"/>
+                                    <outlet property="takeoutImage" destination="nsu-mC-jDT" id="YE8-jl-zhi"/>
+                                    <outlet property="tasteImage" destination="wrh-6b-dcr" id="E4V-xn-POL"/>
+                                    <segue destination="IBi-f0-QjR" kind="push" id="pp2-YC-Y5V"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -229,6 +268,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editButton" destination="5yT-OH-S5s" id="eGD-49-oSl"/>
+                        <outlet property="favoriteNavigationBar" destination="n1T-cI-gB3" id="2PW-n9-3bv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knu-li-LWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -771,9 +811,6 @@
         </class>
         <class className="CartTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="confirmButtonClicked:" candidateClass="UIButton"/>
-            </relationships>
         </class>
         <class className="CoreDataTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
@@ -784,15 +821,21 @@
         <class className="FavoriteTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteTableViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="foodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodScoreLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodScoreLabelA" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodScoreLabelB" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="junkfoodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="takeoutImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tasteImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
         <class className="FilterTableViewController" superclassName="CoreDataTableViewController">
@@ -809,17 +852,19 @@
         <class className="FoodTomatoTableViewCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodTomatoTableViewCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="foodGradeLabelA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="foodGradeLabelB" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="foodNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodScoreLabelA" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="foodScoreLabelB" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="foodTagLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="junkfoodImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="takeoutImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tasteImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
         <class className="PublishHeaderViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishHeaderViewController.h"/>
             <relationships>
-                <relationship kind="action" name="foodImagePushed:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="FoodDetailView"/>
             </relationships>
         </class>
@@ -857,4 +902,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="pp2-YC-Y5V"/>
+    </inferredMetricsTieBreakers>
 </document>

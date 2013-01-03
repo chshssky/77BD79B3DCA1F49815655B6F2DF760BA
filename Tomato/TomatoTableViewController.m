@@ -13,6 +13,8 @@
 #import "NetworkInterface.h"
 #import "Food.h"
 #import "FilterTableViewController.h"
+#import "Tag.h"
+#import "Tag+Init.h"
 
 @interface TomatoTableViewController () <FilterTableViewControllerDelegate>
 
@@ -90,7 +92,6 @@
         }
         predicateStr = [predicateStr substringFromIndex:4];
         predicateStr = [@"((" stringByAppendingString:predicateStr];
-        NSLog(@"predicateStr:%@", predicateStr);
         NSString *restaurantStr = @"";
         if (self.foodRestaurants != nil) {
             for (int i = 1; i <= [self.foodRestaurants count]; i ++) {
@@ -104,8 +105,6 @@
             restaurantStr = [@") AND (" stringByAppendingString:restaurantStr];
             predicateStr = [predicateStr stringByAppendingString:restaurantStr];
             predicateStr = [@"(" stringByAppendingString:predicateStr];
-            
-            NSLog(@"NEW  predicateStr:%@", predicateStr);
         }
         request.predicate = [NSPredicate predicateWithFormat:predicateStr];
         [self.tableView reloadData];
@@ -146,27 +145,50 @@
     Food *food = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.foodNameLabel.text = food.foodName;
-    NSLog(@"%.1f",[food.foodScore floatValue]);
     
-    cell.foodGradeLabelA.text = [NSString stringWithFormat:@"%d",[food.foodScore intValue]];
+    cell.foodScoreLabelA.text = [NSString stringWithFormat:@"%d",[food.foodScore intValue]];
     int pointNumber = ([food.foodScore floatValue] - [food.foodScore intValue])*10;
-    cell.foodGradeLabelB.text = [@"." stringByAppendingString:[NSString stringWithFormat:@"%d",pointNumber]];
+    cell.foodScoreLabelB.text = [@"." stringByAppendingString:[NSString stringWithFormat:@"%d",pointNumber]];
     
     cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
     
+    cell.takeoutImage.image = nil;
+    cell.tasteImage.image = nil;
+    cell.junkfoodImage.image = nil;
+    
+    NSMutableArray *signMutableArray = [[NSMutableArray alloc]initWithArray:[food.tags allObjects]];
+    for (int i=0; i<[signMutableArray count]; i++) {
+        Tag *foodSign = signMutableArray[i];
+        if ([foodSign.tagID intValue] == 5) {
+            cell.takeoutImage.image = [UIImage imageNamed:@"takeoutSign.png"];
+            [signMutableArray removeObjectAtIndex:i];
+        }
+    }
+    if ([signMutableArray count] == 2) {
+        Tag *foodSign1 = signMutableArray[0];
+        Tag *foodSign2 = signMutableArray[1];
+        cell.tasteImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
+        cell.junkfoodImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign2.tagID intValue]]];
+    }else if ([signMutableArray count] == 1) {
+        Tag *foodSign1 = signMutableArray[0];
+        cell.tasteImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
+    }
+
     dispatch_queue_t image_queue;
     image_queue = dispatch_queue_create("image_queue", nil);
     dispatch_async(image_queue, ^{
+        
         //cell.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
         
         UIImage *fullImage = [UIImage imageWithContentsOfFile:[self imageFilePath:food.foodImagePath]];
         NSData *dataImg = UIImageJPEGRepresentation(fullImage, 0.3);
         UIImage *smallImage = [[UIImage alloc] initWithData:dataImg];
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
             cell.foodImageView.image = smallImage;
+            
+            [cell reloadInputViews];
         });
-        [cell reloadInputViews];
     });
     
     UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackground.png"];
@@ -178,12 +200,37 @@
     [cell setBackgroundView:unselectedView];
     
     [cell.foodNameLabel setHighlightedTextColor:[UIColor blackColor]];
-    cell.foodNameLabel.font = [UIFont systemFontOfSize:16.0f];
-    [cell.foodGradeLabelA setHighlightedTextColor:[UIColor orangeColor]];
-    cell.foodGradeLabelA.font = [UIFont boldSystemFontOfSize:24.0f];
-    [cell.foodGradeLabelB setHighlightedTextColor:[UIColor orangeColor]];
-    cell.foodGradeLabelB.font = [UIFont systemFontOfSize:16.0f];
+    cell.foodNameLabel.font = [UIFont boldSystemFontOfSize:16.0f];
+    [cell.foodScoreLabelA setHighlightedTextColor:[UIColor orangeColor]];
+    cell.foodScoreLabelA.font = [UIFont boldSystemFontOfSize:24.0f];
+    [cell.foodScoreLabelB setHighlightedTextColor:[UIColor orangeColor]];
+    cell.foodScoreLabelB.font = [UIFont systemFontOfSize:16.0f];
     return cell;
+}
+
+- (NSString *)getFoodSignImage:(int)foodID{
+    NSString *signImageName;
+    switch (foodID) {
+        case 1:
+            signImageName = @"hotSign.png";
+            break;
+        case 2:
+            signImageName = @"brightSign.png";
+            break;
+        case 3:
+            signImageName = @"sweetSign.png";
+            break;
+        case 4:
+            signImageName = @"strangeSign.png";
+            break;
+        case 6:
+            signImageName = @"junkfoodSign.png";
+            break;
+            
+        default:
+            break;
+    }
+    return signImageName;
 }
 
 
@@ -196,7 +243,6 @@
 
 //完成加载时调用的方法
 - (void)doneLoadingTableViewData{
-    NSLog(@"doneLoadingTableViewData");
     
     _reloading = NO;
     [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
@@ -210,8 +256,6 @@
 //这个方法运行于子线程中，完成获取刷新数据的操作
 -(void)doInBackground
 {
-    NSLog(@"doInBackground");
-    
     //更新数据库
     [NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
     

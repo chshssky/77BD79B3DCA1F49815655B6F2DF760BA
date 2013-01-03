@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface FavoriteTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *foodImage;
+@property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *foodNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *foodScoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *foodTagLabel;
+@property (weak, nonatomic) IBOutlet UILabel *foodScoreLabelA;
+@property (weak, nonatomic) IBOutlet UILabel *foodScoreLabelB;
+@property (weak, nonatomic) IBOutlet UIImageView *takeoutImage;
+@property (weak, nonatomic) IBOutlet UIImageView *tasteImage;
+@property (weak, nonatomic) IBOutlet UIImageView *junkfoodImage;
 
 @end
