@@ -136,10 +136,13 @@
             cell.textLabel.text = @"餐馆";
             cell.detailTextLabel.text = @"无";
         } else {
+            NSInteger index = self.selectedRestaurantIndex;
             if (indexPath.row == 0) {
                 cell.textLabel.text = @"餐馆";
+                cell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"餐馆名称"];
             } else {
                 cell.textLabel.text = @"电话";
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
             }
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -357,8 +360,10 @@
     if (index != -1) {
         UITableViewCell *tCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
         rCell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"餐馆名称"];
-        NSLog(@"%@", [self.restaurantArray[index] objectForKey:@"餐馆名称"]);
+        NSLog(@"餐馆名称:%@", [self.restaurantArray[index] objectForKey:@"餐馆名称"]);
         tCell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
+        NSLog(@"电话数量:%@",  [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]]);
+        [self.tableView reloadData];
     } else {
         rCell.detailTextLabel.text = @"无";
     }

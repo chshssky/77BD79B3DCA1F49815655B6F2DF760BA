@@ -974,6 +974,8 @@
         <class className="TomatoDetailViewController" superclassName="CoreDataViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="AddToChart:"/>
+                <relationship kind="action" name="AddToFavorite:"/>
                 <relationship kind="outlet" name="addToCartButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
