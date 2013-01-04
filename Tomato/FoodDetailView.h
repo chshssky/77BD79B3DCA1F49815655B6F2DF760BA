@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FoodDetailView : UIView
+@interface FoodDetailView : UIControl
 @property (weak, nonatomic) IBOutlet UIButton *foodImageDetail;
 @property (weak, nonatomic) IBOutlet UITextField *foodNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *foodPriceTextField;

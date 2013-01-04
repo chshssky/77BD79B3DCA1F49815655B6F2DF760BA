@@ -11,4 +11,10 @@
 
 @interface PublishHeaderViewController : UIViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate>
 @property (strong, nonatomic) IBOutlet FoodDetailView *foodDetailView;
+@property (weak, nonatomic) IBOutlet UITextField *foodNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *foodPriceTextField;
+
+- (IBAction)textFiledReturnEditing:(id)sender;
+- (IBAction)backgroundTap:(id)sender;
+
 @end

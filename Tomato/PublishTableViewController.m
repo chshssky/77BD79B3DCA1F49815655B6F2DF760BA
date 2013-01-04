@@ -133,6 +133,7 @@
             cell.textLabel.text = @"电话";
             if (self.selectedRestaurantIndex == -1) {
                 cell.detailTextLabel.text = @"无";
+                cell.
             }
 //            } else {
 //                cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];

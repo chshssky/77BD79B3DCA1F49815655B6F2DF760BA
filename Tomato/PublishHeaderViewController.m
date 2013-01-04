@@ -93,5 +93,13 @@
     [picker dismissModalViewControllerAnimated:YES];  //让其消失
 }
 
+-(IBAction)textFiledReturnEditing:(id)sender {
+    [sender resignFirstResponder];
+}
+- (IBAction)backgroundTap:(id)sender
+{
+    [self.foodNameTextField resignFirstResponder];
+    [self.foodPriceTextField resignFirstResponder];
+}
 
 @end

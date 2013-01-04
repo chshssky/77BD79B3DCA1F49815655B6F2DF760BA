@@ -50,6 +50,8 @@
 		3FAB16D116941A7100B95574 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB16D016941A7100B95574 /* Food.m */; };
 		3FAB16D31694418D00B95574 /* foodImageNoneBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FAB16D21694418D00B95574 /* foodImageNoneBackground.png */; };
 		3FC49520168993E300F0A9B5 /* FoodTomatoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */; };
+		3FD0441116967EF000EDE87E /* navigation_bar_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0440F16967EEE00EDE87E /* navigation_bar_background.png */; };
+		3FD0441216967EF000EDE87E /* navigation_bar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0441016967EEF00EDE87E /* navigation_bar_background@2x.png */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
 		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
 		57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0541D16566004007C4CB3 /* TomatoTableViewController.m */; };
@@ -176,6 +178,8 @@
 		3FAB16D21694418D00B95574 /* foodImageNoneBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodImageNoneBackground.png; sourceTree = "<group>"; };
 		3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTomatoTableViewCell.h; sourceTree = "<group>"; };
 		3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTomatoTableViewCell.m; sourceTree = "<group>"; };
+		3FD0440F16967EEE00EDE87E /* navigation_bar_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigation_bar_background.png; sourceTree = "<group>"; };
+		3FD0441016967EEF00EDE87E /* navigation_bar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar_background@2x.png"; sourceTree = "<group>"; };
 		3FF0B07216450E3B0021ABE3 /* TomatoDataStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoDataStore.xcdatamodel; sourceTree = "<group>"; };
 		3FF0B078164536E70021ABE3 /* initialData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialData.plist; sourceTree = "<group>"; };
 		57A0541C16566004007C4CB3 /* TomatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoTableViewController.h; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 		3F556543168EE378000E3D9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				3FD0440F16967EEE00EDE87E /* navigation_bar_background.png */,
+				3FD0441016967EEF00EDE87E /* navigation_bar_background@2x.png */,
 				73E38DD2169637760000D4A6 /* cart.png */,
 				73E38DD3169637760000D4A6 /* cart@2x.png */,
 				73E38DCA16962DB10000D4A6 /* favorite.png */,
@@ -611,6 +617,8 @@
 				73E38DD4169637770000D4A6 /* cart.png in Resources */,
 				73E38DD5169637770000D4A6 /* cart@2x.png in Resources */,
 				739900F11696499800B1A1E0 /* cellUnclickedBackground.png in Resources */,
+				3FD0441116967EF000EDE87E /* navigation_bar_background.png in Resources */,
+				3FD0441216967EF000EDE87E /* navigation_bar_background@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
