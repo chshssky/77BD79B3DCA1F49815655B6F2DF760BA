@@ -39,10 +39,11 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self setupFetchedResultController];
     self.selectedRestaurantIndex = -1;
     self.title = @"发布";
     //[self.tableView setTableHeaderView:self.headerView];
+    [self setupFetchedResultController];
+
     self.tagArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count]; i++) {
         [self.tagArray addObject:[NSNumber numberWithBool:NO]];
@@ -86,6 +87,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
+        NSLog(@"Selected:%d",self.selectedRestaurantIndex);
+        if (self.selectedRestaurantIndex == -1) {
+            return 1;
+        }
         return 2;
     }
     return [[[self.fetchedResultsController sections] objectAtIndex:section - 1] numberOfObjects];
@@ -123,22 +128,15 @@
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-
-        if (indexPath.row == 0) {
+        if (self.selectedRestaurantIndex == -1) {
             cell.textLabel.text = @"餐馆";
-            if (self.selectedRestaurantIndex == -1) {
-                cell.detailTextLabel.text = @"无";
-            }
+            cell.detailTextLabel.text = @"无";
         } else {
-            cell.textLabel.text = @"电话";
-            if (self.selectedRestaurantIndex == -1) {
-                cell.detailTextLabel.text = @"无";
-                cell.
+            if (indexPath.row == 0) {
+                cell.textLabel.text = @"餐馆";
+            } else {
+                cell.textLabel.text = @"电话";
             }
-//            } else {
-//                cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
-//            }
-
         }
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else {
@@ -292,15 +290,13 @@
 {
     self.selectedRestaurantIndex = index;
     UITableViewCell *rCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    UITableViewCell *tCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-    
     if (index != -1) {
+        UITableViewCell *tCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
         rCell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"餐馆名称"];
         NSLog(@"%@", [self.restaurantArray[index] objectForKey:@"餐馆名称"]);
         tCell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
     } else {
         rCell.detailTextLabel.text = @"无";
-        tCell.detailTextLabel.text = @"无";
     }
 }
 
