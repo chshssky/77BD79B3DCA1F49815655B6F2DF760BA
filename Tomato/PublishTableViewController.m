@@ -298,11 +298,14 @@
     [dateformat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSLog(@"%@",nowStr);
     
-    
-    NSString *path = [NetworkInterface generateRandomString:15];
-    [NetworkInterface PublishFood:foodDetail.foodNameTextField.text foodprice:foodDetail.foodPriceTextField.text publishtime:nowStr foodimgname:path restaurantname:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"] tagsname:[self getSelectedTagsFromTableView]];
-    [NetworkInterface UploadImage:foodDetail.foodImageDetail.currentBackgroundImage picturename:path];
-
+    dispatch_queue_t upload_queue;
+    upload_queue = dispatch_queue_create("upload_queue", nil);
+    dispatch_async(upload_queue, ^{
+        
+        NSString *path = [NetworkInterface generateRandomString:15];
+        [NetworkInterface PublishFood:foodDetail.foodNameTextField.text foodprice:foodDetail.foodPriceTextField.text publishtime:nowStr foodimgname:path restaurantname:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"] tagsname:[self getSelectedTagsFromTableView]];
+        [NetworkInterface UploadImage:foodDetail.foodImageDetail.currentBackgroundImage picturename:path];
+    });
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
