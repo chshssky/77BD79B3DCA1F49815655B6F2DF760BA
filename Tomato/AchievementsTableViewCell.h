@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *achievementImageView;
 @property (weak, nonatomic) IBOutlet UILabel *achievementNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *achievementDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *achievementRecordLabel;
 
 @end

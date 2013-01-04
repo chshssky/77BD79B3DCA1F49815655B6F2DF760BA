@@ -11,7 +11,9 @@
 @interface Achievement (Init)
 
 + (Achievement *)achievementWithInitialData:(NSString *)achievementName
-    inManagedObjectContext:(NSManagedObjectContext *)context;
+                                     WithID:(NSInteger)achievementID
+                              WithThreshold:(NSInteger)achievementThreshold
+                     inManagedObjectContext:(NSManagedObjectContext *)context;
 
 
 @end

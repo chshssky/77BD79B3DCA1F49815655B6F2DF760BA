@@ -320,6 +320,13 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tdv-vG-9AV">
+                                            <rect key="frame" x="271" y="20" width="42" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -327,6 +334,7 @@
                                     <outlet property="achievementDescriptionLabel" destination="iQS-11-gBi" id="vuF-h5-AiZ"/>
                                     <outlet property="achievementImageView" destination="GC0-qo-s1z" id="fNP-JG-zt0"/>
                                     <outlet property="achievementNameLabel" destination="Q4t-2t-sYg" id="43E-99-Y9y"/>
+                                    <outlet property="achievementRecordLabel" destination="Tdv-vG-9AV" id="hh7-v7-lQc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -877,6 +885,7 @@
                 <relationship kind="outlet" name="achievementDescriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="achievementImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="achievementNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="achievementRecordLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="CartTableViewController" superclassName="UITableViewController">
@@ -907,6 +916,8 @@
         <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editButtonClicked:"/>
+                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
             </relationships>
@@ -939,7 +950,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishHeaderViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="foodImagePushed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="textFiledReturnEditing:"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="FoodDetailView"/>
                 <relationship kind="outlet" name="foodNameTextField" candidateClass="UITextField"/>
@@ -949,7 +959,6 @@
         <class className="PublishTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="completeButtonPushed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="UIView"/>
             </relationships>
         </class>

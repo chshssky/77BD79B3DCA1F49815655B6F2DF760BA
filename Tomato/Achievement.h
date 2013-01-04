@@ -2,8 +2,8 @@
 //  Achievement.h
 //  Tomato
 //
-//  Created by 崔 昊 on 12-12-29.
-//  Copyright (c) 2012年 Cui Hao. All rights reserved.
+//  Created by 崔 昊 on 13-1-4.
+//  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * achievementImage;
 @property (nonatomic, retain) NSString * achievementName;
 @property (nonatomic, retain) NSNumber * achievementThreshold;
+@property (nonatomic, retain) NSNumber * achievementID;
 @property (nonatomic, retain) Record *achievementRecord;
 
 @end

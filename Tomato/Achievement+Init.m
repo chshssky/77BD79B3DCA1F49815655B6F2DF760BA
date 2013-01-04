@@ -7,11 +7,14 @@
 //
 
 #import "Achievement+Init.h"
+#import "Record.h"
 
 @implementation Achievement (Init)
 
 + (Achievement *)achievementWithInitialData:(NSString *)achievementName
-            inManagedObjectContext:(NSManagedObjectContext *)context;
+                                     WithID:(NSInteger)achievementID
+                              WithThreshold:(NSInteger)achievementThreshold
+                     inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Achievement *achievement = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Achievement"];
@@ -25,11 +28,21 @@
         NSLog(@"Init Achievements Wrong!");
     } else if ([matches count] == 0) {
         achievement = [NSEntityDescription insertNewObjectForEntityForName:@"Achievement" inManagedObjectContext:context];
+        
+        achievement.achievementID = [NSNumber numberWithInteger:achievementID];
+        
+        Record *record = [NSEntityDescription insertNewObjectForEntityForName:@"Record" inManagedObjectContext:context];
+        record.recordCount = [NSNumber numberWithInteger:0];
+        achievement.achievementRecord = record;
         achievement.achievementName = achievementName;
-        achievement.achievementThreshold = [NSNumber numberWithUnsignedInt:6];
+        achievement.achievementThreshold = [NSNumber numberWithInteger:achievementThreshold];
         
     } else {
         achievement = [matches lastObject];
+    }
+    if (![context save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
 
     return achievement;

@@ -245,23 +245,20 @@
     return [tagDes substringFromIndex:1];
 }
 
-- (void)publishFoodToServer
-{
-}
-
 - (IBAction)completeButtonPushed:(UIBarButtonItem *)sender
 {
     
     FoodDetailView *foodDetail = [self.foodDetailView.subviews objectAtIndex:0];
 
-    
-    if ([foodDetail.foodNameTextField.text isEqualToString:@""]) {
+    NSString *foodName = foodDetail.foodNameTextField.text;
+    if ([foodName isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请输入美食名称" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
         return;
     }
-    if ([foodDetail.foodPriceTextField.text isEqualToString:@""]) {
+    NSString *foodPrice = foodDetail.foodPriceTextField.text;
+    if ([foodPrice isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请输入美食价格" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
@@ -276,8 +273,8 @@
     }
     
     NSLog(@"selectedtag：%@", [self getSelectedTagsFromTableView]);
-
-    if ([[self getSelectedTagsFromTableView] isEqualToString:@""]) {
+    NSString *tagsStr = [self getSelectedTagsFromTableView];
+    if ([tagsStr isEqualToString:@""]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请选择美食标签" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
@@ -298,15 +295,36 @@
     [dateformat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSLog(@"%@",nowStr);
     
-    dispatch_queue_t upload_queue;
-    upload_queue = dispatch_queue_create("upload_queue", nil);
-    dispatch_async(upload_queue, ^{
-        
-        NSString *path = [NetworkInterface generateRandomString:15];
-        [NetworkInterface PublishFood:foodDetail.foodNameTextField.text foodprice:foodDetail.foodPriceTextField.text publishtime:nowStr foodimgname:path restaurantname:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"] tagsname:[self getSelectedTagsFromTableView]];
-        [NetworkInterface UploadImage:foodDetail.foodImageDetail.currentBackgroundImage picturename:path];
-    });
+    NSString *path = [NetworkInterface generateRandomString:15];
+    
+    NSMutableArray *agrs = [[NSMutableArray alloc] init];
+    NSLog(@"main thread begin...");
+    [agrs addObject:foodName];
+    [agrs addObject:foodPrice];
+    [agrs addObject:nowStr];
+    [agrs addObject:path];
+    [agrs addObject:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"]];
+    [agrs addObject:tagsStr];
+    [agrs addObject:foodDetail.foodImageDetail.currentBackgroundImage];
+    
+    [self performSelectorInBackground:@selector(publishFoodToServerWithArray:) withObject:agrs];
+    NSLog(@"main thread end.....");
 }
+
+- (void)publishFoodToServerWithArray:(NSArray *)args
+{
+    [NetworkInterface PublishFood:args[0] foodprice:args[1] publishtime:args[2] foodimgname:args[3] restaurantname:args[4] tagsname:args[5]];
+    [NetworkInterface UploadImage:args[6] picturename:args[3]];
+
+}
+
+//- (void)publishFoodToServerWithFoodName:(NSString *)foodName WithFoodPrice:(NSString *)foodPrice WithPublishTime:(NSString *)publishTime WithFoodImagePath:(NSString *)path WithRestaurantName:(NSString *)restaurantName AndTagsName:(NSString *)tagsStr WithImage:(UIImage *)foodImage
+//{
+//    
+//    [NetworkInterface PublishFood:foodName foodprice:foodPrice publishtime:publishTime foodimgname:path restaurantname:restaurantName tagsname:tagsStr];
+//    [NetworkInterface UploadImage:foodImage picturename:path];
+//
+//}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

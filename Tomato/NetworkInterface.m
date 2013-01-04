@@ -15,8 +15,8 @@
 #import "Restaurant.h"
 #import "Telephone.h"
 
-#define IP @"192.168.1.103"
-//#define USE_SERVER
+#define IP @"192.168.1.100"
+#define USE_SERVER
 
 
 @implementation NetworkInterface
@@ -107,7 +107,7 @@
     
     NSMutableData *body = [NSMutableData data];
     
-    [body appendData:[NSData dataWithData:UIImagePNGRepresentation(img)]];
+    [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(img, 0.1)]];
     
     [request setHTTPBody:body];
     

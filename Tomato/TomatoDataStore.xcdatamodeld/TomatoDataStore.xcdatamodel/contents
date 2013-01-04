@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3012" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Achievement" representedClassName="Achievement" syncable="YES">
+        <attribute name="achievementID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="achievementImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="achievementName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="achievementThreshold" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -50,7 +51,7 @@
         <relationship name="restaurant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="telephones" inverseEntity="Restaurant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Achievement" positionX="-200" positionY="-144" width="128" height="103"/>
+        <element name="Achievement" positionX="-200" positionY="-144" width="128" height="120"/>
         <element name="Collection" positionX="106" positionY="90" width="128" height="73"/>
         <element name="Food" positionX="-198" positionY="108" width="128" height="210"/>
         <element name="Order" positionX="108" positionY="198" width="128" height="88"/>

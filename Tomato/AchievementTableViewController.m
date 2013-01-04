@@ -9,6 +9,7 @@
 #import "AchievementTableViewController.h"
 #import "AchievementsTableViewCell.h"
 #import "Achievement.h"
+#import "Record.h"
 
 @interface AchievementTableViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationItem *achievementNavigationBar;
@@ -51,7 +52,7 @@
 - (void)setupFetchResultController
 {
     NSFetchRequest *requst = [NSFetchRequest fetchRequestWithEntityName:@"Achievement"];
-    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"achievementName" ascending:YES]];
+    requst.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"achievementID" ascending:YES]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:requst
                                                                         managedObjectContext:self.managedObjectContext
@@ -71,7 +72,7 @@
     cell.achievementNameLabel.text = achieve.achievementName;
     //cell.achievementDescriptionLabel.text = achieve.achievementDescription;
     cell.achievementImageView.backgroundColor = [UIColor brownColor];
-    
+    cell.achievementRecordLabel.text = [NSString stringWithFormat:@"%@", achieve.achievementRecord.recordCount];
     return cell;
 }
 

@@ -104,9 +104,9 @@
     for (NSDictionary *tag in tagsArr) {
         [Tag tagWithInitialData:[tag objectForKey:TAG_NAME] andID:i++ andType:[tag objectForKey:TAG_TYPE] inManagedObjectContext:self.managedObjectContext];
     }
-
-    for (NSString *achievement in achievementsArr) {
-        [Achievement achievementWithInitialData:achievement inManagedObjectContext:self.managedObjectContext];
+    i = 1;
+    for (NSDictionary *achievement in achievementsArr) {
+        [Achievement achievementWithInitialData:[achievement objectForKey:ACHIEVEMENT_NAME] WithID:i++ WithThreshold:[[achievement objectForKey:ACHIEVEMENT_THRESHOLD] integerValue] inManagedObjectContext:self.managedObjectContext];
     }
     
     NSError *error = nil;

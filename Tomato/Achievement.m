@@ -2,8 +2,8 @@
 //  Achievement.m
 //  Tomato
 //
-//  Created by 崔 昊 on 12-12-29.
-//  Copyright (c) 2012年 Cui Hao. All rights reserved.
+//  Created by 崔 昊 on 13-1-4.
+//  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
 #import "Achievement.h"
@@ -15,6 +15,7 @@
 @dynamic achievementImage;
 @dynamic achievementName;
 @dynamic achievementThreshold;
+@dynamic achievementID;
 @dynamic achievementRecord;
 
 @end
