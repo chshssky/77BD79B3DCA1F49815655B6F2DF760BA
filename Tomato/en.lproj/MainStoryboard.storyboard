@@ -46,7 +46,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="jRa-fM-1Oh">
-                                            <rect key="frame" x="144" y="39" width="46" height="46"/>
+                                            <rect key="frame" x="143" y="39" width="46" height="46"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="pSw-Vm-kf7">
@@ -212,8 +212,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Bx6-vh-nyQ">
-                                            <rect key="frame" x="9" y="5" width="77" height="80"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="foodDetail.png" id="TGw-D9-E3h">
+                                            <rect key="frame" x="9" y="6" width="77" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="菜名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ql3-lv-l0P">
@@ -237,28 +237,31 @@
                                             <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="nsu-mC-jDT">
-                                            <rect key="frame" x="-3" y="-2" width="49" height="41"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="wrh-6b-dcr">
                                             <rect key="frame" x="94" y="39" width="46" height="46"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="hf9-EC-g0K">
-                                            <rect key="frame" x="148" y="39" width="46" height="46"/>
+                                            <rect key="frame" x="143" y="39" width="46" height="46"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Ttv-af-rG1">
+                                            <rect key="frame" x="12" y="9" width="70" height="73"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="hH9-8e-14Q">
+                                            <rect key="frame" x="-3" y="-2" width="49" height="41"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="foodImageView" destination="Bx6-vh-nyQ" id="ioN-D2-aJG"/>
+                                    <outlet property="foodImageView" destination="Ttv-af-rG1" id="EOo-l9-peD"/>
                                     <outlet property="foodNameLabel" destination="Ql3-lv-l0P" id="JBs-HG-1de"/>
                                     <outlet property="foodScoreLabelA" destination="61y-sl-Vty" id="VNE-6v-mZm"/>
                                     <outlet property="foodScoreLabelB" destination="Mj6-cP-Vhj" id="XWV-F3-wAk"/>
                                     <outlet property="junkfoodImage" destination="hf9-EC-g0K" id="NjT-Pl-9lp"/>
-                                    <outlet property="takeoutImage" destination="nsu-mC-jDT" id="YE8-jl-zhi"/>
                                     <outlet property="tasteImage" destination="wrh-6b-dcr" id="E4V-xn-POL"/>
                                     <segue destination="IBi-f0-QjR" kind="push" identifier="FavoriteDetailSegueIdentifier" id="w8t-aN-Kev"/>
                                 </connections>
@@ -869,9 +872,6 @@
         <class className="CartTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="confirmButtonClicked:" candidateClass="UIButton"/>
-                <relationship kind="action" name="editButtonClicked:"/>
-                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
@@ -976,6 +976,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="K7K-CZ-1nn"/>
+        <segue reference="w8t-aN-Kev"/>
     </inferredMetricsTieBreakers>
 </document>

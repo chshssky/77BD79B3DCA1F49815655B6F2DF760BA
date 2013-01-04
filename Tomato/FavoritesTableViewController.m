@@ -46,6 +46,8 @@
     [self setupFetchResultController];
     [self.navigationController setTitle:@"口味相投"];
     [self.favoriteNavigationBar setTitle:@"口味相投"];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -227,14 +229,14 @@
         });
     });
     
+    
     UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackground.png"];
     UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
     [cell setSelectedBackgroundView:selectedView];
     
-    UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackgroud.png"];
+    UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackground.png"];
     UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
     [cell setBackgroundView:unselectedView];
-    
     cell.foodImageView.image = [UIImage imageNamed:@"foodImageNoneBackground.png"];
     
     [cell.foodNameLabel setHighlightedTextColor:[UIColor blackColor]];
