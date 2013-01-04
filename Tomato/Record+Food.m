@@ -7,13 +7,26 @@
 //
 
 #import "Record+Food.h"
+#import "Tag.h"
 
 @implementation Record (Food)
 
 + (void)RecordWithFood:(Food *)food
 inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:[food.tags allObjects]];
+    Record *record = nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Record"];
+    NSArray *array = [[NSArray alloc] initWithObjects:[food.tags allObjects], nil];
+    for (Tag *tag in array) {
+        switch ([tag.tagID integerValue]) {
+                case 1:
+                request.predicate = [NSPredicate predicateWithFormat:@"achievements CONTAINS %@", tag.tagID];
+                NSError *error = nil;
+                NSArray *matches = [context executeFetchRequest:request error:&error];
+                
+                //record =
+        }
+    }
 }
 
 @end

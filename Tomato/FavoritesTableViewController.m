@@ -39,6 +39,11 @@
     [self.editButton setAction:@selector(editButtonClicked:)];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setupFetchResultController];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
