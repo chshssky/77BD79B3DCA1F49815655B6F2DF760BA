@@ -12,11 +12,12 @@
 #import "NetworkInterface.h"
 #import "RestaurantTableViewController.h"
 
-@interface PublishTableViewController () <RestaurantTableViewControllerDelegate>
+@interface PublishTableViewController () <RestaurantTableViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *foodDetailView;
 @property (strong, nonatomic) NSMutableArray *tagArray;
 @property (strong, nonatomic) NSMutableArray *restaurantArray;
 @property (nonatomic) NSInteger selectedRestaurantIndex;
+@property (strong, nonatomic) UIImage *defaultImage;
 
 @end
 
@@ -41,14 +42,17 @@
 	// Do any additional setup after loading the view.
     self.selectedRestaurantIndex = -1;
     self.title = @"发布";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
+    self.defaultImage = [[UIImage alloc] initWithContentsOfFile:filePath];
+    self.tagArray = [[NSMutableArray alloc] init];
+
     //[self.tableView setTableHeaderView:self.headerView];
     [self setupFetchedResultController];
-
-    self.tagArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < [self.fetchedResultsController.fetchedObjects count]; i++) {
         [self.tagArray addObject:[NSNumber numberWithBool:NO]];
     }
     [self requestForRestaurantArray];
+
 }
 
 - (void)requestForRestaurantArray
@@ -228,18 +232,64 @@
 {
     NSString *tagDes = @"";
     int i = 1;
+
     for (NSNumber *tagBool in self.tagArray) {
         if ([tagBool boolValue]) {
             tagDes = [tagDes stringByAppendingFormat:@"&%d", i];
         }
         i++;
     }
+    if ([tagDes isEqual:@""]) {
+        return @"";
+    }
     return [tagDes substringFromIndex:1];
+}
+
+- (void)publishFoodToServer
+{
 }
 
 - (IBAction)completeButtonPushed:(UIBarButtonItem *)sender
 {
+    
     FoodDetailView *foodDetail = [self.foodDetailView.subviews objectAtIndex:0];
+
+    
+    if ([foodDetail.foodNameTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请输入美食名称" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
+    if ([foodDetail.foodPriceTextField.text isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请输入美食价格" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
+    
+    if (self.selectedRestaurantIndex == -1) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请选择餐馆" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
+    
+    NSLog(@"selectedtag：%@", [self getSelectedTagsFromTableView]);
+
+    if ([[self getSelectedTagsFromTableView] isEqualToString:@""]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请选择美食标签" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }    
+    if (!foodDetail.imageChanged) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请传入美食图片" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
+    
     NSDate *now = [NSDate date];
     NSDateFormatter *dateformat=[[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy年MM月dd日 HH时mm分ss秒"];
@@ -247,19 +297,12 @@
     [dateformat setFormatterBehavior:NSDateFormatterFullStyle];
     [dateformat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSLog(@"%@",nowStr);
-
     
-
-    NSLog(@"%@ %@", foodDetail.foodNameTextField.text, foodDetail.foodPriceTextField.text);
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
-    UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
-    NSLog(@"%@", [self getSelectedTagsFromTableView]);
     NSString *path = [NetworkInterface generateRandomString:15];
     [NetworkInterface PublishFood:foodDetail.foodNameTextField.text foodprice:foodDetail.foodPriceTextField.text publishtime:nowStr foodimgname:path restaurantname:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"] tagsname:[self getSelectedTagsFromTableView]];
-    NSLog(@"%@", foodDetail.foodImageDetail.currentBackgroundImage);
     [NetworkInterface UploadImage:foodDetail.foodImageDetail.currentBackgroundImage picturename:path];
-    
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

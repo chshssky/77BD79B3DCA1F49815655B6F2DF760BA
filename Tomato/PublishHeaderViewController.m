@@ -29,7 +29,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
-    
+    self.foodDetailView.imageChanged = NO;
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
     [self.foodDetailView.foodImageDetail setBackgroundImage:image forState:UIControlStateNormal];
 }
@@ -83,6 +83,7 @@
     NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
     if ([mediaType isEqualToString:@"public.image"]){
         [self.foodDetailView.foodImageDetail setBackgroundImage:[info objectForKey:@"UIImagePickerControllerOriginalImage"] forState:UIControlStateNormal];
+        self.foodDetailView.imageChanged = YES;
     }
     else if ([mediaType isEqualToString:@"public.movie"]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请拍照而非录像" delegate:self cancelButtonTitle:@"了解" otherButtonTitles:nil];

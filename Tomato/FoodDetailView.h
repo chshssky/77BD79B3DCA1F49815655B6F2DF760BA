@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodImageDetail;
 @property (weak, nonatomic) IBOutlet UITextField *foodNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *foodPriceTextField;
+@property BOOL imageChanged;
 
 @end
