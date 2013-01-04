@@ -597,10 +597,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4i6-b3-iFg">
-                                <rect key="frame" x="245" y="370" width="55" height="41"/>
+                                <rect key="frame" x="257" y="364" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="收藏">
+                                <state key="normal" backgroundImage="addToFavorite1.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -612,10 +612,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j7t-NK-VAz">
-                                <rect key="frame" x="167" y="370" width="70" height="41"/>
+                                <rect key="frame" x="201" y="364" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="我要吃">
+                                <state key="normal" backgroundImage="addToCart1.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -649,7 +649,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="QQ9-H9-jfQ">
-                                <rect key="frame" x="20" y="15" width="280" height="334"/>
+                                <rect key="frame" x="15" y="15" width="290" height="330"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sfO-oL-ia1">
@@ -871,6 +871,8 @@
     </scenes>
     <resources>
         <image name="achievement.png" width="30" height="30"/>
+        <image name="addToCart1.png" width="283" height="283"/>
+        <image name="addToFavorite1.png" width="283" height="283"/>
         <image name="cart.png" width="30" height="30"/>
         <image name="detailBackground.png" width="968" height="1534"/>
         <image name="favorite.png" width="30" height="30"/>
@@ -896,6 +898,9 @@
         <class className="CartTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="confirmButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="editButtonClicked:"/>
+                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
@@ -921,6 +926,8 @@
         <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="editButtonClicked:"/>
+                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
             </relationships>
@@ -953,6 +960,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishHeaderViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="foodImagePushed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="textFiledReturnEditing:"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="FoodDetailView"/>
                 <relationship kind="outlet" name="foodNameTextField" candidateClass="UITextField"/>
@@ -962,21 +970,28 @@
         <class className="PublishTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="completeButtonPushed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="RestaurantFilterTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RestaurantFilterTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="selectedAllButtonPushed:"/>
+            </relationships>
         </class>
         <class className="RestaurantTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RestaurantTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="createButtonPushed:"/>
                 <relationship kind="outlet" name="restaurantDelegate"/>
             </relationships>
         </class>
         <class className="TomatoDetailViewController" superclassName="CoreDataViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TomatoDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="AddToChart:"/>
+                <relationship kind="action" name="AddToFavorite:"/>
                 <relationship kind="outlet" name="addToCartButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favoriteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="foodImageView" candidateClass="UIImageView"/>
@@ -1001,6 +1016,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="w8t-aN-Kev"/>
+        <segue reference="K7K-CZ-1nn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -134,7 +134,8 @@
     
     [cell.detailTextLabel setHighlightedTextColor:[UIColor blackColor]];
     [cell.textLabel setHighlightedTextColor:[UIColor blackColor]];
-    
+    [cell.detailTextLabel setBackgroundColor:[UIColor clearColor]];
+    [cell.textLabel setBackgroundColor:[UIColor clearColor]];
     
     return cell;
 }
@@ -151,12 +152,12 @@
     CartFooterView * footerView = [[CartFooterView alloc] init];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    button.frame = CGRectMake(241, 5, 70, 40);
-    [button setTitle:@"订购" forState:UIControlStateNormal];
+    button.frame = CGRectMake(260, 5, 43, 43);
     [button addTarget:self action:@selector(confirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     button.tag = section;
     [footerView addSubview:button];
     footerView.confirmButton = button;
+    [button setBackgroundImage:[UIImage imageNamed:@"sure.png"] forState:UIControlStateNormal];
     
     return footerView;
 }
@@ -261,7 +262,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 50.0;
+    return 53.0;
 }
 
 // Override to support conditional editing of the table view.
