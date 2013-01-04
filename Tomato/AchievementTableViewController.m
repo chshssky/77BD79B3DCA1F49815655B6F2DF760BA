@@ -60,6 +60,10 @@
                                                                                    cacheName:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setupFetchResultController];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -71,7 +75,11 @@
     Achievement *achieve = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.achievementNameLabel.text = achieve.achievementName;
     //cell.achievementDescriptionLabel.text = achieve.achievementDescription;
-    cell.achievementImageView.backgroundColor = [UIColor brownColor];
+    if ([achieve.achievementThreshold integerValue] <= [achieve.achievementRecord.recordCount integerValue]) {
+        cell.achievementImageView.backgroundColor = [UIColor redColor];
+    } else {
+        cell.achievementImageView.backgroundColor = [UIColor brownColor];
+    }
     cell.achievementRecordLabel.text = [NSString stringWithFormat:@"%@", achieve.achievementRecord.recordCount];
     return cell;
 }

@@ -16,15 +16,20 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Record *record = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Record"];
-    NSArray *array = [[NSArray alloc] initWithObjects:[food.tags allObjects], nil];
+    NSArray *array = [[NSArray alloc] initWithArray:[food.tags allObjects]];
     for (Tag *tag in array) {
-        switch ([tag.tagID integerValue]) {
-                case 1:
-                request.predicate = [NSPredicate predicateWithFormat:@"achievements CONTAINS %@", tag.tagID];
-                NSError *error = nil;
-                NSArray *matches = [context executeFetchRequest:request error:&error];
-                
-                //record =
+        NSLog(@"%@", tag);
+        NSLog(@"%@", tag.tagName);
+        NSLog(@"tagID:%@", tag.tagID);
+        request.predicate = [NSPredicate predicateWithFormat:@"achievements CONTAINS %@", tag.tagID];
+        NSError *error = nil;
+        NSArray *matches = [context executeFetchRequest:request error:&error];
+        record = [matches lastObject];
+        int count = [record.recordCount integerValue];
+        count ++;
+        record.recordCount = [NSNumber numberWithInteger:count];
+        if (![context save:&error]) {
+            NSLog(@"increase record wrong!");
         }
     }
 }

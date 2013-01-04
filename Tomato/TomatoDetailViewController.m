@@ -16,7 +16,7 @@
 #import "NetworkInterface.h"
 #import "Tag+Init.h"
 #import "Tag.h"
-#import "Record.h"
+#import "Record+Food.h"
 
 @interface TomatoDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -193,7 +193,7 @@
 
 - (IBAction)AddToFavorite:(id)sender {
     [Collection colletionWithFood:self.foodDetail inManagedObjectContext:self.managedObjectContext];
-    //[Record ]
+    [Record RecordWithFood:self.foodDetail inManagedObjectContext:self.managedObjectContext];
     self.favoriteButton.enabled = NO;
     [self.favoriteButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
 }
