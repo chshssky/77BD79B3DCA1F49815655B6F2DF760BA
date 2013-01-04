@@ -63,10 +63,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    Cart *cart = [Cart getCart];
-    if ([[cart getCartFoodArray] count] == 0) {
-        
-    }
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
 }
 
 
@@ -115,12 +112,29 @@
         //cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.textLabel.textColor = [UIColor blackColor];
         cell.detailTextLabel.textColor = [UIColor blackColor];
+        
+        UIImage *selectedImage = [UIImage imageNamed:@"cellClickedBackground.png"];
+        UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
+        [cell setSelectedBackgroundView:selectedView];
+        
+        UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackground.png"];
+        UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
+        [cell setBackgroundView:unselectedView];
     }else{
         cell.textLabel.text = @"总价";
         cell.detailTextLabel.text = [@"¥" stringByAppendingString:[cart getTheRestaurantSumPriceAtSection:indexPath.section]];
-            cell.textLabel.textColor = UIColorFromRGB(0xBD1421);
-            cell.detailTextLabel.textColor = UIColorFromRGB(0xBD1421);
+        cell.textLabel.textColor = UIColorFromRGB(0xBD1421);
+        cell.detailTextLabel.textColor = UIColorFromRGB(0xBD1421);
+        
+        UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackground.png"];
+        UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
+        [cell setBackgroundView:unselectedView];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+    
+    [cell.detailTextLabel setHighlightedTextColor:[UIColor blackColor]];
+    [cell.textLabel setHighlightedTextColor:[UIColor blackColor]];
+    
     
     return cell;
 }

@@ -20,10 +20,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="RZc-A5-PkX">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="foodDetail.png" id="RZc-A5-PkX">
                                             <rect key="frame" x="9" y="5" width="77" height="80"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="菜名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2x0-X5-dEL">
                                             <rect key="frame" x="94" y="6" width="108" height="21"/>
@@ -46,28 +45,33 @@
                                             <color key="textColor" red="1" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="eHF-Da-DiG">
-                                            <rect key="frame" x="-3" y="-2" width="49" height="41"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="jRa-fM-1Oh">
-                                            <rect key="frame" x="148" y="39" width="46" height="46"/>
+                                            <rect key="frame" x="144" y="39" width="46" height="46"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="pSw-Vm-kf7">
                                             <rect key="frame" x="94" y="39" width="46" height="46"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="S9e-4B-F3x">
+                                            <rect key="frame" x="12" y="9" width="70" height="73"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="Lue-ld-k9J">
+                                            <rect key="frame" x="-3" y="-2" width="49" height="41"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <outlet property="foodImageView" destination="RZc-A5-PkX" id="t5W-9S-i1J"/>
+                                    <outlet property="foodImageView" destination="S9e-4B-F3x" id="J1c-9S-MTr"/>
                                     <outlet property="foodNameLabel" destination="2x0-X5-dEL" id="Zll-lo-3fR"/>
                                     <outlet property="foodScoreLabelA" destination="mzM-J8-U2g" id="5sO-yw-cAN"/>
                                     <outlet property="foodScoreLabelB" destination="WMD-M6-EVs" id="YfY-n3-Tyy"/>
                                     <outlet property="junkfoodImage" destination="jRa-fM-1Oh" id="ldu-N7-t9k"/>
-                                    <outlet property="takeoutImage" destination="eHF-Da-DiG" id="FEx-tk-WQP"/>
+                                    <outlet property="takeoutImage" destination="Lue-ld-k9J" id="79H-FJ-BVb"/>
                                     <outlet property="tasteImage" destination="pSw-Vm-kf7" id="ImR-r9-2ru"/>
                                     <segue destination="IBi-f0-QjR" kind="push" identifier="TomatoDetailSegueIdentifier" id="K7K-CZ-1nn"/>
                                 </connections>
@@ -369,16 +373,16 @@
         <scene sceneID="47F-0Q-pkE">
             <objects>
                 <tableViewController id="Q7m-2t-vf0" customClass="CartTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="IAc-hX-iM1">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="IAc-hX-iM1">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CartTableViewCellIdentifier" textLabel="kxk-AA-CC7" detailTextLabel="RYP-Ss-por" style="IBUITableViewCellStyleValue1" id="FxA-Li-b71">
-                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kxk-AA-CC7">
@@ -389,7 +393,7 @@
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RYP-Ss-por">
-                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                            <rect key="frame" x="266" y="11" width="44" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
@@ -865,6 +869,9 @@
         <class className="CartTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="confirmButtonClicked:" candidateClass="UIButton"/>
+                <relationship kind="action" name="editButtonClicked:"/>
+                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
@@ -929,6 +936,7 @@
         <class className="PublishTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishTableViewController.h"/>
             <relationships>
+                <relationship kind="action" name="completeButtonPushed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="UIView"/>
             </relationships>
         </class>

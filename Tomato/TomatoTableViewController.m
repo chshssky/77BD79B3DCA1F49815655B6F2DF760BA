@@ -57,7 +57,7 @@
     self.foodRestaurants = nil;
     [self.navigationController setTitle:@"番茄美食"];
     [self.foodNavigationBar setTitle:@"番茄美食"];
-    
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -197,7 +197,7 @@
     UIImageView *selectedView = [[UIImageView alloc] initWithImage:selectedImage];
     [cell setSelectedBackgroundView:selectedView];
     
-    UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackgroud.png"];
+    UIImage *unselectedImage = [UIImage imageNamed:@"cellUnclickedBackground.png"];
     UIImageView *unselectedView = [[UIImageView alloc] initWithImage:unselectedImage];
     [cell setBackgroundView:unselectedView];
     
