@@ -185,5 +185,24 @@
     NSLog(@"%@",returnString);
 }
 
++ (double)getFoodScore:(int)foodid
+{
+    NSString *ip = IP;
+    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodScore?foodid=%d",ip, foodid];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:URL]];
+    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPMethod:@"GET"];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    //[NSURLConnection connectionWithRequest:request delegate:self];
+    //NSLog(@"%d",[returnData length]);
+    
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",returnString);
+    
+    return [returnString doubleValue];
+    
+}
 
 @end

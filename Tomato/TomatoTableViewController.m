@@ -11,13 +11,13 @@
 #import "FoodTomatoTableViewCell.h"
 #import "TomatoDetailViewController.h"
 #import "NetworkInterface.h"
-#import "Food.h"
+#import "Food+Update.h"
 #import "FilterTableViewController.h"
 #import "Tag.h"
 #import "Tag+Init.h"
 #import "PublishTableViewController.h"
 
-@interface TomatoTableViewController () <FilterTableViewControllerDelegate>
+@interface TomatoTableViewController () <FilterTableViewControllerDelegate, TomatoDetailViewControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *foodTags;
 @property (strong, nonatomic) NSMutableArray *foodRestaurants;
@@ -436,7 +436,7 @@
         TomatoDetailViewController *dvc = [segue destinationViewController];
         
         dvc.foodDetail = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
-        
+        dvc.detailDelegate = self;
         Food *food = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
         self.whetherTakeout = NO;
         NSMutableArray *signMutableArray = [[NSMutableArray alloc]initWithArray:[food.tags allObjects]];
@@ -461,6 +461,25 @@
 {
     self.foodRestaurants = restaurantArr;
     self.foodTags = tagArr;
+}
+
+#pragma mark - TomatoDetailViewControllerDelegate
+
+- (void)requestForFoodScore:(Food *)food
+{
+    dispatch_queue_t reload_score_queue;
+    reload_score_queue = dispatch_queue_create("reload_score_queue", nil);
+    dispatch_async(reload_score_queue, ^{
+        
+        double foodScore = [NetworkInterface getFoodScore:[food.foodID integerValue]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Food updateFood:food Score:[NSNumber numberWithDouble:foodScore] inManagedObjectContext:self.managedObjectContext] ;
+            [self.tableView reloadData];
+            
+        });
+    });
+
 }
 
 @end

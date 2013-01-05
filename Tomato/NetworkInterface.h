@@ -36,5 +36,6 @@
 + (NSArray *)requestForRestaurantList;
 
 + (void)DownloadImage:(NSString *)imagename;
++ (double)getFoodScore:(int)foodid;
 
 @end

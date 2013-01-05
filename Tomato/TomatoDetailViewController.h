@@ -11,6 +11,12 @@
 #import "CoreDataViewController.h"
 #import "RateView.h"
 
+@protocol TomatoDetailViewControllerDelegate <NSObject>
+
+- (void)requestForFoodScore:(Food *)food;
+
+@end
+
 @interface TomatoDetailViewController : CoreDataViewController <RateViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *foodImageView;
 @property (weak, nonatomic) IBOutlet UILabel *foodTagLabel;
@@ -21,5 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *foodScoreLabelB;
 @property (weak, nonatomic) IBOutlet UIImageView *tasteSign;
 @property (weak, nonatomic) IBOutlet UIImageView *junkfoodSign;
+
+@property (weak, nonatomic) IBOutlet id <TomatoDetailViewControllerDelegate> detailDelegate;
 
 @end

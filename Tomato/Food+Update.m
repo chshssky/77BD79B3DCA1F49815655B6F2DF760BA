@@ -14,7 +14,7 @@
              Score:(NSNumber *)score
 inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    food.foodScore = [NSNumber numberWithFloat:[score floatValue]];
+    food.foodScore = [NSNumber numberWithDouble:[score doubleValue]];
     NSError *err = nil;
     if (![context save:&err]) {
         NSLog(@"Update Food Score Wrong!");

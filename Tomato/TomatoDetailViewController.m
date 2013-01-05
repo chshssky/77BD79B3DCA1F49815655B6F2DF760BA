@@ -35,6 +35,7 @@
 @synthesize foodTagLabel = _foodTagLabel;
 @synthesize favoriteButton = _favoriteButton;
 @synthesize addToCartButton = _addToCartButton;
+@synthesize detailDelegate = _detailDelegate;
 
 - (void)setUpEditableRateView:(BOOL)whetherAllowToRate{
     RateView *rateView = [[RateView alloc] initWithFrame:CGRectMake(80, self.view.frame.size.height-126, self.view.bounds.size.width, 20) fullStar:[UIImage imageNamed:@"StarFullLarge.png"] emptyStar:[UIImage imageNamed:@"StarEmptyLarge.png"]];
@@ -53,17 +54,12 @@
 
 - (void) viewWillDisappear:(BOOL)animated
 {
+    NSLog(@"rateScore:%d", self.rateScore);
     //推出时提交评分，并且把评分存入数据库
     if (self.rateScore != 0) {
         NSLog(@"main thread begin...");
         [self performSelectorInBackground:@selector(doSomething:) withObject:nil];
         NSLog(@"main thread end.....");
-//        dispatch_queue_t fetchQ = dispatch_queue_create("Upload Grade Thread", NULL);
-//        dispatch_async(fetchQ, ^{
-//            [NetworkInterface giveGrade:[self.foodDetail.foodID integerValue] OldGrade:[self.foodDetail.foodGrade integerValue] NewGrade:self.rateScore];
-//            [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
-//            
-//        });
     }
 }
 
@@ -74,6 +70,9 @@
     NSLog(@"old:grade:%@", self.foodDetail.foodGrade);
     NSLog(@"new:grade:%d", self.rateScore);
     [Food GiveFood:self.foodDetail aGrade:self.rateScore inManagedObjectContext:self.managedObjectContext];
+    
+    [self.detailDelegate requestForFoodScore:self.foodDetail];
+    NSLog(@"foodID:%@", self.foodDetail.foodID);
     NSLog( @"one thread end..." );
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

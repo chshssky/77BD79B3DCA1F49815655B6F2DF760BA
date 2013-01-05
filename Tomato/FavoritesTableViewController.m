@@ -9,11 +9,12 @@
 #import "FavoritesTableViewController.h"
 #import "FavoriteTableViewCell.h"
 #import "Collection+Edit.h"
-#import "Food.h"
+#import "Food+Update.h"
 #import "TomatoDetailViewController.h"
 #import "Tag.h"
+#import "NetworkInterface.h"
 
-@interface FavoritesTableViewController ()
+@interface FavoritesTableViewController () <TomatoDetailViewControllerDelegate>
 @property (nonatomic, strong) NSMutableArray *selectedRow;
 @property (weak, nonatomic) IBOutlet UINavigationItem *favoriteNavigationBar;
 @property (nonatomic) BOOL whetherCanRemove;
@@ -375,12 +376,30 @@
     
     if ([[segue identifier] isEqualToString:@"FavoriteDetailSegueIdentifier"]) {
         TomatoDetailViewController *dvc = [segue destinationViewController];
-        
         Collection *collection = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
         dvc.foodDetail = collection.food;
+        dvc.detailDelegate = self;
     }
 }
 
+#pragma mark - TomatoDetailViewControllerDelegate
+
+- (void)requestForFoodScore:(Food *)food
+{
+    dispatch_queue_t reload_score_queue;
+    reload_score_queue = dispatch_queue_create("reload_score_queue", nil);
+    dispatch_async(reload_score_queue, ^{
+        
+        double foodScore = [NetworkInterface getFoodScore:[food.foodID integerValue]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Food updateFood:food Score:[NSNumber numberWithDouble:foodScore] inManagedObjectContext:self.managedObjectContext] ;
+            [self.tableView reloadData];
+        
+        });
+    });
+    
+}
 
 
 @end
