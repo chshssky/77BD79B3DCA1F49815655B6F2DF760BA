@@ -30,6 +30,12 @@
 @synthesize foodTags = _foodTags;
 @synthesize foodRestaurants = _foodRestaurants;
 
+-(void)setupFetch
+{
+    [self setupFetchResultController];
+    [self.tableView reloadData];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -119,6 +125,10 @@
     //用StoryBoard指定ID初始化
     UIViewController* filterTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newFilter"];
     
+    FilterTableViewController *ftvc = filterTableViewController.childViewControllers[0];
+    ftvc.tagArray = self.foodTags;
+    ftvc.restaurantArray = self.foodRestaurants;
+    ftvc.filterDelegate = self;
     //设定跳转方法的跳转
     filterTableViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
     //[self presentViewController:filterTableViewController animated:YES completion:nil];

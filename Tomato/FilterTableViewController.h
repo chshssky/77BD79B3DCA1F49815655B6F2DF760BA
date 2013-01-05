@@ -12,6 +12,8 @@
 
 - (void)sendTheFinalTags:(NSArray *)tagArr andTheFinalRestaurants:(NSArray *)restaurantArr;
 
+-(void)setupFetch;
+
 @end
 
 @interface FilterTableViewController : CoreDataTableViewController

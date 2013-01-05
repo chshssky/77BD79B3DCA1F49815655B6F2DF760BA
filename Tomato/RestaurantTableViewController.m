@@ -208,6 +208,9 @@
 {
     if (buttonIndex == 1) {
         NSString *inputString = [[alertView textFieldAtIndex:0] text];
+        if ([[[alertView textFieldAtIndex:0] text] isEqualToString:@""]) {
+            return;
+        }
         if (self.title == @"餐馆") {
             [self.restaurantDelegate sendTheAddedRestaurantName:inputString];
             self.selectedIndex = [self.listArray count] - 1;

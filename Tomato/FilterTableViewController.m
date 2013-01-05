@@ -27,6 +27,8 @@
     return self;
 }
 
+\
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,6 +70,7 @@
 
 - (IBAction)returnController:(id)sender
 {
+    [self.filterDelegate setupFetch];
     //[self.navigationController popViewControllerAnimated:YES];
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -76,6 +79,8 @@
 {
     NSLog(@"%@", [self getSelectedTagsFromTableView]);
     [self.filterDelegate sendTheFinalTags:self.tagArray andTheFinalRestaurants:self.restaurantArray];
+    [self.filterDelegate setupFetch];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
