@@ -74,7 +74,7 @@
     }
     Achievement *achieve = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.achievementNameLabel.text = achieve.achievementName;
-    //cell.achievementDescriptionLabel.text = achieve.achievementDescription;
+    cell.achievementDescriptionLabel.text = achieve.achievementDecription;
     if ([achieve.achievementThreshold integerValue] <= [achieve.achievementRecord.recordCount integerValue]) {
         cell.achievementImageView.backgroundColor = [UIColor redColor];
     } else {

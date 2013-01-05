@@ -31,6 +31,7 @@
 #define ACHIEVEMENT_NAME @"成就名称"
 #define ACHIEVEMENT_THRESHOLD @"成就阈值"
 #define ACHIEVEMENT_IMAGE_PATH @"成就图片路径"
+#define ACHIEVEMENT_DESCRIPTION @"成就描述"
 
 
 

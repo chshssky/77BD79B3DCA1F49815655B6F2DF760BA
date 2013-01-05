@@ -106,7 +106,7 @@
     }
     i = 1;
     for (NSDictionary *achievement in achievementsArr) {
-        [Achievement achievementWithInitialData:[achievement objectForKey:ACHIEVEMENT_NAME] WithID:i++ WithThreshold:[[achievement objectForKey:ACHIEVEMENT_THRESHOLD] integerValue] inManagedObjectContext:self.managedObjectContext];
+        [Achievement achievementWithInitialData:[achievement objectForKey:ACHIEVEMENT_NAME] WithID:i++ WithThreshold:[[achievement objectForKey:ACHIEVEMENT_THRESHOLD] integerValue] WithDescription:[achievement objectForKey:ACHIEVEMENT_DESCRIPTION] inManagedObjectContext:self.managedObjectContext];
     }
     
     NSError *error = nil;

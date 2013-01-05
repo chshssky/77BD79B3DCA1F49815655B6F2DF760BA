@@ -31,8 +31,8 @@
 		3F7B7B14163D6558003A7505 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B13163D6558003A7505 /* Default@2x.png */; };
 		3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B15163D6558003A7505 /* Default-568h@2x.png */; };
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
-		3F7E413C1697114000A86D7D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E413B1697113F00A86D7D /* Achievement.m */; };
 		3F7E41401697235500A86D7D /* Record+Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E413F1697235400A86D7D /* Record+Food.m */; };
+		3F7E414F1698090700A86D7D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E414E1698090700A86D7D /* Achievement.m */; };
 		3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */; };
 		3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B361690195500D7B184 /* Food+Cart.m */; };
 		3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3A16901E1A00D7B184 /* foodImage.png */; };
@@ -184,10 +184,10 @@
 		3F7B7B13163D6558003A7505 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3F7B7B15163D6558003A7505 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3F7B7B18163D6558003A7505 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		3F7E413A1697113E00A86D7D /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
-		3F7E413B1697113F00A86D7D /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
 		3F7E413E1697235300A86D7D /* Record+Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Record+Food.h"; sourceTree = "<group>"; };
 		3F7E413F1697235400A86D7D /* Record+Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Record+Food.m"; sourceTree = "<group>"; };
+		3F7E414D1698090700A86D7D /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
+		3F7E414E1698090700A86D7D /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
 		3F8B5B3116900F8F00D7B184 /* AchievementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsTableViewCell.h; sourceTree = "<group>"; };
 		3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsTableViewCell.m; sourceTree = "<group>"; };
 		3F8B5B351690195500D7B184 /* Food+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Cart.h"; sourceTree = "<group>"; };
@@ -393,8 +393,8 @@
 		3F2F8C7D1689C9E400D2A668 /* ManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				3F7E413A1697113E00A86D7D /* Achievement.h */,
-				3F7E413B1697113F00A86D7D /* Achievement.m */,
+				3F7E414D1698090700A86D7D /* Achievement.h */,
+				3F7E414E1698090700A86D7D /* Achievement.m */,
 				3FAB16CF16941A7000B95574 /* Food.h */,
 				3FAB16D016941A7100B95574 /* Food.m */,
 				3F8B5B5D1691AADB00D7B184 /* Tag.h */,
@@ -833,8 +833,8 @@
 				3FAB16CA1694118F00B95574 /* Food+Update.m in Sources */,
 				3FAB16CE1694157D00B95574 /* Food+Init.m in Sources */,
 				3FAB16D116941A7100B95574 /* Food.m in Sources */,
-				3F7E413C1697114000A86D7D /* Achievement.m in Sources */,
 				3F7E41401697235500A86D7D /* Record+Food.m in Sources */,
+				3F7E414F1698090700A86D7D /* Achievement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

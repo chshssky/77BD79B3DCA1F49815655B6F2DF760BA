@@ -14,6 +14,7 @@
 + (Achievement *)achievementWithInitialData:(NSString *)achievementName
                                      WithID:(NSInteger)achievementID
                               WithThreshold:(NSInteger)achievementThreshold
+                            WithDescription:(NSString *)achievementDescript
                      inManagedObjectContext:(NSManagedObjectContext *)context
 {
     Achievement *achievement = nil;
@@ -36,6 +37,7 @@
         achievement.achievementRecord = record;
         achievement.achievementName = achievementName;
         achievement.achievementThreshold = [NSNumber numberWithInteger:achievementThreshold];
+        achievement.achievementDecription = achievementDescript;
         
     } else {
         achievement = [matches lastObject];

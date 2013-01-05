@@ -13,6 +13,7 @@
 + (Achievement *)achievementWithInitialData:(NSString *)achievementName
                                      WithID:(NSInteger)achievementID
                               WithThreshold:(NSInteger)achievementThreshold
+                            WithDescription:(NSString *)achievementDescript
                      inManagedObjectContext:(NSManagedObjectContext *)context;
 
 

@@ -56,6 +56,8 @@
 	<key>成就</key>
 	<array>
 		<dict>
+			<key>成就描述</key>
+			<string>当您收藏五个以上的香辣食物时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>重口味</string>
 			<key>成就阈值</key>
@@ -64,14 +66,8 @@
 			<string></string>
 		</dict>
 		<dict>
-			<key>成就名称</key>
-			<string>胖子</string>
-			<key>成就阈值</key>
-			<string>5</string>
-			<key>成就图片路径</key>
-			<string></string>
-		</dict>
-		<dict>
+			<key>成就描述</key>
+			<string>当您收藏五个以上的清爽食物时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>小清新</string>
 			<key>成就阈值</key>
@@ -80,6 +76,18 @@
 			<string></string>
 		</dict>
 		<dict>
+			<key>成就描述</key>
+			<string>当您收藏五个以上的甜腻食物时，你会达成该成就</string>
+			<key>成就名称</key>
+			<string>胖子</string>
+			<key>成就阈值</key>
+			<string>5</string>
+			<key>成就图片路径</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>成就描述</key>
+			<string>当您收藏五个以上的怪异食物时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>来者不拒</string>
 			<key>成就阈值</key>
@@ -88,6 +96,8 @@
 			<string></string>
 		</dict>
 		<dict>
+			<key>成就描述</key>
+			<string>当您收藏五个以上的快餐食物时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>速食主义</string>
 			<key>成就阈值</key>
@@ -96,6 +106,8 @@
 			<string></string>
 		</dict>
 		<dict>
+			<key>成就描述</key>
+			<string>当您收藏五个以上的外卖食物时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>吃货</string>
 			<key>成就阈值</key>
@@ -104,6 +116,8 @@
 			<string></string>
 		</dict>
 		<dict>
+			<key>成就描述</key>
+			<string>当叫了超过五次外卖时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>宅神</string>
 			<key>成就阈值</key>
@@ -112,6 +126,8 @@
 			<string></string>
 		</dict>
 		<dict>
+			<key>成就描述</key>
+			<string>当您打开改程序超过五次时，你会达成该成就</string>
 			<key>成就名称</key>
 			<string>蕃茄至尊</string>
 			<key>成就阈值</key>
