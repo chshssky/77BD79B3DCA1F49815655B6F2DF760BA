@@ -96,17 +96,17 @@
         self.addToCartButton.enabled = YES;
         [self.addToCartButton setTitleColor:[UIColor colorWithRed:0.196078 green:0.309804 blue:0.521569 alpha:1] forState:UIControlStateNormal];
     }
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
     
     if (self.whetherTakeout == NO) {
         [self.addToCartButton setHidden:YES];
     }else{
         [self.addToCartButton setHidden:NO];
     }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
     
     
@@ -119,12 +119,16 @@
         self.favoriteButton.enabled = NO;
         [self.favoriteButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     }
+    
+    
     Cart *cart = [Cart getCart];
     NSDictionary *food = [Food ConvertFood:self.foodDetail];
     if ([cart.getCartFoodArray containsObject:food]) {
         self.addToCartButton.enabled = NO;
         [self.addToCartButton setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
     }
+    
+    
     self.foodImageView.image = [UIImage imageWithContentsOfFile:[self imageFilePath:self.foodDetail.foodImagePath]];
     self.foodScoreLabelA.text = [NSString stringWithFormat:@"%d",[self.foodDetail.foodScore intValue]];
     int pointNumber = ([self.foodDetail.foodScore floatValue] - [self.foodDetail.foodScore intValue])*10;

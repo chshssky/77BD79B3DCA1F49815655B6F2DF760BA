@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSMutableArray *selectedRow;
 @property (weak, nonatomic) IBOutlet UINavigationItem *favoriteNavigationBar;
 @property (nonatomic) BOOL whetherCanRemove;
+@property (nonatomic) BOOL whetherTakeout;
 
 @end
 
@@ -379,6 +380,16 @@
         Collection *collection = [self.fetchedResultsController objectAtIndexPath:[self.tableView indexPathForSelectedRow]];
         dvc.foodDetail = collection.food;
         dvc.detailDelegate = self;
+        
+        self.whetherTakeout = NO;
+        NSMutableArray *signMutableArray = [[NSMutableArray alloc]initWithArray:[collection.food.tags allObjects]];
+        for (int i=0; i<[signMutableArray count]; i++) {
+            Tag *foodSign = signMutableArray[i];
+            if ([foodSign.tagID intValue] == 5) {
+                self.whetherTakeout = YES;
+            }
+        }
+        dvc.whetherTakeout = self.whetherTakeout;
     }
 }
 
