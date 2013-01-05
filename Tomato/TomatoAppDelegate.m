@@ -11,6 +11,7 @@
 
 #import "Tag+Init.h"
 #import "Achievement+Init.h"
+#import "Record+Update.h"
 
 @implementation TomatoAppDelegate
 
@@ -115,6 +116,9 @@
         abort();
     }
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarImage.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    [Record RecordWithOpenTimeinManagedObjectContext:self.managedObjectContext];
+    
     return YES;
 }
 							

@@ -33,6 +33,7 @@
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
 		3F7E41401697235500A86D7D /* Record+Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E413F1697235400A86D7D /* Record+Food.m */; };
 		3F7E414F1698090700A86D7D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E414E1698090700A86D7D /* Achievement.m */; };
+		3F7E415316980C5700A86D7D /* Record+Update.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E415216980C5700A86D7D /* Record+Update.m */; };
 		3F8B5B3316900F8F00D7B184 /* AchievementsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */; };
 		3F8B5B371690195500D7B184 /* Food+Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8B5B361690195500D7B184 /* Food+Cart.m */; };
 		3F8B5B3B16901E1A00D7B184 /* foodImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F8B5B3A16901E1A00D7B184 /* foodImage.png */; };
@@ -188,6 +189,8 @@
 		3F7E413F1697235400A86D7D /* Record+Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Record+Food.m"; sourceTree = "<group>"; };
 		3F7E414D1698090700A86D7D /* Achievement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Achievement.h; sourceTree = "<group>"; };
 		3F7E414E1698090700A86D7D /* Achievement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Achievement.m; sourceTree = "<group>"; };
+		3F7E415116980C5600A86D7D /* Record+Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Record+Update.h"; sourceTree = "<group>"; };
+		3F7E415216980C5700A86D7D /* Record+Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Record+Update.m"; sourceTree = "<group>"; };
 		3F8B5B3116900F8F00D7B184 /* AchievementsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsTableViewCell.h; sourceTree = "<group>"; };
 		3F8B5B3216900F8F00D7B184 /* AchievementsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsTableViewCell.m; sourceTree = "<group>"; };
 		3F8B5B351690195500D7B184 /* Food+Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Cart.h"; sourceTree = "<group>"; };
@@ -407,10 +410,12 @@
 				3FAB16C216932F6300B95574 /* Food+Grade.m */,
 				3F8B5B351690195500D7B184 /* Food+Cart.h */,
 				3F8B5B361690195500D7B184 /* Food+Cart.m */,
-				3F7E413E1697235300A86D7D /* Record+Food.h */,
-				3F7E413F1697235400A86D7D /* Record+Food.m */,
 				3F556604168F1726000E3D9A /* Record.h */,
 				3F556605168F1726000E3D9A /* Record.m */,
+				3F7E415116980C5600A86D7D /* Record+Update.h */,
+				3F7E415216980C5700A86D7D /* Record+Update.m */,
+				3F7E413E1697235300A86D7D /* Record+Food.h */,
+				3F7E413F1697235400A86D7D /* Record+Food.m */,
 				3F556601168F1726000E3D9A /* Collection.h */,
 				3F556602168F1726000E3D9A /* Collection.m */,
 				3F8B5B5216917DFD00D7B184 /* Collection+Edit.h */,
@@ -835,6 +840,7 @@
 				3FAB16D116941A7100B95574 /* Food.m in Sources */,
 				3F7E41401697235500A86D7D /* Record+Food.m in Sources */,
 				3F7E414F1698090700A86D7D /* Achievement.m in Sources */,
+				3F7E415316980C5700A86D7D /* Record+Update.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

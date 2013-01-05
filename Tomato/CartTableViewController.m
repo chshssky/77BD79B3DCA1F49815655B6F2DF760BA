@@ -10,6 +10,8 @@
 #import "Cart.h"
 #import "CartFooterView.h"
 #import <MessageUI/MFMessageComposeViewController.h>
+#import "Record+Update.h"
+#import "TomatoAppDelegate.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
@@ -213,6 +215,8 @@
 
 - (IBAction)confirmButtonClicked:(UIButton *)sender
 {
+    TomatoAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    [Record RecordWithOrderinManagedObjectContext:[delegate managedObjectContext]];
     Cart *cart = [Cart getCart];
     NSString *restaurantName = [cart getRestaurantName:sender.tag];
     NSString *call = [@"呼叫 " stringByAppendingString:restaurantName];
@@ -227,6 +231,7 @@
     actionSheet.tag = sender.tag;
     self.tempSection = [NSNumber numberWithInt:sender.tag];
     [actionSheet showInView:[UIApplication sharedApplication].keyWindow];
+    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
