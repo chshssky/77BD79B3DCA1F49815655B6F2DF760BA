@@ -107,7 +107,7 @@
     
     NSMutableData *body = [NSMutableData data];
     
-    [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(img, 0.1)]];
+    [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(img, 0.001)]];
     
     [request setHTTPBody:body];
     

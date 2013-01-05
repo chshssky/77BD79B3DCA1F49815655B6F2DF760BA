@@ -327,6 +327,14 @@
         [alert show];
         return;
     }
+    int count = [[self.restaurantArray[self.selectedRestaurantIndex] objectForKey: @"电话" ] count];
+    if (count <= 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请补全餐馆电话" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+
+    }
     
     NSLog(@"selectedtag：%@", [self getSelectedTagsFromTableView]);
     NSString *tagsStr = [self getSelectedTagsFromTableView];
