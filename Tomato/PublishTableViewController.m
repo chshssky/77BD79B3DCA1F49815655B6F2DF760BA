@@ -434,6 +434,7 @@
 {
     NSMutableArray *telArr = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"电话"];
     [telArr addObject:telephoneNumber];
+    [self.tableView reloadData];
 }
 
 - (void)sendTheAddedRestaurantName:(NSString *)restaurantName
