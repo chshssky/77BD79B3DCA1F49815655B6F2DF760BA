@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kWw-4Y-E2O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kWw-4Y-E2O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Tomato Table View Controller - 番茄美食-->
         <scene sceneID="uzx-ZD-GmQ">
             <objects>
-                <tableViewController id="XJz-q1-zvV" customClass="TomatoTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="XJz-q1-zvV" customClass="TomatoTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="92" sectionHeaderHeight="22" sectionFooterHeight="22" id="ra3-CP-tyK">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -80,16 +80,8 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="番茄美食" id="X0p-xm-cbs">
-                        <barButtonItem key="leftBarButtonItem" title="筛选" id="sTM-gM-6aI">
-                            <connections>
-                                <segue destination="Kbd-aM-cuB" kind="push" identifier="FilterSegueIdentifier" id="Zja-pO-ALh"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="发布" id="ER7-QH-mbQ">
-                            <connections>
-                                <segue destination="qH3-ul-UGJ" kind="push" id="dpp-4I-giA"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" title="筛选" id="sTM-gM-6aI"/>
+                        <barButtonItem key="rightBarButtonItem" title="发布" id="ER7-QH-mbQ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="foodNavigationBar" destination="X0p-xm-cbs" id="goK-AN-B39"/>
@@ -99,12 +91,27 @@
             </objects>
             <point key="canvasLocation" x="1007" y="-785"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="M7J-mJ-6Vu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pd0-eU-3Q5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="newFilter" definesPresentationContext="YES" id="pa5-7X-vNH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5F2-Rs-dRh">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Kbd-aM-cuB" kind="relationship" relationship="rootViewController" id="CL5-a8-NWg"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1155" y="-2008"/>
+        </scene>
         <!--Filter Table View Controller - 筛选-->
         <scene sceneID="00C-ut-DKh">
             <objects>
                 <tableViewController id="Kbd-aM-cuB" customClass="FilterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Oes-YJ-rlf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -165,7 +172,7 @@
             <objects>
                 <tableViewController id="iFp-7j-eFE" customClass="RestaurantFilterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="pvp-On-uJb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -184,13 +191,7 @@
                             <outlet property="delegate" destination="iFp-7j-eFE" id="9My-Yu-hv1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="餐馆" id="rJk-lb-kX3">
-                        <barButtonItem key="rightBarButtonItem" title="全选" id="D0C-Bt-Ux9">
-                            <connections>
-                                <action selector="selectedAllButtonPushed:" destination="iFp-7j-eFE" id="BLt-Tr-soQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="餐馆" id="rJk-lb-kX3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDo-zO-g7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,14 +272,9 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="口味相投" id="n1T-cI-gB3">
-                        <barButtonItem key="rightBarButtonItem" title="编辑" id="q6i-jv-t0U">
-                            <connections>
-                                <action selector="editButtonClicked:" destination="eVY-ue-4yc" id="G0w-th-Pug"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="编辑" id="q6i-jv-t0U"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="q6i-jv-t0U" id="F2h-Fc-zss"/>
                         <outlet property="favoriteNavigationBar" destination="n1T-cI-gB3" id="2PW-n9-3bv"/>
                     </connections>
                 </tableViewController>
@@ -421,16 +417,7 @@
                             <outlet property="delegate" destination="Q7m-2t-vf0" id="mhY-3L-g9x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="稍后再吃" id="98m-4q-uus">
-                        <barButtonItem key="rightBarButtonItem" title="编辑" id="Fuv-kN-sMI">
-                            <connections>
-                                <action selector="editButtonClicked:" destination="Q7m-2t-vf0" id="fg1-mH-PRW"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="editButton" destination="Fuv-kN-sMI" id="xou-N3-rTw"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="稍后再吃" id="98m-4q-uus"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95Y-tF-pkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -455,7 +442,7 @@
         <!--Navigation Controller - 番茄美食-->
         <scene sceneID="yrw-38-8sM">
             <objects>
-                <navigationController definesPresentationContext="YES" id="eAd-ec-6S9" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainController" definesPresentationContext="YES" id="eAd-ec-6S9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="番茄美食" image="food.png" id="Cui-0f-4Vs"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Na8-Hi-XgG">
                         <autoresizingMask key="autoresizingMask"/>
@@ -471,7 +458,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="dW8-Ab-IZB">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="kWw-4Y-E2O" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="" definesPresentationContext="YES" id="kWw-4Y-E2O" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="SgI-ur-hAt">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
@@ -489,12 +476,28 @@
             </objects>
             <point key="canvasLocation" x="-65" y="-59"/>
         </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="I5g-Bv-RJr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mea-d5-z9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="newPublish" definesPresentationContext="YES" id="dSQ-SJ-PZd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="z2t-tf-euP"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qTP-sJ-rNV">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qH3-ul-UGJ" kind="relationship" relationship="rootViewController" id="ctC-32-ANl"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1155" y="-1430"/>
+        </scene>
         <!--Publish Table View Controller - 发布-->
         <scene sceneID="pf3-6H-ebj">
             <objects>
-                <tableViewController id="qH3-ul-UGJ" customClass="PublishTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="qH3-ul-UGJ" customClass="PublishTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="nWh-xP-nFa" customClass="UITableControl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <containerView key="tableHeaderView" contentMode="scaleToFill" id="wWZ-gb-yCt">
@@ -558,12 +561,9 @@
                             <outlet property="delegate" destination="qH3-ul-UGJ" id="aGo-Ox-oxs"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="65B-2N-f2e"/>
                     <navigationItem key="navigationItem" title="发布" id="eyj-I6-4ND">
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="Iy8-sl-x0l">
-                            <connections>
-                                <action selector="completeButtonPushed:" destination="qH3-ul-UGJ" id="M42-jD-ZAc"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="Iy8-sl-x0l"/>
                     </navigationItem>
                     <connections>
                         <outlet property="foodDetailView" destination="wWZ-gb-yCt" id="EHc-X9-NQr"/>
@@ -571,7 +571,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LCb-Mz-PmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616" y="-1440"/>
+            <point key="canvasLocation" x="1616" y="-1430"/>
         </scene>
         <!--Tomato Detail View Controller - 菜名-->
         <scene sceneID="kBi-F5-4Sv">
@@ -762,7 +762,7 @@
             <objects>
                 <tableViewController id="Oxp-O5-2Nf" customClass="RestaurantTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sRD-nn-hZx">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -782,11 +782,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="店名" id="vbg-Ux-ZIB">
-                        <barButtonItem key="rightBarButtonItem" title="新建" id="fQC-wu-sn9">
-                            <connections>
-                                <action selector="createButtonPushed:" destination="Oxp-O5-2Nf" id="jQL-Sk-HL3"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="新建" id="fQC-wu-sn9"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOF-sz-1Nf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -801,8 +797,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="addPhotoBackground.png" id="PQP-Jp-BKs">
+                                <rect key="frame" x="21" y="11" width="87" height="102"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eao-V5-ZRR">
-                                <rect key="frame" x="5" y="20" width="103" height="89"/>
+                                <rect key="frame" x="23" y="14" width="83" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal">
@@ -817,7 +817,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KLh-pm-60U">
-                                <rect key="frame" x="116" y="28" width="34" height="21"/>
+                                <rect key="frame" x="116" y="30" width="34" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -831,7 +831,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="O9g-hg-aQ3">
-                                <rect key="frame" x="158" y="26" width="153" height="30"/>
+                                <rect key="frame" x="158" y="26" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -840,7 +840,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="l2S-h4-Fvt">
-                                <rect key="frame" x="158" y="70" width="153" height="30"/>
+                                <rect key="frame" x="158" y="70" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -866,15 +866,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1E-l0-1ec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2052" y="-1262"/>
+            <point key="canvasLocation" x="2052" y="-1430"/>
         </scene>
     </scenes>
     <resources>
         <image name="achievement.png" width="30" height="30"/>
+        <image name="addPhotoBackground.png" width="782" height="947"/>
         <image name="addToCart1.png" width="283" height="283"/>
         <image name="addToFavorite1.png" width="283" height="283"/>
         <image name="cart.png" width="30" height="30"/>
-        <image name="detailBackground.png" width="968" height="1534"/>
+        <image name="detailBackground.png" width="250" height="396"/>
         <image name="favorite.png" width="30" height="30"/>
         <image name="food.png" width="30" height="30"/>
         <image name="foodDetail.png" width="782" height="947"/>
@@ -897,9 +898,6 @@
         </class>
         <class className="CartTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CartTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
         </class>
         <class className="CoreDataTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
@@ -923,7 +921,6 @@
         <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
@@ -955,6 +952,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PublishHeaderViewController.h"/>
             <relationships>
                 <relationship kind="action" name="backgroundTap:"/>
+                <relationship kind="action" name="foodImagePushed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="textFiledReturnEditing:"/>
                 <relationship kind="outlet" name="foodDetailView" candidateClass="FoodDetailView"/>
                 <relationship kind="outlet" name="foodNameTextField" candidateClass="UITextField"/>

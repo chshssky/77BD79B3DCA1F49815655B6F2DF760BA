@@ -114,7 +114,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigationBarImage.png"] forBarMetrics:UIBarMetricsDefault];
     return YES;
 }
 							

@@ -102,11 +102,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     if (self.whetherTakeout == NO) {
         [self.addToCartButton setHidden:YES];
     }else{
         [self.addToCartButton setHidden:NO];
     }
+    
+    
     
     self.whetherAllowToRate = YES;
     [self setUpEditableRateView:self.whetherAllowToRate];
@@ -144,6 +147,29 @@
         Tag *foodSign1 = signMutableArray[0];
         self.tasteSign.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
     }
+    
+    //修改NavigationBar按钮
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(-6, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [button setBackgroundImage:[UIImage imageNamed:@"backButton.png"] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"backButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [button addTarget:self action:@selector(returnController:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [buttonView addSubview:button];
+    
+    UIBarButtonItem *result = [[UIBarButtonItem alloc] initWithCustomView:buttonView];
+    
+    self.navigationItem.leftBarButtonItem = result;
+}
+
+- (IBAction)returnController:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (NSString *)getFoodSignImage:(int)foodID{

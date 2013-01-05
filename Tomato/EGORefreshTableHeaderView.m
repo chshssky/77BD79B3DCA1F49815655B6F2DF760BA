@@ -46,7 +46,7 @@
         UIImage *image = [UIImage imageNamed:@"headerView.png"];
         self.layer.contents = (id) image.CGImage;
 
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 50.0f, self.frame.size.width, 20.0f)];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 45.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		label.font = [UIFont systemFontOfSize:10.0f];
 		label.textColor = TEXT_COLOR;
@@ -57,7 +57,7 @@
 		[self addSubview:label];
 		_lastUpdatedLabel=label;
 		
-		label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 65.0f, self.frame.size.width, 20.0f)];
+		label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 60.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		label.font = [UIFont boldSystemFontOfSize:11.0f];
 		label.textColor = TEXT_COLOR;

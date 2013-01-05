@@ -38,11 +38,30 @@
             [self.restaurantArray addObject:[NSNumber numberWithBool:YES]];
         }
     }
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    
+    //修改NavigationBar按钮
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(returnController:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+
+}
+
+- (IBAction)returnController:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

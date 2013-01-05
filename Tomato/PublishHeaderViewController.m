@@ -30,7 +30,7 @@
 	// Do any additional setup after loading the view.
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"foodImage" ofType:@"png"];
     self.foodDetailView.imageChanged = NO;
-    UIImage *image = [[UIImage alloc] initWithContentsOfFile:filePath];
+    UIImage *image = [[UIImage alloc] init];
     [self.foodDetailView.foodImageDetail setBackgroundImage:image forState:UIControlStateNormal];
 }
 

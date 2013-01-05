@@ -43,6 +43,33 @@
             [self.tagArray addObject:[NSNumber numberWithBool:NO]];
         }
     }
+    
+    
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"detailBackgroundNothing.png"]];
+    view.frame  = CGRectMake(10, 10, 640, 1136);
+    self.tableView.backgroundView = view;
+    
+    //修改NavigationBar按钮
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(-6, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [button setBackgroundImage:[UIImage imageNamed:@"backButton.png"] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"backButtonClicked.png"] forState:UIControlStateHighlighted];
+    [button addTarget:self action:@selector(returnController:) forControlEvents:UIControlEventTouchUpInside];
+    UIView *buttonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [buttonView addSubview:button];    
+    UIBarButtonItem *result = [[UIBarButtonItem alloc] initWithCustomView:buttonView];
+    
+    self.navigationItem.leftBarButtonItem = result;
+}
+
+- (IBAction)returnController:(id)sender
+{
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

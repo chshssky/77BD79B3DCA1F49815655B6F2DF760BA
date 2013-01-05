@@ -52,7 +52,60 @@
         [self.tagArray addObject:[NSNumber numberWithBool:NO]];
     }
     [self requestForRestaurantArray];
+    
+    //UIImage *img =[UIImage imageNamed:@"detailBackground.png"];
+    //[self.tableView setBackgroundColor:[UIColor colorWithPatternImage:img]];
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"detailBackground.png"]];
+    view.frame  = CGRectMake(10, 10, 640, 1136);
+    self.tableView.backgroundView = view;
+    
+    
+    
+    
+    //修改NavigationBar按钮
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(-6, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"cancelButton.png"] forState:UIControlStateNormal];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"cancelButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [leftButton addTarget:self action:@selector(returnController:) forControlEvents:UIControlEventTouchUpInside];
+    UIView *leftButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [leftButtonView addSubview:leftButton];
+    UIBarButtonItem *leftResult = [[UIBarButtonItem alloc] initWithCustomView:leftButtonView];
+    self.navigationItem.leftBarButtonItem = leftResult;
+    
+    
+    
+    //修改NavigationBar按钮
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(completeButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+    
+}
 
+- (IBAction)returnController:(id)sender
+{
+//    UIViewController *publishTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainController"];
+//    publishTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentViewController:publishTableViewController animated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 - (void)requestForRestaurantArray

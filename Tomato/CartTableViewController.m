@@ -16,14 +16,13 @@
 @interface CartTableViewController ()  <MFMessageComposeViewControllerDelegate,UIActionSheetDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, retain) NSNumber *tempSection;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic) BOOL whetherCanRemove;
 
 
 @end
 
 @implementation CartTableViewController
 @synthesize delegate = _delegate;
-@synthesize editButton = _editButton;
 
 - (IBAction)editButtonClicked:(id)sender {
     //    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClicked:)];
@@ -32,16 +31,46 @@
     
     [self.tableView setEditing:YES animated:YES];
     //[self.editButton setTitle:@"删除"];
-    [self.editButton setTitle:@"取消"];
+    //[self.editButton setTitle:@"取消"];
     //[self.editButton setAction:@selector(editButtonClickedWithSure:)];
-    [self.editButton setAction:@selector(editButtonClickedWithCancel:)];
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(editButtonClickedWithCancel:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+    
+    self.whetherCanRemove = YES;
 }
 
 - (IBAction)editButtonClickedWithCancel:(id)sender
 {
     [self.tableView setEditing:NO animated:YES];
-    [self.editButton setTitle:@"编辑"];
-    [self.editButton setAction:@selector(editButtonClicked:)];
+    
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"editButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"editButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+    
+    self.whetherCanRemove = NO;
     
 }
 
@@ -58,12 +87,33 @@
 {
     [self.tableView reloadData];
     [self.tableView reloadSectionIndexTitles];
+    
+    Cart *cart = [Cart getCart];
+    if ([cart.getCartFoodArray count] != 0){
+        UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+        //UIImage *icon = [UIImage imageNamed:@" "];
+        //[button setImage:icon forState:UIControlStateNormal];
+        //[button setImage:icon forState:UIControlStateHighlighted];
+        [rightButton setBackgroundImage:[UIImage imageNamed:@"editButton.png"] forState:UIControlStateNormal];
+        [rightButton setBackgroundImage:[UIImage imageNamed:@"editButtonClicked.png"] forState:UIControlStateHighlighted];
+        
+        [rightButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+        [rightButtonView addSubview:rightButton];
+        
+        UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+        self.navigationItem.rightBarButtonItem = rightResult;
+        
+        self.whetherCanRemove = NO;     
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
+    
 }
 
 
@@ -74,8 +124,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     [self.tableView setEditing:NO animated:YES];
-    [self.editButton setTitle:@"编辑"];
-    [self.editButton setAction:@selector(editButtonClicked:)];
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 #pragma mark - Table view data source
@@ -325,6 +374,13 @@
         if (restaurantFoodCount == 1) {
             [self.delegate changeAddToCartButtonState];
             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:YES];
+            Cart *cart = [Cart getCart];
+            if ([cart.getCartFoodArray count] == 0) {
+                
+                self.navigationItem.rightBarButtonItem = nil;
+
+            }
+            
         }else{
             [self.dataArray removeObjectAtIndex:indexPath.row];
             [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]  withRowAnimation: UITableViewRowAnimationNone];

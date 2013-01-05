@@ -15,13 +15,12 @@
 
 @interface FavoritesTableViewController ()
 @property (nonatomic, strong) NSMutableArray *selectedRow;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (weak, nonatomic) IBOutlet UINavigationItem *favoriteNavigationBar;
+@property (nonatomic) BOOL whetherCanRemove;
 
 @end
 
 @implementation FavoritesTableViewController
-@synthesize editButton = _editButton;
 @synthesize selectedRow = _selectedRow;
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -35,13 +34,34 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     [self.tableView setEditing:NO animated:YES];
-    [self.editButton setTitle:@"编辑"];
-    [self.editButton setAction:@selector(editButtonClicked:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setupFetchResultController];
+    
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"editButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"editButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+    
+    self.whetherCanRemove = NO;
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)viewDidLoad
@@ -52,13 +72,6 @@
     [self.navigationController setTitle:@"口味相投"];
     [self.favoriteNavigationBar setTitle:@"口味相投"];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
-    
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,9 +94,27 @@
     
     [self.tableView setEditing:YES animated:YES];
     //[self.editButton setTitle:@"删除"];
-    [self.editButton setTitle:@"取消"];
+    //[self.editButton setTitle:@"取消"];
     //[self.editButton setAction:@selector(editButtonClickedWithSure:)];
-    [self.editButton setAction:@selector(editButtonClickedWithCancel:)];
+    
+    
+    
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"finishButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(editButtonClickedWithCancel:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+    
+    self.whetherCanRemove = YES;
 }
 
 
@@ -98,10 +129,23 @@
 
 - (IBAction)editButtonClickedWithCancel:(id)sender
 {
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"editButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"editButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(editButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+    
     [self.tableView setEditing:NO animated:YES];
-    [self.editButton setTitle:@"编辑"];
-    [self.editButton setAction:@selector(editButtonClicked:)];
-    [self.favoriteNavigationBar setLeftBarButtonItem:nil];
+    self.whetherCanRemove = NO;
 
 }
 
@@ -139,13 +183,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.editButton.title isEqualToString:@"删除"]) {
+    if (self.whetherCanRemove == YES) {
         [self.selectedRow removeObject:indexPath];
     }
 }
 //
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([self.editButton.title isEqualToString:@"删除"]) {
+    if (self.whetherCanRemove == YES) {
         [self.selectedRow addObject:indexPath];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

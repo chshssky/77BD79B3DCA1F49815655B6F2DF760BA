@@ -15,6 +15,7 @@
 #import "FilterTableViewController.h"
 #import "Tag.h"
 #import "Tag+Init.h"
+#import "PublishTableViewController.h"
 
 @interface TomatoTableViewController () <FilterTableViewControllerDelegate>
 
@@ -40,6 +41,7 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     if (_refreshTableView == nil) {
         //初始化下拉刷新控件
@@ -63,6 +65,70 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    //修改NavigationBar按钮
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(-6, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted]; 
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"selectButton.png"] forState:UIControlStateNormal];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"selectButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [leftButton addTarget:self action:@selector(goToFilterTableViewController:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *leftButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [leftButtonView addSubview:leftButton];
+    
+    UIBarButtonItem *leftResult = [[UIBarButtonItem alloc] initWithCustomView:leftButtonView];
+    self.navigationItem.leftBarButtonItem = leftResult;
+    
+    //修改NavigationBar按钮
+    UIButton *rightButton = [[UIButton alloc] initWithFrame:CGRectMake(5, 2, 64, 48)];
+    //UIImage *icon = [UIImage imageNamed:@" "];
+    //[button setImage:icon forState:UIControlStateNormal];
+    //[button setImage:icon forState:UIControlStateHighlighted];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"publishButton.png"] forState:UIControlStateNormal];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"publishButtonClicked.png"] forState:UIControlStateHighlighted];
+    
+    [rightButton addTarget:self action:@selector(goToPublishTableViewController:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *rightButtonView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 64, 48)];
+    [rightButtonView addSubview:rightButton];
+    
+    UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
+    self.navigationItem.rightBarButtonItem = rightResult;
+
+}
+
+- (IBAction)goToPublishTableViewController:(id)sender
+{
+    //PublishTableViewController *publishTableViewController = [[PublishTableViewController alloc] init];
+    UIViewController *publishTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newPublish"];
+    publishTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+//    [self presentViewController:publishTableViewController animated:YES completion:nil];
+    [self presentModalViewController:publishTableViewController animated:YES]; 
+    //[self.navigationController pushViewController:publishTableViewController animated:YES];
+    
+}
+
+- (IBAction)goToFilterTableViewController:(id)sender
+{
+    //FilterTableViewController *filterTableViewController = [[FilterTableViewController alloc] init];
+    
+    //用StoryBoard指定ID初始化
+    UIViewController* filterTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newFilter"];
+    
+    //设定跳转方法的跳转
+    filterTableViewController.modalTransitionStyle = UIModalTransitionStylePartialCurl;
+    //[self presentViewController:filterTableViewController animated:YES completion:nil];
+    
+    [self presentModalViewController:filterTableViewController animated:YES]; 
+    
+    
+    
+    //向左推送的方式跳转controller
+    //[self.navigationController pushViewController:filterTableViewController animated:YES];
 }
 
 -(void)viewDidUnload
