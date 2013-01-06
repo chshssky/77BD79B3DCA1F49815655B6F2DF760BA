@@ -11,7 +11,7 @@
 #import "RestaurantFilterTableViewController.h"
 
 @interface FilterTableViewController () <RestaurantFilterTableViewControllerDelegate>
-
+@property (nonatomic) BOOL retrunToController;
 @end
 
 @implementation FilterTableViewController
@@ -66,6 +66,7 @@
     UIBarButtonItem *result = [[UIBarButtonItem alloc] initWithCustomView:buttonView];
     
     self.navigationItem.leftBarButtonItem = result;
+    
 }
 
 - (IBAction)returnController:(id)sender
@@ -79,8 +80,17 @@
 {
     NSLog(@"%@", [self getSelectedTagsFromTableView]);
     [self.filterDelegate sendTheFinalTags:self.tagArray andTheFinalRestaurants:self.restaurantArray];
-    [self.filterDelegate setupFetch];
-    [self dismissModalViewControllerAnimated:YES];
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    if (self.retrunToController == YES) {
+        [self.filterDelegate setupFetch];
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.retrunToController = YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -199,7 +209,7 @@
             self.tagArray[2 + indexPath.section] = [NSNumber numberWithBool:NO];
         }
     } else if (indexPath.section == 0) {
-        
+        self.retrunToController = NO;
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
