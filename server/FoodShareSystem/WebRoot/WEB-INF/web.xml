@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name></display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetFoodList</servlet-name>
+    <servlet-class>servlet.GetFoodList</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetFoodList</servlet-name>
+    <url-pattern>/servlet/GetFoodList</url-pattern>
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>GetDetail</display-name>
+    <servlet-name>GetDetail</servlet-name>
+    <servlet-class>servlet.GetDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetDetail</servlet-name>
+    <url-pattern>/servlet/GetDetail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ChangeLike</display-name>
+    <servlet-name>ChangeLike</servlet-name>
+    <servlet-class>servlet.ChangeLike</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FindStore</servlet-name>
+    <servlet-class>servlet.FindStore</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GiveScore</servlet-name>
+    <servlet-class>servlet.GiveScore</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PublishFood</servlet-name>
+    <servlet-class>servlet.PublishFood</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UploadPicture</servlet-name>
+    <servlet-class>servlet.UploadPicture</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetRestaurantList</servlet-name>
+    <servlet-class>servlet.GetRestaurantList</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>PublishRestaurant</servlet-name>
+    <servlet-class>servlet.PublishRestaurant</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DownloadPicture</servlet-name>
+    <servlet-class>servlet.DownloadPicture</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetFoodScore</servlet-name>
+    <servlet-class>servlet.GetFoodScore</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>ChangeLike</servlet-name>
+    <url-pattern>/servlet/ChangeLike</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>FindStore</servlet-name>
+    <url-pattern>/servlet/FindStore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GiveScore</servlet-name>
+    <url-pattern>/servlet/GiveScore</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PublishFood</servlet-name>
+    <url-pattern>/servlet/PublishFood</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UploadPicture</servlet-name>
+    <url-pattern>/servlet/UploadPicture</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetRestaurantList</servlet-name>
+    <url-pattern>/servlet/GetRestaurantList</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PublishRestaurant</servlet-name>
+    <url-pattern>/servlet/PublishRestaurant</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadPicture</servlet-name>
+    <url-pattern>/servlet/DownloadPicture</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetFoodScore</servlet-name>
+    <url-pattern>/servlet/GetFoodScore</url-pattern>
+  </servlet-mapping>
+</web-app>
