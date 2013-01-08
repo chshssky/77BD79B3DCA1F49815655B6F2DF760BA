@@ -254,31 +254,6 @@
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
             self.tagArray[2 + indexPath.section] = [NSNumber numberWithBool:NO];
         }
-    } else if (indexPath.section == 0)
-    {
-        
-//        RestaurantTableViewController *rtvc = [[RestaurantTableViewController alloc] init];
-//        NSString *urlStr;
-//        urlStr = @"http://192.168.2.162:8080/FoodShareSystem/servlet/GetRestaurantList";
-//        NSURL *url = [[NSURL alloc] initWithString:urlStr];
-//        self.restaurantArray = [[NSArray alloc] initWithContentsOfURL:url];
-//
-//        if (indexPath.row == 0) {
-//            rtvc.deliveredTitle = @"餐馆";
-//            rtvc.listArray = self.restaurantArray;
-//            rtvc.selectedIndex = self.selectedRestaurantIndex;
-//            
-//        } else {
-//            if (self.selectedRestaurantIndex == -1) {
-//                [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//                return;
-//            }
-//            rtvc.deliveredTitle = @"电话";
-//            rtvc.listArray = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"电话"];
-//
-//        }
-//        rtvc.restaurantDelegate = self;
-//        [self.navigationController pushViewController:rtvc animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -367,6 +342,9 @@
     [dateformat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSLog(@"%@",nowStr);
     
+    NSData *dataImg = UIImageJPEGRepresentation(foodDetail.foodImageDetail.currentBackgroundImage, 0.001);
+    UIImage *foodImage = [[UIImage alloc] initWithData:dataImg];
+    
     NSString *path = [NetworkInterface generateRandomString:15];
     
     NSMutableArray *agrs = [[NSMutableArray alloc] init];
@@ -377,10 +355,11 @@
     [agrs addObject:path];
     [agrs addObject:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"]];
     [agrs addObject:tagsStr];
-    [agrs addObject:foodDetail.foodImageDetail.currentBackgroundImage];
+    [agrs addObject:foodImage];
     
     [self performSelectorInBackground:@selector(publishFoodToServerWithArray:) withObject:agrs];
     NSLog(@"main thread end.....");
+    [self returnController:nil];
 }
 
 - (void)publishFoodToServerWithArray:(NSArray *)args
