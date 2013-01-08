@@ -174,6 +174,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([self.title isEqualToString:@"电话"]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        return;
+    }
     if ([tableView cellForRowAtIndexPath:indexPath].accessoryType != UITableViewCellAccessoryCheckmark) {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         self.selectedIndex = indexPath.row;
