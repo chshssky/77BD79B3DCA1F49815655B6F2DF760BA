@@ -122,6 +122,8 @@
         cell.textLabel.text = [dic objectForKey:@"餐馆名称"];
         if (self.selectedIndex == indexPath.row) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     } else if (self.deliveredTitle == @"电话"){
         cell.textLabel.text = self.listArray[indexPath.row];
@@ -219,6 +221,10 @@
             [NetworkInterface PublishRestaurant:self.restName telephone:inputString];
         }
         NSLog(@"%@", inputString);
+        for (NSInteger i = 0; i < [self.tableView numberOfRowsInSection:0]; i ++) {
+            [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].accessoryType = UITableViewCellAccessoryNone;
+        }
+
         [self.tableView reloadData];
 
     }
