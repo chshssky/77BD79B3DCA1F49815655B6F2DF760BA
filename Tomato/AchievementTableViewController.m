@@ -34,6 +34,13 @@
     [self setupFetchResultController];
     [self.navigationController setTitle:@"我的荣誉"];
     [self.achievementNavigationBar  setTitle:@"我的荣誉"];
+    
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"detailBackground.png"]];
+    view.frame  = CGRectMake(10, 10, 640, 1136);
+    self.tableView.backgroundView = view;
 
 
     // Uncomment the following line to preserve selection between presentations.
@@ -75,13 +82,48 @@
     Achievement *achieve = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.achievementNameLabel.text = achieve.achievementName;
     cell.achievementDescriptionLabel.text = achieve.achievementDecription;
+    cell.achievementImageView.image = [UIImage imageNamed:[self getImage:achieve.achievementName]];
     if ([achieve.achievementThreshold integerValue] <= [achieve.achievementRecord.recordCount integerValue]) {
-        cell.achievementImageView.backgroundColor = [UIColor redColor];
+        cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"achievementBackground.png"]];
     } else {
-        cell.achievementImageView.backgroundColor = [UIColor brownColor];
+        cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"achievementBackgroundN.png"]];
     }
     cell.achievementRecordLabel.text = [NSString stringWithFormat:@"%@", achieve.achievementRecord.recordCount];
     return cell;
+}
+
+- (NSString *) getImage:(NSString *)imageName
+{
+    NSString *imageURL;
+    if ([imageName isEqualToString:@"重口味"]) {
+        imageURL = @"hot.png";
+    }else if ([imageName isEqualToString:@"小清新"]) {
+        imageURL = @"fresh.png";
+    }else if ([imageName isEqualToString:@"胖子"]) {
+        imageURL = @"fat.png";
+    }else if ([imageName isEqualToString:@"来者不拒"]) {
+        imageURL = @"noRefused.png";
+    }else if ([imageName isEqualToString:@"速食主义"]) {
+        imageURL = @"junk.png";
+    }else if ([imageName isEqualToString:@"宅神"]) {
+        imageURL = @"house.png";
+    }else if ([imageName isEqualToString:@"蕃茄至尊"]) {
+        imageURL = @"tomato.png";
+    }else if ([imageName isEqualToString:@"吃货"]) {
+        imageURL = @"eat.png";
+    }
+    return imageURL;
+}
+
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    cell.backgroundView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"achievementBackground.png"]]; //cell的背景图
+//    //cell.textLabel.backgroundColor = [UIColor clearColor];
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 92.0;
 }
 
 /*
