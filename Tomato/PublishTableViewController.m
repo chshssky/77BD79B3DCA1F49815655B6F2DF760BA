@@ -351,6 +351,14 @@
         return;
     }
     
+    if (![self isPureFloat:foodPrice]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容错误警告" message:@"美食价格请输入整数或小数" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+
+    }
+    
     NSDate *now = [NSDate date];
     NSDateFormatter *dateformat=[[NSDateFormatter alloc] init];
     [dateformat setDateFormat:@"yyyy年MM月dd日 HH时mm分ss秒"];
@@ -445,6 +453,14 @@
     [restaurantDic setObject:telArray forKey:@"电话"];
     [self.restaurantArray addObject:restaurantDic];
     self.selectedRestaurantIndex = [self.restaurantArray count] - 1;
+}
+
+//判断是否为浮点形：
+
+- (BOOL)isPureFloat:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    float val;
+    return[scan scanFloat:&val] && [scan isAtEnd];
 }
 
 
