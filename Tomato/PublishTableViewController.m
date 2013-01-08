@@ -366,7 +366,10 @@
 {
     [NetworkInterface PublishFood:args[0] foodprice:args[1] publishtime:args[2] foodimgname:args[3] restaurantname:args[4] tagsname:args[5]];
     [NetworkInterface UploadImage:args[6] picturename:args[3]];
-
+    NSLog(@"发布成功！");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布成功" message:@"发布成功" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    [alert show];
 }
 
 //- (void)publishFoodToServerWithFoodName:(NSString *)foodName WithFoodPrice:(NSString *)foodPrice WithPublishTime:(NSString *)publishTime WithFoodImagePath:(NSString *)path WithRestaurantName:(NSString *)restaurantName AndTagsName:(NSString *)tagsStr WithImage:(UIImage *)foodImage
