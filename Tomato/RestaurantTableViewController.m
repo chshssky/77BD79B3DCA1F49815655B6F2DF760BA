@@ -221,6 +221,13 @@
             [self.restaurantDelegate sendTheAddedRestaurantName:inputString];
             self.selectedIndex = [self.listArray count] - 1;
         } else {
+            if (![self isPureInt:inputString] || [inputString length] != 11) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请输入由11位数字组成的电话号码" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+                [alert setAlertViewStyle:UIAlertViewStyleDefault];
+                [alert show];
+                return;
+            }
+            NSLog(@"hello");
             [self.restaurantDelegate sendTheAddedTelephoneNumber:inputString];
             [NetworkInterface PublishRestaurant:self.restName telephone:inputString];
         }
@@ -233,6 +240,22 @@
 
     }
     
+}
+
+//判断是否为整形：
+
+- (BOOL)isPureInt:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return[scan scanInt:&val] && [scan isAtEnd];
+}
+
+//判断是否为浮点形：
+
+- (BOOL)isPureFloat:(NSString*)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    float val;
+    return[scan scanFloat:&val] && [scan isAtEnd];
 }
 
 @end
