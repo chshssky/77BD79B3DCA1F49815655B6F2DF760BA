@@ -49,6 +49,12 @@
 {
     
     [super viewDidLoad];
+    
+    if ([NetworkInterface isConnectionAvailable]) {
+        NSLog(@"Connection YES");
+    } else {
+        NSLog(@"Connection NO");
+    }
     if (_refreshTableView == nil) {
         //初始化下拉刷新控件
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];

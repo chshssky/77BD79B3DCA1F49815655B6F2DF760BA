@@ -14,6 +14,7 @@
 #import "Tag.h"
 #import "Restaurant.h"
 #import "Telephone.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 #define IP @"192.168.1.100"
 #define USE_SERVER
@@ -204,5 +205,23 @@
     return [returnString doubleValue];
     
 }
+
++ (BOOL) isConnectionAvailable;
+{
+    SCNetworkReachabilityFlags flags;
+    BOOL receivedFlags;
+    
+    SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(CFAllocatorGetDefault(), [@"dipinkrishna.com" UTF8String]);
+    receivedFlags = SCNetworkReachabilityGetFlags(reachability, &flags);
+    CFRelease(reachability);
+    
+    if (!receivedFlags || (flags == 0) )
+    {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
 
 @end

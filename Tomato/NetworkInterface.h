@@ -38,4 +38,6 @@
 + (void)DownloadImage:(NSString *)imagename;
 + (double)getFoodScore:(int)foodid;
 
++ (BOOL) isConnectionAvailable;
+
 @end

@@ -55,6 +55,7 @@
 		3FD0441216967EF000EDE87E /* navigation_bar_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FD0441016967EEF00EDE87E /* navigation_bar_background@2x.png */; };
 		3FF0B07316450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */; };
 		3FF0B079164536E70021ABE3 /* initialData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FF0B078164536E70021ABE3 /* initialData.plist */; };
+		3FFBE718169C416B003F9100 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FFBE717169C416B003F9100 /* SystemConfiguration.framework */; };
 		57A0541F16566004007C4CB3 /* TomatoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0541D16566004007C4CB3 /* TomatoTableViewController.m */; };
 		57A05424165660C1007C4CB3 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A05422165660C0007C4CB3 /* FavoritesTableViewController.m */; };
 		57A0542916566117007C4CB3 /* AchievementTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57A0542716566117007C4CB3 /* AchievementTableViewController.m */; };
@@ -227,6 +228,7 @@
 		3FD0441016967EEF00EDE87E /* navigation_bar_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar_background@2x.png"; sourceTree = "<group>"; };
 		3FF0B07216450E3B0021ABE3 /* TomatoDataStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TomatoDataStore.xcdatamodel; sourceTree = "<group>"; };
 		3FF0B078164536E70021ABE3 /* initialData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = initialData.plist; sourceTree = "<group>"; };
+		3FFBE717169C416B003F9100 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		57A0541C16566004007C4CB3 /* TomatoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoTableViewController.h; sourceTree = "<group>"; };
 		57A0541D16566004007C4CB3 /* TomatoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoTableViewController.m; sourceTree = "<group>"; };
 		57A05421165660C0007C4CB3 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FFBE718169C416B003F9100 /* SystemConfiguration.framework in Frameworks */,
 				739FC4A41693F753007FBA97 /* QuartzCore.framework in Frameworks */,
 				73DEDDC8168F365000C1AA37 /* CoreTelephony.framework in Frameworks */,
 				73DEDDC6168F364200C1AA37 /* MessageUI.framework in Frameworks */,
@@ -561,6 +564,7 @@
 		3F7B7AFE163D6558003A7505 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FFBE717169C416B003F9100 /* SystemConfiguration.framework */,
 				739FC4A31693F753007FBA97 /* QuartzCore.framework */,
 				73DEDDC7168F365000C1AA37 /* CoreTelephony.framework */,
 				73DEDDC5168F364200C1AA37 /* MessageUI.framework */,

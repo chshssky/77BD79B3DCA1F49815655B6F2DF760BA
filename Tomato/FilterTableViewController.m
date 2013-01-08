@@ -196,8 +196,20 @@
             [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
             self.tagArray[indexPath.row] = [NSNumber numberWithBool:YES];
         } else {
-            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-            self.tagArray[indexPath.row] = [NSNumber numberWithBool:NO];
+            BOOL last = YES;
+            for (int i = 0; i < 4; i ++) {
+                if (indexPath.row == i) {
+                    continue;
+                }
+                if ([tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:1]].accessoryType == UITableViewCellAccessoryCheckmark) {
+                    last = NO;
+                    break;
+                }
+            }
+            if (!last) {
+                [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+                self.tagArray[indexPath.row] = [NSNumber numberWithBool:NO];
+            }
         }
     } else if (indexPath.section != 0) {
         
