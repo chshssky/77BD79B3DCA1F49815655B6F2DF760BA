@@ -224,5 +224,29 @@
     }
 }
 
++(void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    if (min==-1&&max==-1) {
+        min=1;
+        max=10;
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    }
+    else if(min == -1&&max != -1)
+    {
+        min=max-count;
+        max=max-1;
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    }
+    else if (min != -1&&max == -1)
+    {
+        max=min+10;
+        min=min+1;
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    }
+    else
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    
+}
+
 
 @end

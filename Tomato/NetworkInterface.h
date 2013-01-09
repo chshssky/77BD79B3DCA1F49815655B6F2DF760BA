@@ -40,4 +40,6 @@
 
 + (BOOL) isConnectionAvailable;
 
++ (void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end
