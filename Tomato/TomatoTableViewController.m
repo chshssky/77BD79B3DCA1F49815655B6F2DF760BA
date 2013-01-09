@@ -16,6 +16,8 @@
 #import "Tag.h"
 #import "Tag+Init.h"
 #import "PublishTableViewController.h"
+#import "Food+Examine.h"
+#import "Food+Insert.h"
 
 @interface TomatoTableViewController () <FilterTableViewControllerDelegate, TomatoDetailViewControllerDelegate>
 
@@ -425,7 +427,9 @@
     NSLog(@"加载数据完成");
     
     //获取是否还有数据，设置_hasMore
-    _hasMore = NO;
+    
+    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    _hasMore = [Food IsTheLastFood:food];
     if (_hasMore == NO) {
         [_loadMoreTableFooter setFooterLabelIfNoMoreData];
     }
