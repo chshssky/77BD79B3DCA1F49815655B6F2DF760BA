@@ -239,7 +239,7 @@
     }
     else if (min != -1&&max == -1)
     {
-        max=min+10;
+        max=min+count;
         min=min+1;
         [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
     }
