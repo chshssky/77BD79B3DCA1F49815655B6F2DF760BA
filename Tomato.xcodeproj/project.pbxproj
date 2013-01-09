@@ -127,6 +127,8 @@
 		739FC4B61693F80A007FBA97 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AE1693F80A007FBA97 /* blueArrow@2x.png */; };
 		739FC4B71693F80A007FBA97 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4AF1693F80A007FBA97 /* whiteArrow.png */; };
 		739FC4B81693F80A007FBA97 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4B01693F80A007FBA97 /* whiteArrow@2x.png */; };
+		73AFDA4E169D751200E30773 /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AFDA4D169D751200E30773 /* LoadMoreTableFooterView.m */; };
+		73AFDA51169D7B9200E30773 /* footerView.png in Resources */ = {isa = PBXBuildFile; fileRef = 73AFDA50169D7B9200E30773 /* footerView.png */; };
 		73DEDDBD168F2E0C00C1AA37 /* Cart.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDBC168F2E0C00C1AA37 /* Cart.m */; };
 		73DEDDC1168F360200C1AA37 /* CartTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC0168F360200C1AA37 /* CartTableViewController.m */; };
 		73DEDDC4168F362100C1AA37 /* CartFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73DEDDC3168F362100C1AA37 /* CartFooterView.m */; };
@@ -317,6 +319,9 @@
 		739FC4AE1693F80A007FBA97 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
 		739FC4AF1693F80A007FBA97 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
 		739FC4B01693F80A007FBA97 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		73AFDA4C169D751200E30773 /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
+		73AFDA4D169D751200E30773 /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
+		73AFDA50169D7B9200E30773 /* footerView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = footerView.png; sourceTree = "<group>"; };
 		73DEDDBB168F2E0C00C1AA37 /* Cart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cart.h; sourceTree = "<group>"; };
 		73DEDDBC168F2E0C00C1AA37 /* Cart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cart.m; sourceTree = "<group>"; };
 		73DEDDBF168F360200C1AA37 /* CartTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CartTableViewController.h; sourceTree = "<group>"; };
@@ -371,6 +376,8 @@
 		3F2F8C791689C93300D2A668 /* TomatoMainModule */ = {
 			isa = PBXGroup;
 			children = (
+				73AFDA4C169D751200E30773 /* LoadMoreTableFooterView.h */,
+				73AFDA4D169D751200E30773 /* LoadMoreTableFooterView.m */,
 				739FC4A61693F765007FBA97 /* EGORefreshTableHeaderView.h */,
 				739FC4A71693F765007FBA97 /* EGORefreshTableHeaderView.m */,
 				57A0541C16566004007C4CB3 /* TomatoTableViewController.h */,
@@ -486,6 +493,7 @@
 		3F556543168EE378000E3D9A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				73AFDA50169D7B9200E30773 /* footerView.png */,
 				73142D6F169C58AB001900C1 /* achievementBackgroundN.png */,
 				73142D70169C58AB001900C1 /* achievementBackgroundN@2x.png */,
 				73142D6A169C52A1001900C1 /* achievementBackground.png */,
@@ -841,6 +849,7 @@
 				73142D80169C7433001900C1 /* tomato.png in Resources */,
 				73142D82169C76BA001900C1 /* eat.png in Resources */,
 				73142D84169C7874001900C1 /* fat.png in Resources */,
+				73AFDA51169D7B9200E30773 /* footerView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -893,6 +902,7 @@
 				3F7E41401697235500A86D7D /* Record+Food.m in Sources */,
 				3F7E414F1698090700A86D7D /* Achievement.m in Sources */,
 				3F7E415316980C5700A86D7D /* Record+Update.m in Sources */,
+				73AFDA4E169D751200E30773 /* LoadMoreTableFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

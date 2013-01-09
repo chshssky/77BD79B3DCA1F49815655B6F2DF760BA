@@ -64,6 +64,14 @@
         _refreshTableView = refreshView;
     }
     
+    if (_loadMoreTableFooter == nil) {
+        LoadMoreTableFooterView *view = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, self.tableView.contentSize.height, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+        view.delegate = self;
+        [self.tableView addSubview:view];
+        _loadMoreTableFooter = view;
+    }
+    
+    
     [NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
     [self setupFetchResultController];
     
@@ -110,6 +118,9 @@
     
     UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightResult;
+    
+    //获取是否还有数据，设置_hasMore
+    _hasMore = YES;
 
 }
 
@@ -195,7 +206,7 @@
         [self.tableView reloadData];
     }
     
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:YES]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:NO]];
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.managedObjectContext
@@ -333,8 +344,9 @@
     
     //刷新表格内容
     [self setupFetchResultController];
-    
-    //[self.tableView reloadData];
+    _hasMore = YES;
+    [_loadMoreTableFooter setFooterLabelIfHasData];
+     //[self.tableView reloadData];
 }
 
 //这个方法运行于子线程中，完成获取刷新数据的操作
@@ -369,17 +381,73 @@
 //滚动控件的委托方法
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [_refreshTableView egoRefreshScrollViewDidScroll:scrollView];
+    if(scrollView.contentOffset.y < 0){
+        [_refreshTableView egoRefreshScrollViewDidScroll:scrollView];
+    }
+    else if(_hasMore){
+        [_loadMoreTableFooter loadMoreScrollViewDidScroll:scrollView];
+        
+    }
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    [_refreshTableView egoRefreshScrollViewDidEndDragging:scrollView];
+    if(scrollView.contentOffset.y < 0){
+        [_refreshTableView egoRefreshScrollViewDidEndDragging:scrollView];
+    }else if(_hasMore){
+        [_loadMoreTableFooter loadMoreScrollViewDidEndDragging:scrollView];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+
+
+//////////上提加载部分/////////////
+
+
+- (void)loadMoreTableViewDataSource {
+    _loadingMore = YES;
+    [NSThread detachNewThreadSelector:@selector(loadMore) toTarget:self withObject:nil];
+}
+
+
+- (void)doneLoadMoreTableViewData {
+    _loadingMore = NO;
+    [_loadMoreTableFooter loadMoreScrollViewDataSourceDidFinishedLoading:self.tableView];
+    
+    //后台加载数据完成
+    NSLog(@"加载数据完成");
+    
+    //获取是否还有数据，设置_hasMore
+    _hasMore = NO;
+    if (_hasMore == NO) {
+        [_loadMoreTableFooter setFooterLabelIfNoMoreData];
+    }
+}
+
+- (void)loadMore
+{
+    //此处后台加载新的数据
+    
+    [NSThread sleepForTimeInterval:3];
+
+    [self performSelectorOnMainThread:@selector(doneLoadMoreTableViewData) withObject:nil waitUntilDone:YES];
+}
+
+-(void)loadMoreTableFooterDidTriggerRefresh:(LoadMoreTableFooterView *)view
+{
+    _loadingMore = YES;
+    [self loadMoreTableViewDataSource];
+}
+
+-(BOOL)loadMoreTableFooterDataSourceIsLoading:(LoadMoreTableFooterView *)view
+{
+    return _loadingMore;
 }
 
 

@@ -16,7 +16,8 @@
 #import "Telephone.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 
-#define IP @"192.168.1.100"
+//define IP @"192.168.1.100"
+#define IP @"10.60.36.40"
 #define USE_SERVER
 
 

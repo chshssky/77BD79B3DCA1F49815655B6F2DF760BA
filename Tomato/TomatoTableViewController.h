@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 #import "EGORefreshTableHeaderView.h"
+#import "LoadMoreTableFooterView.h"
 
-@interface TomatoTableViewController : CoreDataTableViewController<UITableViewDelegate,UITableViewDataSource,EGORefreshTableHeaderDelegate>{
+@interface TomatoTableViewController : CoreDataTableViewController<UITableViewDelegate,UITableViewDataSource,EGORefreshTableHeaderDelegate,UITableViewDataSource,UITableViewDelegate, LoadMoreTableFooterDelegate>{
     EGORefreshTableHeaderView *_refreshTableView;
     BOOL _reloading;
+    
+    LoadMoreTableFooterView *_loadMoreTableFooter;
+    BOOL _hasMore;
+    BOOL _loadingMore;
 }
 
 //开始重新加载时调用的方法
