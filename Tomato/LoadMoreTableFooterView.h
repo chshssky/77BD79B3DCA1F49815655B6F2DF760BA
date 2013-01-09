@@ -15,6 +15,7 @@ typedef enum{
     LoadMoreState _state;
     
     UILabel *_statusLabel;
+    UIView *_footerBackgroundView;
     UIActivityIndicatorView *_activityView;
 }
 

@@ -13,13 +13,23 @@
 @synthesize delegate=_delegate;
 
 
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         
         //self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         //self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
         
+        UIView *footerView = [[UIView alloc] init];
+        footerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"footerView.png"]];
+        footerView.frame  = CGRectMake(0, 0, 640, 300);
+        footerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self addSubview:footerView];
+        _footerBackgroundView = footerView;
+        //_footerBackgroundView.hidden = YES;
         
+        UIImage *img =[UIImage imageNamed:@"footerView.png"];
+        [self setBackgroundColor:[UIColor colorWithPatternImage:img]];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, self.frame.size.width, 20.0f)];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -38,7 +48,8 @@
         view.frame = CGRectMake(155.0f, 20.0f, 10.0f, 20.0f);
         [self addSubview:view];
         _activityView = view;
-        self.hidden = NO;
+        
+        self.hidden = YES;
         
         [self setState:LoadMoreNormal];
     }
@@ -58,11 +69,13 @@
         case LoadMoreNormal:
             //_statusLabel.text = NSLocalizedString(@"上拉加载更多...", @"Pull up to load more...");
             //_statusLabel.hidden = NO;
+            //_footerBackgroundView.hidden = NO;
             [_activityView stopAnimating];
             break;
         case LoadMoreLoading:
             //_statusLabel.hidden = NO;
             //_statusLabel.text = NSLocalizedString(@"正在加载数据...", @"Loading Status...");
+            // _footerBackgroundView.hidden = NO;
             [_activityView startAnimating];
             break;
         default:
@@ -122,12 +135,11 @@
             //滚动条被拖离的距离小于REFRESH_REGION_HEIGHT，且滚动条被拖离的距离 > 0（向上拖动）
             //在滚动到"松开即可加载更多..."时，如果又向下滚动（复位），又重新回到"上拉可以加载更多..."
             [self setState:LoadMoreNormal];
-            
         }
         
         
         if (scrollView.contentInset.bottom != 0) {
-            //NSLog(@"?????");
+            NSLog(@"?????");
             //[self setState:LoadMorePulling];
         }
     }

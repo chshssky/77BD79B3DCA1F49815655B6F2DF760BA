@@ -167,6 +167,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setupFetchResultController];
+
 }
 
 - (void)setupFetchResultController
