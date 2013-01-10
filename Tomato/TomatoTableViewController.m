@@ -25,12 +25,14 @@
 @property (strong, nonatomic) NSMutableArray *foodRestaurants;
 @property (nonatomic) BOOL whetherTakeout;
 @property (weak, nonatomic) IBOutlet UINavigationItem *foodNavigationBar;
+@property (nonatomic) NSInteger loadCount;
 
 @end
 
 @implementation TomatoTableViewController
 @synthesize foodTags = _foodTags;
 @synthesize foodRestaurants = _foodRestaurants;
+@synthesize loadCount = _loadCount;
 
 -(void)setupFetch
 {
@@ -51,6 +53,8 @@
 {
     
     [super viewDidLoad];
+    
+    self.loadCount = 5;
     
     if ([NetworkInterface isConnectionAvailable]) {
         NSLog(@"Connection YES");
@@ -74,7 +78,8 @@
     }
     
     
-    [NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
+    //[NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
+    [NetworkInterface requestForFoodListFromID:-1 ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     [self setupFetchResultController];
     
     self.foodTags = nil;
@@ -356,7 +361,9 @@
 -(void)doInBackground
 {
     //更新数据库
-    [NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
+    //[NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
+    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [NetworkInterface requestForFoodListFromID:[food.foodID integerValue] ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
     //[NSThread sleepForTimeInterval:5];
     //后台操作线程执行完后，到主线程更新UI
@@ -438,6 +445,8 @@
 - (void)loadMore
 {
     //此处后台加载新的数据
+    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    [NetworkInterface requestForFoodListFromID:-1 ToID:[food.foodID integerValue] Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
     [NSThread sleepForTimeInterval:3];
 
