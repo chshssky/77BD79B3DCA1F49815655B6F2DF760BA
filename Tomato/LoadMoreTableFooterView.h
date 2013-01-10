@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-#define  REFRESH_REGION_HEIGHT 100.0f
+#define  REFRESH_REGION_HEIGHT 95.0f
 
 
 typedef enum{

@@ -29,9 +29,6 @@
 		3F7B7B0A163D6558003A7505 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B08163D6558003A7505 /* InfoPlist.strings */; };
 		3F7B7B0C163D6558003A7505 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B7B0B163D6558003A7505 /* main.m */; };
 		3F7B7B10163D6558003A7505 /* TomatoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7B7B0F163D6558003A7505 /* TomatoAppDelegate.m */; };
-		3F7B7B12163D6558003A7505 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B11163D6558003A7505 /* Default.png */; };
-		3F7B7B14163D6558003A7505 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B13163D6558003A7505 /* Default@2x.png */; };
-		3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B15163D6558003A7505 /* Default-568h@2x.png */; };
 		3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */; };
 		3F7E41401697235500A86D7D /* Record+Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E413F1697235400A86D7D /* Record+Food.m */; };
 		3F7E414F1698090700A86D7D /* Achievement.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7E414E1698090700A86D7D /* Achievement.m */; };
@@ -119,6 +116,15 @@
 		7387552916978C1F00ED9446 /* publishButtonClicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7387552516978C1F00ED9446 /* publishButtonClicked@2x.png */; };
 		7387552A16978C1F00ED9446 /* publishButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7387552616978C1F00ED9446 /* publishButton@2x.png */; };
 		739900F11696499800B1A1E0 /* cellUnclickedBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 739900F01696499800B1A1E0 /* cellUnclickedBackground.png */; };
+		739C3754169EFEDF00B52F38 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C374E169EFEDF00B52F38 /* Icon-72.png */; };
+		739C3755169EFEDF00B52F38 /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C374F169EFEDF00B52F38 /* Icon-Small.png */; };
+		739C3756169EFEDF00B52F38 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C3750169EFEDF00B52F38 /* Icon@2x.png */; };
+		739C3757169EFEDF00B52F38 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C3751169EFEDF00B52F38 /* Icon.png */; };
+		739C3758169EFEDF00B52F38 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C3752169EFEDF00B52F38 /* Icon-Small-50.png */; };
+		739C3759169EFEDF00B52F38 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C3753169EFEDF00B52F38 /* Icon-Small@2x.png */; };
+		739C375E169F0AE500B52F38 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C375B169F0AE400B52F38 /* Default.png */; };
+		739C375F169F0AE500B52F38 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C375C169F0AE400B52F38 /* Default-568h@2x.png */; };
+		739C3760169F0AE500B52F38 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 739C375D169F0AE400B52F38 /* Default@2x.png */; };
 		739FC4A41693F753007FBA97 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 739FC4A31693F753007FBA97 /* QuartzCore.framework */; };
 		739FC4A81693F765007FBA97 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 739FC4A71693F765007FBA97 /* EGORefreshTableHeaderView.m */; };
 		739FC4B11693F80A007FBA97 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 739FC4A91693F80A007FBA97 /* grayArrow.png */; };
@@ -202,9 +208,6 @@
 		3F7B7B0D163D6558003A7505 /* Tomato-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tomato-Prefix.pch"; sourceTree = "<group>"; };
 		3F7B7B0E163D6558003A7505 /* TomatoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TomatoAppDelegate.h; sourceTree = "<group>"; };
 		3F7B7B0F163D6558003A7505 /* TomatoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TomatoAppDelegate.m; sourceTree = "<group>"; };
-		3F7B7B11163D6558003A7505 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		3F7B7B13163D6558003A7505 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		3F7B7B15163D6558003A7505 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		3F7B7B18163D6558003A7505 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F7E413E1697235300A86D7D /* Record+Food.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Record+Food.h"; sourceTree = "<group>"; };
 		3F7E413F1697235400A86D7D /* Record+Food.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Record+Food.m"; sourceTree = "<group>"; };
@@ -314,6 +317,15 @@
 		7387552516978C1F00ED9446 /* publishButtonClicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publishButtonClicked@2x.png"; sourceTree = "<group>"; };
 		7387552616978C1F00ED9446 /* publishButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "publishButton@2x.png"; sourceTree = "<group>"; };
 		739900F01696499800B1A1E0 /* cellUnclickedBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cellUnclickedBackground.png; sourceTree = "<group>"; };
+		739C374E169EFEDF00B52F38 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		739C374F169EFEDF00B52F38 /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		739C3750169EFEDF00B52F38 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		739C3751169EFEDF00B52F38 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		739C3752169EFEDF00B52F38 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		739C3753169EFEDF00B52F38 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		739C375B169F0AE400B52F38 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		739C375C169F0AE400B52F38 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		739C375D169F0AE400B52F38 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		739FC4A31693F753007FBA97 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		739FC4A61693F765007FBA97 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		739FC4A71693F765007FBA97 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
@@ -644,6 +656,9 @@
 		3F7B7B06163D6558003A7505 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				739C375B169F0AE400B52F38 /* Default.png */,
+				739C375C169F0AE400B52F38 /* Default-568h@2x.png */,
+				739C375D169F0AE400B52F38 /* Default@2x.png */,
 				3F7B7B17163D6558003A7505 /* MainStoryboard.storyboard */,
 				3FF0B07116450E3B0021ABE3 /* TomatoDataStore.xcdatamodeld */,
 				3F7B7B0E163D6558003A7505 /* TomatoAppDelegate.h */,
@@ -652,9 +667,12 @@
 				3F7B7B08163D6558003A7505 /* InfoPlist.strings */,
 				3F7B7B0B163D6558003A7505 /* main.m */,
 				3F7B7B0D163D6558003A7505 /* Tomato-Prefix.pch */,
-				3F7B7B11163D6558003A7505 /* Default.png */,
-				3F7B7B13163D6558003A7505 /* Default@2x.png */,
-				3F7B7B15163D6558003A7505 /* Default-568h@2x.png */,
+				739C374E169EFEDF00B52F38 /* Icon-72.png */,
+				739C374F169EFEDF00B52F38 /* Icon-Small.png */,
+				739C3750169EFEDF00B52F38 /* Icon@2x.png */,
+				739C3751169EFEDF00B52F38 /* Icon.png */,
+				739C3752169EFEDF00B52F38 /* Icon-Small-50.png */,
+				739C3753169EFEDF00B52F38 /* Icon-Small@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -763,9 +781,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F7B7B0A163D6558003A7505 /* InfoPlist.strings in Resources */,
-				3F7B7B12163D6558003A7505 /* Default.png in Resources */,
-				3F7B7B14163D6558003A7505 /* Default@2x.png in Resources */,
-				3F7B7B16163D6558003A7505 /* Default-568h@2x.png in Resources */,
 				3F7B7B19163D6558003A7505 /* MainStoryboard.storyboard in Resources */,
 				3FF0B079164536E70021ABE3 /* initialData.plist in Resources */,
 				3F0560B316665134005D3170 /* TomatoTest.plist in Resources */,
@@ -860,6 +875,15 @@
 				73142D82169C76BA001900C1 /* eat.png in Resources */,
 				73142D84169C7874001900C1 /* fat.png in Resources */,
 				73AFDA51169D7B9200E30773 /* footerView.png in Resources */,
+				739C3754169EFEDF00B52F38 /* Icon-72.png in Resources */,
+				739C3755169EFEDF00B52F38 /* Icon-Small.png in Resources */,
+				739C3756169EFEDF00B52F38 /* Icon@2x.png in Resources */,
+				739C3757169EFEDF00B52F38 /* Icon.png in Resources */,
+				739C3758169EFEDF00B52F38 /* Icon-Small-50.png in Resources */,
+				739C3759169EFEDF00B52F38 /* Icon-Small@2x.png in Resources */,
+				739C375E169F0AE500B52F38 /* Default.png in Resources */,
+				739C375F169F0AE500B52F38 /* Default-568h@2x.png in Resources */,
+				739C3760169F0AE500B52F38 /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
