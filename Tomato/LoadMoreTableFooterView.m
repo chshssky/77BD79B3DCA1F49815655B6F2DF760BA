@@ -28,8 +28,21 @@
 //        _footerBackgroundView = footerView;
 //        //_footerBackgroundView.hidden = YES;
         
-//        UIImage *img =[UIImage imageNamed:@"footerView.png"];
-//        [self setBackgroundColor:[UIColor colorWithPatternImage:img]];
+        UIImage *img =[UIImage imageNamed:@"footerView.png"];
+        [self setBackgroundColor:[UIColor colorWithPatternImage:img]];
+        
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, self.frame.size.width, 20.0f)];
+//        label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        label.font = [UIFont boldSystemFontOfSize:15.0f];
+//        label.textColor = TEXT_COLOR;
+//        label.shadowColor = [UIColor colorWithWhite:0.9f alpha:1.0f];
+//        label.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//        label.backgroundColor = [UIColor clearColor];
+//        label.textAlignment = UITextAlignmentCenter;
+//        label.text = @"没有更多数据了";
+//        [self addSubview:label];
+//        _statusLabel=label;
+//        _statusLabel.hidden = YES;
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, self.frame.size.width, 20.0f)];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -52,6 +65,7 @@
         self.hidden = YES;
         
         [self setState:LoadMoreNormal];
+        _whetherRefresh = YES;
     }
     
     return self;
@@ -69,13 +83,11 @@
         case LoadMoreNormal:
             //_statusLabel.text = NSLocalizedString(@"上拉加载更多...", @"Pull up to load more...");
             //_statusLabel.hidden = NO;
-            //_footerBackgroundView.hidden = NO;
             [_activityView stopAnimating];
             break;
         case LoadMoreLoading:
             //_statusLabel.hidden = NO;
             //_statusLabel.text = NSLocalizedString(@"正在加载数据...", @"Loading Status...");
-            // _footerBackgroundView.hidden = NO;
             [_activityView startAnimating];
             break;
         default:
@@ -86,6 +98,7 @@
 
 - (void)setFooterLabelIfNoMoreData
 {
+    _whetherRefresh = NO;
     _statusLabel.hidden = NO;
 }
 
@@ -127,11 +140,11 @@
             
             self.hidden = NO;
             
-        } else if (_state == LoadMoreNormal && scrollOffsetHeight > REFRESH_REGION_HEIGHT && !_loading) {
+        } else if (_state == LoadMoreNormal && scrollOffsetHeight > REFRESH_REGION_HEIGHT && !_loading  && _whetherRefresh == YES) {
             //滚动条被拖离的距离大于REFRESH_REGION_HEIGHT
             [self setState:LoadMorePulling];
             
-        } else if (_state == LoadMorePulling && scrollOffsetHeight < REFRESH_REGION_HEIGHT && scrollOffsetHeight > 0 && !_loading) {
+        } else if (_state == LoadMorePulling && scrollOffsetHeight < REFRESH_REGION_HEIGHT && scrollOffsetHeight > 0 && !_loading  && _whetherRefresh == YES) {
             //滚动条被拖离的距离小于REFRESH_REGION_HEIGHT，且滚动条被拖离的距离 > 0（向上拖动）
             //在滚动到"松开即可加载更多..."时，如果又向下滚动（复位），又重新回到"上拉可以加载更多..."
             [self setState:LoadMoreNormal];
@@ -139,7 +152,7 @@
         
         
         if (scrollView.contentInset.bottom != 0) {
-            NSLog(@"?????");
+            //NSLog(@"?????");
             //[self setState:LoadMorePulling];
         }
     }
@@ -153,7 +166,7 @@
     }
     //滚动条被拖离的距离大于REFRESH_REGION_HEIGHT
     //if (scrollView.contentOffset.y > (scrollView.contentSize.height - 260) && !_loading) {
-    if (scrollView.contentOffset.y > (scrollView.contentSize.height - self.frame.size.height + REFRESH_REGION_HEIGHT) && !_loading) {
+    if (scrollView.contentOffset.y > (scrollView.contentSize.height - self.frame.size.height + REFRESH_REGION_HEIGHT) && !_loading && _whetherRefresh == YES) {
         if ([_delegate respondsToSelector:@selector(loadMoreTableFooterDidTriggerRefresh:)]) {
             [_delegate loadMoreTableFooterDidTriggerRefresh:self];
         }
@@ -173,7 +186,7 @@
      [UIView commitAnimations];*/
     
     [self setState:LoadMoreNormal];
-    self.hidden = NO;
+    self.hidden = YES;
 }
 
 

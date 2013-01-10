@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-#define  REFRESH_REGION_HEIGHT 5.0f
+#define  REFRESH_REGION_HEIGHT 100.0f
 
 
 typedef enum{
@@ -17,6 +17,7 @@ typedef enum{
     UILabel *_statusLabel;
     UIView *_footerBackgroundView;
     UIActivityIndicatorView *_activityView;
+    BOOL _whetherRefresh;
 }
 
 @property(nonatomic,retain) id <LoadMoreTableFooterDelegate> delegate;

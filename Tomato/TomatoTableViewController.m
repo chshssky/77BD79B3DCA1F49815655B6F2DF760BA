@@ -127,7 +127,15 @@
     self.navigationItem.rightBarButtonItem = rightResult;
     
     //获取是否还有数据，设置_hasMore
-    _hasMore = YES;
+    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    _hasMore = ![Food IsTheLastFood:food];
+    
+    if (_hasMore == NO) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
+        [_loadMoreTableFooter setFooterLabelIfNoMoreData];
+        //[self.tableView reloadData];
+        NSLog(@"没有更多");
+    }
 
 }
 
@@ -351,10 +359,17 @@
     [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     
     //刷新表格内容
+    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    _hasMore = ![Food IsTheLastFood:food];
+    
+    if (_hasMore == NO) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
+        [_loadMoreTableFooter setFooterLabelIfNoMoreData];
+        //[self.tableView reloadData];
+        NSLog(@"没有更多");
+    }
+    
     [self setupFetchResultController];
-    _hasMore = YES;
-    [_loadMoreTableFooter setFooterLabelIfHasData];
-     //[self.tableView reloadData];
 }
 
 //这个方法运行于子线程中，完成获取刷新数据的操作
@@ -395,7 +410,7 @@
     if(scrollView.contentOffset.y < 0){
         [_refreshTableView egoRefreshScrollViewDidScroll:scrollView];
     }
-    else if(_hasMore){
+    else{
         [_loadMoreTableFooter loadMoreScrollViewDidScroll:scrollView];
         
     }
@@ -405,7 +420,7 @@
 {
     if(scrollView.contentOffset.y < 0){
         [_refreshTableView egoRefreshScrollViewDidEndDragging:scrollView];
-    }else if(_hasMore){
+    }else{
         [_loadMoreTableFooter loadMoreScrollViewDidEndDragging:scrollView];
     }
 }
@@ -437,20 +452,25 @@
     //获取是否还有数据，设置_hasMore
     
     Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
-    _hasMore = [Food IsTheLastFood:food];
+    _hasMore = ![Food IsTheLastFood:food];
+    
     if (_hasMore == NO) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
         [_loadMoreTableFooter setFooterLabelIfNoMoreData];
+        //[self.tableView reloadData];
+        NSLog(@"没有更多");
     }
 }
 
 - (void)loadMore
 {
     //此处后台加载新的数据
+    [NSThread sleepForTimeInterval:3];
     Food *food = [[self.fetchedResultsController fetchedObjects] lastObject];
     NSLog(@"last foodID: %@", food.foodID);
     [NetworkInterface requestForFoodListFromID:-1 ToID:[food.foodID integerValue] Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
-    [NSThread sleepForTimeInterval:3];
+    //[NSThread sleepForTimeInterval:3];
 
     [self performSelectorOnMainThread:@selector(doneLoadMoreTableViewData) withObject:nil waitUntilDone:YES];
 }
