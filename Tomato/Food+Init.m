@@ -18,11 +18,11 @@
 + (void)initFood:(NSArray *)foods
 inManagedObjectedContext:(NSManagedObjectContext *)context
 {
-    int i = 0;
     for (NSDictionary *dic in foods) {
         Food *food = nil;
         NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-        i ++;
+        //i ++;
+        int i = [[dic objectForKey:FOOD_ID] integerValue];
         foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = %d"/* AND foodPublishTime = %@"*/, i/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
         
         NSError *foodError = nil;

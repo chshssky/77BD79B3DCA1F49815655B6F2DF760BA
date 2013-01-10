@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define FOOD_NAME @"名称"
+#define FOOD_ID @"美食ID"
 #define FOOD_SCORE @"评分"
 #define FOOD_TAGS @"美食标签"
 #define FOOD_PRICE @"价格"
