@@ -228,7 +228,7 @@
 {
     if (min==-1&&max==-1) {
         min=1;
-        max=10;
+        max=count;
         [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
     }
     else if(min == -1&&max != -1)
