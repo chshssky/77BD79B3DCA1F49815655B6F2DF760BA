@@ -342,7 +342,7 @@
     [dateformat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSLog(@"%@",nowStr);
     
-    NSData *dataImg = UIImageJPEGRepresentation(foodDetail.foodImageDetail.currentBackgroundImage, 0.001);
+    NSData *dataImg = UIImageJPEGRepresentation(foodDetail.foodImageDetail.currentBackgroundImage, 0.0000000001);
     UIImage *foodImage = [[UIImage alloc] initWithData:dataImg];
     
     NSString *path = [NetworkInterface generateRandomString:15];

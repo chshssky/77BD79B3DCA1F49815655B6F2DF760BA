@@ -362,7 +362,7 @@
 {
     //更新数据库
     //[NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
-    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     NSLog(@"first foodID: %@", food.foodID);
     [NetworkInterface requestForFoodListFromID:[food.foodID integerValue] ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
@@ -446,7 +446,8 @@
 - (void)loadMore
 {
     //此处后台加载新的数据
-    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    Food *food = [[self.fetchedResultsController fetchedObjects] lastObject];
+    NSLog(@"last foodID: %@", food.foodID);
     [NetworkInterface requestForFoodListFromID:-1 ToID:[food.foodID integerValue] Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
     [NSThread sleepForTimeInterval:3];

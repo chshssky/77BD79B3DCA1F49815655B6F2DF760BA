@@ -20,16 +20,16 @@
         //self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         //self.backgroundColor = [UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:237.0/255.0 alpha:1.0];
         
-        UIView *footerView = [[UIView alloc] init];
-        footerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"footerView.png"]];
-        footerView.frame  = CGRectMake(0, 0, 640, 300);
-        footerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        [self addSubview:footerView];
-        _footerBackgroundView = footerView;
-        //_footerBackgroundView.hidden = YES;
+//        UIView *footerView = [[UIView alloc] init];
+//        footerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"footerView.png"]];
+//        footerView.frame  = CGRectMake(0, 0, 640, 300);
+//        footerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//        [self addSubview:footerView];
+//        _footerBackgroundView = footerView;
+//        //_footerBackgroundView.hidden = YES;
         
-        UIImage *img =[UIImage imageNamed:@"footerView.png"];
-        [self setBackgroundColor:[UIColor colorWithPatternImage:img]];
+//        UIImage *img =[UIImage imageNamed:@"footerView.png"];
+//        [self setBackgroundColor:[UIColor colorWithPatternImage:img]];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 20.0f, self.frame.size.width, 20.0f)];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
