@@ -227,13 +227,16 @@
 +(void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context
 {
     if (min==-1&&max==-1) {
-        min=1;
+        //min=1;
         max=count;
         [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
     }
     else if(min == -1&&max != -1)
     {
         min=max-count;
+        if (min<0) {
+            min=1;
+        }
         max=max-1;
         [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
     }
