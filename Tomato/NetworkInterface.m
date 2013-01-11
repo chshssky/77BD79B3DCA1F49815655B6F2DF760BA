@@ -251,5 +251,16 @@
     
 }
 
++(NSArray *)getScoreListFrom:(int)fromid To:(int)toid
+{
+    NSString *ip = IP;
+    NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetScoreList?fromid=%d&toid=%d",ip,fromid,toid];
+    NSLog(@"%@",urlstr);
+    NSURL * url = [NSURL URLWithString:urlstr];
+    NSArray * array = [[NSArray alloc] initWithContentsOfURL:url];
+    
+    return array;
+}
+
 
 @end
