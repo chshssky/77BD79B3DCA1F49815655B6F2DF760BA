@@ -184,7 +184,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self setupFetchResultController];
+    //[self setupFetchResultController];
 
 }
 
@@ -224,7 +224,7 @@
             predicateStr = [@"(" stringByAppendingString:predicateStr];
         }
         request.predicate = [NSPredicate predicateWithFormat:predicateStr];
-        [self.tableView reloadData];
+        //[self.tableView reloadData];
     }
     
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:NO]];
