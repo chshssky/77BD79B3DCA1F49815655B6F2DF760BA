@@ -604,8 +604,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [Food updateFood:food Score:[NSNumber numberWithDouble:foodScore] inManagedObjectContext:self.managedObjectContext] ;
-            [self.tableView reloadData];
-            
+            [self setupFetchResultController];
         });
     });
 
