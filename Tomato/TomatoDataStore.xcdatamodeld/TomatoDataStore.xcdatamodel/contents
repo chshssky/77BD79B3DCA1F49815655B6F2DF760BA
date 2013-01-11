@@ -52,7 +52,7 @@
         <relationship name="restaurant" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="telephones" inverseEntity="Restaurant" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Achievement" positionX="-200" positionY="-144" width="128" height="135"/>
+        <element name="Achievement" positionX="-198" positionY="-198" width="128" height="135"/>
         <element name="Collection" positionX="106" positionY="90" width="128" height="73"/>
         <element name="Food" positionX="-198" positionY="108" width="128" height="210"/>
         <element name="Order" positionX="108" positionY="198" width="128" height="88"/>

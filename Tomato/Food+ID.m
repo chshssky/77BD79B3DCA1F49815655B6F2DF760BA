@@ -12,24 +12,43 @@
 
 +(NSInteger)getMaxFoodIDInManagedObjectContext:(NSManagedObjectContext *)context
 {
-//    NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-//    
-//
-//    foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = max"];
-//    
-//    NSError *foodError = nil;
-//    NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
+    NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
     
+    foodRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:NO]];
+    [foodRequest setFetchLimit:1];
+    NSError *foodError = nil;
+    NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
+    
+    Food *food = [foodMatches lastObject];
+    NSLog(@"foodID Max: %@", food.foodID);
+    return [food.foodID integerValue];
 }
 
 +(NSInteger)getMinFoodIDInManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
     
+    foodRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:YES]];
+    [foodRequest setFetchLimit:1];
+    NSError *foodError = nil;
+    NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
+    Food *food = [foodMatches lastObject];
+    NSLog(@"foodID Min: %@", food.foodID);
+    return [food.foodID integerValue];
 }
 
 +(BOOL)dontHaveMinFoodInManagedObjectContext:(NSManagedObjectContext *)context
 {
+    NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
     
+    foodRequest.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:YES]];
+    [foodRequest setFetchLimit:1];
+    NSError *foodError = nil;
+    NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
+    Food *food = [foodMatches lastObject];
+    BOOL donthasMinFood = ![food.foodID isEqualToNumber:[NSNumber numberWithInt:1]];
+    NSLog(@"dont have Min: %@", donthasMinFood? @"YES" : @"NO");
+    return donthasMinFood;
 }
 
 

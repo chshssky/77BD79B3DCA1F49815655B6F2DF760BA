@@ -173,7 +173,7 @@
     [request setHTTPMethod:@"GET"];
     
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSLog(@"%d",[returnData length]);
+    //NSLog(@"%d",[returnData length]);
     
     //NSString *imagePath = [[NSBundle mainBundle] pathForResource:imagename ofType:@"jpg"];
     //NSLog(@"%@",imagePath);
@@ -181,10 +181,10 @@
     NSString * imagefullname = [imagename stringByAppendingString:@".jpg"];
     imagefullname = [dirname stringByAppendingString:imagefullname];
     NSString * imagePath = [NSHomeDirectory() stringByAppendingPathComponent:imagefullname];
-    NSLog(@"%@",imagePath);
+    //NSLog(@"%@",imagePath);
     [returnData writeToFile: imagePath atomically:YES];
     NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnString);
+    //NSLog(@"%@",returnString);
 }
 
 + (double)getFoodScore:(int)foodid

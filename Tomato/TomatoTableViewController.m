@@ -18,6 +18,7 @@
 #import "PublishTableViewController.h"
 #import "Food+Examine.h"
 #import "Food+Insert.h"
+#import "Food+ID.h"
 
 @interface TomatoTableViewController () <FilterTableViewControllerDelegate, TomatoDetailViewControllerDelegate>
 
@@ -77,9 +78,13 @@
         _loadMoreTableFooter = view;
     }
     
+    NSInteger max = [Food getMaxFoodIDInManagedObjectContext:self.managedObjectContext];
+    if (max <= 0) {
+        [NetworkInterface requestForFoodListFromID:-1 ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+    } else {
+        [NetworkInterface requestForFoodListFromID:max ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+    }
     
-    //[NetworkInterface requestForFoodListFromID:0 toID:10 inManagedObjectContext:self.managedObjectContext];
-    [NetworkInterface requestForFoodListFromID:-1 ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     [self setupFetchResultController];
     
     self.foodTags = nil;
@@ -126,9 +131,7 @@
     UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightResult;
     
-    //获取是否还有数据，设置_hasMore
-    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
-    _hasMore = ![Food IsTheLastFood:food];
+    _hasMore = [Food dontHaveMinFoodInManagedObjectContext:self.managedObjectContext];
     
     if (_hasMore == NO) {
         self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
@@ -188,8 +191,9 @@
 - (void)setupFetchResultController
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
+    NSString *predicateStr = @"";
     if (self.foodTags != nil) {
-        NSString *predicateStr = @"";
+        //NSString *predicateStr = @"";
         for (int i = 1; i <= [self.foodTags count] - 2; i ++) {
             if ([self.foodTags[i - 1] boolValue]) {
                 predicateStr = [predicateStr stringByAppendingFormat:@" OR (ANY tags == %d)", i];
@@ -208,7 +212,8 @@
         if (self.foodRestaurants != nil) {
             for (int i = 1; i <= [self.foodRestaurants count]; i ++) {
                 if ([self.foodRestaurants[i - 1] boolValue]) {
-                    restaurantStr = [restaurantStr stringByAppendingFormat:@"OR (restaurant == %d)", i];
+                    //NSInteger restaurantPK =
+                    restaurantStr = [restaurantStr stringByAppendingFormat:@"OR (restaurant.restaurantID == %d)", i];
                 }
             }
             
@@ -377,9 +382,10 @@
 {
     //更新数据库
     //[NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
-    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-    NSLog(@"first foodID: %@", food.foodID);
-    [NetworkInterface requestForFoodListFromID:[food.foodID integerValue] ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+    //Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    NSInteger max = [Food getMaxFoodIDInManagedObjectContext:self.managedObjectContext];
+    NSLog(@"first foodID: %d", max);
+    [NetworkInterface requestForFoodListFromID:max ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
     //[NSThread sleepForTimeInterval:5];
     //后台操作线程执行完后，到主线程更新UI
@@ -451,8 +457,8 @@
     
     //获取是否还有数据，设置_hasMore
     
-    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
-    _hasMore = ![Food IsTheLastFood:food];
+    //Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
+    _hasMore = [Food dontHaveMinFoodInManagedObjectContext:self.managedObjectContext];
     
     if (_hasMore == NO) {
         self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
@@ -466,9 +472,10 @@
 {
     //此处后台加载新的数据
     [NSThread sleepForTimeInterval:3];
-    Food *food = [[self.fetchedResultsController fetchedObjects] lastObject];
-    NSLog(@"last foodID: %@", food.foodID);
-    [NetworkInterface requestForFoodListFromID:-1 ToID:[food.foodID integerValue] Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+    //Food *food = [[self.fetchedResultsController fetchedObjects] lastObject];
+    NSInteger min = [Food getMinFoodIDInManagedObjectContext:self.managedObjectContext];
+    NSLog(@"last foodID: %d", min);
+    [NetworkInterface requestForFoodListFromID:-1 ToID:min Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
     
     //[NSThread sleepForTimeInterval:3];
 
