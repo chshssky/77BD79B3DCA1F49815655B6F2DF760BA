@@ -10,6 +10,7 @@
 		3F0560B316665134005D3170 /* TomatoTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F0560B216665134005D3170 /* TomatoTest.plist */; };
 		3F1C3615169DC60200347037 /* Food+Insert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C3614169DC60100347037 /* Food+Insert.m */; };
 		3F1C3619169DC61F00347037 /* Food+Examine.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C3618169DC61F00347037 /* Food+Examine.m */; };
+		3F1C363016A03B6C00347037 /* Food+ID.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C362F16A03B6B00347037 /* Food+ID.m */; };
 		3F2F8C771689BDEB00D2A668 /* TomatoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */; };
 		3F2F8C851689DF6800D2A668 /* NetworkInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F8C841689DF6800D2A668 /* NetworkInterface.m */; };
 		3F3EE6CA168B49B700D011C3 /* Tag+Init.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3EE6C9168B49B700D011C3 /* Tag+Init.m */; };
@@ -172,6 +173,8 @@
 		3F1C3614169DC60100347037 /* Food+Insert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Insert.m"; sourceTree = "<group>"; };
 		3F1C3617169DC61F00347037 /* Food+Examine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+Examine.h"; sourceTree = "<group>"; };
 		3F1C3618169DC61F00347037 /* Food+Examine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+Examine.m"; sourceTree = "<group>"; };
+		3F1C362E16A03B6B00347037 /* Food+ID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Food+ID.h"; sourceTree = "<group>"; };
+		3F1C362F16A03B6B00347037 /* Food+ID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Food+ID.m"; sourceTree = "<group>"; };
 		3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TomatoDetailViewController.h; sourceTree = "<group>"; };
 		3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TomatoDetailViewController.m; sourceTree = "<group>"; };
 		3F2F8C831689DF6800D2A668 /* NetworkInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkInterface.h; sourceTree = "<group>"; };
@@ -452,6 +455,8 @@
 				3F7E414E1698090700A86D7D /* Achievement.m */,
 				3FAB16CF16941A7000B95574 /* Food.h */,
 				3FAB16D016941A7100B95574 /* Food.m */,
+				3F1C362E16A03B6B00347037 /* Food+ID.h */,
+				3F1C362F16A03B6B00347037 /* Food+ID.m */,
 				3F1C3613169DC60100347037 /* Food+Insert.h */,
 				3F1C3614169DC60100347037 /* Food+Insert.m */,
 				3F1C3617169DC61F00347037 /* Food+Examine.h */,
@@ -939,6 +944,7 @@
 				73AFDA4E169D751200E30773 /* LoadMoreTableFooterView.m in Sources */,
 				3F1C3615169DC60200347037 /* Food+Insert.m in Sources */,
 				3F1C3619169DC61F00347037 /* Food+Examine.m in Sources */,
+				3F1C363016A03B6C00347037 /* Food+ID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
