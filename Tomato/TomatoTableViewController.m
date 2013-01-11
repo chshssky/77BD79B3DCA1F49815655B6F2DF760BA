@@ -364,8 +364,7 @@
     [_refreshTableView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     
     //刷新表格内容
-    Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0] - 1 inSection:0]];
-    _hasMore = ![Food IsTheLastFood:food];
+    _hasMore = [Food dontHaveMinFoodInManagedObjectContext:self.managedObjectContext];
     
     if (_hasMore == NO) {
         self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);

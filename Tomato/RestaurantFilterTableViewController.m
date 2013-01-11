@@ -175,8 +175,22 @@
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         self.restaurantArray[indexPath.row] = [NSNumber numberWithBool:YES];
     } else {
-        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
-        self.restaurantArray[indexPath.row] = [NSNumber numberWithBool:NO];
+        
+        BOOL last = YES;
+        for (int i = 0; i < [self.restaurantArray count]; i ++) {
+            if (indexPath.row == i) {
+                continue;
+            }
+            if ([tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].accessoryType == UITableViewCellAccessoryCheckmark) {
+                last = NO;
+                break;
+            }
+        }
+        if (!last) {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+            self.restaurantArray[indexPath.row] = [NSNumber numberWithBool:NO];
+        }
+        
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

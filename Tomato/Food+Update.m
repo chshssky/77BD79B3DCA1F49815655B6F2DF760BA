@@ -35,10 +35,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
     NSArray *foodMatches = [context executeFetchRequest:foodListRequest error:&foodError];
     for (int i = 0; i < [scoreArr count]; i ++) {
         Food *food = [foodMatches objectAtIndex:i];
-        NSLog(@"id:%@", [[scoreArr objectAtIndex:i] objectForKey:FOOD_ID]);
-        NSLog(@"score:%@", [[scoreArr objectAtIndex:i] objectForKey:FOOD_SCORE]);
         food.foodScore = [NSNumber numberWithDouble:[[[scoreArr objectAtIndex:i] objectForKey:FOOD_SCORE] doubleValue]];
-        NSLog(@"foodID : %@ score: %@", food.foodID, food.foodScore);
         
         NSError *err = nil;
         if (![context save:&err]) {

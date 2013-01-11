@@ -10,6 +10,6 @@
 
 @interface Food (Examine)
 
-+ (BOOL)IsTheLastFood:(Food *)food;
+//+ (BOOL)IsTheLastFood:(Food *)food;
 
 @end
