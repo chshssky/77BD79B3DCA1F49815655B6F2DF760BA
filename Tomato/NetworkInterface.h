@@ -41,5 +41,6 @@
 + (BOOL) isConnectionAvailable;
 
 + (void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context;
++ (NSArray *)getScoreListFrom:(int)fromid To:(int)toid inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

@@ -386,6 +386,9 @@
     NSInteger max = [Food getMaxFoodIDInManagedObjectContext:self.managedObjectContext];
     NSLog(@"first foodID: %d", max);
     [NetworkInterface requestForFoodListFromID:max ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+    NSInteger min = [Food getMinFoodIDInManagedObjectContext:self.managedObjectContext];
+    NSLog(@"last FoodID For Score Updating: %d", min);
+    [NetworkInterface getScoreListFrom:min To:max inManagedObjectContext:self.managedObjectContext];
     
     //[NSThread sleepForTimeInterval:5];
     //后台操作线程执行完后，到主线程更新UI

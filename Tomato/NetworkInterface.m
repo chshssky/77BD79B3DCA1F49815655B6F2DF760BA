@@ -15,6 +15,7 @@
 #import "Restaurant.h"
 #import "Telephone.h"
 #import <SystemConfiguration/SystemConfiguration.h>
+#import "Food+Update.h"
 
 //#define IP @"192.168.1.104"
 #define IP @"10.60.36.40"
@@ -224,7 +225,7 @@
     }
 }
 
-+(void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context
++ (void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context
 {
     if (min==-1&&max==-1) {
         //min=1;
@@ -251,13 +252,14 @@
     
 }
 
-+(NSArray *)getScoreListFrom:(int)fromid To:(int)toid
++ (NSArray *)getScoreListFrom:(int)fromid To:(int)toid inManagedObjectContext:(NSManagedObjectContext *)context
 {
     NSString *ip = IP;
     NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetScoreList?fromid=%d&toid=%d",ip,fromid,toid];
     NSLog(@"%@",urlstr);
     NSURL * url = [NSURL URLWithString:urlstr];
     NSArray * array = [[NSArray alloc] initWithContentsOfURL:url];
+    [Food updateFoodFromID:fromid ToID:toid WithScoreArray:array inManagedObjectContext:context];
     
     return array;
 }

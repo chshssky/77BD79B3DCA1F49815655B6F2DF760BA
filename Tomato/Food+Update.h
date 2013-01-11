@@ -14,4 +14,9 @@
              Score:(NSNumber *)score
 inManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (void)updateFoodFromID:(NSInteger)min
+                    ToID:(NSInteger)max
+          WithScoreArray:(NSArray *)scoreArr
+  inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end
