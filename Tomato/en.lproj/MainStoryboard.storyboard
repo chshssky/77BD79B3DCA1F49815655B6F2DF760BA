@@ -25,7 +25,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="菜名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2x0-X5-dEL">
-                                            <rect key="frame" x="94" y="6" width="143" height="21"/>
+                                            <rect key="frame" x="94" y="6" width="156" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -218,7 +218,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="菜名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ql3-lv-l0P">
-                                            <rect key="frame" x="94" y="6" width="142" height="21"/>
+                                            <rect key="frame" x="94" y="6" width="155" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -936,7 +936,6 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="editButtonClicked:"/>
-                <relationship kind="action" name="editButtonClickedWithCancel:"/>
                 <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
@@ -1020,6 +1019,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="w8t-aN-Kev"/>
+        <segue reference="K7K-CZ-1nn"/>
     </inferredMetricsTieBreakers>
 </document>
