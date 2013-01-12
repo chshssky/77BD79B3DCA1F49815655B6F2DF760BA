@@ -302,14 +302,6 @@
         [alert show];
         return;
     }
-    int count = [[self.restaurantArray[self.selectedRestaurantIndex] objectForKey: @"电话" ] count];
-    if (count <= 0) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请补全餐馆电话" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert setAlertViewStyle:UIAlertViewStyleDefault];
-        [alert show];
-        return;
-
-    }
     
     NSLog(@"selectedtag：%@", [self getSelectedTagsFromTableView]);
     NSString *tagsStr = [self getSelectedTagsFromTableView];
@@ -318,7 +310,19 @@
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
         return;
-    }    
+    }
+   
+    if ([[self.tagArray objectAtIndex:4] boolValue]) {
+        int count = [[self.restaurantArray[self.selectedRestaurantIndex] objectForKey: @"电话" ] count];
+        if (count <= 0) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"由于您选择了外卖标签，所以请补全餐馆电话" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+            [alert setAlertViewStyle:UIAlertViewStyleDefault];
+            [alert show];
+            return;
+            
+        }
+    }
+    
     if (!foodDetail.imageChanged) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"请传入美食图片" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
@@ -342,7 +346,7 @@
     [dateformat setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSLog(@"%@",nowStr);
     
-    NSData *dataImg = UIImageJPEGRepresentation(foodDetail.foodImageDetail.currentBackgroundImage, 0.0000000001);
+    NSData *dataImg = UIImageJPEGRepresentation(foodDetail.foodImageDetail.currentBackgroundImage, 0.01);
     UIImage *foodImage = [[UIImage alloc] initWithData:dataImg];
     
     NSString *path = [NetworkInterface generateRandomString:15];

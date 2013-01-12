@@ -215,11 +215,15 @@
     if (buttonIndex == 1) {
         NSString *inputString = [[alertView textFieldAtIndex:0] text];
         if ([[[alertView textFieldAtIndex:0] text] isEqualToString:@""]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"输入不能为空" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+            [alert setAlertViewStyle:UIAlertViewStyleDefault];
+            [alert show];
             return;
         }
         if (self.title == @"餐馆") {
             [self.restaurantDelegate sendTheAddedRestaurantName:inputString];
             self.selectedIndex = [self.listArray count] - 1;
+            [NetworkInterface PublishRestaurant:inputString telephone:@"null"];
         } else {
             if (![self isPureInt:inputString] || [inputString length] != 11) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请输入由11位数字组成的电话号码" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
@@ -227,7 +231,7 @@
                 [alert show];
                 return;
             }
-            NSLog(@"hello");
+            //NSLog(@"hello");
             [self.restaurantDelegate sendTheAddedTelephoneNumber:inputString];
             [NetworkInterface PublishRestaurant:self.restName telephone:inputString];
         }
