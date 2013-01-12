@@ -394,6 +394,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F1C364916A1413600347037 /* TomatoDetailModule */ = {
+			isa = PBXGroup;
+			children = (
+				3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */,
+				3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */,
+				7382DC751691C9A800B5097B /* RateView.h */,
+				7382DC761691C9A800B5097B /* RateView.m */,
+			);
+			name = TomatoDetailModule;
+			sourceTree = "<group>";
+		};
 		3F2F8C791689C93300D2A668 /* TomatoMainModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,10 +416,6 @@
 				57A0541D16566004007C4CB3 /* TomatoTableViewController.m */,
 				3FC4951E168993E300F0A9B5 /* FoodTomatoTableViewCell.h */,
 				3FC4951F168993E300F0A9B5 /* FoodTomatoTableViewCell.m */,
-				3F2F8C751689BDEB00D2A668 /* TomatoDetailViewController.h */,
-				3F2F8C761689BDEB00D2A668 /* TomatoDetailViewController.m */,
-				7382DC751691C9A800B5097B /* RateView.h */,
-				7382DC761691C9A800B5097B /* RateView.m */,
 			);
 			name = TomatoMainModule;
 			sourceTree = "<group>";
@@ -716,6 +723,7 @@
 				3F2F8C7D1689C9E400D2A668 /* ManagedObjects */,
 				3F2F8C7C1689C9AB00D2A668 /* AchievementsModule */,
 				3F2F8C7B1689C97000D2A668 /* CartModule */,
+				3F1C364916A1413600347037 /* TomatoDetailModule */,
 				3F2F8C791689C93300D2A668 /* TomatoMainModule */,
 				3F2F8C7A1689C95F00D2A668 /* FavoritesModule */,
 				3F8B5B4916903D1A00D7B184 /* FilterModule */,

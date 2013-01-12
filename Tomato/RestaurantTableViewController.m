@@ -87,7 +87,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"%d", self.selectedIndex);
+    //NSLog(@"%d", self.selectedIndex);
     if (self.title == @"餐馆") {
         [self.restaurantDelegate sendTheSelectedRestaurantIndex:self.selectedIndex];
     }
@@ -245,7 +245,7 @@
             [self.restaurantDelegate sendTheAddedTelephoneNumber:inputString];
             [NetworkInterface PublishRestaurant:self.restName telephone:inputString];
         }
-        NSLog(@"%@", inputString);
+        //NSLog(@"%@", inputString);
         for (NSInteger i = 0; i < [self.tableView numberOfRowsInSection:0]; i ++) {
             [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]].accessoryType = UITableViewCellAccessoryNone;
         }
