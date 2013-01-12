@@ -89,7 +89,7 @@
 		
 		
 		[self setState:EGOOPullRefreshNormal];
-		
+		_internetConnect = YES;
     }
 	
     return self;

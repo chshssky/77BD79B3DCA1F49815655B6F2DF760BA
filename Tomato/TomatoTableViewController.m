@@ -367,6 +367,7 @@
 //开始重新加载时调用的方法
 - (void)reloadTableViewDataSource
 {
+    [_refreshTableView setInternetConnect:YES];
     if (![NetworkInterface isConnectionAvailable]) {
         NSLog(@"Connection NO");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法刷新" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
@@ -403,6 +404,8 @@
 //这个方法运行于子线程中，完成获取刷新数据的操作
 -(void)doInBackground
 {
+    [NSThread sleepForTimeInterval:3];
+    
     //更新数据库
     //[NetworkInterface requestForFoodListFromID:0 toID:20 inManagedObjectContext:self.managedObjectContext];
     //Food *food = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
