@@ -43,6 +43,7 @@ typedef enum{
 	UILabel *_statusLabel;
 	CALayer *_arrowImage;
 	UIActivityIndicatorView *_activityView;
+    BOOL _internetConnect;
 	
 
 }
@@ -53,6 +54,7 @@ typedef enum{
 - (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView;
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
+- (void)setInternetConnect:(BOOL)internetConnect;
 
 @end
 @protocol EGORefreshTableHeaderDelegate

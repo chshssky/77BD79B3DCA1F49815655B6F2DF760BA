@@ -5,7 +5,6 @@
 
 
 @interface LoadMoreTableFooterView (Private)
-- (void)setState:(LoadMoreState)aState;
 @end
 
 @implementation LoadMoreTableFooterView
@@ -66,6 +65,7 @@
         
         [self setState:LoadMoreNormal];
         _whetherRefresh = YES;
+        _internetConnect = YES;
     }
     
     return self;
@@ -107,6 +107,12 @@
     _statusLabel.hidden = YES;
 }
 
+- (void)setInternetConnect:(BOOL)internetConnect
+{
+    _internetConnect = internetConnect;
+}
+
+
 
 #pragma mark -
 #pragma mark ScrollView Methods
@@ -135,10 +141,8 @@
         
         //滚动条被拖离的距离小于REFRESH_REGION_HEIGHT，且滚动条被拖离的距离 > 0（向上拖动）
         if (_state == LoadMoreNormal && scrollOffsetHeight < REFRESH_REGION_HEIGHT && scrollOffsetHeight > 0 && !_loading) {
-            
-            self.frame = CGRectMake(0, scrollView.contentSize.height, self.frame.size.width, self.frame.size.height);
-            
             self.hidden = NO;
+            self.frame = CGRectMake(0, scrollView.contentSize.height, self.frame.size.width, self.frame.size.height);
             
         } else if (_state == LoadMoreNormal && scrollOffsetHeight > REFRESH_REGION_HEIGHT && !_loading  && _whetherRefresh == YES) {
             //滚动条被拖离的距离大于REFRESH_REGION_HEIGHT
@@ -154,6 +158,7 @@
         if (scrollView.contentInset.bottom != 0) {
             //NSLog(@"?????");
             //[self setState:LoadMorePulling];
+            scrollView.contentInset = UIEdgeInsetsZero;
         }
     }
 }
@@ -170,21 +175,26 @@
         if ([_delegate respondsToSelector:@selector(loadMoreTableFooterDidTriggerRefresh:)]) {
             [_delegate loadMoreTableFooterDidTriggerRefresh:self];
         }
-        
         [self setState:LoadMoreLoading];
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.2];
         scrollView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
         [UIView commitAnimations];
+        
+        if (_internetConnect == NO) {
+            [self setState:LoadMoreNormal];
+            scrollView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f);
+            self.hidden = YES;
+            return;
+        }
     }
 }
 
 - (void)loadMoreScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView {
-    /*[UIView beginAnimations:nil context:NULL];
-     [UIView setAnimationDuration:.3];
-     [scrollView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
-     [UIView commitAnimations];*/
-    
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationDuration:.3];
+//    //[scrollView setContentInset:UIEdgeInsetsMake(0.0f, 0.0f, 0.0f, 0.0f)];
+    [UIView commitAnimations];
     [self setState:LoadMoreNormal];
     self.hidden = YES;
 }

@@ -67,11 +67,13 @@
         } else {
             [NetworkInterface requestForFoodListFromID:max ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
         }
+        [_loadMoreTableFooter setInternetConnect:YES];
     } else {
         NSLog(@"Connection NO");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
+        [_loadMoreTableFooter setInternetConnect:NO];
     }
     
     [self setupFetchResultController];
@@ -363,12 +365,15 @@
 
 
 //开始重新加载时调用的方法
-- (void)reloadTableViewDataSource{
+- (void)reloadTableViewDataSource
+{
     if (![NetworkInterface isConnectionAvailable]) {
         NSLog(@"Connection NO");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法刷新" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
+        [_refreshTableView setInternetConnect:NO];
+        _reloading = NO;
         return;
     }
 
@@ -389,7 +394,6 @@
     if (_hasMore == NO) {
         self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
         [_loadMoreTableFooter setFooterLabelIfNoMoreData];
-        //[self.tableView reloadData];
         NSLog(@"没有更多");
     }
     
@@ -465,11 +469,14 @@
 
 
 - (void)loadMoreTableViewDataSource {
+    [_loadMoreTableFooter setInternetConnect:YES];
     if (![NetworkInterface isConnectionAvailable]) {
         NSLog(@"Connection NO");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法加载" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
         [alert show];
+        [_loadMoreTableFooter setInternetConnect:NO];
+        _loadingMore = NO;
         return;
     }
     _loadingMore = YES;
@@ -500,7 +507,7 @@
 - (void)loadMore
 {
     //此处后台加载新的数据
-    [NSThread sleepForTimeInterval:3];
+    [NSThread sleepForTimeInterval:2];
     //Food *food = [[self.fetchedResultsController fetchedObjects] lastObject];
     NSInteger min = [Food getMinFoodIDInManagedObjectContext:self.managedObjectContext];
     NSLog(@"last foodID: %d", min);

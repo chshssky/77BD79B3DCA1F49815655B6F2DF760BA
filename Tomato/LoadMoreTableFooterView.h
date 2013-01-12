@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-#define  REFRESH_REGION_HEIGHT 95.0f
+#define  REFRESH_REGION_HEIGHT 110.0f
 
 
 typedef enum{
@@ -18,6 +18,7 @@ typedef enum{
     UIView *_footerBackgroundView;
     UIActivityIndicatorView *_activityView;
     BOOL _whetherRefresh;
+    BOOL _internetConnect;
 }
 
 @property(nonatomic,retain) id <LoadMoreTableFooterDelegate> delegate;
@@ -27,6 +28,8 @@ typedef enum{
 - (void)loadMoreScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView;
 - (void)setFooterLabelIfNoMoreData;
 - (void)setFooterLabelIfHasData;
+- (void)setState:(LoadMoreState)aState;
+- (void)setInternetConnect:(BOOL)internetConnect;
 @end
 
 @protocol LoadMoreTableFooterDelegate
