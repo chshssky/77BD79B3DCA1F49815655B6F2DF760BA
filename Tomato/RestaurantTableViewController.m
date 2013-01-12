@@ -221,6 +221,16 @@
             return;
         }
         if (self.title == @"餐馆") {
+            
+            for (NSDictionary *dict in self.listArray) {
+                if ([inputString isEqualToString:[dict objectForKey:@"餐馆名称"]]) {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"餐馆名不能重复" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+                    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+                    [alert show];
+                    return;
+                }
+            }
+            
             [self.restaurantDelegate sendTheAddedRestaurantName:inputString];
             self.selectedIndex = [self.listArray count] - 1;
             [NetworkInterface PublishRestaurant:inputString telephone:@"null"];
