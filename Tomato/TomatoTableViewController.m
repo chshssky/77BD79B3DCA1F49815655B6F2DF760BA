@@ -55,13 +55,46 @@
     
     [super viewDidLoad];
     
+    [self initWithUI];
+    
     self.loadCount = 5;
     
     if ([NetworkInterface isConnectionAvailable]) {
         NSLog(@"Connection YES");
+        NSInteger max = [Food getMaxFoodIDInManagedObjectContext:self.managedObjectContext];
+        if (max <= 0) {
+            [NetworkInterface requestForFoodListFromID:-1 ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+        } else {
+            [NetworkInterface requestForFoodListFromID:max ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
+        }
     } else {
         NSLog(@"Connection NO");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
     }
+    
+    [self setupFetchResultController];
+    
+    self.foodTags = nil;
+    self.foodRestaurants = nil;
+    [self.navigationController setTitle:@"番茄美食"];
+    [self.foodNavigationBar setTitle:@"番茄美食"];
+    [self.tableView setSeparatorColor:[UIColor clearColor]];
+    
+    _hasMore = [Food dontHaveMinFoodInManagedObjectContext:self.managedObjectContext];
+    
+    if (_hasMore == NO) {
+        self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
+        [_loadMoreTableFooter setFooterLabelIfNoMoreData];
+        //[self.tableView reloadData];
+        NSLog(@"没有更多");
+    }
+
+}
+
+- (void)initWithUI
+{
     if (_refreshTableView == nil) {
         //初始化下拉刷新控件
         EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
@@ -78,32 +111,11 @@
         _loadMoreTableFooter = view;
     }
     
-    NSInteger max = [Food getMaxFoodIDInManagedObjectContext:self.managedObjectContext];
-    if (max <= 0) {
-        [NetworkInterface requestForFoodListFromID:-1 ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
-    } else {
-        [NetworkInterface requestForFoodListFromID:max ToID:-1 Count:self.loadCount inManagedObjectContext:self.managedObjectContext];
-    }
-    
-    [self setupFetchResultController];
-    
-    self.foodTags = nil;
-    self.foodRestaurants = nil;
-    [self.navigationController setTitle:@"番茄美食"];
-    [self.foodNavigationBar setTitle:@"番茄美食"];
-    [self.tableView setSeparatorColor:[UIColor clearColor]];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
-    
     //修改NavigationBar按钮
     UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(-6, 2, 64, 48)];
     //UIImage *icon = [UIImage imageNamed:@" "];
     //[button setImage:icon forState:UIControlStateNormal];
-    //[button setImage:icon forState:UIControlStateHighlighted]; 
+    //[button setImage:icon forState:UIControlStateHighlighted];
     [leftButton setBackgroundImage:[UIImage imageNamed:@"selectButton.png"] forState:UIControlStateNormal];
     [leftButton setBackgroundImage:[UIImage imageNamed:@"selectButtonClicked.png"] forState:UIControlStateHighlighted];
     
@@ -130,20 +142,17 @@
     
     UIBarButtonItem *rightResult = [[UIBarButtonItem alloc] initWithCustomView:rightButtonView];
     self.navigationItem.rightBarButtonItem = rightResult;
-    
-    _hasMore = [Food dontHaveMinFoodInManagedObjectContext:self.managedObjectContext];
-    
-    if (_hasMore == NO) {
-        self.tableView.contentInset = UIEdgeInsetsMake(0.0f, 0.0f, 60.0f, 0.0f);
-        [_loadMoreTableFooter setFooterLabelIfNoMoreData];
-        //[self.tableView reloadData];
-        NSLog(@"没有更多");
-    }
-
 }
 
 - (IBAction)goToPublishTableViewController:(id)sender
 {
+    if (![NetworkInterface isConnectionAvailable]) {
+        NSLog(@"Connection NO");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，不能发布" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
     //PublishTableViewController *publishTableViewController = [[PublishTableViewController alloc] init];
     UIViewController *publishTableViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newPublish"];
     publishTableViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -233,6 +242,9 @@
                                                                         managedObjectContext:self.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
+    if ([[self.fetchedResultsController fetchedObjects] count] <= 0) {
+        NSLog(@"0000000000000000");
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -289,7 +301,7 @@
         Tag *foodSign1 = signMutableArray[0];
         cell.tasteImage.image = [UIImage imageNamed:[self getFoodSignImage:[foodSign1.tagID intValue]]];
     }
-
+    
     dispatch_queue_t image_queue;
     image_queue = dispatch_queue_create("image_queue", nil);
     dispatch_async(image_queue, ^{
@@ -352,6 +364,14 @@
 
 //开始重新加载时调用的方法
 - (void)reloadTableViewDataSource{
+    if (![NetworkInterface isConnectionAvailable]) {
+        NSLog(@"Connection NO");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法刷新" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
+
     _reloading = YES;
     //开始刷新后执行后台线程，在此之前可以开启HUD或其他对UI进行阻塞
     [NSThread detachNewThreadSelector:@selector(doInBackground) toTarget:self withObject:nil];
@@ -445,6 +465,13 @@
 
 
 - (void)loadMoreTableViewDataSource {
+    if (![NetworkInterface isConnectionAvailable]) {
+        NSLog(@"Connection NO");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法加载" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
     _loadingMore = YES;
     [NSThread detachNewThreadSelector:@selector(loadMore) toTarget:self withObject:nil];
 }

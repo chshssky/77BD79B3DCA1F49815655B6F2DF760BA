@@ -49,6 +49,13 @@
 
 - (void)rateView:(RateView *)rateView changedToNewRate:(NSNumber *)rate
 {
+    if (![NetworkInterface isConnectionAvailable]) {
+        NSLog(@"Connection NO");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法评分" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
     _rateScore = [rate intValue];
 }
 
@@ -56,14 +63,14 @@
 {
     NSLog(@"rateScore:%d", self.rateScore);
     //推出时提交评分，并且把评分存入数据库
-    if (self.rateScore != 0) {
+    if (self.rateScore != 0 && self.rateScore != [self.foodDetail.foodGrade integerValue]) {
         NSLog(@"main thread begin...");
-        [self performSelectorInBackground:@selector(doSomething:) withObject:nil];
+        [self performSelectorInBackground:@selector(giveGrade:) withObject:nil];
         NSLog(@"main thread end.....");
     }
 }
 
-- (void) doSomething:(id)sender
+- (void) giveGrade:(id)sender
 {
     NSLog( @"one thread begin..." );
     [NetworkInterface giveGrade:[self.foodDetail.foodID integerValue] OldGrade:[self.foodDetail.foodGrade integerValue] NewGrade:self.rateScore];
@@ -107,8 +114,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
     
     self.whetherAllowToRate = YES;
     [self setUpEditableRateView:self.whetherAllowToRate];
