@@ -43,19 +43,14 @@
     rateView.rate = [self.foodDetail.foodGrade floatValue]/2;
     rateView.alignment = RateViewAlignmentCenter;
     rateView.editable = whetherAllowToRate;
+    
+    
     rateView.delegate = self;
     [self.view addSubview:rateView];
 }
 
 - (void)rateView:(RateView *)rateView changedToNewRate:(NSNumber *)rate
 {
-    if (![NetworkInterface isConnectionAvailable]) {
-        NSLog(@"Connection NO");
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法评分" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert setAlertViewStyle:UIAlertViewStyleDefault];
-        [alert show];
-        return;
-    }
     _rateScore = [rate intValue];
 }
 
@@ -109,6 +104,7 @@
     }else{
         [self.addToCartButton setHidden:NO];
     }
+    
 }
 
 - (void)viewDidLoad
@@ -116,6 +112,7 @@
     [super viewDidLoad];
     
     self.whetherAllowToRate = YES;
+    
     [self setUpEditableRateView:self.whetherAllowToRate];
     
     self.title = self.foodDetail.foodName;

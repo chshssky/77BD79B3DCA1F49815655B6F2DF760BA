@@ -7,6 +7,7 @@
 //
 
 #import "RateView.h"
+#import "NetworkInterface.h"
 
 static NSString *DefaultFullStarImageFilename = @"StarFull.png";
 static NSString *DefaultEmptyStarImageFilename = @"StarEmpty.png";
@@ -107,6 +108,13 @@ static NSString *DefaultEmptyStarImageFilename = @"StarEmpty.png";
 }
 
 - (void)setRate:(CGFloat)rate {
+    if (![NetworkInterface isConnectionAvailable]) {
+        NSLog(@"Connection NO");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"网络不通" message:@"你的设备未连接到互联网，无法评分" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
+        return;
+    }
     _rate = rate;
     [self setNeedsDisplay];
     [self notifyDelegate];
