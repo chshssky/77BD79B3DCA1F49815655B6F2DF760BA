@@ -71,8 +71,8 @@
     [super viewDidLoad];
     
     [self setupFetchResultController];
-    [self.navigationController setTitle:@"口味相投"];
-    [self.favoriteNavigationBar setTitle:@"口味相投"];
+    [self.navigationController setTitle:@"稍后再吃"];
+    [self.favoriteNavigationBar setTitle:@"稍后再吃"];
     [self.tableView setSeparatorColor:[UIColor clearColor]];
 }
 

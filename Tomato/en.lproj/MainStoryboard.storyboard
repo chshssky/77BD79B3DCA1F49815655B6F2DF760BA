@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C3012" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kWw-4Y-E2O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="kWw-4Y-E2O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
@@ -197,7 +197,7 @@
             </objects>
             <point key="canvasLocation" x="2052" y="-2016"/>
         </scene>
-        <!--Favorites Table View Controller - 口味相投-->
+        <!--Favorites Table View Controller - 稍后再吃-->
         <scene sceneID="TI3-li-26R">
             <objects>
                 <tableViewController id="eVY-ue-4yc" customClass="FavoritesTableViewController" sceneMemberID="viewController">
@@ -271,7 +271,7 @@
                         </prototypes>
                         <sections/>
                     </tableView>
-                    <navigationItem key="navigationItem" title="口味相投" id="n1T-cI-gB3">
+                    <navigationItem key="navigationItem" title="稍后再吃" id="n1T-cI-gB3">
                         <barButtonItem key="rightBarButtonItem" title="编辑" id="q6i-jv-t0U"/>
                     </navigationItem>
                     <connections>
@@ -375,11 +375,11 @@
             </objects>
             <point key="canvasLocation" x="476" y="376"/>
         </scene>
-        <!--Navigation Controller - 稍后再吃-->
+        <!--Navigation Controller - 外卖订单-->
         <scene sceneID="CPI-qv-lbC">
             <objects>
                 <navigationController definesPresentationContext="YES" id="bDw-vO-9aV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="稍后再吃" image="cart.png" id="NgY-NQ-DhS"/>
+                    <tabBarItem key="tabBarItem" title="外卖订单" image="cart.png" id="NgY-NQ-DhS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3p4-C1-dbe">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -391,7 +391,7 @@
             </objects>
             <point key="canvasLocation" x="475" y="957"/>
         </scene>
-        <!--Cart Table View Controller - 稍后再吃-->
+        <!--Cart Table View Controller - 外卖订单-->
         <scene sceneID="47F-0Q-pkE">
             <objects>
                 <tableViewController id="Q7m-2t-vf0" customClass="CartTableViewController" sceneMemberID="viewController">
@@ -431,17 +431,17 @@
                             <outlet property="delegate" destination="Q7m-2t-vf0" id="mhY-3L-g9x"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="稍后再吃" id="98m-4q-uus"/>
+                    <navigationItem key="navigationItem" title="外卖订单" id="98m-4q-uus"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="95Y-tF-pkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1010" y="957"/>
         </scene>
-        <!--Navigation Controller - 口味相投-->
+        <!--Navigation Controller - 稍后再吃-->
         <scene sceneID="5EH-Cn-6wG">
             <objects>
                 <navigationController definesPresentationContext="YES" id="Isj-Xu-c4X" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="口味相投" image="favorite.png" id="Z6K-R7-wEm"/>
+                    <tabBarItem key="tabBarItem" title="稍后再吃" image="favorite.png" id="Z6K-R7-wEm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TKA-Dv-fW3">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -935,15 +935,11 @@
         <class className="FavoritesTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="editButtonClicked:"/>
                 <relationship kind="outlet" name="favoriteNavigationBar" candidateClass="UINavigationItem"/>
             </relationships>
         </class>
         <class className="FilterTableViewController" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FilterTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="returnController:"/>
-            </relationships>
         </class>
         <class className="FoodDetailView" superclassName="UIControl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FoodDetailView.h"/>
@@ -1019,6 +1015,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="K7K-CZ-1nn"/>
+        <segue reference="w8t-aN-Kev"/>
     </inferredMetricsTieBreakers>
 </document>
