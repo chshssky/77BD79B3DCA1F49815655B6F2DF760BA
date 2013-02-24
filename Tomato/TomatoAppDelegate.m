@@ -12,6 +12,7 @@
 #import "Tag+Init.h"
 #import "Achievement+Init.h"
 #import "Record+Update.h"
+#import <Parse/Parse.h>
 
 @implementation TomatoAppDelegate
 
@@ -119,6 +120,14 @@
     
     [Record RecordWithOpenTimeinManagedObjectContext:self.managedObjectContext];
     
+    [Parse setApplicationId:@"Wbr5XlZhZh6apUAYOFigqv4oxsZezxOlZs254UIn"
+                  clientKey:@"XHsG6Kg5dnHuawdDjd9eT4fqkdrHRxBHYfrdWlyA"];
+    
+    
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"bar" forKey:@"foo"];
+    [testObject save];
+
     return YES;
 }
 							

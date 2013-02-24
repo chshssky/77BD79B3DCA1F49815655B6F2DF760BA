@@ -19,7 +19,7 @@
 
 //#define IP @"192.168.1.104"
 #define IP @"10.60.36.40"
-#define USE_SERVER
+//#define USE_SERVER
 
 
 @implementation NetworkInterface

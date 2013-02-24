@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 #define FOOD_NAME @"名称"
 #define FOOD_ID @"美食ID"
