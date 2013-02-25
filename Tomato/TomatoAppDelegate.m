@@ -126,7 +126,7 @@
     
     PFObject *initObject = [PFObject objectWithClassName:@"InitObject"];
     [initObject setObject:@"TomatoLaunched" forKey:@"initInfo"];
-    [initObject save];
+    [initObject saveInBackground];
 
     return YES;
 }

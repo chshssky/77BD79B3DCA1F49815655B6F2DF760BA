@@ -7,38 +7,50 @@
 //
 
 #import "Food+Init.h"
-#import "TomatoAppDelegate.h"
+//#import "TomatoAppDelegate.h"
 #import "Restaurant.h"
 #import "Telephone.h"
 #import "Food+Update.h"
 #import "NetworkInterface.h"
+#import <Parse/Parse.h>
+
+#define FOOD_ID @"foodId" 
+#define FOOD_NAME @"foodName"
+#define FOOD_SCORE @"foodScore"
+#define FOOD_TAGS @"tagsName"
+#define FOOD_PRICE @"foodPrice"
+#define FOOD_IMAGE_PATH @"foodImgName"
+#define FOOD_UPLOAD_TIME @"publishTime"
+#define RESTAURANT @"restaurantName"
+
 
 @implementation Food (Init)
 
 + (void)initFood:(NSArray *)foods
 inManagedObjectedContext:(NSManagedObjectContext *)context
 {
-    for (NSDictionary *dic in foods) {
+    
+    NSLog(@"food count:%d", [foods count]);
+    for (PFObject *dic in foods) {
         Food *food = nil;
         NSFetchRequest *foodRequest = [NSFetchRequest fetchRequestWithEntityName:@"Food"];
-        //i ++;
-        int i = [[dic objectForKey:FOOD_ID] integerValue];
-        foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = %d"/* AND foodPublishTime = %@"*/, i/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
+        int i = 1;
+        foodRequest.predicate = [NSPredicate predicateWithFormat:@"foodID = %d"/* AND foodPublishTime = %@"*/, 0/*, [dic objectForKey:FOOD_UPLOAD_TIME]*/];
         
         NSError *foodError = nil;
         NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
         
-        dispatch_queue_t network_queue;
-        network_queue = dispatch_queue_create("network_queue", nil);
-        dispatch_async(network_queue, ^{
-            [NetworkInterface DownloadImage:[dic objectForKey:FOOD_IMAGE_PATH]];
-        });
+//        dispatch_queue_t network_queue;
+//        network_queue = dispatch_queue_create("network_queue", nil);
+//        dispatch_async(network_queue, ^{
+//            [NetworkInterface DownloadImage:[dic objectForKey:FOOD_IMAGE_PATH]];
+//        });
         
         if (!foodMatches || ([foodMatches count] > 1)) {
             NSLog(@"Food Wrong!");
         } else if ([foodMatches count] == 0) {
             food = [NSEntityDescription insertNewObjectForEntityForName:@"Food" inManagedObjectContext:context];
-            food.foodID = [NSNumber numberWithInteger:i];
+            food.foodID = [NSNumber numberWithInteger:i ++];
             
             food.foodName = [dic objectForKey:FOOD_NAME];
             
@@ -56,63 +68,63 @@ inManagedObjectedContext:(NSManagedObjectContext *)context
             
             food.foodScore = [NSNumber numberWithFloat:[[dic objectForKey:FOOD_SCORE] floatValue]];
             
-            for (NSString *tagIndex in [dic objectForKey:FOOD_TAGS]) {
-                Tag *tag = nil;
-                NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-                request.predicate = [NSPredicate predicateWithFormat:@"tagID = %@", tagIndex];
-                
-                NSError *error = nil;
-                NSArray *matches = [context executeFetchRequest:request error:&error];
-                
-                if (!matches || ([matches count] > 1)) {
-                    NSLog(@"Food Add Tags Wrong!");
-                } else if ([matches count] == 0) {
-                    NSLog(@"Tags not init!");
-                } else {
-                    tag = [matches lastObject];
-                    [food addTagsObject:tag];
-                }
-            }
+//            for (NSString *tagIndex in [dic objectForKey:FOOD_TAGS]) {
+//                Tag *tag = nil;
+//                NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+//                request.predicate = [NSPredicate predicateWithFormat:@"tagID = %@", tagIndex];
+//                
+//                NSError *error = nil;
+//                NSArray *matches = [context executeFetchRequest:request error:&error];
+//                
+//                if (!matches || ([matches count] > 1)) {
+//                    NSLog(@"Food Add Tags Wrong!");
+//                } else if ([matches count] == 0) {
+//                    NSLog(@"Tags not init!");
+//                } else {
+//                    tag = [matches lastObject];
+//                    [food addTagsObject:tag];
+//                }
+//            }
             
-            NSDictionary *rest = [dic objectForKey:RESTAURANT];
+//            NSDictionary *rest = [dic objectForKey:RESTAURANT];
             
-            Restaurant *res = nil;
-            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
-            request.predicate = [NSPredicate predicateWithFormat:@"restaurantID = %@", [rest objectForKey:RESTAURANT_ID]];
-            
+//            Restaurant *res = nil;
+//            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Restaurant"];
+//            request.predicate = [NSPredicate predicateWithFormat:@"restaurantID = %@", [rest objectForKey:RESTAURANT_ID]];
+//            
+//            NSError *error = nil;
+//            NSArray *matches = [context executeFetchRequest:request error:&error];
+//            
+//            if (!matches || ([matches count] > 1)) {
+//                NSLog(@"Food Add Restaurant Wrong!");
+//            } else if ([matches count] == 0) {
+//                res = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurant" inManagedObjectContext:context];
+//                res.restaurantID = [NSNumber numberWithInteger:[[rest objectForKey:RESTAURANT_ID] integerValue]];
+//                NSLog(@"restaurantID:%@", [NSNumber numberWithInteger:[[rest objectForKey:RESTAURANT_ID] integerValue]]);
+//                res.restaurantName = [rest objectForKey:RESTAURANT_NAME];
+//                
+//                for (NSString *teleNumber in [rest objectForKey:RESTAURANT_TELEPHONE]) {
+//                    Telephone *tel = nil;
+//                    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Telephone"];
+//                    request.predicate = [NSPredicate predicateWithFormat:@"telephoneNumber = %@", teleNumber];
+//                    NSError *error = nil;
+//                    NSArray *matches = [context executeFetchRequest:request error:&error];
+//                    
+//                    if (!matches || ([matches count] > 1)) {
+//                        NSLog(@"Restaurant Add Telephones Wrong!");
+//                    } else if ([matches count] == 0) {
+//                        tel = [NSEntityDescription insertNewObjectForEntityForName:@"Telephone" inManagedObjectContext:context];
+//                        tel.telephoneNumber = teleNumber;
+//                    } else {
+//                        tel = [matches lastObject];
+//                    }
+//                    [res addTelephonesObject:tel];
+//                }
+//            } else {
+//                res = [matches lastObject];
+//            }
+//            food.restaurant = res;
             NSError *error = nil;
-            NSArray *matches = [context executeFetchRequest:request error:&error];
-            
-            if (!matches || ([matches count] > 1)) {
-                NSLog(@"Food Add Restaurant Wrong!");
-            } else if ([matches count] == 0) {
-                res = [NSEntityDescription insertNewObjectForEntityForName:@"Restaurant" inManagedObjectContext:context];
-                res.restaurantID = [NSNumber numberWithInteger:[[rest objectForKey:RESTAURANT_ID] integerValue]];
-                NSLog(@"restaurantID:%@", [NSNumber numberWithInteger:[[rest objectForKey:RESTAURANT_ID] integerValue]]);
-                res.restaurantName = [rest objectForKey:RESTAURANT_NAME];
-                
-                for (NSString *teleNumber in [rest objectForKey:RESTAURANT_TELEPHONE]) {
-                    Telephone *tel = nil;
-                    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Telephone"];
-                    request.predicate = [NSPredicate predicateWithFormat:@"telephoneNumber = %@", teleNumber];
-                    NSError *error = nil;
-                    NSArray *matches = [context executeFetchRequest:request error:&error];
-                    
-                    if (!matches || ([matches count] > 1)) {
-                        NSLog(@"Restaurant Add Telephones Wrong!");
-                    } else if ([matches count] == 0) {
-                        tel = [NSEntityDescription insertNewObjectForEntityForName:@"Telephone" inManagedObjectContext:context];
-                        tel.telephoneNumber = teleNumber;
-                    } else {
-                        tel = [matches lastObject];
-                    }
-                    [res addTelephonesObject:tel];
-                }
-            } else {
-                res = [matches lastObject];
-            }
-            food.restaurant = res;
-            error = nil;
             if (![context save:&error]) {
                 NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
                 abort();

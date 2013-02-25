@@ -35,9 +35,11 @@
 //#ifdef USE_SERVER
 //    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
 //#else
-//    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-//#endif
-//    [Food initFood:foods inManagedObjectedContext:context];
+    PFQuery *query = [PFQuery queryWithClassName:@"Food"];
+    [query whereKey:@"objectId" notEqualTo:@"2"];
+    NSArray *foods = [query findObjects];
+
+    [Food initFood:foods inManagedObjectedContext:context];
 
 //        [document.managedObjectContext performBlock:^{
 //            for (NSDictionary *flickrInfo in photos) {
@@ -98,6 +100,7 @@
     
     
     PFObject *foodInfo = [PFObject objectWithClassName:@"Food"];
+    [foodInfo setObject:@"2" forKey:@"foodId"];
     [foodInfo setObject:name forKey:@"foodName"];
     [foodInfo setObject:price forKey:@"foodPrice"];
     [foodInfo setObject:time forKey:@"publishTime"];
@@ -250,28 +253,28 @@
 
 + (void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context
 {
-//    if (min==-1&&max==-1) {
-//        //min=1;
-//        max=count;
-//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
-//    }
-//    else if(min == -1&&max != -1)
-//    {
-//        min=max-count;
-//        if (min<0) {
-//            min=1;
-//        }
-//        max=max-1;
-//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
-//    }
-//    else if (min != -1&&max == -1)
-//    {
-//        max=min+count;
-//        min=min+1;
-//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
-//    }
-//    else
-//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    if (min==-1&&max==-1) {
+        //min=1;
+        max=count;
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    }
+    else if(min == -1&&max != -1)
+    {
+        min=max-count;
+        if (min<0) {
+            min=1;
+        }
+        max=max-1;
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    }
+    else if (min != -1&&max == -1)
+    {
+        max=min+count;
+        min=min+1;
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+    }
+    else
+        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
     
 }
 
