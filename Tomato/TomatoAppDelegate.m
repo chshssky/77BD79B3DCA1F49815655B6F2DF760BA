@@ -124,9 +124,9 @@
                   clientKey:@"XHsG6Kg5dnHuawdDjd9eT4fqkdrHRxBHYfrdWlyA"];
     
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    [testObject setObject:@"bar" forKey:@"foo"];
-    [testObject save];
+    PFObject *initObject = [PFObject objectWithClassName:@"InitObject"];
+    [initObject setObject:@"TomatoLaunched" forKey:@"initInfo"];
+    [initObject save];
 
     return YES;
 }

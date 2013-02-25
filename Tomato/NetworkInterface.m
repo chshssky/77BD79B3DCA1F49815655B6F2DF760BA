@@ -17,6 +17,8 @@
 #import <SystemConfiguration/SystemConfiguration.h>
 #import "Food+Update.h"
 
+#import <Parse/Parse.h>
+
 //#define IP @"192.168.1.104"
 #define IP @"10.60.36.40"
 //#define USE_SERVER
@@ -26,16 +28,16 @@
 
 + (void)requestForFoodListFromID:(NSInteger) min toID:(NSInteger) max inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSString *ip = IP;
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
-    NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", ip, min, max];
-    NSURL *URL = [NSURL URLWithString:urlstr];
-#ifdef USE_SERVER
-    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
-#else
-    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-#endif
-    [Food initFood:foods inManagedObjectedContext:context];
+//    NSString *ip = IP;
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TomatoTest" ofType:@"plist"];
+//    NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodList?fromid=%d&toid=%d", ip, min, max];
+//    NSURL *URL = [NSURL URLWithString:urlstr];
+//#ifdef USE_SERVER
+//    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfURL:URL];
+//#else
+//    NSArray *foods = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
+//#endif
+//    [Food initFood:foods inManagedObjectedContext:context];
 
 //        [document.managedObjectContext performBlock:^{
 //            for (NSDictionary *flickrInfo in photos) {
@@ -65,59 +67,70 @@
 
 +(void) PublishFood:(NSString *)name foodprice:(NSString *)price publishtime:(NSString *)time foodimgname:(NSString *)imgname restaurantname:(NSString *)restaurantname tagsname:(NSString *)tagsname
 {
-    NSString *ip = IP;
+    //NSString *ip = IP;
     //URL = [URL stringByAppendingFormat:@"?foodname=%@&foodprice=%@&publishtime=%@&foodimgname=%@&restaurantname=%@",name,price,time,imgname,restaurantname];
     //NSLog(@"%@",URL);
-    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/PublishFood", ip];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:URL]];
-    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPMethod:@"POST"];
+    //NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/PublishFood", ip];
+    //NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:URL]];
+//    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPMethod:@"POST"];
+//
+
+//    NSMutableData *body = [NSMutableData data];
+//    [body appendData:[[NSString stringWithFormat:@"foodname=%@\n",name] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"foodprice=%@\n",price] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"publishtime=%@\n",time] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"foodimgname=%@\n",imgname] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"restaurantname=%@\n",restaurantname] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"tagsname=%@\n",tagsname] dataUsingEncoding:NSUTF8StringEncoding]];
+//    //[body appendData:[[NSString stringWithFormat:@"tag=bbbb\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+//    //[body appendData:[[NSString stringWithFormat:@"tag=cccc\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+//    
+//    [request setHTTPBody:body];
+//    
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    //[NSURLConnection connectionWithRequest:request delegate:self];
+//    NSLog(@"%d",[returnData length]);
+//    
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",returnString);
     
-    NSMutableData *body = [NSMutableData data];
-    [body appendData:[[NSString stringWithFormat:@"foodname=%@\n",name] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"foodprice=%@\n",price] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"publishtime=%@\n",time] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"foodimgname=%@\n",imgname] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"restaurantname=%@\n",restaurantname] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"tagsname=%@\n",tagsname] dataUsingEncoding:NSUTF8StringEncoding]];
-    //[body appendData:[[NSString stringWithFormat:@"tag=bbbb\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    //[body appendData:[[NSString stringWithFormat:@"tag=cccc\n"] dataUsingEncoding:NSUTF8StringEncoding]];
     
-    [request setHTTPBody:body];
-    
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //[NSURLConnection connectionWithRequest:request delegate:self];
-    NSLog(@"%d",[returnData length]);
-    
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnString);
+    PFObject *foodInfo = [PFObject objectWithClassName:@"Food"];
+    [foodInfo setObject:name forKey:@"foodName"];
+    [foodInfo setObject:price forKey:@"foodPrice"];
+    [foodInfo setObject:time forKey:@"publishTime"];
+    [foodInfo setObject:imgname forKey:@"foodImgName"];
+    [foodInfo setObject:restaurantname forKey:@"restaurantName"];
+    [foodInfo setObject:tagsname forKey:@"tagsName"];    
+    [foodInfo saveInBackground];
     
 }
 
 +(void) UploadImage:(UIImage *)img picturename:(NSString *)picture_name
 {
-    NSString *ip = IP;
-    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/UploadPicture", ip];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:URL]];
-    [request setHTTPMethod:@"POST"];
-    
-    
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; picture_name=%@",picture_name];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    
-    NSMutableData *body = [NSMutableData data];
-    
-    [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(img, 0.001)]];
-    
-    [request setHTTPBody:body];
-    
-    
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnString);
+//    NSString *ip = IP;
+//    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/UploadPicture", ip];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:URL]];
+//    [request setHTTPMethod:@"POST"];
+//    
+//    
+//    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; picture_name=%@",picture_name];
+//    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+//    
+//    
+//    NSMutableData *body = [NSMutableData data];
+//    
+//    [body appendData:[NSData dataWithData:UIImageJPEGRepresentation(img, 0.001)]];
+//    
+//    [request setHTTPBody:body];
+//    
+//    
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",returnString);
 }
 
 
@@ -134,77 +147,87 @@
 
 + (void)PublishRestaurant:(NSString *)name telephone:(NSString *)tel
 {
-    NSString *ip = IP;
-    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/PublishRestaurant", ip];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:URL]];
-    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPMethod:@"POST"];
+//    NSString *ip = IP;
+//    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/PublishRestaurant", ip];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:URL]];
+//    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPMethod:@"POST"];
+//    
+//    NSMutableData *body = [NSMutableData data];
+//    [body appendData:[[NSString stringWithFormat:@"restaurant=%@\n",name] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [body appendData:[[NSString stringWithFormat:@"telephone=%@\n",tel] dataUsingEncoding:NSUTF8StringEncoding]];
+//    [request setHTTPBody:body];
+//    
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    //[NSURLConnection connectionWithRequest:request delegate:self];
+//    NSLog(@"%d", [returnData length]);
+//    
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@", returnString);
+    PFObject *restaurantInfo = [PFObject objectWithClassName:@"Restaurant"];
+    [restaurantInfo setObject:name forKey:@"restaurantName"];
+    [restaurantInfo setObject:tel forKey:@"telephone"];
     
-    NSMutableData *body = [NSMutableData data];
-    [body appendData:[[NSString stringWithFormat:@"restaurant=%@\n",name] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"telephone=%@\n",tel] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPBody:body];
+    [restaurantInfo saveInBackground];
+
     
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //[NSURLConnection connectionWithRequest:request delegate:self];
-    NSLog(@"%d", [returnData length]);
-    
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", returnString);
 }
 
 + (NSArray *)requestForRestaurantList
 {
-    NSString *ip = IP;
-    NSString *urlStr;
-    urlStr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetRestaurantList", ip];
-    NSURL *url = [[NSURL alloc] initWithString:urlStr];
-    
-    return [[NSArray alloc] initWithContentsOfURL:url];
+//    NSString *ip = IP;
+//    NSString *urlStr;
+//    urlStr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetRestaurantList", ip];
+//    NSURL *url = [[NSURL alloc] initWithString:urlStr];
+//    
+//    return [[NSArray alloc] initWithContentsOfURL:url];
+    PFQuery *query = [PFQuery queryWithClassName:@"Restaurant"];
+    [query whereKey:@"ObjectId" notEqualTo:@"1234"];
+    return [query findObjects];
 }
 
 + (void)DownloadImage:(NSString *)imagename
 {
-    NSString *ip = IP;
-    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/DownloadPicture?filename=%@", ip, imagename];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:URL]];
-    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPMethod:@"GET"];
-    
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //NSLog(@"%d",[returnData length]);
-    
-    //NSString *imagePath = [[NSBundle mainBundle] pathForResource:imagename ofType:@"jpg"];
-    //NSLog(@"%@",imagePath);
-    NSString * dirname = @"/Documents/";
-    NSString * imagefullname = [imagename stringByAppendingString:@".jpg"];
-    imagefullname = [dirname stringByAppendingString:imagefullname];
-    NSString * imagePath = [NSHomeDirectory() stringByAppendingPathComponent:imagefullname];
-    //NSLog(@"%@",imagePath);
-    [returnData writeToFile: imagePath atomically:YES];
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",returnString);
+//    NSString *ip = IP;
+//    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/DownloadPicture?filename=%@", ip, imagename];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:URL]];
+//    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPMethod:@"GET"];
+//    
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    //NSLog(@"%d",[returnData length]);
+//    
+//    //NSString *imagePath = [[NSBundle mainBundle] pathForResource:imagename ofType:@"jpg"];
+//    //NSLog(@"%@",imagePath);
+//    NSString * dirname = @"/Documents/";
+//    NSString * imagefullname = [imagename stringByAppendingString:@".jpg"];
+//    imagefullname = [dirname stringByAppendingString:imagefullname];
+//    NSString * imagePath = [NSHomeDirectory() stringByAppendingPathComponent:imagefullname];
+//    //NSLog(@"%@",imagePath);
+//    [returnData writeToFile: imagePath atomically:YES];
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    //NSLog(@"%@",returnString);
 }
 
 + (double)getFoodScore:(int)foodid
 {
-    NSString *ip = IP;
-    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodScore?foodid=%d",ip, foodid];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:URL]];
-    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPMethod:@"GET"];
-    
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //[NSURLConnection connectionWithRequest:request delegate:self];
-    //NSLog(@"%d",[returnData length]);
-    
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",returnString);
-    
-    return [returnString doubleValue];
+//    NSString *ip = IP;
+//    NSString * URL = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetFoodScore?foodid=%d",ip, foodid];
+//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+//    [request setURL:[NSURL URLWithString:URL]];
+//    [request addValue:@"text/html" forHTTPHeaderField:@"Content-Type"];
+//    [request setHTTPMethod:@"GET"];
+//    
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    //[NSURLConnection connectionWithRequest:request delegate:self];
+//    //NSLog(@"%d",[returnData length]);
+//    
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",returnString);
+//    
+//    return [returnString doubleValue];
     
 }
 
@@ -227,41 +250,41 @@
 
 + (void)requestForFoodListFromID:(int)min ToID:(int)max Count:(int)count inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    if (min==-1&&max==-1) {
-        //min=1;
-        max=count;
-        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
-    }
-    else if(min == -1&&max != -1)
-    {
-        min=max-count;
-        if (min<0) {
-            min=1;
-        }
-        max=max-1;
-        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
-    }
-    else if (min != -1&&max == -1)
-    {
-        max=min+count;
-        min=min+1;
-        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
-    }
-    else
-        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+//    if (min==-1&&max==-1) {
+//        //min=1;
+//        max=count;
+//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+//    }
+//    else if(min == -1&&max != -1)
+//    {
+//        min=max-count;
+//        if (min<0) {
+//            min=1;
+//        }
+//        max=max-1;
+//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+//    }
+//    else if (min != -1&&max == -1)
+//    {
+//        max=min+count;
+//        min=min+1;
+//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
+//    }
+//    else
+//        [self requestForFoodListFromID:min toID:max inManagedObjectContext:context];
     
 }
 
 + (NSArray *)getScoreListFrom:(int)fromid To:(int)toid inManagedObjectContext:(NSManagedObjectContext *)context
 {
-    NSString *ip = IP;
-    NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetScoreList?fromid=%d&toid=%d",ip,fromid,toid];
-    NSLog(@"%@",urlstr);
-    NSURL * url = [NSURL URLWithString:urlstr];
-    NSArray * array = [[NSArray alloc] initWithContentsOfURL:url];
-    [Food updateFoodFromID:fromid ToID:toid WithScoreArray:array inManagedObjectContext:context];
-    
-    return array;
+//    NSString *ip = IP;
+//    NSString * urlstr = [NSString stringWithFormat:@"http://%@:8080/FoodShareSystem/servlet/GetScoreList?fromid=%d&toid=%d",ip,fromid,toid];
+//    NSLog(@"%@",urlstr);
+//    NSURL * url = [NSURL URLWithString:urlstr];
+//    NSArray * array = [[NSArray alloc] initWithContentsOfURL:url];
+//    [Food updateFoodFromID:fromid ToID:toid WithScoreArray:array inManagedObjectContext:context];
+//    
+//    return array;
 }
 
 

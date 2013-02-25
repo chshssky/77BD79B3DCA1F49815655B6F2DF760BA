@@ -11,6 +11,7 @@
 #import "FoodDetailView.h"
 #import "NetworkInterface.h"
 #import "RestaurantTableViewController.h"
+#import <Parse/Parse.h>
 
 @interface PublishTableViewController () <RestaurantTableViewControllerDelegate, UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *foodDetailView;
@@ -113,6 +114,12 @@
     dispatch_queue_t fetchQ = dispatch_queue_create("RestaurantList fetcher", NULL);
     dispatch_async(fetchQ, ^{
         self.restaurantArray = [[NSMutableArray alloc] initWithArray:[NetworkInterface requestForRestaurantList]];
+//        NSLog(@"YES : %@", self.restaurantArray);
+//        NSLog(@"YES : %d", [self.restaurantArray count]);
+//        if (self.restaurantArray == nil) {
+//            NSLog(@"YES it's nil!!!");
+//            self.restaurantArray = [[NSMutableArray alloc] init];
+//        }
     });
 
 }
@@ -192,7 +199,7 @@
             NSInteger index = self.selectedRestaurantIndex;
             if (indexPath.row == 0) {
                 cell.textLabel.text = @"餐馆";
-                cell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"餐馆名称"];
+                cell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"restaurantName"];
             } else {
                 cell.textLabel.text = @"电话";
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
@@ -313,7 +320,7 @@
     }
    
     if ([[self.tagArray objectAtIndex:4] boolValue]) {
-        int count = [[self.restaurantArray[self.selectedRestaurantIndex] objectForKey: @"电话" ] count];
+        int count = [[self.restaurantArray[self.selectedRestaurantIndex] objectForKey: @"telephone" ] count];
         if (count <= 0) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"发布内容遗漏警告" message:@"由于您选择了外卖标签，所以请补全餐馆电话" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
             [alert setAlertViewStyle:UIAlertViewStyleDefault];
@@ -357,7 +364,7 @@
     [agrs addObject:foodPrice];
     [agrs addObject:nowStr];
     [agrs addObject:path];
-    [agrs addObject:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"]];
+    [agrs addObject:[self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"restaurantName"]];
     [agrs addObject:tagsStr];
     [agrs addObject:foodImage];
     
@@ -399,8 +406,9 @@
             
         } else {
             rtvc.deliveredTitle = @"电话";
-            rtvc.listArray = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"电话"];
-            rtvc.restName = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"餐馆名称"];
+            //?? !!!!!!!!!!!!!!!!!!
+            //rtvc.listArray = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"电话"];
+            rtvc.restName = [self.restaurantArray[self.selectedRestaurantIndex] objectForKey:@"restaurantName"];
         }
         rtvc.restaurantDelegate = self;
     }
@@ -414,10 +422,10 @@
     UITableViewCell *rCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     if (index != -1) {
         UITableViewCell *tCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
-        rCell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"餐馆名称"];
-        NSLog(@"餐馆名称:%@", [self.restaurantArray[index] objectForKey:@"餐馆名称"]);
-        tCell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
-        NSLog(@"电话数量:%@",  [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]]);
+        rCell.detailTextLabel.text = [self.restaurantArray[index] objectForKey:@"restaurantName"];
+        NSLog(@"餐馆名称:%@", [self.restaurantArray[index] objectForKey:@"restaurantName"]);
+//        tCell.detailTextLabel.text = [NSString stringWithFormat:@"%d", [[self.restaurantArray[index]objectForKey:@"电话"] count]];
+//        NSLog(@"电话数量:%@",  [NSString stringWithFormat:@"%d", [[self.restaurantArray[index] objectForKey:@"电话"] count]]);
         [self.tableView reloadData];
     } else {
         rCell.detailTextLabel.text = @"无";
@@ -433,10 +441,11 @@
 
 - (void)sendTheAddedRestaurantName:(NSString *)restaurantName
 {
-    NSMutableDictionary *restaurantDic = [[NSMutableDictionary alloc] init];
+    PFObject *restaurantDic = [PFObject objectWithClassName:@"Restaurant"];
     NSMutableArray *telArray = [[NSMutableArray alloc] init];
-    [restaurantDic setObject:restaurantName forKey:@"餐馆名称"];
-    [restaurantDic setObject:telArray forKey:@"电话"];
+    [restaurantDic setObject:restaurantName forKey:@"restaurantName"];
+    [restaurantDic setObject:@"nulll" forKey:@"telephone"];
+    [restaurantDic saveInBackground];
     [self.restaurantArray addObject:restaurantDic];
     self.selectedRestaurantIndex = [self.restaurantArray count] - 1;
 }

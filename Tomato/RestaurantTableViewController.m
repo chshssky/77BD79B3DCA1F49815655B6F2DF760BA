@@ -8,6 +8,7 @@
 
 #import "RestaurantTableViewController.h"
 #import "NetworkInterface.h"
+#import <Parse/Parse.h>
 
 @interface RestaurantTableViewController () <UIAlertViewDelegate>
 
@@ -118,8 +119,8 @@
     }
     
     if (self.deliveredTitle == @"餐馆") {
-        NSDictionary *dic = [[NSDictionary alloc] initWithDictionary:self.listArray[indexPath.row]];
-        cell.textLabel.text = [dic objectForKey:@"餐馆名称"];
+        PFObject *dic = self.listArray[indexPath.row];
+        cell.textLabel.text = [dic objectForKey:@"restaurantName"];
         if (self.selectedIndex == indexPath.row) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         } else {
@@ -222,8 +223,8 @@
         }
         if (self.title == @"餐馆") {
             
-            for (NSDictionary *dict in self.listArray) {
-                if ([inputString isEqualToString:[dict objectForKey:@"餐馆名称"]]) {
+            for (PFObject *dict in self.listArray) {
+                if ([inputString isEqualToString:[dict objectForKey:@"restaurantName"]]) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"餐馆名不能重复" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
                     [alert setAlertViewStyle:UIAlertViewStyleDefault];
                     [alert show];
@@ -233,7 +234,6 @@
             
             [self.restaurantDelegate sendTheAddedRestaurantName:inputString];
             self.selectedIndex = [self.listArray count] - 1;
-            [NetworkInterface PublishRestaurant:inputString telephone:@"null"];
         } else {
             if (![self isPureInt:inputString] || [inputString length] != 11) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"请输入由11位数字组成的电话号码" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
